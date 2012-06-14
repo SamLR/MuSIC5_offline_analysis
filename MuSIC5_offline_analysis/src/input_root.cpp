@@ -17,12 +17,15 @@
 #include "ttree_entry.h"
 
 
-input_root::input_root(TString const& filename, TString const& treename,  ttree_entry const *const entry):
-TFile(filename, "READ"), tree_m(0), n_next_entry_m(0), n_entries_m(0), entry_m(entry){
+// initialise everything
+input_root::input_root(TString const& filename, TString const& treename,  
+                       ttree_entry const *const entry):
+TFile(filename, "READ"), tree_m(0),entry_m(entry),
+n_next_entry_m(0), n_entries_m(0) {
     init(treename);
 }
 
-void input_root::init(TString const& treename){
+void input_root::init(TString const& treename) {
     tree_m = (TTree*) this->Get(treename);
     entry_m->set_branch_addresses(tree_m);
     n_entries_m = tree_m->GetEntries();

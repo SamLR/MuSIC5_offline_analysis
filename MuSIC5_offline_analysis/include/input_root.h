@@ -26,15 +26,17 @@ public:
     void open();
     void close();
     void write();
-    ttree_entry const *const next_entry();
+    entry const *const next_entry() const;
     int const get_entries() const {return n_entries_m;};
     
 private:
     void init(TString const&);
+    
+    // member variables
     TTree * tree_m;
     ttree_entry const *const entry_m;
-    int n_next_entry_m;
-    int n_entries_m;
+    mutable int n_next_entry_m;
+    mutable int n_entries_m;
 };
 
 #endif
