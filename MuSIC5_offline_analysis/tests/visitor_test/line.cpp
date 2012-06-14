@@ -6,6 +6,11 @@
 
 #include "line.h"
 
+line::line() {
+}
+
+line::line(input_file const* in_file): my_source_file_m(in_file) {
+}
 
 line::~line() {
 }

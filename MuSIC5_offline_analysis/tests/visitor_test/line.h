@@ -9,10 +9,15 @@
 
 #include "../../include/entry.h"
 
+class text_file;
+
 class line : public entry {
 	public:
-		line();
+		line(input_file const*);
 		~line();
+		private:
+		
+		line();
 };
 
 #endif
