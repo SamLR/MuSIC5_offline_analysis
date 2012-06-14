@@ -5,9 +5,10 @@
 //  Created by Sam Cook on 14/06/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-// This is an abstract base class for input files
-// that is designed to give access to each entry
-// within some structure(s)
+//  This is an abstract base class for input files
+//  Each subclass must implement its own version of
+//  'loop' that will loop over the entries of the file
+//  and apply the registered algorithms to each entry
 // 
 
 
@@ -25,9 +26,10 @@ class input_file {
 public:
     input_file(){;};
     virtual ~input_file() {;};
+    // the function that must be implemented by all subclasses
     virtual void loop() = 0;
-    
-    void add_algorithm(algorithm *const a);
+    // add an algorithm to those that will be tested
+    void add_algorithm(algorithm* a);
     
 protected:
     int const get_number_algorithms() const;
@@ -37,10 +39,10 @@ private:
     // disable assignment and copy constructors
     input_file& operator= (input_file const &);
     input_file(input_file const&);
-    vector<algorithm *const> algos_m;
+    vector<algorithm*> algos_m;
 };
 
-inline void input_file::add_algorithm(algorithm *const a) {
+inline void input_file::add_algorithm(algorithm* a) {
     algos_m.push_back(a);
 };
 
@@ -52,4 +54,12 @@ inline algorithm *const input_file::get_algorithm(const int n) const{
     return algos_m[n];
 }
 
+inline void input_file::loop(){
+    // this is a default implementation of loop, that can add common functionality
+    // you must still provide your own version but this can be added
+    // to yours using 'input_fill::loop()'
+    if (!algos_m.size()) {
+        cerr << "WARNING: no algorithms registered" << endl;
+    }
+}
 #endif
