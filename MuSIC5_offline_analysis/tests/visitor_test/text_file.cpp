@@ -3,6 +3,8 @@
 // Created: 14/06/2012 Andrew Edmonds
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #include "text_file.h"
 
@@ -22,11 +24,13 @@ void text_file::close(){
 }
 
 bool text_file::has_next() const {
-//	return in_file_m.eof();
-	return false;
+	return in_file_m.eof();
 }
 
 line const *const text_file::next_entry() const {
-	line const *const new_line = new line(this);
+	std::stringstream ss;
+	ss.getline(in_file_m);
+	
+	line const *const new_line = new line(this, ss.str());
 	return new_line;
 }

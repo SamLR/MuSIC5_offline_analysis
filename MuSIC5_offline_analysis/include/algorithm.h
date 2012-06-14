@@ -15,8 +15,8 @@ class entry;
 
 class algorithm {
 public:
-    algorithm();
-    virtual ~algorithm();
+    algorithm() {;};
+    virtual ~algorithm() {;};
     virtual void process(entry const*) = 0;   
 };
 

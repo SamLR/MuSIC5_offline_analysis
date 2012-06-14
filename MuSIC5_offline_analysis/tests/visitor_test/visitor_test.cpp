@@ -5,19 +5,27 @@
 #include <iostream>
 
 #include "text_file.h"
-#include "../../include/algorithm.h"
+#include "printer.h"
 #include "line.h"
 #include "../../include/visitor.h"
 
 int main() {
 	std::cout << "Testing visitor class" << std::endl;
-	text_file input("test_input.txt");
+	text_file * const input = new text_file("test_input.txt");
 	std::cout << "Created text_file object" << std::endl;
 	
-	input.open();
+	input->open();
 	std::cout << "Opened input file" << std::endl;
 	
-	input.close();
+	printer* printer_object = new printer();
+	std::cout << "Created printer object" << std::endl;
+	
+	visitor tester(input, printer_object);
+	std::cout << "Created tester" << std::endl;
+	
+	//visitor->loop();
+	
+	input->close();
 	std::cout << "Closed input file" << std::endl;
 	return 0;
 }

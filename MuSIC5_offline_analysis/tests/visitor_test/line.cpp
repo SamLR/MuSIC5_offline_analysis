@@ -7,8 +7,10 @@
 #include "line.h"
 #include "../../include/input_file.h"
 
-line::line(input_file const* file):entry(file){}
+line::line(input_file const* file, std::string ln):actual_line_m(ln), entry(file) {}
 
 line::~line(){;}
 
-
+std::string line::get_actual_line() const{
+	return actual_line_m;
+}
