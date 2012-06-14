@@ -19,11 +19,11 @@ public:
     void open();
     void close();
     bool const has_next() const;
-    line const *const next_entry();	
+    line const *const next_entry() const;	
 	
 private:
     char* filename_m;
-     std::ifstream in_file_m;
+    mutable std::ifstream in_file_m;
 };
 
 #endif

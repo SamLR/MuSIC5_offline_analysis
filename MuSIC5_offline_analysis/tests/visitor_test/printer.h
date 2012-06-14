@@ -15,7 +15,7 @@ public:
     printer():ln_m(0) {;};
 	printer(line*);
 	~printer();
-	void process(entry const*);
+	void process(line *);   
 
 private: 
     line* ln_m;

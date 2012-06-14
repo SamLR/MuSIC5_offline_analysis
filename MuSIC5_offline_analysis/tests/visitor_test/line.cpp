@@ -6,6 +6,7 @@
 
 #include "line.h"
 #include "../../include/input_file.h"
+#include "../../include/algorithm.h"
 
 line::line(input_file const* file, std::string ln):actual_line_m(ln) {}
 
@@ -13,4 +14,8 @@ line::~line(){;}
 
 std::string line::get_actual_line() const{
 	return actual_line_m;
+}
+
+void line::accept(algorithm* alg) const{
+    alg->process(this);
 }

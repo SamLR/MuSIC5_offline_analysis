@@ -8,7 +8,7 @@
 #include "algorithm.h"
 
 // Constructor
-visitor::visitor(input_file const* in_file, algorithm * algthm):
+visitor::visitor(input_file * in_file, algorithm * algthm):
 input_file_m(in_file), algorithm_m(algthm){;}
 
 // Destructor

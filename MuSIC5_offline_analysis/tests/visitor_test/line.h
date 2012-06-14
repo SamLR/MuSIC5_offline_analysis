@@ -9,13 +9,14 @@
 #include <string>
 
 #include "../../include/entry.h"
-#include "../../include/input_file.h"
+class input_file;
 
 class line : public entry {
 public:
     line(input_file const*, std::string ln);
     ~line();
     std::string get_actual_line() const;
+    void accept (algorithm*) const;
     
 private:
     

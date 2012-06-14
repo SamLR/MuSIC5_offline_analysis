@@ -6,12 +6,10 @@
 
 #include "printer.h"
 
-printer::printer(line* in_line):ln_m(in_line) {;}
-
-
+printer::printer(line* in_line):ln_m() {;}
 
 printer::~printer() {;}
 
-void printer::process(entry const* ln) {
+void printer::process(line* ln) {
     std::cout << ln_m->get_actual_line()<< std::endl;
 }

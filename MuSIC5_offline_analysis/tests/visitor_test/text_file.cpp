@@ -27,7 +27,7 @@ bool const text_file::has_next() const {
 	return in_file_m.eof();
 }
 
-line const *const text_file::next_entry() {
+line const *const text_file::next_entry() const{
     char buffer[80];
 	std::stringstream ss;
     in_file_m.getline(buffer, 80);

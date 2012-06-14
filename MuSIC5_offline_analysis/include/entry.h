@@ -11,11 +11,13 @@
 #define MuSIC5_offline_analysis_entry_h
 
 class input_file;
+class algorithm;
 
 class entry {
 public:
     entry(){;} ;
     virtual ~entry() = 0;
+    virtual void accept(algorithm*) const = 0;
 };
 
 inline entry::~entry() {}

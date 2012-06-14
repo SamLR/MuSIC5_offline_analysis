@@ -11,13 +11,13 @@
 #ifndef MuSIC5_offline_analysis_algorithm_h
 #define MuSIC5_offline_analysis_algorithm_h
 
-class entry;
+class line;
 
 class algorithm {
 public:
     algorithm() {;};
     virtual ~algorithm() {;};
-    virtual void process(entry const*) = 0;   
+    virtual void process(line const*) = 0;   
 };
 
 

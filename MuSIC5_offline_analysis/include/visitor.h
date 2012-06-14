@@ -17,13 +17,13 @@ class algorithm;
 
 class visitor {
 public:
-    visitor(input_file const*, algorithm *);
+    visitor(input_file *, algorithm *);
     virtual ~visitor();
     void loop() const; 
     
 private:
     visitor();
-    input_file const* input_file_m;
+    input_file * input_file_m;
     algorithm * algorithm_m;
 };
 
