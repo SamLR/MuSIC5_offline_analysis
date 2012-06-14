@@ -20,6 +20,7 @@ public:
     virtual ~input_file();
     virtual void open() = 0;
     virtual void next_entry() = 0;
+    virtual bool has_next() = 0;
     
 private: 
     // disable assignment and copy constructors
