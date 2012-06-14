@@ -23,10 +23,10 @@ void text_file::close(){
 
 bool text_file::has_next() {
 //	return in_file_m.eof();
-	return true;
+	return false;
 }
 
-line const* text_file::next_entry() const {
-	const line* new_line = new line(this);
+line const* const text_file::next_entry() const {
+	const line* const new_line = new line(this);
 	return new_line;
 }

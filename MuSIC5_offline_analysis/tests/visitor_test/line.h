@@ -8,16 +8,12 @@
 #include <iostream>
 
 #include "../../include/entry.h"
-
-class text_file;
+#include "input_file.h"
 
 class line : public entry {
 	public:
 		line(input_file const*);
 		~line();
-		private:
-		
-		line();
 };
 
 #endif

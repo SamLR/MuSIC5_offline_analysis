@@ -1,8 +1,6 @@
 //  text_file.h
 //  -- Class declaration of text_file
 //  Created: 14/06/2012 Andrew Edmonds
-
-
 #ifndef TEXT_INPUT_H_
 #define TEXT_INPUT_H_
 
@@ -20,7 +18,7 @@ class text_file : public input_file {
 		void open();
     	void close();
     	bool has_next();
-    	line const* next_entry() const;	
+    	line const* const next_entry() const;	
 	
 	private:
 		char* filename_m;
