@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "text_file.h"
+#include "line.h"
 #include "../../include/entry.h"
 
 text_file::text_file(char* filename):
@@ -24,7 +25,10 @@ void text_file::close(){
 
 bool text_file::has_next() {
 //	return in_file_m.eof();
+	return true;
 }
 
-const entry* text_file::next_entry() {
+const entry* text_file::next_entry() const {
+	line* new_line = new line();
+	return new_line;
 }

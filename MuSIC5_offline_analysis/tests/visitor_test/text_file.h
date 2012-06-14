@@ -19,7 +19,7 @@ class text_file : public input_file {
 		void open();
     	void close();
     	bool has_next();
-    	entry const* next_entry();	
+    	entry const* next_entry() const;	
 	
 	private:
 		char* filename_m;

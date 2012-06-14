@@ -6,7 +6,7 @@
 
 #include "text_file.h"
 #include "../../include/algorithm.h"
-#include "../../include/entry.h"
+#include "line.h"
 #include "../../include/visitor.h"
 
 int main() {
