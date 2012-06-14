@@ -12,3 +12,6 @@
 *.a
 MuSIC5_offline_analysis.xcodeproj/
 build/
+
+# Modified files
+*~

@@ -18,7 +18,7 @@ public:
     
     void open();
     void close();
-    bool has_next();
+    bool has_next() const;
     line const *const next_entry() const;	
 	
 private:
