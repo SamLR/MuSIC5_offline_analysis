@@ -18,8 +18,8 @@ class entry;
 
 class input_file {
 public:
-    input_file();
-    virtual ~input_file();
+    input_file(){;};
+    virtual ~input_file() {;};
     virtual void open() = 0;
     virtual void close() = 0;
     virtual bool has_next() = 0;

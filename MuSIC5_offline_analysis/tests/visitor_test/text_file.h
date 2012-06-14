@@ -11,18 +11,19 @@
 #include "line.h"
 
 class text_file : public input_file {
-	public:
-		text_file(char* filename);
-		~text_file();
-		
-		void open();
-    	void close();
-    	bool has_next();
-    	line const* const next_entry() const;	
+
+public:
+    text_file(char* filename);
+    ~text_file();
+    
+    void open();
+    void close();
+    bool has_next();
+    line const *const next_entry() const;	
 	
-	private:
-		char* filename_m;
-		std::ifstream in_file_m;
+private:
+    char* filename_m;
+    std::ifstream in_file_m;
 };
 
 #endif

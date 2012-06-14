@@ -11,9 +11,12 @@
 #include "input_file.h"
 
 class line : public entry {
-	public:
-		line(input_file const*);
-		~line();
+public:
+    line(input_file const*);
+    ~line();
+private:
+    
+    line();
 };
 
 #endif
