@@ -14,13 +14,15 @@
 #ifndef MuSIC5_offline_analysis_input_file_h
 #define MuSIC5_offline_analysis_input_file_h
 
+class entry;
+
 class input_file {
 public:
     input_file();
     virtual ~input_file();
     virtual void open() = 0;
-    virtual void next_entry() = 0;
     virtual bool has_next() = 0;
+    virtual entry const* next_entry() = 0;
     
 private: 
     // disable assignment and copy constructors
