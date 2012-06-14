@@ -12,12 +12,13 @@
 class text_file;
 
 class line : public entry {
-	public:
-		line(input_file const*);
-		~line();
-		private:
-		
-		line();
+public:
+    line(input_file const*);
+    ~line();
+private:
+    
+    line();
+
 };
 
 #endif

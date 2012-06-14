@@ -15,6 +15,8 @@
 
 // Super class
 #include "input_file.h"
+// include ttree_entry here as input_root needs to know that it is
+// covarient with entry (i.e. it inherits from it)
 #include "ttree_entry.h"
 
 class TTree;
