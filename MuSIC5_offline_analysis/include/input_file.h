@@ -22,7 +22,7 @@ public:
     virtual ~input_file() {;};
     virtual void open() = 0;
     virtual void close() = 0;
-    virtual bool has_next() const = 0;
+    virtual bool const has_next() const = 0;
     virtual entry const *const next_entry() const = 0;
     
 private: 

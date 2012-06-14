@@ -29,6 +29,7 @@ public:
     void close();
     void write();
     ttree_entry const *const next_entry() const;
+    bool const has_next() const;
     int const get_entries() const {return n_entries_m;};
     
 private:
@@ -37,8 +38,13 @@ private:
     // member variables
     TTree * tree_m;
     ttree_entry const *const entry_m;
+    TString const filename_m;
     mutable int n_next_entry_m;
     mutable int n_entries_m;
 };
+
+inline bool const input_root::has_next() const{
+    return (n_next_entry_m < n_entries_m);
+}
 
 #endif

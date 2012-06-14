@@ -19,9 +19,13 @@
 // initialise everything
 input_root::input_root(TString const& filename, TString const& treename,  
                        ttree_entry const *const entry):
-TFile(filename, "READ"), tree_m(0),entry_m(entry),
+tree_m(0), entry_m(entry), filename_m(filename),
 n_next_entry_m(0), n_entries_m(0) {
     init(treename);
+}
+
+input_root::~input_root(){
+    delete tree_m;
 }
 
 void input_root::init(TString const& treename) {
@@ -42,4 +46,18 @@ ttree_entry const *const input_root::next_entry() const {
         ++n_next_entry_m;
         return entry_m;
     }
+}
+
+void input_root::open(){
+    if (!this->IsOpen()) {
+        this->Open(filename_m);
+    }
+}
+
+void input_root::close(){
+    this->Close();
+}
+
+void input_root::write(){
+    this->Write();
 }

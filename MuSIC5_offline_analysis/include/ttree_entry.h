@@ -17,7 +17,7 @@ class ttree_entry: public entry{
 public:
     ttree_entry();
     virtual ~ttree_entry();
-    virtual void set_branch_addresses(TTree const*) const=0;
+    virtual void set_branch_addresses(TTree*) const=0;
 };
 
 inline ttree_entry::~ttree_entry(){;}

@@ -8,10 +8,14 @@
 
 #include <iostream>
 
+#include "../../include/input_root.h"
+#include "dumb_entry.h"
+
 int main(int argc, const char * argv[])
 {
     
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    dumb_entry* d =  new dumb_entry();
+    input_root* file = new input_root("test.root", "T",d);
+    
     return 0;
 }

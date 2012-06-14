@@ -14,13 +14,8 @@ class input_file;
 
 class entry {
 public:
-    explicit entry(input_file const* file): my_source_file_m(file) {;} ;
+    entry(){;} ;
     virtual ~entry() = 0;
-    inline input_file const* get_source()const {return my_source_file_m;};
-    
-private:
-    entry();
-    input_file const* my_source_file_m;
 };
 
 inline entry::~entry() {}
