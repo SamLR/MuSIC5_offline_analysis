@@ -21,9 +21,9 @@ void text_file::close(){
 	in_file_m.close();
 }
 
-bool text_file::has_next() {
+bool text_file::has_next() const {
 //	return in_file_m.eof();
-	return true;
+	return false;
 }
 
 line const *const text_file::next_entry() const {
