@@ -13,9 +13,8 @@
 // from ROOT
 #include "TTree.h"
 
+// declaration
 #include "input_root.h"
-#include "ttree_entry.h"
-
 
 // initialise everything
 input_root::input_root(TString const& filename, TString const& treename,  

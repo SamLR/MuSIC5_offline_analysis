@@ -20,4 +20,6 @@ public:
     virtual void set_branch_addresses(TTree const*) const=0;
 };
 
+inline ttree_entry::~ttree_entry(){;}
+
 #endif

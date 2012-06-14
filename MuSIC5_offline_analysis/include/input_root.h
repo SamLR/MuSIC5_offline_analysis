@@ -15,8 +15,8 @@
 
 // Super class
 #include "input_file.h"
+#include "ttree_entry.h"
 
-class ttree_entry;
 class TTree;
 
 class input_root: public input_file, TFile {    
