@@ -18,7 +18,7 @@ class TTree;
 
 class input_root: public input_file, TFile {    
 public:
-    input_root(TString const&);
+    explicit input_root(TString const&); 
     ~input_root();
     void open();
     void close();
