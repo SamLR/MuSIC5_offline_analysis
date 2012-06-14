@@ -1,14 +1,23 @@
 // visitor_test.cpp
-// -- Test the visitor class
+// -- Tests the visitor class on a simple text file
 // Created: 14/06/2012 Andrew Edmonds
 
 #include <iostream>
 
-#include "input_file.h"
-#include "aglorthim.h"
-#include "event.h"
-#include "visitor.h"
+#include "text_file.h"
+#include "../../include/algorithm.h"
+#include "../../include/entry.h"
+#include "../../include/visitor.h"
 
 int main() {
+	std::cout << "Testing visitor class" << std::endl;
+	text_file input("test_input.txt");
+	std::cout << "Created text_file object" << std::endl;
 	
+	input.open();
+	std::cout << "Opened input file" << std::endl;
+	
+	input.close();
+	std::cout << "Closed input file" << std::endl;
+	return 0;
 }

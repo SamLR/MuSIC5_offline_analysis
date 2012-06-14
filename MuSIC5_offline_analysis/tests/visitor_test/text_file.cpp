@@ -4,28 +4,27 @@
 
 #include <iostream>
 
-#include "input_file.h"
-
-class text_file : public input_file {
-	public:
-		text_file(char* filename);
-	
-	private:
-		char* filename_m;
-}
+#include "text_file.h"
+#include "../../include/entry.h"
 
 text_file::text_file(char* filename):
 filename_m (filename){
 }
 
-text_file::open() {
+text_file::~text_file() {
 }
 
-text_file::close(){
+void text_file::open() {
+	in_file_m.open(filename_m);
 }
 
-text_file::has_entry() {
+void text_file::close(){
+	in_file_m.close();
 }
 
-text_file::get_entry() {
+bool text_file::has_next() {
+//	return in_file_m.eof();
+}
+
+const entry* text_file::next_entry() {
 }
