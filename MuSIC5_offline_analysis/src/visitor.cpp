@@ -9,12 +9,10 @@
 
 // Constructor
 visitor::visitor(input_file const* in_file, algorithm * algthm):
-input_file_m(in_file), algorithm_m(algthm){
-}
+input_file_m(in_file), algorithm_m(algthm){;}
 
 // Destructor
-visitor::~visitor() {
-}
+visitor::~visitor() {;}
 
 // loop()
 // Goes through the input_file, grabbing each entry and passing it to the algorithm to process

@@ -10,8 +10,10 @@
 #include "../../include/visitor.h"
 
 int main() {
+    
+    char name[] = "test_input.txt";
 	std::cout << "Testing visitor class" << std::endl;
-	text_file * const input = new text_file("test_input.txt");
+	text_file * const input = new text_file(name);
 	std::cout << "Created text_file object" << std::endl;
 	
 	input->open();

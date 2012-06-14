@@ -18,12 +18,12 @@ public:
     
     void open();
     void close();
-    bool has_next() const;
-    line const *const next_entry() const;	
+    bool const has_next() const;
+    line const *const next_entry();	
 	
 private:
     char* filename_m;
-    std::ifstream in_file_m;
+     std::ifstream in_file_m;
 };
 
 #endif

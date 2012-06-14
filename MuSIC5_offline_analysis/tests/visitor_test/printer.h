@@ -10,11 +10,15 @@
 #include "../../include/algorithm.h"
 #include "line.h"
 
-class printer : public algorithm {
+class printer : public algorithm{
 public:
-	printer();
+    printer():ln_m(0) {;};
+	printer(line*);
 	~printer();
-	void process(line const*);
+	void process(entry const*);
+
+private: 
+    line* ln_m;
 };
 
 #endif

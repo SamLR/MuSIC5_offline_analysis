@@ -9,7 +9,7 @@
 #include <string>
 
 #include "../../include/entry.h"
-#include "input_file.h"
+#include "../../include/input_file.h"
 
 class line : public entry {
 public:

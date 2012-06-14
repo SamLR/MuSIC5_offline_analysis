@@ -7,7 +7,7 @@
 #include "line.h"
 #include "../../include/input_file.h"
 
-line::line(input_file const* file, std::string ln):actual_line_m(ln), entry(file) {}
+line::line(input_file const* file, std::string ln):actual_line_m(ln) {}
 
 line::~line(){;}
 
