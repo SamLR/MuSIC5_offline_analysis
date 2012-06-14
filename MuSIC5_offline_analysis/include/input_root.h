@@ -9,11 +9,27 @@
 #ifndef MuSIC5_offline_analysis_input_root_h
 #define MuSIC5_offline_analysis_input_root_h
 
-class <#class name#> {
-    <#instance variables#>
-    
+#include "input_file.h"
+#include "TFile.h"
+#include "TString.h"
+
+class entry;
+class TTree;
+
+class input_root: public input_file, TFile {    
 public:
-    <#member functions#>
+    input_root(TString const&);
+    ~input_root();
+    void open();
+    void close();
+    void write();
+    entry const & next_entry() const;
+    int const & get_entries() const {return n_entries_m;};
+    
+private:
+    TTree const* const tree_m;
+    int n_next_entry_m;
+    int n_entries_m;
 };
 
 #endif
