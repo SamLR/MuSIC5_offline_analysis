@@ -17,7 +17,7 @@ class entry {
 public:
     entry(){;} ;
     virtual ~entry();
-    virtual void accept(algorithm const&) const = 0;
+    virtual void accept(algorithm *const) const = 0;
 };
 
 

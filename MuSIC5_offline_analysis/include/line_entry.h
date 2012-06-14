@@ -9,6 +9,8 @@
 #ifndef MuSIC5_offline_analysis_line_entry_h
 #define MuSIC5_offline_analysis_line_entry_h
 
+#include "entry.h"
+
 class string;
 class algorithm;
 
@@ -17,12 +19,13 @@ public:
     line_entry();
     line_entry(string const*);
     ~line_entry();
-    void accept(algorithm const&) const;
+    void accept(algorithm *const) const;
     string const * get_line() const;
     
 private:
     string const* line_m;
 };
 
+inline string const* line_entry::get_line() const {return line_m;}
 
 #endif
