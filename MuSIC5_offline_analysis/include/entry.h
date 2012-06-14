@@ -16,10 +16,9 @@ class algorithm;
 class entry {
 public:
     entry(){;} ;
-    virtual ~entry() = 0;
-    virtual void accept(algorithm*) const = 0;
+    virtual ~entry();
+    virtual void accept(algorithm const&) const = 0;
 };
 
-inline entry::~entry() {}
 
 #endif
