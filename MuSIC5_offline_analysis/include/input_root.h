@@ -27,7 +27,7 @@ public:
     int const & get_entries() const {return n_entries_m;};
     
 private:
-    TTree const* const tree_m;
+    TTree const* tree_m;
     int n_next_entry_m;
     int n_entries_m;
 };

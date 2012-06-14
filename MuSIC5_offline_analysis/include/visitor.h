@@ -22,8 +22,8 @@ public:
     void loop() const; 
     
 private:
-    input_file const * const input_file_m;
-    algorithm const * const  algorithm_m;
+    input_file const* input_file_m;
+    algorithm const* algorithm_m;
 };
 
 
