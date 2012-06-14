@@ -11,3 +11,5 @@
 line::line(input_file const* file):entry(file){}
 
 line::~line(){;}
+
+

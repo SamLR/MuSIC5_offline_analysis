@@ -9,6 +9,8 @@
 
 #include "../../include/entry.h"
 
+class text_file;
+
 class line : public entry {
 public:
     line(input_file const*);

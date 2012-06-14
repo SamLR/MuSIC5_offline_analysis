@@ -5,8 +5,6 @@
 #include <iostream>
 
 #include "text_file.h"
-#include "line.h"
-#include "../../include/entry.h"
 
 text_file::text_file(char* filename):
 filename_m (filename){
@@ -29,6 +27,6 @@ bool text_file::has_next() {
 }
 
 line const *const text_file::next_entry() const {
-	line* new_line = new line(NULL);
+	line const *const new_line = new line(this);
 	return new_line;
 }
