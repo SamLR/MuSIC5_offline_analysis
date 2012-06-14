@@ -26,7 +26,7 @@ public:
     void open();
     void close();
     void write();
-    entry const *const next_entry() const;
+    ttree_entry const *const next_entry() const;
     int const get_entries() const {return n_entries_m;};
     
 private:

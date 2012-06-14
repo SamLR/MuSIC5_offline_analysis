@@ -31,7 +31,7 @@ void input_root::init(TString const& treename) {
     n_entries_m = tree_m->GetEntries();
 }
 
-ttree_entry const *const input_root::next_entry() {
+ttree_entry const *const input_root::next_entry() const {
     if (n_next_entry_m >= n_entries_m) {
         // warning/error here?
         std::cerr<<"WARNING: out of entries, looping"<< std::endl;
