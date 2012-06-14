@@ -13,17 +13,17 @@
 #include "TFile.h"
 #include "TString.h"
 
-class entry;
+class ttree_entry;
 class TTree;
 
 class input_root: public input_file, TFile {    
 public:
-    explicit input_root(TString const&); 
+    explicit input_root(TString const&,TString const&, ttree_entry const*); 
     ~input_root();
     void open();
     void close();
     void write();
-    entry const & next_entry() const;
+    ttree_entry const & next_entry() const;
     int const & get_entries() const {return n_entries_m;};
     
 private:
