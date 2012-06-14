@@ -23,7 +23,7 @@ public:
     
 private: 
     // disable assignment and copy constructors
-    input_file const& operator= (input_file const &);
+    input_file& operator= (input_file const &);
     input_file(input_file const&);
 };
 
