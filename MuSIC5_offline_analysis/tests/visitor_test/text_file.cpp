@@ -28,7 +28,7 @@ bool text_file::has_next() {
 	return true;
 }
 
-const entry* text_file::next_entry() const {
-	line* new_line = new line();
+line const *const text_file::next_entry() const {
+	line* new_line = new line(NULL);
 	return new_line;
 }

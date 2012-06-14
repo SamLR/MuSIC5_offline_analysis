@@ -10,9 +10,12 @@
 #include "../../include/entry.h"
 
 class line : public entry {
-	public:
-		line();
-		~line();
+public:
+    line(input_file const*);
+    ~line();
+private:
+    
+    line();
 };
 
 #endif

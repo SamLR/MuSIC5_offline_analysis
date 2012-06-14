@@ -10,6 +10,7 @@
 #include <fstream>
 
 #include "../../include/input_file.h"
+#include "line.h"
 
 class text_file : public input_file {
 	public:
@@ -19,7 +20,7 @@ class text_file : public input_file {
 		void open();
     	void close();
     	bool has_next();
-    	entry const* next_entry() const;	
+    	line const *const next_entry() const;	
 	
 	private:
 		char* filename_m;
