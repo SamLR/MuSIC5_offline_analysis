@@ -9,9 +9,12 @@
 #ifndef MuSIC5_offline_analysis_input_root_h
 #define MuSIC5_offline_analysis_input_root_h
 
-#include "input_file.h"
+// from ROOT
 #include "TFile.h"
 #include "TString.h"
+
+// Super class
+#include "input_file.h"
 
 class ttree_entry;
 class TTree;
@@ -29,6 +32,7 @@ public:
 private:
     void init(TString const&);
     TTree const* tree_m;
+    ttree_entry const* entry_m;
     int n_next_entry_m;
     int n_entries_m;
 };

@@ -15,7 +15,9 @@ class TTree;
 
 class ttree_entry: public entry{
 public:
-    void set_branch_addresses(TTree const*);
+    ttree_entry();
+    virtual ~ttree_entry();
+    virtual void set_branch_addresses(TTree const*)=0;
 };
 
 #endif
