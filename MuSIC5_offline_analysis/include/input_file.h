@@ -23,7 +23,7 @@ public:
     virtual void open() = 0;
     virtual void close() = 0;
     virtual bool has_next() = 0;
-    virtual entry const* next_entry() = 0;
+    virtual entry const *const next_entry() = 0;
     
 private: 
     // disable assignment and copy constructors

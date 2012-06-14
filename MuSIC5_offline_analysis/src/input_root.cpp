@@ -17,7 +17,7 @@
 #include "ttree_entry.h"
 
 
-input_root::input_root(TString const& filename, TString const& treename,  ttree_entry const* entry):
+input_root::input_root(TString const& filename, TString const& treename,  ttree_entry const *const entry):
 TFile(filename, "READ"), tree_m(0), n_next_entry_m(0), n_entries_m(0), entry_m(entry){
     init(treename);
 }
@@ -28,11 +28,11 @@ void input_root::init(TString const& treename){
     n_entries_m = tree_m->GetEntries();
 }
 
-ttree_entry const& input_root::next_entry() const{
+ttree_entry const *const input_root::next_entry() {
     if (n_next_entry_m >= n_entries_m) {
         // warning/error here?
-        std::cerr<<"WARNING: out of entries, looping"<< endl;
-        n_next_entry_m=0;
+        std::cerr<<"WARNING: out of entries, looping"<< std::endl;
+        n_next_entry_m = 0;
         tree_m->GetEntry(n_next_entry_m);
         return entry_m;
     } else {
