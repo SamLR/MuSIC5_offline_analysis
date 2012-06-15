@@ -7,8 +7,9 @@
 #include "midus_tree_structs.h"
 #include "TTree.h"
 
-midus_file::midus_file(std::string const& filename): 
-TFile(filename, "READ"),filename_m(filename) treename_m(treename){
+midus_file::midus_file(std::string const& filename)
+: TFile(filename, "READ"), filename_m(filename), treename_m(treename),
+qdc_tree_m(0), tdc_tree_m(0), scaler_tree_m(0), q_branch_m(), t_branch_m(){
     init();
 }
 
@@ -19,24 +20,9 @@ midus_file::~midus_file() {
 void midus_file::loop() {
 	// Call default loop method
 	input_file::loop();
-	std::cout << "Entered loop" << std::endl;
+    
 	
-	// Get the TTrees from the ROOT file
-	TTree* trigger = (TTree*) file_m->Get("Trigger;1");
-	//TTree* scaler = (TTree*) file_m->Get("Scaler;1");
-	
-	//std::cout << trigger->GetEntries() << std::endl;
-	trigger->Print();
-	
-	// FIll the QDC_branch and TDC_branch which will be passed to midus_entry to create the entry
-	/*QDC_branch qdc_br;
-	qdc_br.n_ch_m = 1;
-	std::cout << qdc_br.n_ch_m << std::endl;
-	trigger->SetBranchAddress("QDC/nQDC", &qdc_br.n_ch_m);
-	
-	trigger->GetEvent(21);
-	std::cout << qdc_br.n_ch_m << std::endl;*/
-	
+    
 	// Loop over all the registered algorithms
 	for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
     	//entry.accept(get_algorithm(alg));
@@ -45,13 +31,20 @@ void midus_file::loop() {
 
 void midus_file::init() {
     // initialise the tree
-    tree_m = (TTree*) this->Get("Trigger");
-    if (!tree_m) {
-        std::cerr << "There was a problem opening the tree" << std::endl;
+    qdc_tree_m = (TTree*) this->Get("QDC");
+    tdc_tree_m = (TTree*) this->Get("TDC");    
+    scaler_tree_m = (TTree*) this->Get("Scaler");
+    
+    if (!(qdc_tree_m && tdc_tree_m && scaler_tree_m) ) {
+        std::cerr << "There was a problem opening one of the trees" << std::endl;
         exit(1);
     } else {
-        tree_m->SetBranchAddress("Instance", &q_branch_m.n_ch_m);
-        tree_m->SetBranchAddress("QDC", q_branch_m.value_m);
+        qdc_tree_m->SetBranchAddress("Instance", q_branch_m.channel);
+        qdc_tree_m->SetBranchAddress("QDC", q_branch_m.qdc);
+        tdc_tree_m->SetBranchAddress("Instance", t_branch_m.channel);
+        tdc_tree_m->SetBranchAddress("n_hits", t_branch_m.n_hits);
+        tdc_tree_m->SetBranchAddress("TDC", t_branch_m.tdc);
     }
     
+    n_entries_m =
 }

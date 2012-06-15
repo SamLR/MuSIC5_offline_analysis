@@ -28,9 +28,12 @@ private:
     
     std::string const filename_m;
     std::string const treename_m;
-    TTree* tree_m;
+    TTree* qdc_tree_m;
+    TTree* tdc_tree_m;
+    TTree* scaler_tree_m;
     QDC_branch q_branch_m;
     TDC_branch t_branch_m;
+    int n_entries_m;
 };
 
 #endif
