@@ -6,8 +6,8 @@
 
 #include "tfile_export_algorithm.h"
 
-tfile_export_algorithm::tfile_export_algorithm() {
-	std::cout << "Constructed" << std::endl;
+tfile_export_algorithm::tfile_export_algorithm(TFile* const in_file): in_file_m(in_file) {
+	in_file_m->cd();
 }
 
 tfile_export_algorithm::~tfile_export_algorithm() {

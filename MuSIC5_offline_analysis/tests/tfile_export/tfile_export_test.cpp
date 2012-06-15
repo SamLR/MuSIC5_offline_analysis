@@ -2,7 +2,10 @@
 
 #include "../../include/tfile_export_algorithm.h"
 
+#include "TFile.h"
+
 int main() {
-	tfile_export_algorithm test;
+	TFile* file = new TFile("test.root", "RECREATE");
+	tfile_export_algorithm test(file);
 	return 0;
 }
