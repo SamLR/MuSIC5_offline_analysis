@@ -10,19 +10,27 @@
 
 // From ROOT
 #include "TFile.h"
-#include "TTree.h"
-
+// local gubbins
 #include "input_file.h"
+#include "midus_tree_structs.h"
 
-class midus_file : public input_file {
+class TTree;
+
+class midus_file : public input_file, TFile {
 public:
-	midus_file(std::string);
+	midus_file(std::string const&, std::string const&);
 	~midus_file();
 	
 	void loop();
 	
 private:
-	TFile* file_m;
+    void init();
+    
+    std::string const filename_m;
+    std::string const treename_m;
+    TTree* tree_m;
+    QDC_branch q_branch_m;
+    TDC_branch t_branch_m;
 };
 
 #endif

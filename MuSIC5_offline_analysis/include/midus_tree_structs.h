@@ -14,20 +14,15 @@
 #define QDC_CH 4
 
 struct TDC_branch {
-    
-    int n_hits_m;
-    int n_ch_m;
-    
-    int entry_id_m;
+    int channel [TDC_CH];
+    int n_hits  [TDC_CH];
     int value_m [MAX_TDC_HITS][TDC_CH];
 };
 
 struct QDC_branch {
     
-    int n_ch_m;
-    int entry_id_m;
-    
-    int value_m[QDC_CH];
+    int channel[QDC_CH];
+    int qdc[QDC_CH];
 };
 
 #endif
