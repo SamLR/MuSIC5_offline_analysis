@@ -42,11 +42,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 		ss << "TDC.ch" << (i+1);
 		
 		std::stringstream leaflist;
-		int j = 0;
-		leaflist << "Hit" << (j+1) << "/D";
-		for (int j = 1;j < in_entry->get_number_TDC_hits(); j++) {
-			leaflist << ":Hit" << (j+1) << "/D"; // Need to make sure there isn't a trailing colon at the end
-		}
+		leaflist << "Hit[" << in_entry->get_number_TDC_channels() << "]/D";
 		tree_m->Branch(ss.str().c_str(), TDC_values[i], leaflist.str().c_str());
 	}
 	
