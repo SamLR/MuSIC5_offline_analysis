@@ -13,7 +13,7 @@ class algorithm;
 
 class midus_entry: public entry {
 public:
-    midus_entry(TDC_branch&, QDC_branch&);
+    midus_entry(TDC_branch const&, QDC_branch const&);
     ~midus_entry(){;} ;
     void accept(algorithm* const) const;
     
@@ -24,15 +24,16 @@ public:
     inline double get_TDC_value(int i) const {return TDC_m[i];};
     
 private:
-    void init(TDC_branch&, QDC_branch&);
+    void init(TDC_branch const&, QDC_branch const&);
     midus_entry();
     
-    std::vector<double> QDC_m;
-    std::vector<double> TDC_m;
+    std::vector<int> QDC_m;
+    std::vector<int> TDC_m;
     
     int event_number_m;
     int n_tdc_hits_m;
-    
+    int n_tdc_ch;
+    int n_qdc_ch;
 };
 
 #endif

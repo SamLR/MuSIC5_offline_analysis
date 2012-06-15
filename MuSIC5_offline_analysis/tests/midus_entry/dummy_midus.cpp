@@ -13,7 +13,7 @@
 #include "../../include/midus_entry.h"
 
 void dummy_midus::loop(){
-    int const n_ch = 2;
+    int const n_ch = 4;
     int const n_hits = 2;
     for (int i = 0; i < n_loops_m; ++i) {
         TDC_branch t;
@@ -26,11 +26,12 @@ void dummy_midus::loop(){
         q.n_ch_m = n_ch;
         
         for (int ch = 0; ch < n_ch; ++ch) {
-            q.value_m[ch] = i%ch;
+            q.value_m[ch] = ch;
             for (int hit = 0; hit<n_hits; ++hit) {
-                t.value_m[hit][ch] = (9%ch)%hit;
+                t.value_m[hit][ch] = ch+hit;
             }
         }
+        
         midus_entry entry(t, q);
         
         for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
