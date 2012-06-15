@@ -5,10 +5,13 @@
 #include "midus_file.h"
 #include "midus_entry.h"
 
-midus_file::midus_file() {
+midus_file::midus_file(std::string filename) {
+	std::cout << filename << std::endl;
+	file_m = new TFile(filename.c_str(), "READ");
 }
 
 midus_file::~midus_file() {
+	file_m->Close();
 }
 
 void midus_file::loop() {
