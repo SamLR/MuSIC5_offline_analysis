@@ -6,14 +6,17 @@
 
 #include "tfile_export_algorithm.h"
 
-tfile_export_algorithm::tfile_export_algorithm(TFile *const in_file): in_file_m(in_file) {
-	in_file_m->cd();
+tfile_export_algorithm::tfile_export_algorithm(TFile *const out_file): out_file_m(out_file) {
+	out_file_m->cd();
 }
 
 tfile_export_algorithm::~tfile_export_algorithm() {
-	in_file_m->Close();
+	out_file_m->Close();
 }
 
 void tfile_export_algorithm::process(midus_entry const *) {
-	in_file_m->Print();
+}
+
+void tfile_export_algorithm::write() {
+	out_file_m->Write();
 }

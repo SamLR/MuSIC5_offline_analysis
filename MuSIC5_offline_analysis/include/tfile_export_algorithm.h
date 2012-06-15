@@ -6,6 +6,7 @@
 #define TFILE_EXPORT_ALGORITHM_H_
 
 #include "algorithm.h"
+#include "midus_entry.h"
 
 #include "TFile.h"
 
@@ -14,11 +15,13 @@ public:
 	tfile_export_algorithm(TFile *const);
 	virtual ~tfile_export_algorithm();
 	
-	virtual void process(line_entry const *) = 0;
+	void process(line_entry const *) {};
 	virtual void process(midus_entry const *);
+	
+	void write();
     
 private:
-	TFile *const in_file_m;
+	TFile *const out_file_m;
 };
 
 #endif

@@ -6,7 +6,12 @@
 
 #include "tfile_converter_algorithm.h"
 
-tfile_converter_algorithm::tfile_converter_algorithm(TFile *const in_file): tfile_export_algorithm(in_file) {
+#include "TTree.h"
+#include "TH1.h"
+
+tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
+	//Create the TTree
+	tree_m = new TTree("t", "t");
 }
 
 tfile_converter_algorithm::~tfile_converter_algorithm() {
@@ -18,4 +23,15 @@ void tfile_converter_algorithm::process(line_entry const * in_entry) {
 
 void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
+	
+	// Create the branche for the event
+	double QDC_ch2 = in_entry->get_QDC_value(1);
+	std::cout << QDC_ch2 << std::endl;
+	tree_m->Branch("QDC.ch2", &QDC_ch2);
+	
+	// Take the entry (contains <vectors>)
+	tree_m->Fill();
+	
+	// Write to the TTree
+	tfile_export_algorithm::write();
 }

@@ -10,10 +10,23 @@ int main() {
 	TFile* file = new TFile("test.root", "RECREATE");
 	tfile_converter_algorithm test(file);
 	
-	QDC_branch q;
-	TDC_branch t;
+	// Create some moch branches
+	QDC_branch q;	
+	for (int i = 0; i < 4; i++) {
+		q.channel[i] = i;
+		q.qdc[i] = 22*i;
+	}
 	
-	midus_entry* mid = new midus_entry(t, q);;
+	TDC_branch t;	
+	for (int i = 0; i < 4; i++) {
+		t.channel[i] = i;
+		t.n_hits[i] = 15+i;
+		for (int j = 0; j < t.n_hits[i]; j++) {
+			t.value_m[j][i] = 100*i;
+		}
+	}
+	
+	midus_entry* mid = new midus_entry(t, q);
 	test.process(mid);
 	return 0;
 }

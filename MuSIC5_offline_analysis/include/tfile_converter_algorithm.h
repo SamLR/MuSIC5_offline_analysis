@@ -7,6 +7,8 @@
 
 #include "tfile_export_algorithm.h"
 
+#include "TTree.h"
+
 class tfile_converter_algorithm : public tfile_export_algorithm {
 public:
 	tfile_converter_algorithm(TFile *const);
@@ -14,6 +16,9 @@ public:
 	
 	void process(line_entry const *);
 	void process(midus_entry const *);
+
+private:
+	TTree* tree_m;
 
 };
 
