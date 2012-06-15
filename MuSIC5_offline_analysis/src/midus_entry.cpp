@@ -3,7 +3,6 @@
 // Created: 15/06/2012 Andrew Edmonds
 
 #include <iostream>
-
 #include <vector>
 
 #include "midus_entry.h"
@@ -18,6 +17,7 @@ midus_entry::midus_entry(TDC_branch const& tdc_in, QDC_branch const& qdc_in): QD
 void midus_entry::accept(algorithm *const alg) const {
     alg->process(this);
 }
+
 
 void midus_entry::init(TDC_branch const& tdc_in, QDC_branch const& qdc_in){
     
