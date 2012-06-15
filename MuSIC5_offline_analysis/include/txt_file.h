@@ -16,13 +16,12 @@
 
 #include <iostream>
 #include <fstream>
-
-using namespace std;
+#include <string>
 
 class txt_file: public input_file {
 public:
     // initialise with the file to be read in
-    txt_file(string const & filename);
+    txt_file(std::string const & filename);
     ~txt_file();
     
     // the concrete implementation of the loop function
@@ -31,7 +30,7 @@ public:
 private:
     // this constructor shouldn't be used
     txt_file(){;} ;
-    ifstream ifstream_m;
+    std::ifstream ifstream_m;
 };
 
 

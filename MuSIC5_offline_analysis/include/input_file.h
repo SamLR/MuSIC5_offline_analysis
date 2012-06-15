@@ -20,7 +20,6 @@ class algorithm;
 
 #include <vector>
 
-using namespace std;
 
 class input_file {
 public:
@@ -39,7 +38,7 @@ private:
     // disable assignment and copy constructors
     input_file& operator= (input_file const &);
     input_file(input_file const&);
-    vector<algorithm*> algos_m;
+    std::vector<algorithm*> algos_m;
 };
 
 inline void input_file::add_algorithm(algorithm* a) {
@@ -59,7 +58,7 @@ inline void input_file::loop(){
     // you must still provide your own version but this can be added
     // to yours using 'input_fill::loop()'
     if (!algos_m.size()) {
-        cerr << "WARNING: no algorithms registered" << endl;
+        std::cerr << "WARNING: no algorithms registered" << std::endl;
     }
 }
 #endif

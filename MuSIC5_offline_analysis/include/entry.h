@@ -12,8 +12,7 @@
 #ifndef MuSIC5_offline_analysis_entry_h
 #define MuSIC5_offline_analysis_entry_h
 
-class input_file;
-class algorithm;
+#include "algorithm.h"
 
 class entry {
 public:

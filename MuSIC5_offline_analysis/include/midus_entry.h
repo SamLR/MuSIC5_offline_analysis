@@ -5,29 +5,28 @@
 #ifndef MIDUS_ENTRY_H_
 #define MIDUS_ENTRY_H_
 
-#include <vector>
-
 #include "entry.h"
+#include "midus_tree_structs.h"
+#include <vector>
 
 class algorithm;
 
-class midus_entry : public entry {
+class midus_entry: public entry {
 public:
-	midus_entry();
-	~midus_entry();
-	void accept(algorithm *const) const;
-	
-	double get_QDC_value(int) const;
-	double get_TDC_value(int) const;
-	int get_event_number() const;
-	
-	int get_number_QDC_values() const;
-	int get_number_TDC_values() const;
-
+    midus_entry(TDC_branch&, QDC_branch&);
+    ~midus_entry(){;} ;
+    void accept(algorithm* const) const;
+    
 private:
-	std::vector<double> QDC_m;
-	std::vector<double> TDC_m;
-	int event_number_m;
+    void init(TDC_branch&, QDC_branch&);
+    midus_entry();
+    
+    std::vector<double> QDC_m;
+    std::vector<double> TDC_m;
+    
+    int event_number_m;
+    int n_tdc_hits_m;
+    
 };
 
 #endif

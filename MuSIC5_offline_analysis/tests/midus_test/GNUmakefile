@@ -9,7 +9,7 @@
 
 # Glen Cowan, RHUL Physics, November 2007.
 
-PROGNAME      = midus_test
+PROGNAME      = midus_test.exe
 SOURCES       = midus_test.cpp ../../src/*.cpp
 INCLUDES      = ../../include
 ROOTFLAGS     = $(shell root-config --cflags)
