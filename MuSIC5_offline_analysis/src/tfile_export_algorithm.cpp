@@ -14,10 +14,6 @@ tfile_export_algorithm::~tfile_export_algorithm() {
 	in_file_m->Close();
 }
 
-void tfile_export_algorithm::process(line_entry const *) {
-	std::cout << "Called with a line entry" << std::endl;
-}
-
 void tfile_export_algorithm::process(midus_entry const *) {
 	in_file_m->Print();
 }

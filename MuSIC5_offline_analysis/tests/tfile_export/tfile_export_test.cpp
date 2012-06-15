@@ -1,6 +1,6 @@
 // To test the tfile_export_algorithm class
 
-#include "../../include/tfile_export_algorithm.h"
+#include "../../include/tfile_converter_algorithm.h"
 #include "../../include/midus_entry.h"
 #include "../../include/midus_tree_structs.h"
 
@@ -8,7 +8,7 @@
 
 int main() {
 	TFile* file = new TFile("test.root", "RECREATE");
-	tfile_export_algorithm test(file);
+	tfile_converter_algorithm test(file);
 	
 	QDC_branch q;
 	TDC_branch t;

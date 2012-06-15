@@ -14,8 +14,8 @@ public:
 	tfile_export_algorithm(TFile *const);
 	virtual ~tfile_export_algorithm();
 	
-	void process(line_entry const *);
-    void process(midus_entry const *);
+	virtual void process(line_entry const *) = 0;
+	virtual void process(midus_entry const *);
     
 private:
 	TFile *const in_file_m;
