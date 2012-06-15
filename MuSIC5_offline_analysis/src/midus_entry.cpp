@@ -8,7 +8,6 @@
 #include "midus_entry.h"
 #include "algorithm.h"
 #include "midus_tree_structs.h"
->>>>>>> upstream/master
 
 
 midus_entry::midus_entry(TDC_branch& tdc_in, QDC_branch& qdc_in) {
@@ -19,7 +18,7 @@ void midus_entry::accept(algorithm *const alg) const {
     alg->process(this);
 }
 
-void init(TDC_branch& tdc_in, QDC_branch& qdc_in) {
+void midus_entry::init(TDC_branch& tdc_in, QDC_branch& qdc_in) {
     
     if (tdc_in.entry_id_m != qdc_in.entry_id_m) {
         std::cerr <<"Entry IDs don't match" << std::endl;

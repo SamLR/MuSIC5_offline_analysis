@@ -10,6 +10,7 @@
 
 // From ROOT
 #include "TFile.h"
+#include "TTree.h"
 
 #include "input_file.h"
 

@@ -19,10 +19,15 @@ void midus_file::loop() {
 	input_file::loop();
 	std::cout << "Entered loop" << std::endl;
 	
-	midus_entry entry;
+	//midus_entry entry;
+	// Get the TTrees from the ROOT file
+	TTree* trigger = (TTree*) file_m->Get("Trigger;1");
+	TTree* scaler = (TTree*) file_m->Get("Scaler;1");
+	
+	//TBranch* qdc = (TBranch*) trigger->GetBranch();
 	
 	// Loop over all the registered algorithms
 	for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
-    	entry.accept(get_algorithm(alg));
+    	//entry.accept(get_algorithm(alg));
     }
 }
