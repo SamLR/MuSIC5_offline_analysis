@@ -9,7 +9,7 @@
 
 class algorithm;
 
-class midus_file : public entry {
+class midus_entry : public entry {
 public:
 	midus_entry();
 	~midus_entry();
