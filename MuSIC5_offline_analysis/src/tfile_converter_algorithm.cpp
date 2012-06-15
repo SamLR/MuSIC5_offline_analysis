@@ -11,8 +11,6 @@
 #include "TH1.h"
 
 tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
-	//Create the TTree
-	tree_m = new TTree("t", "t");
 }
 
 tfile_converter_algorithm::~tfile_converter_algorithm() {
@@ -24,6 +22,9 @@ void tfile_converter_algorithm::process(line_entry const * in_entry) {
 
 void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
+	
+	//Create the TTree
+	tree_m = new TTree("Event", "Event");
 	
 	// Create the arrays where we'll read the values to
 	double QDC_values[in_entry->get_number_QDC_channels()];
@@ -42,7 +43,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 		ss << "TDC.ch" << (i+1);
 		
 		std::stringstream leaflist;
-		leaflist << "Hit[" << in_entry->get_number_TDC_channels() << "]/D";
+		leaflist << "Hit[" << in_entry->get_number_TDC_hits() << "]/D";
 		tree_m->Branch(ss.str().c_str(), TDC_values[i], leaflist.str().c_str());
 	}
 	
@@ -72,4 +73,8 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	
 	// Write to the TTree
 	tfile_export_algorithm::write();
+	
+	// Delete the tree so that it doesn't get written to the file next time
+	delete tree_m;
+	tree_m = NULL;
 }
