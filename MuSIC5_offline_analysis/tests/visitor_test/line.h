@@ -9,17 +9,15 @@
 #include <string>
 
 #include "../../include/entry.h"
-#include "input_file.h"
 
 class line : public entry {
 public:
-    line(input_file const*, std::string ln);
+	line();
+    line(std::string ln);
     ~line();
     std::string get_actual_line() const;
     
 private:
-    
-    line();
     std::string actual_line_m;
 };
 

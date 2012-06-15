@@ -23,14 +23,17 @@ void text_file::close(){
 	in_file_m.close();
 }
 
-bool text_file::has_next() const {
-	return in_file_m.eof();
+bool const text_file::has_next() const {
+	return !in_file_m.eof();
 }
 
 line const *const text_file::next_entry() const {
+	char buffer[80];
 	std::stringstream ss;
-	ss.getline(in_file_m);
 	
-	line const *const new_line = new line(this, ss.str());
+	in_file_m.getline(buffer, 80);
+	ss << buffer;
+	
+	line const *const new_line = new line(ss.str());
 	return new_line;
 }

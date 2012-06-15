@@ -20,10 +20,12 @@ int main() {
 	printer* printer_object = new printer();
 	std::cout << "Created printer object" << std::endl;
 	
-	visitor tester(input, printer_object);
+	visitor* tester = new visitor(input, printer_object);
 	std::cout << "Created tester" << std::endl;
 	
-	//visitor->loop();
+	std::cout << "Entering loop" << std::endl;
+	tester->loop();
+	std::cout << "Left loop" << std::endl;
 	
 	input->close();
 	std::cout << "Closed input file" << std::endl;

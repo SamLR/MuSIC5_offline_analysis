@@ -15,6 +15,8 @@ public:
 	printer();
 	~printer();
 	void process(line const*);
+	
+	void test() {std::cout << "This is a printer." << std::endl;};
 };
 
 #endif

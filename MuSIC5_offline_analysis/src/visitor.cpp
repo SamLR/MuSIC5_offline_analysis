@@ -20,6 +20,7 @@ visitor::~visitor() {
 // Goes through the input_file, grabbing each entry and passing it to the algorithm to process
 void visitor::loop() const {
 	while (input_file_m->has_next()) {
+		std::cout << "Really entered loop" << std::endl;
 		algorithm_m->process(input_file_m->next_entry());
 	}
 }

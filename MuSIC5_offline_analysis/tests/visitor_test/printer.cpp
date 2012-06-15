@@ -13,5 +13,6 @@ printer::~printer() {
 }
 
 void printer::process(line const* ln) {
+	std::cout << "In printer process()" << std::endl;
 	std::cout << ln->get_actual_line() << std::endl;
 }
