@@ -25,7 +25,7 @@ void midus_entry::init(TDC_branch const& tdc_in, QDC_branch const& qdc_in){
     
     for (int hit = 0; hit < n_tdc_hits_m; ++hit) {
         for (int ch = 0; ch < n_tdc_ch; ++ch) {
-            int val = tdc_in.value_m[hit][ch];
+            int val = tdc_in.tdc[hit][ch];
             TDC_m.push_back(val);
         }
     }   

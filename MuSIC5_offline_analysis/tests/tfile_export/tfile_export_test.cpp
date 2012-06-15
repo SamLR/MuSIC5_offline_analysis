@@ -22,7 +22,7 @@ int main() {
 		t.channel[i] = i;
 		t.n_hits[i] = 5;
 		for (int j = 0; j < t.n_hits[i]; j++) {
-			t.value_m[j][i] = i + 100*j;
+			t.tdc[j][i] = i + 100*j;
 		}
 	}
 	
