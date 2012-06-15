@@ -40,7 +40,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	for (int i = 0; i < in_entry->get_number_TDC_channels(); i++) {
 		for (int j = 0; j < in_entry->get_number_TDC_hits(); j++) {
 			std::stringstream ss;
-			ss << "TDC.ch" << (i+1) << ", Hit" << (j+1);
+			ss << "TDC.ch" << (i+1) << ".Hit" << (j+1);
 			tree_m->Branch(ss.str().c_str(), &TDC_values[i][j]);
 			ss.str("");	
 		}
