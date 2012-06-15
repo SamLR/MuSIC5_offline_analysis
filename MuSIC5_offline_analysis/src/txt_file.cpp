@@ -19,7 +19,7 @@
 txt_file::txt_file(std::string const& filename) {
     ifstream_m.open(filename.c_str());
     if (!ifstream_m.is_open()) {
-        cerr << "Error opening file! Exiting"<< endl;
+        std::cerr << "Error opening file! Exiting"<< std::endl;
         exit(1);
     }
 }
@@ -49,6 +49,6 @@ void txt_file::loop(){
             }
         }
     } else {
-        cerr << "file not open" << endl;
+        std::cerr << "file not open" << std::endl;
     }   
 }
