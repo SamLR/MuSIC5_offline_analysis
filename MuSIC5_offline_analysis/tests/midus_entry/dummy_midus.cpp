@@ -7,3 +7,13 @@
 //
 
 #include <iostream>
+
+#include "dummy_midus.h"
+#include "../../include/midus_tree_structs.h"
+#include "../../include/midus_entry.h"
+
+void dummy_midus::loop(){
+    for (int i = 0; i < n_loops_m; ++i) {
+        TDC_branch t(
+    }
+}

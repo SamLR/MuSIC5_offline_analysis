@@ -22,6 +22,8 @@ struct TDC_branch {
 struct QDC_branch {
     QDC_branch(int const n_ch) : n_ch_m(n_ch) {;} ;
     
+    int const n_ch_m;
+    
     int entry_id_m;
     int value_m[n_ch_m];
 };
