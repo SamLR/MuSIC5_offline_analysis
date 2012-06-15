@@ -7,3 +7,15 @@
 //
 
 #include <iostream>
+#include "dummy_midus.h"
+#include "../../include/printer_alg.h"
+
+
+int main(){
+    
+    dummy_midus* dm = new dummy_midus(10);
+    dm->add_algorithm(new printer_alg());
+    dm->loop();
+    
+    return 0;
+}

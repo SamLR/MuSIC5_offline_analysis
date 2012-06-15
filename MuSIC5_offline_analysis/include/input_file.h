@@ -59,6 +59,6 @@ inline void input_file::loop(){
     // to yours using 'input_fill::loop()'
     if (!algos_m.size()) {
         std::cerr << "WARNING: no algorithms registered" << std::endl;
-    }
+    } 
 }
 #endif

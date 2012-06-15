@@ -9,23 +9,25 @@
 #ifndef MuSIC5_offline_analysis_midus_tree_structs_h
 #define MuSIC5_offline_analysis_midus_tree_structs_h
 
+#define MAX_TDC_HITS 500
+#define TDC_CH 4
+#define QDC_CH 4
+
 struct TDC_branch {
-    TDC_branch(int const n_hits, int const n_ch): n_hits_m(n_hits), n_ch_m(n_ch) {;} ;
     
-    int const n_hits_m;
-    int const n_ch_m;
+    int n_hits_m;
+    int n_ch_m;
     
     int entry_id_m;
-    int value_m [n_hits_m][n_ch_m];
+    int value_m [MAX_TDC_HITS][TDC_CH];
 };
 
 struct QDC_branch {
-    QDC_branch(int const n_ch) : n_ch_m(n_ch) {;} ;
     
-    int const n_ch_m;
-    
+    int n_ch_m;
     int entry_id_m;
-    int value_m[n_ch_m];
+    
+    int value_m[QDC_CH];
 };
 
 #endif
