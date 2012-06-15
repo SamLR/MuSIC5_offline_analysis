@@ -9,14 +9,13 @@
 #include "../../include/midus_file.h"
 
 int main() {
-	midus_entry const* test = new midus_entry();
 	midus_file* file = new midus_file();
 	printer_alg* printer = new printer_alg();
 	
 	file->add_algorithm(printer);
 	file->loop();
 	
+	delete file;
 	delete printer;
-	delete test;
 	return 0;
 }

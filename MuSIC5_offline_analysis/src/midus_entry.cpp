@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "midus_entry.h"
+#include "printer_alg.h"
 
 midus_entry::midus_entry() {
 	std::cout << "midus_entry constructor" << std::endl;
@@ -19,8 +20,8 @@ midus_entry::midus_entry() {
 
 midus_entry::~midus_entry() {std::cout << "midus_entry destructor" << std::endl;}
 
-void midus_entry::accept(algorithm *const alg) const
-{
+void midus_entry::accept(algorithm *const alg) const {
+    alg->process(this);
 }
 
 double midus_entry::get_QDC_value(int index) const {
