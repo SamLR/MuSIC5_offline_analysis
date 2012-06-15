@@ -28,9 +28,8 @@ void midus_file::loop() {
 	
 	// FIll the QDC_branch and TDC_branch which will be passed to midus_entry to create the entry
 	/*QDC_branch qdc_br;
-	qdc_br.n_ch_m = 1;
-	std::cout << qdc_br.n_ch_m << std::endl;
 	trigger->SetBranchAddress("QDC/nQDC", &qdc_br.n_ch_m);
+	trigger->SetBranchAddress("QDC/QDC", 
 	
 	trigger->GetEvent(21);
 	std::cout << qdc_br.n_ch_m << std::endl;*/
