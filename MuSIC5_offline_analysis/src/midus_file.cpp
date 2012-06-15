@@ -11,4 +11,7 @@ midus_file::~midus_file() {
 }
 
 void midus_file::loop() {
+	// Call default loop method
+	input_file::loop();
+	std::cout << "Entered loop" << std::endl;
 }

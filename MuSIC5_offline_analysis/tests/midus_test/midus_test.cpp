@@ -6,11 +6,15 @@
 
 #include "../../include/midus_entry.h"
 #include "../../include/printer_alg.h"
+#include "../../include/midus_file.h"
 
 int main() {
 	midus_entry const* test = new midus_entry();
+	midus_file* file = new midus_file();
 	printer_alg* printer = new printer_alg();
-	printer->process(test);
+	
+	file->add_algorithm(printer);
+	file->loop();
 	
 	delete printer;
 	delete test;
