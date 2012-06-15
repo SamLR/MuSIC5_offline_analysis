@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 
 #include "txt_file.h"
