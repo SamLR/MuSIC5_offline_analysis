@@ -17,6 +17,12 @@ public:
     ~midus_entry(){;} ;
     void accept(algorithm* const) const;
     
+    inline int get_event_number() const {return event_number_m;};
+    inline int get_number_QDC_values() const {return QDC_m.size();};
+    inline int get_number_TDC_values() const {return TDC_m.size();};
+    inline double get_QDC_value(int i) const {return QDC_m[i];};
+    inline double get_TDC_value(int i) const {return TDC_m[i];};
+    
 private:
     void init(TDC_branch&, QDC_branch&);
     midus_entry();
