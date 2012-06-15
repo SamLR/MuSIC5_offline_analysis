@@ -5,13 +5,15 @@
 #include "midus_file.h"
 #include "midus_entry.h"
 #include "midus_tree_structs.h"
+#include "TTree.h"
 
-midus_file::midus_file(std::string filename) {
-	file_m = new TFile(filename.c_str(), "READ");
+midus_file::midus_file(std::string const& filename): 
+TFile(filename, "READ"),filename_m(filename) treename_m(treename){
+    init();
 }
 
 midus_file::~midus_file() {
-	file_m->Close();
+	this->Close();
 }
 
 void midus_file::loop() {
@@ -39,4 +41,17 @@ void midus_file::loop() {
 	for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
     	//entry.accept(get_algorithm(alg));
     }
+}
+
+void midus_file::init() {
+    // initialise the tree
+    tree_m = (TTree*) this->Get("Trigger");
+    if (!tree_m) {
+        std::cerr << "There was a problem opening the tree" << std::endl;
+        exit(1);
+    } else {
+        tree_m->SetBranchAddress("Instance", &q_branch_m.n_ch_m);
+        tree_m->SetBranchAddress("QDC", q_branch_m.value_m);
+    }
+    
 }
