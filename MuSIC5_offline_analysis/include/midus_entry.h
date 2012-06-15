@@ -18,7 +18,10 @@ public:
     void accept(algorithm* const) const;
     
     inline int get_number_QDC_values() const {return QDC_m.size();};
+    inline int get_number_QDC_channels() const {return n_qdc_ch;};
     inline int get_number_TDC_values() const {return TDC_m.size();};
+    inline int get_number_TDC_channels() const {return n_tdc_ch;};
+    inline int get_number_TDC_hits() const {return n_tdc_hits_m;};
     inline double get_QDC_value(int i) const {return QDC_m[i];};
     inline double get_TDC_value(int i) const {return TDC_m[i];};
     
