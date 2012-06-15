@@ -5,6 +5,8 @@
 #ifndef MIDUS_ENTRY_H_
 #define MIDUS_ENTRY_H_
 
+#include <vector>
+
 #include "entry.h"
 
 class algorithm;
@@ -14,6 +16,15 @@ public:
 	midus_entry();
 	~midus_entry();
 	void accept(algorithm *const) const;
+	
+	double get_QDC_value(int) const;
+	double get_TDC_value(int) const;
+	int get_event_number() const;
+
+private:
+	std::vector<double> QDC_m;
+	std::vector<double> TDC_m;
+	int event_number_m;
 };
 
 #endif
