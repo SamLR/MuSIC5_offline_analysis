@@ -31,5 +31,4 @@ void printer_alg::process(midus_entry const* in_entry){
     for (int i = 0; i < n_tdc; i++) {
 		std::cout << i << ": " << in_entry->get_TDC_value(i) << std::endl;
 	}
-	std::cout << "Event number: " << in_entry->get_event_number() << std::endl;
 }
