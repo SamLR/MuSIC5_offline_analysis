@@ -12,12 +12,12 @@
 int main() {
 	std::string filename("../../rootfiles/tests/run00459.root");
 	midus_file* file = new midus_file(filename);
-	//printer_alg* printer = new printer_alg();
+	printer_alg* printer = new printer_alg();
 	
-	//file->add_algorithm(printer);
-	//file->loop();
+	file->add_algorithm(printer);
+	file->loop();
 	
 	delete file;
-	//delete printer;
+	delete printer;
 	return 0;
 }
