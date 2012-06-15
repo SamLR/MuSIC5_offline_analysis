@@ -5,14 +5,14 @@
 #include <iostream>
 
 #include "../../include/midus_entry.h"
+#include "../../include/printer_alg.h"
 
 int main() {
-	midus_entry* test = new midus_entry();
+	midus_entry const* test = new midus_entry();
+	printer_alg* printer = new printer_alg();
+	printer->process(test);
 	
-	for (int i = 0; i < 5; i++) {
-		std::cout << test->get_QDC_value(i) << " " << test->get_TDC_value(i) << std::endl;
-	}
-	std::cout << test->get_event_number() << std::endl;
+	delete printer;
 	delete test;
 	return 0;
 }
