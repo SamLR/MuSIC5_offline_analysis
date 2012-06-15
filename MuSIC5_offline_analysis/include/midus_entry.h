@@ -20,6 +20,9 @@ public:
 	double get_QDC_value(int) const;
 	double get_TDC_value(int) const;
 	int get_event_number() const;
+	
+	int get_number_QDC_values() const;
+	int get_number_TDC_values() const;
 
 private:
 	std::vector<double> QDC_m;

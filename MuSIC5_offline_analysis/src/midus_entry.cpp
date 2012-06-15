@@ -32,3 +32,11 @@ double midus_entry::get_TDC_value(int index) const {
 int midus_entry::get_event_number() const{
 	return event_number_m;
 }
+
+int midus_entry::get_number_QDC_values() const {
+	return QDC_m.size();
+}
+
+int midus_entry::get_number_TDC_values() const {
+	return TDC_m.size();
+}
