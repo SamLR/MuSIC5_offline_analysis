@@ -1,6 +1,6 @@
 // To test the tfile_export_algorithm class
 
-#include "../../include/tfile_converter_algorithm.h"
+#include "../../include/hist_QDC_channel.h"
 #include "../../include/midus_entry.h"
 #include "../../include/midus_tree_structs.h"
 
@@ -8,7 +8,16 @@
 
 int main() {
 	TFile* file = new TFile("test.root", "RECREATE");
-	tfile_converter_algorithm test(file);
+	hist_QDC_channel channel2(file, "QDC_ch2", 2, 100, 0, 200);
+	hist_QDC_channel channel3(file, "QDC_ch3", 3, 100, 0, 200);
+	
+	channel2.set_title("QDC.ch2");
+	channel2.set_x_axis_title("x.axis");
+	channel2.set_y_axis_title("y.axis");
+	
+	channel3.set_title("QDC.ch3");
+	channel3.set_x_axis_title("x.axis");
+	channel3.set_y_axis_title("y.axis");
 	
 	// Create some mock branches
 	QDC_branch q;	
@@ -41,10 +50,16 @@ int main() {
 	
 	midus_entry* mid = new midus_entry(t, q);
 	midus_entry* mid2 = new midus_entry(t2, q2);
-	test.process(mid);
-	test.process(mid2);
+	channel2.process(mid);
+	channel2.process(mid2);
+	channel3.process(mid);
+	channel3.process(mid2);
 	
+	// Write stuff to the file
 	file->Write();
+	
+	// Close the file
 	file->Close();
+	
 	return 0;
 }

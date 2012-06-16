@@ -8,7 +8,6 @@
 #include "tfile_converter_algorithm.h"
 
 #include "TTree.h"
-#include "TH1.h"
 
 tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
 }
@@ -70,11 +69,4 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	
 	// Fill the tree
 	tree_m->Fill();	
-	
-	// Write to the TTree
-	tfile_export_algorithm::write();
-	
-	// Delete the tree so that it doesn't get written to the file next time
-	delete tree_m;
-	tree_m = NULL;
 }

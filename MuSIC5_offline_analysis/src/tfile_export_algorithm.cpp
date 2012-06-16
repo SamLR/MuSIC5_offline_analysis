@@ -11,12 +11,10 @@ tfile_export_algorithm::tfile_export_algorithm(TFile *const out_file): out_file_
 }
 
 tfile_export_algorithm::~tfile_export_algorithm() {
-	out_file_m->Close();
 }
 
 void tfile_export_algorithm::process(midus_entry const *) {
 }
 
 void tfile_export_algorithm::write() {
-	out_file_m->Write();
 }
