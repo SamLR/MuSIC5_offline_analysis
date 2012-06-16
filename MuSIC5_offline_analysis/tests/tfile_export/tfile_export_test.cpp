@@ -43,5 +43,8 @@ int main() {
 	midus_entry* mid2 = new midus_entry(t2, q2);
 	test.process(mid);
 	test.process(mid2);
+	
+	file->Write();
+	file->Close();
 	return 0;
 }
