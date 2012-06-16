@@ -9,30 +9,26 @@
 #include "algorithm.h"
 #include "midus_tree_structs.h"
 
-midus_entry::midus_entry(TDC_branch const& tdc_in, QDC_branch const& qdc_in): QDC_m(0), TDC_m(0){
-    init(tdc_in, qdc_in);
+midus_entry::midus_entry(trigger_branch const& branch){
+    init(branch);
 }
 
 void midus_entry::accept(algorithm *const alg) const {
     alg->process(this);
 }
 
-void midus_entry::init(TDC_branch const& tdc_in, QDC_branch const& qdc_in){
+void midus_entry::init(trigger_branch const& branch){
     
-    n_tdc_hits_m = *tdc_in.n_hits;
-    n_tdc_ch = 4;
-    n_qdc_ch = 4;
+    n_tdc_vals_m = branch.n_tdc[0];
+    n_qdc_vals_m = branch.n_qdc[0];
     
-    for (int hit = 0; hit < n_tdc_hits_m; ++hit) {
-        for (int ch = 0; ch < n_tdc_ch; ++ch) {
-            int val = tdc_in.tdc[hit][ch];
-            TDC_m.push_back(val);
-        }
+    
+    for (int hit = 0; hit < n_tdc_vals_m; ++hit) {
+        tdc_vals_m[hit] = branch.tdc0[hit];
     }   
     
-    for (int ch = 0 ; ch < n_qdc_ch; ++ch) {
-        int val = qdc_in.qdc[ch];
-        QDC_m.push_back(val);
+    for (int ch = 0 ; ch < n_qdc_vals_m; ++ch) {
+        qdc_vals_m[ch] = branch.qdc0[ch];
     }
     
 }

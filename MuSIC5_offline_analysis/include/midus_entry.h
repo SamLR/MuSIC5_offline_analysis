@@ -7,34 +7,30 @@
 
 #include "entry.h"
 #include "midus_tree_structs.h"
-#include <vector>
 
 class algorithm;
 
 class midus_entry: public entry {
 public:
-    midus_entry(TDC_branch const&, QDC_branch const&);
+    midus_entry(trigger_branch const&);
     ~midus_entry(){;} ;
     void accept(algorithm* const) const;
     
-    inline int get_number_QDC_values() const {return QDC_m.size();};
-    inline int get_number_QDC_channels() const {return n_qdc_ch;};
-    inline int get_number_TDC_values() const {return TDC_m.size();};
-    inline int get_number_TDC_channels() const {return n_tdc_ch;};
-    inline int get_number_TDC_hits() const {return n_tdc_hits_m;};
-    inline double get_QDC_value(int i) const {return QDC_m[i];};
-    inline double get_TDC_value(int i) const {return TDC_m[i];};
+    inline int get_number_QDC_values() const {return n_qdc_vals_m;};
+    inline int get_number_TDC_values() const {return n_tdc_vals_m;};
+    
+    inline double get_QDC_value(int i) const {return qdc_vals_m[i];};
+    inline double get_TDC_value(int i) const {return tdc_vals_m[i];};
     
 private:
-    void init(TDC_branch const&, QDC_branch const&);
+    void init(trigger_branch const&);
     midus_entry();
     
-    std::vector<int> QDC_m;
-    std::vector<int> TDC_m;
+    int qdc_vals_m[QDC_CH];
+    int tdc_vals_m[MAX_TDC_HITS];
     
-    int n_tdc_hits_m;
-    int n_tdc_ch;
-    int n_qdc_ch;
+    int n_tdc_vals_m;
+    int n_qdc_vals_m;
 };
 
 #endif
