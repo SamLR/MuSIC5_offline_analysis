@@ -27,12 +27,10 @@ private:
     void init();
     
     std::string const filename_m;
-    TFile* file_m;
     TTree* trigger_tree_m;
     TTree* scaler_tree_m;
-    trigger_branch t_branch_m;
-    int n_qdc_channels_m;
-    int n_tdc_hits_m;
+    midus_out_branch t_branch_m[n_branches_in_trigger_tree];
+    int n_branches;
     int n_entries;
 };
 

@@ -10,7 +10,9 @@
 #include "TFile.h"
 #include "TTree.h"
 
-midus_file::midus_file(std::string const& filename)
+static int const midus_entry::n_branches = N_BRANCHES_IN_TRIGGER;
+
+midus_file::midus_file(std::string const& filename, int const n_branches)
 : TFile(filename.c_str(), "READ"), filename_m(filename), 
 trigger_tree_m(0), scaler_tree_m(0), t_branch_m(), 
 n_qdc_channels_m(0), n_tdc_hits_m(0), n_entries(0) {
@@ -37,8 +39,6 @@ void midus_file::loop() {
 }
 
 void midus_file::init() {
-    // initialise the tree
-//    file_m = new TFile(filename_m.c_str(), "READ");
     
     trigger_tree_m = (TTree*) file_m->Get("Trigger");
     if (!trigger_tree_m) {

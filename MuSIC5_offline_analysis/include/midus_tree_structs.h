@@ -14,11 +14,11 @@
 #define MuSIC5_offline_analysis_midus_tree_structs_h
 
 
-#define MAX_ENTRIES 500
+static int const n_branches_in_trigger_tree = 2;
 
 struct midus_out_branch {
     int n_entries;
-    int data[MAX_ENTRIES];
+    int data[n_branches_in_trigger_tree];
 };
 
 #endif
