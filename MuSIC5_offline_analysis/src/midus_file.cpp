@@ -7,11 +7,13 @@
 #include "midus_file.h"
 #include "midus_entry.h"
 #include "midus_tree_structs.h"
+#include "TFile.h"
 #include "TTree.h"
 
 midus_file::midus_file(std::string const& filename)
-: TFile(filename, "READ"), filename_m(filename), 
-qdc_tree_m(0), tdc_tree_m(0), scaler_tree_m(0), q_branch_m(), t_branch_m(){
+: TFile(filename.c_str(), "READ"), filename_m(filename), 
+trigger_tree_m(0), scaler_tree_m(0), t_branch_m(), 
+n_qdc_channels_m(0), n_tdc_hits_m(0), n_entries(0) {
     init();
 }
 
@@ -23,10 +25,10 @@ void midus_file::loop() {
 	// Call default loop method
 	input_file::loop();          
 	
-    for (int entry = 0; entry<n_qdc_entries_m; ++entry) {
-        qdc_tree_m->GetEntryNumber(entry);
+    for (int entry_number = 0; entry_number<n_entries; ++entry_number) {
+        trigger_tree_m->GetEntryNumber(entry_number);
         
-        midus_entry entry(t_branch_m, q_branch_m);
+        midus_entry entry(t_branch_m);
         // Loop over all the registered algorithms
         for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
             entry.accept(get_algorithm(alg));
@@ -36,13 +38,15 @@ void midus_file::loop() {
 
 void midus_file::init() {
     // initialise the tree
-    qdc_tree_m = (TTree*) this->Get("Trigger");
-    if (!tree_m) {
+//    file_m = new TFile(filename_m.c_str(), "READ");
+    
+    trigger_tree_m = (TTree*) file_m->Get("Trigger");
+    if (!trigger_tree_m) {
         std::cerr << "There was a problem opening the tree" << std::endl;
         std::exit(1);
     } else {
-        qdc_tree_m->SetBranchAddress("Instance", q_branch_m.channel);
-        qdc_tree_m->SetBranchAddress("QDC", q_branch_m.qdc);
+        trigger_tree_m->SetBranchAddress("TDC0", &t_branch_m.n_tdc);
+        trigger_tree_m->SetBranchAddress("QDC", &t_branch_m.n_qdc);
     }
-    n_qdc_entries_m=qdc_tree_m->GetEntries();
+    n_entries = trigger_tree_m->GetEntries();
 }

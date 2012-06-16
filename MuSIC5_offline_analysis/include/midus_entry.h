@@ -12,25 +12,25 @@ class algorithm;
 
 class midus_entry: public entry {
 public:
-    midus_entry(trigger_branch const&);
+    midus_entry(midus_out_branch const&);
     ~midus_entry(){;} ;
     void accept(algorithm* const) const;
     
-    inline int get_number_QDC_values() const {return n_qdc_vals_m;};
-    inline int get_number_TDC_values() const {return n_tdc_vals_m;};
-    
-    inline double get_QDC_value(int i) const {return qdc_vals_m[i];};
-    inline double get_TDC_value(int i) const {return tdc_vals_m[i];};
-    
+    inline int get_number_of_branches() const 
+        {return n_branches;};
+    inline int get_entries_in_branch(int const b) const 
+        {return branches_m[b].n_entries;};
+    inline int get_value_in_branch(int const b, int const i) const 
+        {return branches_m[b].data[i];};    
+
 private:
-    void init(trigger_branch const&);
     midus_entry();
+    void init(midus_out_branch const&);
     
-    int qdc_vals_m[QDC_CH];
-    int tdc_vals_m[MAX_TDC_HITS];
-    
-    int n_tdc_vals_m;
-    int n_qdc_vals_m;
+    static int const n_branches = 2;
+    midus_out_branch branches_m[n_branches];
 };
+
+
 
 #endif

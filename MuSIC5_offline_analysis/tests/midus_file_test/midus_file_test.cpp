@@ -8,10 +8,15 @@
 
 #include <iostream>
 #include "../../include/midus_file.h"
-
+#include "../../include/printer_alg.h"
 
 int main(){
-    std::string file("run00460.root");
+    std::string file("run00020.root");
+    midus_file* mf = new midus_file(file);
+    printer_alg* alg = new printer_alg();
+    mf->add_algorithm(alg);
+    mf->loop();
+    
     
     return 0;
 }
