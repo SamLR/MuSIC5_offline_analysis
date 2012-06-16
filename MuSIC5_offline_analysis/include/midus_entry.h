@@ -6,13 +6,13 @@
 #define MIDUS_ENTRY_H_
 
 #include "entry.h"
-#include "midus_tree_structs.h"
+#include "counter_struct.h"
 
 class algorithm;
 
 class midus_entry: public entry {
 public:
-    midus_entry(trigger_branch const&);
+    midus_entry(counter_struct const&);
     ~midus_entry(){;} ;
     void accept(algorithm* const) const;
     
@@ -23,14 +23,9 @@ public:
     inline double get_TDC_value(int i) const {return tdc_vals_m[i];};
     
 private:
-    void init(trigger_branch const&);
     midus_entry();
     
-    int qdc_vals_m[QDC_CH];
-    int tdc_vals_m[MAX_TDC_HITS];
-    
-    int n_tdc_vals_m;
-    int n_qdc_vals_m;
+    counter_struct* counter_m;
 };
 
 #endif
