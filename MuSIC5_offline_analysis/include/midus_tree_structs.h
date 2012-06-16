@@ -10,19 +10,14 @@
 #define MuSIC5_offline_analysis_midus_tree_structs_h
 
 #define MAX_TDC_HITS 500
-#define TDC_CH 4
 #define QDC_CH 4
 
 
-struct TDC_branch {
-    int channel [TDC_CH];
-    int n_hits  [TDC_CH];
-    int tdc [MAX_TDC_HITS][TDC_CH];
-};
-
-struct QDC_branch {
-    int channel[QDC_CH];
-    int qdc[QDC_CH];
+struct trigger_branch {
+    int n_tdc[MAX_TDC_HITS];
+    int tdc0[MAX_TDC_HITS];
+    int n_qdc[QDC_CH];
+    int qdc0[QDC_CH];
 };
 
 #endif
