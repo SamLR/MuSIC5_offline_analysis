@@ -10,6 +10,7 @@ tfile_export_algorithm::tfile_export_algorithm(TFile *const out_file): out_file_
 }
 
 tfile_export_algorithm::~tfile_export_algorithm() {
+	out_file_m->Write();
 	out_file_m->Close(); // will write if no more pointer pointing
 }
 
