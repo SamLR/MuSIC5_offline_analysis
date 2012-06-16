@@ -19,8 +19,8 @@ void midus_entry::accept(algorithm *const alg) const {
 
 void midus_entry::init(trigger_branch const& branch){
     
-    n_tdc_vals_m = branch.n_tdc[0];
-    n_qdc_vals_m = branch.n_qdc[0];
+    n_tdc_vals_m = branch.n_tdc;
+    n_qdc_vals_m = branch.n_qdc;
     
     
     for (int hit = 0; hit < n_tdc_vals_m; ++hit) {
