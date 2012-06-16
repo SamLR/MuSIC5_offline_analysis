@@ -24,9 +24,14 @@ void midus_file::loop() {
 	// Call default loop method
 	input_file::loop();          
 	
-	// Loop over all the registered algorithms
-	for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
-    	//entry.accept(get_algorithm(alg));
+    for (int entry = 0; entry<n_qdc_entries_m; ++entry) {
+        qdc_tree_m->GetEntryNumber(entry);
+        
+        midus_entry entry(t_branch_m, q_branch_m);
+        // Loop over all the registered algorithms
+        for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
+            entry.accept(get_algorithm(alg));
+        }
     }
 }
 
@@ -38,6 +43,9 @@ void midus_file::init() {
         std::cerr << "There was a problem opening the tree" << std::endl;
         std::exit(1);
     } else {
+        qdc_tree_m->SetBranchAddress("Instance", q_branch_m.channel);
+        qdc_tree_m->SetBranchAddress("QDC", q_branch_m.qdc);
     }
+    n_qdc_entries_m=qdc_tree_m->GetEntries();
 }
 
