@@ -9,7 +9,6 @@
 #include "midus_tree_structs.h"
 #include "TTree.h"
 
-
 midus_file::midus_file(std::string const& filename)
 : TFile(filename, "READ"), filename_m(filename), 
 qdc_tree_m(0), tdc_tree_m(0), scaler_tree_m(0), q_branch_m(), t_branch_m(){
@@ -37,7 +36,6 @@ void midus_file::loop() {
 
 void midus_file::init() {
     // initialise the tree
-
     qdc_tree_m = (TTree*) this->Get("Trigger");
     if (!tree_m) {
         std::cerr << "There was a problem opening the tree" << std::endl;
@@ -48,4 +46,3 @@ void midus_file::init() {
     }
     n_qdc_entries_m=qdc_tree_m->GetEntries();
 }
-

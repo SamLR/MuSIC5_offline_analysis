@@ -19,7 +19,6 @@ public:
 
 private:
 	TTree* tree_m;
-
 };
 
 #endif
