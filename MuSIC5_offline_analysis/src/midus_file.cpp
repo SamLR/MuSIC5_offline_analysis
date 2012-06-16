@@ -10,7 +10,7 @@
 #include "TTree.h"
 
 midus_file::midus_file(std::string const& filename)
-: TFile(filename, "READ"), filename_m(filename), 
+: TFile(filename.c_str(), "READ"), filename_m(filename), 
 qdc_tree_m(0), tdc_tree_m(0), scaler_tree_m(0), q_branch_m(), t_branch_m(){
     init();
 }
@@ -37,7 +37,7 @@ void midus_file::loop() {
 void midus_file::init() {
     // initialise the tree
     qdc_tree_m = (TTree*) this->Get("Trigger");
-    if (!tree_m) {
+    if (!qdc_tree_m) {
         std::cerr << "There was a problem opening the tree" << std::endl;
         std::exit(1);
     } else {

@@ -18,7 +18,7 @@ class TTree;
 
 class midus_file : public input_file, TFile {
 public:
-	midus_file(std::string const&, std::string const&);
+	midus_file(std::string const&);
 	~midus_file();
 	
 	void loop();

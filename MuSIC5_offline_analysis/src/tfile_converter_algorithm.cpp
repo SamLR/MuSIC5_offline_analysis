@@ -56,17 +56,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 			TDC_values[i][j] = in_entry->get_TDC_value(j*in_entry->get_number_TDC_channels() + i);
 		}
 	}
-	
-	// Test
-	for (int i = 0; i < in_entry->get_number_QDC_channels(); i++) {
-		std::cout << QDC_values[i] << std::endl;
-	}
-	for (int i = 0; i < in_entry->get_number_TDC_channels(); i++) {
-		for (int j = 0; j < in_entry->get_number_TDC_hits(); j++) {
-			std::cout << TDC_values[i][j] << std::endl;
-		}
-	}
-	
+		
 	// Fill the tree
 	tree_m->Fill();	
 }
