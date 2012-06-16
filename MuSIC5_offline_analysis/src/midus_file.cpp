@@ -9,14 +9,9 @@
 #include "midus_tree_structs.h"
 #include "TTree.h"
 
-<<<<<<< HEAD
-midus_file::midus_file(std::string const& filename)
-: TFile(filename, "READ"), filename_m(filename), treename_m(treename),
+midus_file::midus_file(std::string const& filename, std::string const& treename)
+: TFile(filename.c_str(), "READ"), filename_m(filename), treename_m(treename),
 qdc_tree_m(0), tdc_tree_m(0), scaler_tree_m(0), q_branch_m(), t_branch_m(){
-=======
-midus_file::midus_file(std::string const& filename, std::string const& treename): 
-TFile(filename.c_str(), "READ"),filename_m(filename), treename_m(treename){
->>>>>>> a26520122f4a561989713069a00920175d680e1a
     init();
 }
 
@@ -36,7 +31,6 @@ void midus_file::loop() {
 
 void midus_file::init() {
     // initialise the tree
-<<<<<<< HEAD
     qdc_tree_m = (TTree*) this->Get("QDC");
     tdc_tree_m = (TTree*) this->Get("TDC");    
     scaler_tree_m = (TTree*) this->Get("Scaler");
@@ -51,18 +45,4 @@ void midus_file::init() {
         tdc_tree_m->SetBranchAddress("n_hits", t_branch_m.n_hits);
         tdc_tree_m->SetBranchAddress("TDC", t_branch_m.tdc);
     }
-    
-    n_entries_m =
 }
-=======
-    tree_m = (TTree*) this->Get("Trigger");
-    if (!tree_m) {
-        std::cerr << "There was a problem opening the tree" << std::endl;
-        std::exit(1);
-    } else {
-        //tree_m->SetBranchAddress("Instance", &q_branch_m.n_ch_m);
-        //tree_m->SetBranchAddress("QDC", q_branch_m.value_m);
-    }
-    
-}
->>>>>>> a26520122f4a561989713069a00920175d680e1a

@@ -11,8 +11,6 @@
 #include "TH1.h"
 
 tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
-	//Create the TTree
-	tree_m = new TTree("t", "t");
 }
 
 tfile_converter_algorithm::~tfile_converter_algorithm() {
@@ -24,6 +22,9 @@ void tfile_converter_algorithm::process(line_entry const * in_entry) {
 
 void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
+	
+	//Create the TTree
+	tree_m = new TTree("Event", "Event");
 	
 	// Create the arrays where we'll read the values to
 	double QDC_values[in_entry->get_number_QDC_channels()];
@@ -38,18 +39,19 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	}
 	// Each TDC branch will represent one channel but will have many hits
 	for (int i = 0; i < in_entry->get_number_TDC_channels(); i++) {
-		for (int j = 0; j < in_entry->get_number_TDC_hits(); j++) {
-			std::stringstream ss;
-			ss << "TDC.ch" << (i+1) << ", Hit" << (j+1);
-			tree_m->Branch(ss.str().c_str(), &TDC_values[i][j]);
-			ss.str("");	
-		}
+		std::stringstream ss;
+		ss << "TDC.ch" << (i+1);
+		
+		std::stringstream leaflist;
+		leaflist << "Hit[" << in_entry->get_number_TDC_hits() << "]/D";
+		tree_m->Branch(ss.str().c_str(), TDC_values[i], leaflist.str().c_str());
 	}
 	
 	// Get the values
 	for (int i = 0; i < in_entry->get_number_QDC_channels(); i++) {
 		QDC_values[i] = in_entry->get_QDC_value(i);
 	}
+	
 	for (int i = 0; i < in_entry->get_number_TDC_channels(); i++) {
 		for (int j = 0; j < in_entry->get_number_TDC_hits(); j++) {
 			TDC_values[i][j] = in_entry->get_TDC_value(j*in_entry->get_number_TDC_channels() + i);
@@ -67,8 +69,12 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	}
 	
 	// Fill the tree
-	tree_m->Fill();
+	tree_m->Fill();	
 	
 	// Write to the TTree
 	tfile_export_algorithm::write();
+	
+	// Delete the tree so that it doesn't get written to the file next time
+	delete tree_m;
+	tree_m = NULL;
 }
