@@ -20,15 +20,11 @@ void printer_alg::process(line_entry const* in_entry){
 // currently print errors, once more is known this will 
 // act as a scan and print actual information
 void printer_alg::process(midus_entry const* in_entry){
-    //std::cout << "probably not smart" << std::endl;
-    int const n_qdc = in_entry->get_number_QDC_values();
-    int const n_tdc = in_entry->get_number_TDC_values();
-    std::cout << "Test QDC "<< n_qdc << " values: " << std::endl;
-    for (int i = 0; i < n_qdc; i++) {
-		std::cout << i << ": " << in_entry->get_QDC_value(i) << std::endl;
-	}
-	std::cout << "Test TDC "<< n_tdc <<" values: " << std::endl;
-    for (int i = 0; i < n_tdc; i++) {
-		std::cout << i << ": " << in_entry->get_TDC_value(i) << std::endl;
-	}
+    for (int b = 0; b < in_entry->get_number_of_branches(); ++b) {
+        int leaves = in_entry->get_entries_in_branch(b);
+        std::cout << "number of leaves: " << leaves<<std::endl;
+        for (int i = 0; i < leaves; ++i) {
+            std::cout<<"data is: "<<in_entry->get_value_in_branch(b, i) << std::endl;
+        }
+    }
 }
