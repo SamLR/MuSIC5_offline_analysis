@@ -9,7 +9,7 @@
 
 #include "TTree.h"
 
-tfile_converter_algorithm::tfile_converter_algorithm(smart_tfile *const out_file): tfile_export_algorithm(out_file) {
+tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
 }
 
 tfile_converter_algorithm::~tfile_converter_algorithm() {

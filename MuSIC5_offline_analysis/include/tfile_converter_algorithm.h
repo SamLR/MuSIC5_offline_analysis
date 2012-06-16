@@ -7,11 +7,12 @@
 
 #include "tfile_export_algorithm.h"
 
+#include "TFile.h"
 #include "TTree.h"
 
 class tfile_converter_algorithm : public tfile_export_algorithm {
 public:
-	tfile_converter_algorithm(smart_tfile *const);
+	tfile_converter_algorithm(TFile *const);
 	~tfile_converter_algorithm();
 	
 	void process(line_entry const *);
