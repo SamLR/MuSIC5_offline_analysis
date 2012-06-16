@@ -13,26 +13,20 @@
 #include "../../include/midus_entry.h"
 
 void dummy_midus::loop(){
-    int const n_ch = 4;
-    int const n_hits = 2;
+    int n_entries = 5;
     for (int i = 0; i < n_loops_m; ++i) {
-        TDC_branch t;
-        t.entry_id_m = i;
-        t.n_ch_m = n_ch;
-        t.n_hits_m = n_hits;
+        trigger_branch t;
         
-        QDC_branch q;
-        q.entry_id_m = i;
-        q.n_ch_m = n_ch;
-        
-        for (int ch = 0; ch < n_ch; ++ch) {
-            q.value_m[ch] = ch;
-            for (int hit = 0; hit<n_hits; ++hit) {
-                t.value_m[hit][ch] = ch+hit;
-            }
+        for (int i = 0; i < n_entries; ++i) {
+            t.n_qdc = n_entries;
+            t.n_tdc = 2*n_entries;
+            t.qdc0[i] = i;
+            t.tdc0[i*2] = 2*i;
+            t.tdc0[i*2+1] = 2*i+1;
         }
         
-        midus_entry entry(t, q);
+        
+        midus_entry entry(t);
         
         for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
             entry.accept(get_algorithm(alg));

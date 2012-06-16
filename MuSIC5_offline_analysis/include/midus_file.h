@@ -16,7 +16,7 @@
 
 class TTree;
 
-class midus_file : public input_file, TFile {
+class midus_file : public input_file , TFile{
 public:
 	midus_file(std::string const&);
 	~midus_file();
@@ -27,13 +27,14 @@ private:
     void init();
     
     std::string const filename_m;
-    std::string const treename_m;
-    TTree* qdc_tree_m;
-    TTree* tdc_tree_m;
+    TFile* file_m;
+    TTree* trigger_tree_m;
     TTree* scaler_tree_m;
-    trigger_branch trig_branch_m;
-    int n_qdc_entries_m;
-    int n_tdc_entries_m;
+
+    trigger_branch t_branch_m;
+    int n_qdc_channels_m;
+    int n_tdc_hits_m;
+    int n_entries;
 };
 
 #endif

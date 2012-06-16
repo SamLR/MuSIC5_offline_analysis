@@ -5,19 +5,20 @@
 //  Created by Sam Cook on 15/06/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+//
+// This struct gives the general layout of data for a piece 
+// of equipment (e.g. ADC, TDC) in a midus root file
+// 
 
 #ifndef MuSIC5_offline_analysis_midus_tree_structs_h
 #define MuSIC5_offline_analysis_midus_tree_structs_h
 
-#define MAX_TDC_HITS 500
-#define QDC_CH 4
 
+#define MAX_ENTRIES 500
 
-struct trigger_branch {
-    int n_tdc[MAX_TDC_HITS];
-    int tdc0[MAX_TDC_HITS];
-    int n_qdc[QDC_CH];
-    int qdc0[QDC_CH];
+struct midus_out_branch {
+    int n_entries;
+    int data[MAX_ENTRIES];
 };
 
 #endif
