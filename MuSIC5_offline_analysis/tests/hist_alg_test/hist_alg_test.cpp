@@ -1,6 +1,6 @@
 // To test the tfile_export_algorithm class
 
-#include "../../include/hist_maker_algorithm.h"
+#include "../../include/hist_QDC_channel.h"
 #include "../../include/midus_entry.h"
 #include "../../include/midus_tree_structs.h"
 
@@ -8,8 +8,8 @@
 
 int main() {
 	TFile* file = new TFile("test.root", "RECREATE");
-	std::string histname = "hist1";
-	hist_maker_algorithm test(file, histname, 200, 100, 500);
+	std::string histname = "QDC_ch1";
+	hist_QDC_channel test(file, histname, 100, 0, 200);
 	
 	test.set_title("Title");
 	test.set_x_axis_title("x.axis");
