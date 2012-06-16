@@ -7,19 +7,17 @@
 #include "midus_file.h"
 #include "midus_entry.h"
 #include "midus_tree_structs.h"
-#include "TFile.h"
+#include "smart_tfile.h"
 #include "TTree.h"
 
-static int const midus_file::n_branches = n_branches_in_trigger_tree;
-
 midus_file::midus_file(std::string const& filename)
-: TFile(filename.c_str(), "READ"), filename_m(filename), 
-trigger_tree_m(0), scaler_tree_m(0), branches_m() n_entries(0) {
+: file_m(0), filename_m(filename), 
+trigger_tree_m(0), scaler_tree_m(0), branches_m(),  n_entries(0) {
     init();
 }
 
 midus_file::~midus_file() {
-	this->Close();
+	file_m->close();
 }
 
 void midus_file::loop() {
@@ -27,7 +25,8 @@ void midus_file::loop() {
 	input_file::loop();          
 	
     for (int entry_number = 0; entry_number<n_entries; ++entry_number) {
-        trigger_tree_m->GetEntryNumber(entry_number);
+//        trigger_tree_m->GetEntryNumber(entry_number);
+        trigger_tree_m->GetEntry();
         
         midus_entry entry(branches_m);
         // Loop over all the registered algorithms
@@ -38,7 +37,8 @@ void midus_file::loop() {
 }
 
 void midus_file::init() {
-    trigger_tree_m = (TTree*) this->Get("Trigger");
+    file_m = smart_tfile::getTFile(filename_m, "READ");
+    trigger_tree_m = (TTree*) file_m->Get("Trigger");
     if (!trigger_tree_m) {
         std::cerr << "There was a problem opening the tree" << std::endl;
         std::exit(1);
@@ -54,7 +54,7 @@ void midus_file::init() {
             trigger_tree_m->SetBranchAddress("PHADC", &(branches_m[1]));
             for (int i = 0; i < (n_branches-2); ++i) {
                 std::string name("TDC");
-                name << i;
+                name += i;
                 trigger_tree_m->SetBranchAddress(name.c_str(), &(branches_m[i]));
             }
         }

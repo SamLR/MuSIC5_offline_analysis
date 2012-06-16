@@ -8,30 +8,32 @@
 #include <iostream>
 #include <string>
 
-// From ROOT
-#include "TFile.h"
 // local gubbins
 #include "input_file.h"
 #include "midus_tree_structs.h"
 
 class TTree;
+class smart_tfile;
 
-class midus_file : public input_file , TFile{
+class midus_file : public input_file{
 public:
 	midus_file(std::string const&);
 	~midus_file();
 	
 	void loop();
+    // this is here mainly for getting debugging information
+    inline smart_tfile* get_file() {return file_m;};
 	
 private:
     void init();
     
+    static int const n_branches=n_branches_in_trigger_tree;    
+    smart_tfile* file_m;
     std::string const filename_m;
     TTree* trigger_tree_m;
     TTree* scaler_tree_m;
-    midus_out_branch branches_m[n_branches_in_trigger_tree];
+    midus_out_branch branches_m[n_branches];
     int n_entries;
-    static int const n_branches;
 };
 
 #endif
