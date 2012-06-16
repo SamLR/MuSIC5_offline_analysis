@@ -9,7 +9,11 @@
 int main() {
 	TFile* file = new TFile("test.root", "RECREATE");
 	std::string histname = "hist1";
-	hist_maker_algorithm test(file, histname);
+	hist_maker_algorithm test(file, histname, 200, 100, 500);
+	
+	test.set_title("Title");
+	test.set_x_axis_title("x.axis");
+	test.set_y_axis_title("y.axis");
 	
 	// Create some mock branches
 	QDC_branch q;	

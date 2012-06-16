@@ -16,6 +16,10 @@ public:
 	
 	void process(line_entry const *);
 	void process(midus_entry const *);
+	
+	void set_title(std::string title) { hist_m->SetTitle(title.c_str()); };
+	void set_x_axis_title(std::string title) { hist_m->GetXaxis()->SetTitle(title.c_str()); };
+	void set_y_axis_title(std::string title) { hist_m->GetYaxis()->SetTitle(title.c_str()); };
 
 private:
 	TH1* hist_m;
