@@ -12,7 +12,7 @@ class algorithm;
 
 class midus_entry: public entry {
 public:
-    midus_entry(midus_out_branch const&);
+    midus_entry(midus_out_branch const []);
     ~midus_entry(){;} ;
     void accept(algorithm* const) const;
     
@@ -25,8 +25,8 @@ public:
 
 private:
     midus_entry();
-    void init(midus_out_branch const&);
-
+    void init(midus_out_branch const []);
+    
     static int const n_branches = 2;
     midus_out_branch branches_m[n_branches];
 };
