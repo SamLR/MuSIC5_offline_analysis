@@ -8,7 +8,6 @@
 #include "tfile_converter_algorithm.h"
 
 #include "TTree.h"
-#include "TH1.h"
 
 tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
 }
