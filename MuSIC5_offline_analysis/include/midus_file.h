@@ -31,7 +31,7 @@ private:
     TTree* trigger_tree_m;
     TTree* scaler_tree_m;
 
-    trigger_branch t_branch_m;
+    midus_out_branch t_branch_m[1];
     int n_qdc_channels_m;
     int n_tdc_hits_m;
     int n_entries;

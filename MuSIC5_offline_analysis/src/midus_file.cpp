@@ -45,8 +45,8 @@ void midus_file::init() {
         std::cerr << "There was a problem opening the tree" << std::endl;
         std::exit(1);
     } else {
-        trigger_tree_m->SetBranchAddress("TDC0", &t_branch_m.n_tdc);
-        trigger_tree_m->SetBranchAddress("QDC", &t_branch_m.n_qdc);
+        //AE trigger_tree_m->SetBranchAddress("TDC0", &t_branch_m.n_tdc);
+        //AE trigger_tree_m->SetBranchAddress("QDC", &t_branch_m.n_qdc);
     }
     n_entries = trigger_tree_m->GetEntries();
 }

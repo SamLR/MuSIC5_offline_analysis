@@ -25,34 +25,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	//Create the TTree
 	tree_m = new TTree("Event", "Event");
 	
-	// Create the arrays where we'll read the values to
-	double QDC_values[in_entry->get_number_QDC_values()];
-	double TDC_values[in_entry->get_number_TDC_values()];
-	
-	// Set the branch addresses
-	for (int i = 0; i < in_entry->get_number_QDC_values(); i++) {
-		std::stringstream ss;
-		ss << "QDC.ch" << (i+1);
-		tree_m->Branch(ss.str().c_str(), &QDC_values[i]);
-	}
-	// Each TDC branch will represent one channel but will have many hits
-	for (int i = 0; i < in_entry->get_number_TDC_values(); i++) {
-		std::stringstream ss;
-		ss << "TDC.ch" << (i+1);
-		
-		std::stringstream leaflist;
-		//leaflist << "Hit[" << in_entry->get_number_TDC_hits() << "]/D";
-		tree_m->Branch(ss.str().c_str(), &TDC_values[i]);
-	}
-	
-	// Get the values
-	for (int i = 0; i < in_entry->get_number_QDC_values(); i++) {
-		QDC_values[i] = in_entry->get_QDC_value(i);
-	}
-	
-	for (int i = 0; i < in_entry->get_number_TDC_values(); i++) {
-		TDC_values[i] = in_entry->get_TDC_value(i);
-	}
+	std::cout << in_entry->get_entries_in_branch(0) << std::cout;
 		
 	// Fill the tree
 	tree_m->Fill();

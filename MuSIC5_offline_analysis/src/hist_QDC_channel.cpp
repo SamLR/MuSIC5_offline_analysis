@@ -5,7 +5,7 @@
 
 #include "hist_QDC_channel.h"
 
-hist_QDC_channel::hist_QDC_channel(smart_tfile *const out_file, std::string histname, int channel, int n_bins, double x_low, double x_high): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high), channel_m(channel) {
+hist_QDC_channel::hist_QDC_channel(TFile *const out_file, std::string histname, int channel, int n_bins, double x_low, double x_high): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high), channel_m(channel) {
 }
 
 hist_QDC_channel::~hist_QDC_channel() {
@@ -19,5 +19,5 @@ void hist_QDC_channel::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
 	
 	// Fill the histogram
-	hist_maker_algorithm::fill_hist(in_entry->get_QDC_value(channel_m-1));
+	//hist_maker_algorithm::fill_hist(in_entry->get_QDC_value(channel_m-1));
 }

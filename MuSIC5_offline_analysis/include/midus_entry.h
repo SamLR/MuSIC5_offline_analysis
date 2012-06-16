@@ -6,7 +6,7 @@
 #define MIDUS_ENTRY_H_
 
 #include "entry.h"
-#include "counter_struct.h"
+#include "midus_tree_structs.h"
 
 class algorithm;
 

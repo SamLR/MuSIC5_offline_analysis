@@ -11,7 +11,7 @@
 
 class hist_maker_algorithm : public tfile_export_algorithm {
 public:
-	hist_maker_algorithm(smart_tfile *const, std::string, int n_bins = 100, double x_low = 0, double x_high = 100);
+	hist_maker_algorithm(TFile *const, std::string, int n_bins = 100, double x_low = 0, double x_high = 100);
 	~hist_maker_algorithm();
 	
 	void process(line_entry const *);

@@ -9,7 +9,7 @@
 
 #include "TH1.h"
 
-hist_maker_algorithm::hist_maker_algorithm(smart_tfile *const out_file, std::string histname, int n_bins, double x_low, double x_high): tfile_export_algorithm(out_file), histname_m(histname), n_bins_m(n_bins), x_low_m(x_low), x_high_m(x_high) {
+hist_maker_algorithm::hist_maker_algorithm(TFile *const out_file, std::string histname, int n_bins, double x_low, double x_high): tfile_export_algorithm(out_file), histname_m(histname), n_bins_m(n_bins), x_low_m(x_low), x_high_m(x_high) {
 	// Create the histogram
 	hist_m = new TH1F(histname_m.c_str(), histname.c_str(), n_bins_m, x_low_m, x_high_m);
 }
