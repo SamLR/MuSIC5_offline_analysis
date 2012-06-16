@@ -15,10 +15,11 @@
 
 
 static int const n_branches_in_trigger_tree = 2;
+static int const max_data_entries = 500;
 
 struct midus_out_branch {
     int n_entries;
-    int data[n_branches_in_trigger_tree];
+    int data[max_data_entries];
 };
 
 #endif
