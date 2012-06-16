@@ -9,7 +9,6 @@
 #ifndef smart_tfile_hh
 #define smart_tfile_hh 1
 
-#include "globals.hh"
 #include "TFile.h"
 #include <map>
 #include <string>
@@ -27,11 +26,11 @@ private:
     smart_tfile(std::string, std::string);
     ~smart_tfile();
     
-    G4int getPtrCount(){return mPtrCount;}
+    int getPtrCount(){return mPtrCount;}
     void incPtrCount(){++mPtrCount;}
     void decPtrCount(){--mPtrCount;}
     
-    G4int mPtrCount;
+    int mPtrCount;
     
     static std::map<std::string, smart_tfile*> mFileMap; // filename: file ptr pairs
     

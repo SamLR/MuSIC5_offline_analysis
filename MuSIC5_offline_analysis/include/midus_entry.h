@@ -17,7 +17,7 @@ public:
     void accept(algorithm* const) const;
     
     inline int get_number_of_branches() const 
-        {return n_branches;};
+        {return n_branches_in_trigger_tree;};
     inline int get_entries_in_branch(int const b) const 
         {return branches_m[b].n_entries;};
     inline int get_value_in_branch(int const b, int const i) const 
@@ -27,8 +27,7 @@ private:
     midus_entry();
     void init(midus_out_branch const []);
     
-    static int const n_branches = n_branches_in_trigger_tree;
-    midus_out_branch branches_m[n_branches];
+    midus_out_branch branches_m[n_branches_in_trigger_tree];
 };
 
 
