@@ -10,11 +10,14 @@
 
 class hist_QDC_channel : public hist_maker_algorithm {
 public:
-	hist_QDC_channel(TFile *const, std::string, int n_bins = 100, double x_low = 0, double x_high = 100);
+	hist_QDC_channel(TFile *const, std::string, int channel, int n_bins = 100, double x_low = 0, double x_high = 100);
 	~hist_QDC_channel();
 	
 	void process(line_entry const *);
 	void process(midus_entry const *);
+	
+private:
+	int channel_m;
 };
 
 #endif

@@ -8,12 +8,16 @@
 
 int main() {
 	TFile* file = new TFile("test.root", "RECREATE");
-	std::string histname = "QDC_ch1";
-	hist_QDC_channel test(file, histname, 100, 0, 200);
+	hist_QDC_channel channel2(file, "QDC_ch2", 2, 100, 0, 200);
+	hist_QDC_channel channel3(file, "QDC_ch3", 3, 100, 0, 200);
 	
-	test.set_title("Title");
-	test.set_x_axis_title("x.axis");
-	test.set_y_axis_title("y.axis");
+	channel2.set_title("QDC.ch2");
+	channel2.set_x_axis_title("x.axis");
+	channel2.set_y_axis_title("y.axis");
+	
+	channel3.set_title("QDC.ch3");
+	channel3.set_x_axis_title("x.axis");
+	channel3.set_y_axis_title("y.axis");
 	
 	// Create some mock branches
 	QDC_branch q;	
@@ -46,7 +50,16 @@ int main() {
 	
 	midus_entry* mid = new midus_entry(t, q);
 	midus_entry* mid2 = new midus_entry(t2, q2);
-	test.process(mid);
-	test.process(mid2);
+	channel2.process(mid);
+	channel2.process(mid2);
+	channel3.process(mid);
+	channel3.process(mid2);
+	
+	// Write stuff to the file
+	file->Write();
+	
+	// Close the file
+	file->Close();
+	
 	return 0;
 }
