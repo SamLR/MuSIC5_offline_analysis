@@ -3,44 +3,32 @@
 #include "../../include/tfile_converter_algorithm.h"
 #include "../../include/midus_entry.h"
 #include "../../include/midus_tree_structs.h"
-
-#include "TFile.h"
+#include "../../include/smart_tfile.h"
 
 int main() {
-	TFile* file = new TFile("test.root", "RECREATE");
+	smart_tfile* file;
+	file->getTFile("test.root", "RECREATE");
 	tfile_converter_algorithm test(file);
 	
 	// Create some mock branches
-	QDC_branch q;	
-	for (int i = 0; i < 4; i++) {
-		q.channel[i] = i;
-		q.qdc[i] = 22*i;
+	trigger_branch tr1, tr2;
+	for (int i = 0; i < MAX_TDC_HITS; i++) {
+		tr1.n_tdc[i] = i;
+		tr1.tdc0[i] = 22*i;
+		
+		tr2.n_tdc[i] = i;
+		tr2.tdc0[i] = 22*i + 10;
 	}
-	TDC_branch t;	
-	for (int i = 0; i < 4; i++) {
-		t.channel[i] = i;
-		t.n_hits[i] = 5;
-		for (int j = 0; j < t.n_hits[i]; j++) {
-			t.tdc[j][i] = i + 100*j;
-		}
-	}
-	
-	QDC_branch q2;	
-	for (int i = 0; i < 4; i++) {
-		q2.channel[i] = i;
-		q2.qdc[i] = 125*i;
-	}
-	TDC_branch t2;	
-	for (int i = 0; i < 4; i++) {
-		t2.channel[i] = i;
-		t2.n_hits[i] = 10;
-		for (int j = 0; j < t2.n_hits[i]; j++) {
-			t2.tdc[j][i] = i + 100*j;
-		}
+	for (int i = 0; i < QDC_CH; i++) {
+		tr1.n_qdc[i] = i;
+		tr1.qdc0[i] = 33*i;
+		
+		tr2.n_qdc[i] = i;
+		tr2.qdc0[i] = 33*i + 10;
 	}
 	
-	midus_entry* mid = new midus_entry(t, q);
-	midus_entry* mid2 = new midus_entry(t2, q2);
+	midus_entry* mid = new midus_entry(tr1);
+	midus_entry* mid2 = new midus_entry(tr2);
 	test.process(mid);
 	test.process(mid2);
 	

@@ -9,7 +9,7 @@
 
 #include "TTree.h"
 
-tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
+tfile_converter_algorithm::tfile_converter_algorithm(smart_tfile *const out_file): tfile_export_algorithm(out_file) {
 }
 
 tfile_converter_algorithm::~tfile_converter_algorithm() {
@@ -26,37 +26,34 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tree_m = new TTree("Event", "Event");
 	
 	// Create the arrays where we'll read the values to
-	double QDC_values[in_entry->get_number_QDC_channels()];
-	double TDC_values[in_entry->get_number_TDC_channels()][in_entry->get_number_TDC_hits()];
+	double QDC_values[in_entry->get_number_QDC_values()];
+	double TDC_values[in_entry->get_number_TDC_values()];
 	
 	// Set the branch addresses
-	// Each QDC branch will represent one channel
-	for (int i = 0; i < in_entry->get_number_QDC_channels(); i++) {
+	for (int i = 0; i < in_entry->get_number_QDC_values(); i++) {
 		std::stringstream ss;
 		ss << "QDC.ch" << (i+1);
 		tree_m->Branch(ss.str().c_str(), &QDC_values[i]);
 	}
 	// Each TDC branch will represent one channel but will have many hits
-	for (int i = 0; i < in_entry->get_number_TDC_channels(); i++) {
+	for (int i = 0; i < in_entry->get_number_TDC_values(); i++) {
 		std::stringstream ss;
 		ss << "TDC.ch" << (i+1);
 		
 		std::stringstream leaflist;
-		leaflist << "Hit[" << in_entry->get_number_TDC_hits() << "]/D";
-		tree_m->Branch(ss.str().c_str(), TDC_values[i], leaflist.str().c_str());
+		//leaflist << "Hit[" << in_entry->get_number_TDC_hits() << "]/D";
+		tree_m->Branch(ss.str().c_str(), &TDC_values[i]);
 	}
 	
 	// Get the values
-	for (int i = 0; i < in_entry->get_number_QDC_channels(); i++) {
+	for (int i = 0; i < in_entry->get_number_QDC_values(); i++) {
 		QDC_values[i] = in_entry->get_QDC_value(i);
 	}
 	
-	for (int i = 0; i < in_entry->get_number_TDC_channels(); i++) {
-		for (int j = 0; j < in_entry->get_number_TDC_hits(); j++) {
-			TDC_values[i][j] = in_entry->get_TDC_value(j*in_entry->get_number_TDC_channels() + i);
-		}
+	for (int i = 0; i < in_entry->get_number_TDC_values(); i++) {
+		TDC_values[i] = in_entry->get_TDC_value(i);
 	}
 		
 	// Fill the tree
-	tree_m->Fill();	
+	tree_m->Fill();
 }

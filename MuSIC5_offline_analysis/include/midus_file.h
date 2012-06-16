@@ -31,8 +31,7 @@ private:
     TTree* qdc_tree_m;
     TTree* tdc_tree_m;
     TTree* scaler_tree_m;
-    QDC_branch q_branch_m;
-    TDC_branch t_branch_m;
+    trigger_branch trig_branch_m;
     int n_qdc_entries_m;
     int n_tdc_entries_m;
 };

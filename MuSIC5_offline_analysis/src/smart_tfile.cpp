@@ -7,16 +7,17 @@
 //
 
 #include <iostream>
+#include <cstdlib>
 #include <map>
 #include <string>
-#include "smart_tfile.hh"
+#include "smart_tfile.h"
 #include "TFile.h"
 
-std::map<std::string, smart_tfile*> smart_tfile::mFileMap = map<std::string, smart_tfile*>();
+std::map<std::string, smart_tfile*> smart_tfile::mFileMap = std::map<std::string, smart_tfile*>();
 
 smart_tfile::smart_tfile(): mPtrCount(1) {;}
-smart_tfile::smart_tfile(TString filename, TString options)
-    :TFile(filename, options), mPtrCount(1) 
+smart_tfile::smart_tfile(std::string filename, std::string options)
+    :TFile(filename.c_str(), options.c_str()), mPtrCount(1) 
 {;}
 
 smart_tfile::~smart_tfile() {;}
@@ -35,7 +36,7 @@ void smart_tfile::forceClose()
 {
     // automatically closes all open files ignoring number of active pointers
     std::cout << "WARNING: force closing all open root files"<< std::endl;
-    std::map<G4String, smart_tfile*>::iterator iter;
+    std::map<std::string, smart_tfile*>::iterator iter;
     for (iter = mFileMap.begin(); iter != mFileMap.end(); ++iter) 
     {
         iter->second->Write();
@@ -45,7 +46,7 @@ void smart_tfile::forceClose()
 
 smart_tfile* smart_tfile::getTFile(std::string filename, std::string options)
 {
-    std::map<G4String, smart_tfile*>::iterator iter;
+    std::map<std::string, smart_tfile*>::iterator iter;
     iter = mFileMap.find(filename);
     if (iter == mFileMap.end()) 
     {
