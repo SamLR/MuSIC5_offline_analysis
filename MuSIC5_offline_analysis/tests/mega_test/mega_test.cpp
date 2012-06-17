@@ -7,10 +7,13 @@
 #include "../../include/midus_file.h"
 #include "../../include/midus_tree_structs.h"
 #include "../../include/calibration_functions.h"
+#include "../../include/tfile_converter_algorithm.h"
+#include "../../include/smart_tfile.h"
+#include "../../include/printer_alg.h"
 
 int main() {
 	// Open midus file
-	midus_file* file = new midus_file("../../rootfiles/run00077.root");
+	midus_file* in_file = new midus_file("run00077.root");
 
 	// add algorithm and calibration functions
 	// Add calibration functions
@@ -22,8 +25,17 @@ int main() {
 	in_file->add_calibration_func(branch_adc0, calib_fns[2]);
 	in_file->add_calibration_func(branch_adc1, calib_fns[2]);
 	in_file->add_calibration_func(branch_tdc0, calib_fns[3]);
+    
+    smart_tfile* out_file = smart_tfile::getTFile("out.root", "RECREATE");
+    tfile_converter_algorithm* tca = new tfile_converter_algorithm(out_file);
+//    printer_alg* pa = new printer_alg();
+    
+    in_file->add_algorithm(tca);
+//    in_file->add_algorithm(pa);
+    
 	
 	// Call loop
-	file->loop();
+	in_file->loop();
+    out_file->close();
 	return 0;
 }

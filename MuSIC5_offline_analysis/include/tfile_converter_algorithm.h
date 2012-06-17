@@ -22,8 +22,8 @@ public:
 private:
 	void init();
 	TTree* tree_m;
-    channel channels_m[n_channels];
-    static std::string const channel_names[n_channels];
+    channel channels_m[n_tdc_channels];
+    static std::string const channel_names[n_tdc_channels];
 };
 
 #endif

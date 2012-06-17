@@ -9,7 +9,7 @@
 
 #include "TTree.h"
 
-std::string const tfile_converter_algorithm::channel_names[n_channels] = {"U1","U2"};
+std::string const tfile_converter_algorithm::channel_names[n_tdc_channels] = {"U0", "U1", "U2", "U3", "U4",  "U5", "U6",  "U7", "D0",  "D1", "D2",  "D3", "D4",  "Ge0", "Ge1",  "CdTe"};
 
 tfile_converter_algorithm::tfile_converter_algorithm(smart_tfile *const out_file)
 : tfile_export_algorithm(out_file) {
@@ -21,7 +21,7 @@ void tfile_converter_algorithm::init() {
 	tree_m = new TTree("Trigger", "Trigger");
     
     // Fill the data into the branch (channel) and create branch
-	for (int i = 0; i < n_channels; i++) {
+	for (int i = 0; i < n_tdc_channels; i++) {
         std::string leaflist("ADC/I:TDC0:nHITS:TDC[nHITS]");
 		tree_m->Branch(channel_names[i].c_str(), &(channels_m[i]), leaflist.c_str());	
 	}
@@ -37,15 +37,16 @@ void tfile_converter_algorithm::process(line_entry const * in_entry) {
 
 void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
-
 	
-    for (int ch = 0; ch < n_channels; ++ch) {
+    for (int ch = 0; ch < n_tdc_channels; ++ch) {
         channels_m[ch].adc = in_entry->get_value_in_branch(0, ch);
 		channels_m[ch].tdc0 = in_entry->get_value_in_branch(1, 0);
-        int n_hits = in_entry->get_entries_in_branch(branch_TDC1 + ch);
+        
+        int tdc_branch = branch_tdc1 + ch;
+        int n_hits = in_entry->get_entries_in_branch(tdc_branch);
         channels_m[ch].n_tdc_hits = n_hits;
 		for (int hit = 0; hit < n_hits; hit++) {
-			channels_m[ch].tdc[hit] = in_entry->get_value_in_branch(ch + 2, hit);
+			channels_m[ch].tdc[hit] = in_entry->get_value_in_branch(tdc_branch, hit);
 		}
 
     }

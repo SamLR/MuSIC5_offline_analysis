@@ -39,8 +39,9 @@ enum branch_ids {
     branch_qdc  = 0,
     branch_adc0 = 1,
     branch_adc1 = 2,
-    branch_tdc0 = 3
-    // for other TDC branches just add to TDC0
+    branch_tdc0 = 3,
+    branch_tdc1 = 4
+    // for other TDC branches just add to TDC1
     };
 
 enum adc_ch_names {
