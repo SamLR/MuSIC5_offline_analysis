@@ -12,11 +12,14 @@
 int main() {
 	smart_tfile* file = smart_tfile::getTFile("test.root", "RECREATE");
 	
-	hist_branch_channel* adc_U1_hist = new hist_branch_channel(file, "U1.ADC", adc_ch_U1, branch_adc);
-	hist_branch_channel* adc_U2_hist = new hist_branch_channel(file, "U2.ADC", adc_ch_U2, branch_adc);
-	hist_branch_channel* tdc0_hist = new hist_branch_channel(file, "TDC0", 0, branch_T0, 200, 0, 3000);
-	hist_branch_channel* tdc1_hist = new hist_branch_channel(file, "TDC1", 0, branch_TDC1);
-	hist_branch_channel* tdc2_hist = new hist_branch_channel(file, "TDC2", 0, branch_TDC2);
+	int n_histograms = 5;
+	hist_branch_channel* histograms[n_histograms];
+	
+	histograms[0] = new hist_branch_channel(file, "U1.ADC", adc_ch_U1, branch_adc);
+	histograms[1] = new hist_branch_channel(file, "U2.ADC", adc_ch_U2, branch_adc);
+	histograms[2] = new hist_branch_channel(file, "TDC0", 0, branch_T0, 200, 0, 3000);
+	histograms[3] = new hist_branch_channel(file, "TDC1", 0, branch_TDC1);
+	histograms[4] = new hist_branch_channel(file, "TDC2", 0, branch_TDC2);
 	
 	// Create some mock events
 	midus_out_branch tr1 [n_branches_in_trigger_tree]; // 0 = ADC, 1 = PHADC, 2 = T0, 3 = TDC1, 4 = TDC2
@@ -53,19 +56,17 @@ int main() {
 		tr2[branch_TDC2].data[i] = i*20 + 1;
 	}
 	
-	midus_entry* event = new midus_entry(tr1);
-	midus_entry* event2 = new midus_entry(tr2);
+	int n_events = 2;
+	midus_entry* event[n_events];
+	event[0] = new midus_entry(tr1);
+	event[1] = new midus_entry(tr2);
 	
-	adc_U1_hist->process(event);
-	adc_U1_hist->process(event2);
-	adc_U2_hist->process(event);
-	adc_U2_hist->process(event2);
-	tdc0_hist->process(event);
-	tdc0_hist->process(event2);
-	tdc1_hist->process(event);
-	tdc1_hist->process(event2);
-	tdc2_hist->process(event);
-	tdc2_hist->process(event2);
+	// Test with a loop
+	for (int i = 0; i < n_histograms; i++) {
+		for (int j = 0; j < n_events; j++) {
+			histograms[i]->process(event[j]);
+		}
+	}
 	
 	file->close();
 	return 0;
