@@ -10,7 +10,7 @@
 
 class hist_branch_channel : public hist_maker_algorithm {
 public:
-	hist_branch_channel(smart_tfile *const, std::string, int channel, branch_ids branch, int n_bins = 100, double x_low = 0, double x_high = 100);
+	hist_branch_channel(smart_tfile *const, std::string, int channel, int branch, int n_bins = 100, double x_low = 0, double x_high = 100);
 	~hist_branch_channel();
 	
 	void process(line_entry const *);
@@ -18,7 +18,7 @@ public:
 	
 private:
 	int channel_m;
-	branch_ids branch_m;
+	int branch_m;
 };
 
 #endif

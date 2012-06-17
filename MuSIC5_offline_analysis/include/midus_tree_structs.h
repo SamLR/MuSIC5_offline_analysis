@@ -45,20 +45,20 @@ enum branch_ids {
     // for other TDC branches just add to TDC1
     };
 
-enum adc_ch_names {
-    adc_ch_U0 = 1 ,
-    adc_ch_U1 = 2 ,
-    adc_ch_U2 = 3 ,
-    adc_ch_U3 = 4 ,
-    adc_ch_U4 = 5 ,
-    adc_ch_U5 = 6 ,
-    adc_ch_U6 = 7 ,
-    adc_ch_U7 = 8 ,
-    adc_ch_D0 = 9 ,
-    adc_ch_D1 = 10,
-    adc_ch_D2 = 11,
-    adc_ch_D3 = 12,
-    adc_ch_D4 = 13
+enum qdc_ch_names {
+    qdc_ch_U0 = 1 ,
+    qdc_ch_U1 = 2 ,
+    qdc_ch_U2 = 3 ,
+    qdc_ch_U3 = 4 ,
+    qdc_ch_U4 = 5 ,
+    qdc_ch_U5 = 6 ,
+    qdc_ch_U6 = 7 ,
+    qdc_ch_U7 = 8 ,
+    qdc_ch_D0 = 9 ,
+    qdc_ch_D1 = 10,
+    qdc_ch_D2 = 11,
+    qdc_ch_D3 = 12,
+    qdc_ch_D4 = 13
 };
 
 enum phadc_ch_names {

@@ -39,8 +39,18 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
 	
     for (int ch = 0; ch < n_tdc_channels; ++ch) {
-        channels_m[ch].adc = in_entry->get_value_in_branch(0, ch);
-		channels_m[ch].tdc0 = in_entry->get_value_in_branch(1, 0);
+    	if (ch <= (qdc_ch_D4 - 1)) { // convert to index - qdc_ch_U0 = 1 !!!!)
+        	channels_m[ch].adc = in_entry->get_value_in_branch(branch_qdc, ch);
+        }
+        else if (ch == 15) { // CdTe
+        	// no adc2 branch to assign
+        	channels_m[ch].adc= -100;
+        }
+        else {
+        	// Ge0 or Ge1 counter
+        	channels_m[ch].adc = in_entry->get_value_in_branch(ch - qdc_ch_D4 + 1, 0); // get the correct branch number (1 = adc0, 2 = adc1)
+        }
+		channels_m[ch].tdc0 = in_entry->get_value_in_branch(branch_tdc0, 0);
         
         int tdc_branch = branch_tdc1 + ch;
         int n_hits = in_entry->get_entries_in_branch(tdc_branch);
