@@ -19,8 +19,8 @@ void hist_mu_lifetime::process(midus_entry const * in_entry) {
 	
 	int tdc0 = in_entry->get_value_in_branch(branch_tdc0, 0);
 	
-	for (int i = 0; i < n_tdc_channels; i++) {
-		int branch_id = i + (n_branches_in_entry - n_tdc_channels); // see defn of these variables in midus_tree_structs.h
+	for (int i = qdc_ch_U0; i <= qdc_ch_D4; i++) { // just upstream and downstream
+		int branch_id = branch_tdc0 + i; // see defn of these variables in midus_tree_structs.h
 		for (int j = 0; j < in_entry->get_entries_in_branch(branch_id); j++) {
 			int tdc = in_entry->get_value_in_branch(branch_id, j);
 			hist_maker_algorithm::fill_hist(tdc - tdc0);
