@@ -9,6 +9,7 @@
 #include "midus_tree_structs.h"
 #include "smart_tfile.h"
 #include "TTree.h"
+#include "calibration_functions.h"
 
 midus_file::midus_file(std::string const& filename)
 : file_m(0), filename_m(filename), 
@@ -20,15 +21,17 @@ midus_file::~midus_file() {
 	file_m->close();
 }
 
-void midus_file::loop() {
+void midus_file::loop(int const n_events) {
 	// Call default loop method
 	input_file::loop();          
 	
-    for (int entry_number = 0; entry_number<n_entries; ++entry_number) {
-//        trigger_tree_m->GetEntryNumber(entry_number);
+    for (int entry_number = 0; entry_number<n_events; ++entry_number) {
         trigger_tree_m->GetEntry();
+        midus_out_branch parallel_branches[n_branches_in_entry];
         
-        midus_entry entry(branches_m);
+        extract_values_to(parallel_branches);
+        
+        midus_entry entry(parallel_branches);
         // Loop over all the registered algorithms
         for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
             entry.accept(get_algorithm(alg));
@@ -38,27 +41,91 @@ void midus_file::loop() {
 
 void midus_file::init() {
     file_m = smart_tfile::getTFile(filename_m, "READ");
-
+    
     trigger_tree_m = (TTree*) file_m->Get("Trigger");
     if (!trigger_tree_m) {
         std::cerr << "There was a problem opening the tree" << std::endl;
         std::exit(1);
     } else {
-        if (n_branches < 2) {
-            std::cerr <<"This is an unlikely number of branches" << std::endl;
-            exit(1);
-        } else if (n_branches==2) {
-            trigger_tree_m->SetBranchAddress("QDC", &(branches_m[0]));
-            trigger_tree_m->SetBranchAddress("TDC0", &(branches_m[1]));
-        } else {
-            trigger_tree_m->SetBranchAddress("ADC", &(branches_m[0]));
-            trigger_tree_m->SetBranchAddress("PHADC", &(branches_m[1]));
-            for (int i = 0; i < (n_branches-2); ++i) {
-                std::string name("TDC");
-                name += i;
-                trigger_tree_m->SetBranchAddress(name.c_str(), &(branches_m[i]));
-            }
-        }
+        trigger_tree_m->SetBranchAddress("QDC",  &(branches_m[qdc_i]));
+        trigger_tree_m->SetBranchAddress("ADC0", &(branches_m[adc0_i]));
+        trigger_tree_m->SetBranchAddress("ADC1", &(branches_m[adc1_i]));
+        trigger_tree_m->SetBranchAddress("TDC0", &(branches_m[tdc_i]));
     }
     n_entries = trigger_tree_m->GetEntries();
+    
+    // initialise the calibration functions
+    for (int b = 0; b<n_branches_in; ++b) {
+        add_calibration_func(b, &null_calibration);
+    }
 }
+
+void midus_file::add_calibration_func(const int branch, calibrate_func *func){
+    if (branch > n_branches_in) {
+        std::cerr <<"branch" << branch<< " number out of range, max = "<< n_branches_in << std::endl;
+    } else {
+        calibration_funcs[branch] = func;
+    }
+}
+
+
+void midus_file::extract_values_to(midus_out_branch* out_branches) const {
+    // copy and process each branch in turn
+    
+    // QDC branch
+    int n_entries = branches_m[qdc_i].n_entries;
+    out_branches[branch_qdc].n_entries = n_entries;
+    for (int ch = 0 ; ch<branches_m[qdc_i].n_entries; ++ch) {
+        int calc_ch = get_qdc_ch(ch);
+        
+        // the values require conversion 
+        out_branches[0].data[calc_ch] = get_qdc_val(calc_ch);
+    }
+    
+    // ADC channel 0, just needs copying across
+    branches_m[adc0_i].copy_branch_to(out_branches[branch_adc0]);
+    // ADC channel 1 is the same as channel 0
+    branches_m[adc1_i].copy_branch_to(out_branches[branch_adc1]);
+    
+//    n_entries = branches_m[adc0_i].n_entries;
+//    out_branches[branch_adc0].n_entries = n_entries;
+//    for (int ch = 0; ch < n_entries; ++ch) {
+//        out_branches[branch_adc0].data[ch] = branches_m[adc0_i].data[ch];
+//    }
+
+//    n_entries = branches_m[adc1_i].n_entries;
+//    out_branches[branch_adc1].n_entries = n_entries;
+//    for (int ch = 0; ch < n_entries; ++ch) {
+//        out_branches[branch_adc1].data[ch] = branches_m[adc1_i].data[ch];
+//    }
+    
+    int n_hits[n_tdc_channels];
+    for (int ch = 0; ch < n_tdc_channels; ++ch) n_hits[ch] = 0;
+    
+    n_entries = branches_m[tdc_i].n_entries;
+    for (int hit = 0; hit<n_entries; ++hit) {
+        if (!is_tdc_measure(hit))  continue;
+        
+        int const tdc_ch = get_tdc_ch(hit);
+        int const val = get_tdc_val(hit);
+        int const branch_no = branch_tdc0 + tdc_ch;
+        int const ch_hit_no = n_hits[tdc_ch];
+        out_branches[branch_no].data[ch_hit_no] = val;
+        ++n_hits[tdc_ch];
+    }
+    
+    for (int ch = branch_tdc0; ch < (n_tdc_channels+ branch_tdc0); ++ch) {
+        out_branches[ch].n_entries = n_hits[ch-branch_tdc0];
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+

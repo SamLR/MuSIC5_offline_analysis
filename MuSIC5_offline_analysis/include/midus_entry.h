@@ -7,6 +7,7 @@
 
 #include "entry.h"
 #include "midus_tree_structs.h"
+#include <string>
 
 class algorithm;
 
@@ -20,14 +21,25 @@ public:
         {return n_branches;};
     inline int get_entries_in_branch(int const b) const 
         {return branches_m[b].n_entries;};
-    virtual inline int get_value_in_branch(int const b, int const i) const 
-        {return branches_m[b].data[i];};  
+    inline int get_value_in_branch(int const b, int const i) const 
+        {return branches_m[b].data[i];}; 
+    inline static std::string get_name_branch(int const b) {
+        static std::string const names [] = { "QDC",   "ADC0",   "ADC1",
+            "TDC0", "TDC1", "TDC2",  "TDC3",  "TDC4",  "TDC5",  "TDC6",  "TDC7",
+            "TDC8", "TDC9", "TDC10", "TDC11", "TDC12", "TDC13", "TDC14", "TDC15"
+        };
+        return names[b];
+    }
 
 private:
     midus_entry();
     void init(midus_out_branch const []);
     
+<<<<<<< HEAD
     static int const n_branches = n_branches_in_trigger_tree;
+=======
+    static int const n_branches = n_branches_in_entry;
+>>>>>>> upstream/master
     midus_out_branch branches_m[n_branches];
     
 };

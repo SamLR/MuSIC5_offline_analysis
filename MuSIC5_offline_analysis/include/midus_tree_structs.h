@@ -13,14 +13,19 @@
 #ifndef MuSIC5_offline_analysis_midus_tree_structs_h
 #define MuSIC5_offline_analysis_midus_tree_structs_h
 
-static int const n_channels = 3;
+static int const n_tdc_channels = 16;
 // number of branches is n_channels + 3 (ADC, PHADC & T0)
-static int const n_branches_in_trigger_tree = n_channels + 3;
+static int const n_branches_in_entry = n_tdc_channels + 3;
 static int const max_data_entries = 500;
 
 struct midus_out_branch {
     int n_entries;
     int data[max_data_entries];
+    
+    inline void copy_branch_to (midus_out_branch& out) const {
+        out.n_entries = n_entries;
+        for (int i = 0; i < n_entries; ++i) out.data[i] = data[i];
+    };
 };
 
 struct channel {
@@ -31,13 +36,11 @@ struct channel {
 };
 
 enum branch_ids {
-    branch_adc   = 0,
-    branch_phadc = 1,
-    branch_T0    = 2,
-    branch_TDC1  = 3,
-    branch_TDC2  = 4,
-    branch_TDC3  = 5
-    // for other TDC branches just ad to TDC1
+    branch_qdc  = 0,
+    branch_adc0 = 1,
+    branch_adc1 = 2,
+    branch_tdc0 = 3
+    // for other TDC branches just add to TDC0
     };
 
 enum adc_ch_names {
