@@ -9,6 +9,7 @@
 
 int main() {
 	smart_tfile* file = smart_tfile::getTFile("test.root", "RECREATE");
+
 	tfile_converter_algorithm* test = new tfile_converter_algorithm(file);
 	
 	// Create some mock branches

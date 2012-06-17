@@ -18,4 +18,5 @@ build/
 # Modified files
 *~
 .DS_Store
+*.root
 *.mid
