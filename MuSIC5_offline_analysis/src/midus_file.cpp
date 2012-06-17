@@ -29,6 +29,12 @@ void midus_file::loop(int const n_events) {
 	
     for (int entry_number = 0; entry_number<n_events; ++entry_number) {
         trigger_tree_m->GetEntry();
+        if (branches_m[err_i].data[0] > 0) {
+            std::cerr << "error found in entry " << entry_number;
+            std::cerr << ". Skipping this entry"<< std::endl;
+            continue;
+        }
+        
         midus_out_branch parallel_branches[n_branches_in_entry];
         
         extract_values_to(parallel_branches);
@@ -57,10 +63,11 @@ void midus_file::init() {
     if (!trigger_tree_m) {
         std::cerr << "There was a problem opening the trigger tree" << std::endl;
     } else {
-        trigger_tree_m->SetBranchAddress("QDC",  &(branches_m[qdc_i]));
+        trigger_tree_m->SetBranchAddress("QDC",  &(branches_m[qdc_i] ));
         trigger_tree_m->SetBranchAddress("ADC0", &(branches_m[adc0_i]));
         trigger_tree_m->SetBranchAddress("ADC1", &(branches_m[adc1_i]));
-        trigger_tree_m->SetBranchAddress("TDC0", &(branches_m[tdc_i]));
+        trigger_tree_m->SetBranchAddress("TDC0", &(branches_m[tdc_i] ));
+        trigger_tree_m->SetBranchAddress("ERR",  &(branches_m[err_i] ));
     }
     n_entries = trigger_tree_m->GetEntries();
     

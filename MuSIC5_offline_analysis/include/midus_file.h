@@ -44,9 +44,13 @@ private:
     int get_tdc_ch(int const) const;
     bool is_tdc_measure(int const) const;
     
-    // there are 3 blocks of input equipment:
-    // ADC, TDC & PHADC (TDC needs to be parallelised by channel)
-    static int const n_branches_in=4; 
+    // in branches correspond to:
+    // QDC
+    // ADC0 (Ge0)
+    // ADC1 (Ge1)
+    // TDC  
+    // ERR
+    static int const n_branches_in=5; 
     
     smart_tfile* file_m;
     std::string const filename_m;
@@ -63,7 +67,8 @@ private:
         qdc_i  = 0,
         adc0_i = 1,
         adc1_i = 2,
-        tdc_i  = 3
+        tdc_i  = 3,
+        err_i
     };
 };
 

@@ -30,9 +30,9 @@ int main() {
     smart_tfile* out_file = smart_tfile::getTFile("out.root", "RECREATE");
     tfile_converter_algorithm* tca = new tfile_converter_algorithm(out_file);
 //    printer_alg* pa = new printer_alg();
-    scaler_printer* sp = new scaler_printer();
+//    scaler_printer* sp = new scaler_printer();
     
-    in_file->add_scaler_algorithm(sp);
+//    in_file->add_scaler_algorithm(sp);
     
     in_file->add_algorithm(tca);
 //    in_file->add_algorithm(pa);
