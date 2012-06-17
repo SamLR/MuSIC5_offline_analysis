@@ -13,29 +13,34 @@
 #include <map>
 #include <string>
 
-class smart_tfile: public TFile
-{
+class smart_tfile: public TFile {
 public:
+    typedef std::map<std::string, smart_tfile*> file_map; 
     static smart_tfile* getTFile(std::string, std::string); // returns the smart file of given name with options
     
     void close();
-    static void forceClose();
+    static void force_close_all();
     
 private:
+    // you shouldn't call these constructors directly
     smart_tfile();
     smart_tfile(std::string, std::string);
     ~smart_tfile();
     
-    int getPtrCount(){return mPtrCount;}
-    void incPtrCount(){++mPtrCount;}
-    void decPtrCount(){--mPtrCount;}
+    // these methods shouldn't be used by clients but
+    // we want them to maintain their original functionality
+    inline void Close() {this->TFile::Close(); } ;
+    inline void Write() {this->TFile::Write(); } ;
+    
+    int const getPtrCount()const {return mPtrCount;} ;
+    inline void incPtrCount(){++mPtrCount;} ;
+    inline void decPtrCount(){--mPtrCount;} ;
     
     int mPtrCount;
     
-    static std::map<std::string, smart_tfile*> mFileMap; // filename: file ptr pairs
+    static file_map file_map_m; // filename: file ptr pairs
     
 };
-
 
 
 #endif

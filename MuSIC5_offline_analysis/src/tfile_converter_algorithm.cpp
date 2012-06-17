@@ -9,7 +9,7 @@
 
 #include "TTree.h"
 
-tfile_converter_algorithm::tfile_converter_algorithm(TFile *const out_file): tfile_export_algorithm(out_file) {
+tfile_converter_algorithm::tfile_converter_algorithm(smart_tfile *const out_file): tfile_export_algorithm(out_file), ref_count_m(0) {
 	// Create the Trigger tree
 	tree_m = new TTree("Trigger", "Trigger");
 }
@@ -24,18 +24,22 @@ void tfile_converter_algorithm::process(line_entry const * in_entry) {
 void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
 	
+	ref_count_m++;
+	
 	// Set the branch
-	int channel_U1[MAX_ENTRIES];	
+	int channel[MAX_ENTRIES];	
 	for (int i = 0; i < in_entry->get_entries_in_branch(0); i++) {
-		channel_U1[i] = in_entry->get_value_in_branch(0, i);
+		channel[i] = in_entry->get_value_in_branch(0, i);
 	}
 	for (int i = in_entry->get_entries_in_branch(0); i < in_entry->get_entries_in_branch(0) + in_entry->get_entries_in_branch(1); i++) {
-		channel_U1[i] = in_entry->get_value_in_branch(1, i);
+		channel[i] = in_entry->get_value_in_branch(1, i);
 	}
 	
+	std::stringstream branchname;
+	branchname << "U" << ref_count_m;
 	std::stringstream leaflist;
-	leaflist << "ADC1[" << in_entry->get_entries_in_branch(0) << "]/I:TDC1[" << in_entry->get_entries_in_branch(1) << "]/I";
-	tree_m->Branch("U1", channel_U1, leaflist.str().c_str());
+	leaflist << "ADC[" << in_entry->get_entries_in_branch(0) << "]/I:TDC[" << in_entry->get_entries_in_branch(1) << "]/I";
+	tree_m->Branch(branchname.str().c_str(), channel, leaflist.str().c_str());
 		
 	// Fill the tree
 	tree_m->Fill();

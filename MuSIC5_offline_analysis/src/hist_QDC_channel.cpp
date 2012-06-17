@@ -5,7 +5,7 @@
 
 #include "hist_QDC_channel.h"
 
-hist_QDC_channel::hist_QDC_channel(TFile *const out_file, std::string histname, int channel, int n_bins, double x_low, double x_high): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high), channel_m(channel) {
+hist_QDC_channel::hist_QDC_channel(smart_tfile *const out_file, std::string histname, int channel, int n_bins, double x_low, double x_high): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high), channel_m(channel) {
 }
 
 hist_QDC_channel::~hist_QDC_channel() {

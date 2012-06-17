@@ -1,0 +1,44 @@
+The Midus root file contains two trees: trigger and scaler
+
+==============================================================================
+TRIGGER
+
+The trigger tree (should) contain the following branches:
+* ADC (for measuring the response of MPPCs)
+* PHADC (for measuring the Ge & CdTe responses)
+* 16 TDC branches: one per multi-TDC channel, the different channels have
+  various inputs (see below)
+
+Each branch contains two leaves
+* n_ch/n_hit
+** n_ch: number of channels, for ADC & PHADC branches (one measurement/trigger)
+** n_hit: number of hits on that channel for TDC branches (n measurements/trigger)
+
+U = upstream counters
+D = downstream counters
+
+Branch     || Array Range || Notes
+-----------||-------------||--------------------------------------------------
+ADC        || <1:13>      || Channels: 0 Not used; 1-8 U; 9-13 D
+PHADC      || <0:2>       || Channels: 0-1 Ge; 2 CdTe
+TDC0       || <0:n_hits>  || Channels: T0     
+TDC[1-8  ] || <0:n_hits>  || Channels: U  0-7 
+TDC[9-13 ] || <0:n_hits>  || Channels: D  0-4 
+TDC[14-15] || <0:n_hits>  || Channels: Ge 1-2 
+
+================================================
+SCALER
+Contains a single branch with two leaves:
+* n_channels
+* data[n_channels]
+
+channel || meaning  
+--------||--------------------------------------------------------------------
+0       || Sec
+1       || trigger
+2       || U and not D (i.e. good trigger)
+3       || U
+4       || D
+5       || scint
+6       || -
+7       || clk

@@ -8,18 +8,19 @@
 #include "algorithm.h"
 #include "midus_entry.h"
 
+#include "smart_tfile.h"
 #include "TFile.h"
 
 class tfile_export_algorithm : public algorithm {
 public:
-	tfile_export_algorithm(TFile *const);
+	tfile_export_algorithm(smart_tfile *const);
 	virtual ~tfile_export_algorithm();
 	
 	void process(line_entry const *) {};
 	virtual void process(midus_entry const *);
     
 private:
-	TFile *const out_file_m;
+	smart_tfile *const out_file_m;
 };
 
 #endif

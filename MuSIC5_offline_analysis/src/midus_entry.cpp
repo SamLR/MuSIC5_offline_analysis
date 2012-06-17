@@ -9,6 +9,8 @@
 #include "algorithm.h"
 #include "midus_tree_structs.h"
 
+int const midus_entry::n_branches = n_branches_in_trigger_tree;
+
 midus_entry::midus_entry(midus_out_branch const branch []){
     init(branch);
 }
