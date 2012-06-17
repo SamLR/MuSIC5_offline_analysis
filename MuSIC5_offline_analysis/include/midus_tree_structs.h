@@ -17,6 +17,7 @@ static int const n_tdc_channels = 16;
 // number of branches is n_channels + 3 (ADC, PHADC & T0)
 static int const n_branches_in_entry = n_tdc_channels + 3;
 static int const max_data_entries = 500;
+static int const n_scaler_ch = 8;
 
 struct midus_out_branch {
     int n_entries;
