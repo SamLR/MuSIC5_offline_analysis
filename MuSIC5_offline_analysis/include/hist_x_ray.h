@@ -2,6 +2,7 @@
 // -- Plots a histogram of <eqn> corresponding to x-ray energy
 // Created: 17/06/2012 Andrew Edmonds
 
+
 #ifndef HIST_X_RAY_H_
 #define HIST_X_RAY_H_
 
