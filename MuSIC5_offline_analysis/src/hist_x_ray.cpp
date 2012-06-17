@@ -17,7 +17,7 @@ void hist_x_ray::process(line_entry const * in_entry) {
 
 void hist_x_ray::process(midus_entry const * in_entry) {
 
-	for (int i = 0; i < in_entry->get_entries_in_branch(branch_phadc); i++) { // 3 channels for PHADC
-		hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_phadc, i));
+	for (int i = 0; i < in_entry->get_entries_in_branch(branch_adc0); i++) { // 3 channels for PHADC
+		hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_adc0, i));
 	}
 }
