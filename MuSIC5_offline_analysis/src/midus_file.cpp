@@ -56,11 +56,11 @@ void midus_file::init() {
     
     // initialise the calibration functions
     for (int b = 0; b<n_branches_in; ++b) {
-        add_calibration_func(b, &null_calibration);
+        calibration_funcs [b] = &(null_calibration);
     }
 }
 
-void midus_file::add_calibration_func(const int branch, calibrate_func *func){
+void midus_file::add_calibration_func(const int branch, calibrate_func func){
     if (branch > n_branches_in) {
         std::cerr <<"branch" << branch<< " number out of range, max = "<< n_branches_in << std::endl;
     } else {

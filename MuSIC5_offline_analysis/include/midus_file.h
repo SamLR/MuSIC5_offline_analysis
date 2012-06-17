@@ -15,7 +15,7 @@
 class TTree;
 class smart_tfile;
 
-typedef int (calibrate_func)(const int ch, const int val);
+typedef int (*calibrate_func)(const int ch, const int val);
 
 class midus_file : public input_file{
 public:
@@ -28,7 +28,7 @@ public:
     // this is here mainly for getting debugging information
     inline smart_tfile* get_file() {return file_m;};
     // register functions
-    void add_calibration_func(int const, calibrate_func*);
+    void add_calibration_func(int const, calibrate_func);
     void add_scaler_algorithm(algorithm* a);
 	
 private:
@@ -51,7 +51,7 @@ private:
     TTree* scaler_tree_m;
 
     midus_out_branch branches_m[n_branches_in];
-    calibrate_func* calibration_funcs[n_branches_in];
+    calibrate_func calibration_funcs[n_branches_in];
     int n_entries;
     
     enum in_branch_indexs{
