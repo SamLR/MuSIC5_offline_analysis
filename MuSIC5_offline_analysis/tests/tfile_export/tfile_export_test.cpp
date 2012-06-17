@@ -48,7 +48,7 @@ int main() {
 	midus_entry* event2 = new midus_entry(tr2); // another event
 	
 	test->process(event);
-	test->process(event);
+	test->process(event2);
 	
 	file->close();
 	return 0;
