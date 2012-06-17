@@ -39,7 +39,7 @@ int main() {
 //	hist_branch_channel* tdc7 = new hist_branch_channel(out_file, "tdc7", 0, qdc_ch_U6 + branch_tdc0, 1000, 0, 1e7); // NB tdc corresponds to channel U6 (because tdc1 corresponds to U0)
 //	hist_mu_lifetime* mu_lifetime = new hist_mu_lifetime(out_file, "mu_life");
 	std::string histname("x_ray");
-	hist_x_ray* x_ray = new hist_x_ray(out_file, histname);
+	hist_x_ray* x_ray = new hist_x_ray(out_file, histname, 300, 0, 300);
     
 	in_file->add_algorithm(tca);
 //    in_file->add_algorithm(pa);

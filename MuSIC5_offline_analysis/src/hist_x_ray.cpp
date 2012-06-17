@@ -5,7 +5,7 @@
 #include <iostream>
 #include "hist_x_ray.h"
 
-hist_x_ray::hist_x_ray(smart_tfile *const out_file, std::string histname, int n_bins = 100, double x_low = 0, double x_high = 100): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high) {;}
+hist_x_ray::hist_x_ray(smart_tfile *const out_file, std::string histname, int n_bins, double x_low, double x_high): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high) {;}
 
 hist_x_ray::~hist_x_ray() {;}
 
@@ -15,7 +15,6 @@ void hist_x_ray::process(line_entry const * in_entry) {
 
 void hist_x_ray::process(midus_entry const * in_entry) {
 
-	for (int i = 0; i < in_entry->get_entries_in_branch(branch_adc0); i++) { // 3 channels for PHADC
-		hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_adc0, i));
-	}
+	hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_adc0, 0));
+	hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_adc1, 0));
 }
