@@ -10,10 +10,12 @@
 #include "smart_tfile.h"
 #include "TTree.h"
 #include "calibration_functions.h"
+#include "scaler_entry.h"
 
 midus_file::midus_file(std::string const& filename)
 : file_m(0), filename_m(filename), 
-trigger_tree_m(0), scaler_tree_m(0), branches_m(),  n_entries(0) {
+trigger_tree_m(0), scaler_tree_m(0), branches_m(),  n_entries(0), 
+scaler_algs(0){
     init();
 }
 
@@ -27,6 +29,12 @@ void midus_file::loop(int const n_events) {
 	
     for (int entry_number = 0; entry_number<n_events; ++entry_number) {
         trigger_tree_m->GetEntry();
+        if (branches_m[err_i].data[0] > 0) {
+            std::cerr << "error found in entry " << entry_number;
+            std::cerr << ". Skipping this entry"<< std::endl;
+            continue;
+        }
+        
         midus_out_branch parallel_branches[n_branches_in_entry];
         
         extract_values_to(parallel_branches);
@@ -37,6 +45,15 @@ void midus_file::loop(int const n_events) {
             entry.accept(get_algorithm(alg));
         }
     }
+    
+    int const n_scaler_entries = scaler_tree_m->GetEntries();
+    for (int sclr_entry = 0; sclr_entry < n_scaler_entries; ++sclr_entry) {
+        scaler_tree_m->GetEntry();
+        scaler_entry s_entry(scaler_vals);
+        for (int s_alg = 0; s_alg < scaler_algs.size(); ++s_alg) {
+            s_entry.accept(scaler_algs[s_alg]);
+        }
+    }
 }
 
 void midus_file::init() {
@@ -44,13 +61,13 @@ void midus_file::init() {
     
     trigger_tree_m = (TTree*) file_m->Get("Trigger");
     if (!trigger_tree_m) {
-        std::cerr << "There was a problem opening the tree" << std::endl;
-        std::exit(1);
+        std::cerr << "There was a problem opening the trigger tree" << std::endl;
     } else {
-        trigger_tree_m->SetBranchAddress("QDC",  &(branches_m[qdc_i]));
+        trigger_tree_m->SetBranchAddress("QDC",  &(branches_m[qdc_i] ));
         trigger_tree_m->SetBranchAddress("ADC0", &(branches_m[adc0_i]));
         trigger_tree_m->SetBranchAddress("ADC1", &(branches_m[adc1_i]));
-        trigger_tree_m->SetBranchAddress("TDC0", &(branches_m[tdc_i]));
+        trigger_tree_m->SetBranchAddress("TDC0", &(branches_m[tdc_i] ));
+        trigger_tree_m->SetBranchAddress("ERR",  &(branches_m[err_i] ));
     }
     n_entries = trigger_tree_m->GetEntries();
     
@@ -58,6 +75,14 @@ void midus_file::init() {
     for (int b = 0; b<n_branches_in; ++b) {
         calibration_funcs [b] = &(null_calibration);
     }
+    
+    scaler_tree_m = (TTree*) file_m->Get("Scaler");
+    if (!scaler_tree_m) {
+        std::cerr << "There was a problem opening the scaler tree" << std::endl;
+    } else {
+        scaler_tree_m->SetBranchAddress("SCLR", scaler_vals);
+    }
+    
 }
 
 void midus_file::add_calibration_func(const int branch, calibrate_func func){
@@ -68,6 +93,9 @@ void midus_file::add_calibration_func(const int branch, calibrate_func func){
     }
 }
 
+void midus_file::add_scaler_algorithm(scaler_algorithm *const alg){
+    scaler_algs.push_back(alg);
+}
 
 void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     // copy and process each branch in turn

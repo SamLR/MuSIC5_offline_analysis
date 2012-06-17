@@ -10,11 +10,16 @@
 #include "../../include/tfile_converter_algorithm.h"
 #include "../../include/smart_tfile.h"
 #include "../../include/printer_alg.h"
+<<<<<<< HEAD
 #include "../../include/hist_mu_lifetime.h"
+=======
+
+#include "../../include/hist_branch_channel.h"
+>>>>>>> upstream/master
 
 int main() {
 	// Open midus file
-	midus_file* in_file = new midus_file("run00077.root");
+	midus_file* in_file = new midus_file("run00119.root");
 
 	// add algorithm and calibration functions
 	// Add calibration functions
