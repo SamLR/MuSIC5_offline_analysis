@@ -3,11 +3,13 @@
 #include "../../include/hist_QDC_channel.h"
 #include "../../include/midus_entry.h"
 #include "../../include/midus_tree_structs.h"
+#include "../../include/smart_tfile.h"
 
 #include "TFile.h"
 
 int main() {
-	TFile* file = new TFile("test.root", "RECREATE");
+	smart_tfile* file;
+	file->getTFile("test.root", "RECREATE");
 	hist_QDC_channel channel2(file, "QDC_ch2", 2, 100, 0, 200);
 	hist_QDC_channel channel3(file, "QDC_ch3", 3, 100, 0, 200);
 	
@@ -20,6 +22,7 @@ int main() {
 	channel3.set_y_axis_title("y.axis");
 	
 	// Create some mock branches
+	trigger_branch tr1;
 	QDC_branch q;	
 	for (int i = 0; i < 4; i++) {
 		q.channel[i] = i;
@@ -54,12 +57,6 @@ int main() {
 	channel2.process(mid2);
 	channel3.process(mid);
 	channel3.process(mid2);
-	
-	// Write stuff to the file
-	file->Write();
-	
-	// Close the file
-	file->Close();
 	
 	return 0;
 }
