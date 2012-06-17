@@ -9,13 +9,12 @@
 
 class hist_x_ray : public hist_maker_algorithm {
 public:
-	hist_x_ray(smart_tfile *const, std::string, int n_bins = 100, double x_low = 0, double x_high = 100);
+	hist_x_ray(smart_tfile *const, std::string, int n_bins, double x_low, double x_high);
 	~hist_x_ray();
 	
 	void process(line_entry const *);
 	void process(midus_entry const *);
 	
-private:
 };
 
 #endif

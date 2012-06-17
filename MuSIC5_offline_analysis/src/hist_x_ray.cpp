@@ -5,11 +5,9 @@
 #include <iostream>
 #include "hist_x_ray.h"
 
-hist_x_ray::hist_x_ray(smart_tfile *const out_file, std::string histname, int n_bins, double x_low, double x_high): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high) {
-}
+hist_x_ray::hist_x_ray(smart_tfile *const out_file, std::string histname, int n_bins = 100, double x_low = 0, double x_high = 100): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high) {;}
 
-hist_x_ray::~hist_x_ray() {
-}
+hist_x_ray::~hist_x_ray() {;}
 
 void hist_x_ray::process(line_entry const * in_entry) {
 	hist_maker_algorithm::process(in_entry);

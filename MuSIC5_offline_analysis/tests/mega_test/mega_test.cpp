@@ -12,6 +12,7 @@
 #include "../../include/printer_alg.h"
 #include "../../include/hist_branch_channel.h"
 #include "../../include/hist_mu_lifetime.h"
+#include "../../include/hist_x_ray.h"
 
 int main() {
 	// Open midus file
@@ -36,7 +37,9 @@ int main() {
 //	hist_branch_channel* adc_Ge1_hist = new hist_branch_channel(out_file, "Ge1.adc", phadc_ch_Ge1, branch_adc1, 400, 0, 400);
 //	hist_branch_channel* tdc0 = new hist_branch_channel(out_file, "tdc0", 0, branch_tdc0, 400, 0, 1e7);
 //	hist_branch_channel* tdc7 = new hist_branch_channel(out_file, "tdc7", 0, qdc_ch_U6 + branch_tdc0, 1000, 0, 1e7); // NB tdc corresponds to channel U6 (because tdc1 corresponds to U0)
-	hist_mu_lifetime* mu_lifetime = new hist_mu_lifetime(out_file, "mu_life");
+//	hist_mu_lifetime* mu_lifetime = new hist_mu_lifetime(out_file, "mu_life");
+	std::string histname("x_ray");
+	hist_x_ray* x_ray = new hist_x_ray(out_file, histname);
     
 	in_file->add_algorithm(tca);
 //    in_file->add_algorithm(pa);
@@ -45,7 +48,8 @@ int main() {
 //	in_file->add_algorithm(adc_Ge1_hist);
 //	in_file->add_algorithm(tdc0);
 //	in_file->add_algorithm(tdc7);
-	in_file->add_algorithm(mu_lifetime);
+//	in_file->add_algorithm(mu_lifetime);
+	in_file->add_algorithm(x_ray);
     
 	
 	// Call loop
