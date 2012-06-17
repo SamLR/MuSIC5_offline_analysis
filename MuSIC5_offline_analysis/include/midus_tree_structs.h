@@ -34,7 +34,8 @@ enum branch_ids {
     branch_adc   = 0,
     branch_phadc = 1,
     branch_T0    = 2,
-    branch_TDC1  = 3
+    branch_TDC1  = 3,
+    branch_TDC2  = 4
     // for other TDC branches just ad to TDC1
     };
 
