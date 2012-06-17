@@ -29,6 +29,7 @@ public:
     inline smart_tfile* get_file() {return file_m;};
     // register functions
     void add_calibration_func(int const, calibrate_func*);
+    void add_scaler_algorithm(algorithm* a);
 	
 private:
     void init();
@@ -42,7 +43,7 @@ private:
     
     // there are 3 blocks of input equipment:
     // ADC, TDC & PHADC (TDC needs to be parallelised by channel)
-    static int const n_branches_in=3; 
+    static int const n_branches_in=4; 
     
     smart_tfile* file_m;
     std::string const filename_m;

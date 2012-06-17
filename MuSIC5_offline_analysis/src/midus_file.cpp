@@ -77,27 +77,25 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     out_branches[branch_qdc].n_entries = n_entries;
     for (int ch = 0 ; ch<branches_m[qdc_i].n_entries; ++ch) {
         int calc_ch = get_qdc_ch(ch);
-        
+        int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch));
         // the values require conversion 
-        out_branches[0].data[calc_ch] = get_qdc_val(calc_ch);
+        out_branches[0].data[calc_ch] = val; 
     }
     
     // ADC channel 0, just needs copying across
-    branches_m[adc0_i].copy_branch_to(out_branches[branch_adc0]);
+    n_entries = branches_m[adc0_i].n_entries;
+    out_branches[branch_adc0].n_entries = n_entries;
+    for (int ch = 0; ch < n_entries; ++ch) {
+        int val = calibration_funcs[adc0_i](ch, branches_m[adc0_i].data[ch]);
+        out_branches[branch_adc0].data[ch] = val;
+    }
     // ADC channel 1 is the same as channel 0
-    branches_m[adc1_i].copy_branch_to(out_branches[branch_adc1]);
-    
-//    n_entries = branches_m[adc0_i].n_entries;
-//    out_branches[branch_adc0].n_entries = n_entries;
-//    for (int ch = 0; ch < n_entries; ++ch) {
-//        out_branches[branch_adc0].data[ch] = branches_m[adc0_i].data[ch];
-//    }
-
-//    n_entries = branches_m[adc1_i].n_entries;
-//    out_branches[branch_adc1].n_entries = n_entries;
-//    for (int ch = 0; ch < n_entries; ++ch) {
-//        out_branches[branch_adc1].data[ch] = branches_m[adc1_i].data[ch];
-//    }
+    n_entries = branches_m[adc1_i].n_entries;
+    out_branches[branch_adc1].n_entries = n_entries;
+    for (int ch = 0; ch < n_entries; ++ch) {
+        int val = calibration_funcs[adc1_i](ch, branches_m[adc1_i].data[ch]);
+        out_branches[branch_adc1].data[ch] = val;
+    }
     
     int n_hits[n_tdc_channels];
     for (int ch = 0; ch < n_tdc_channels; ++ch) n_hits[ch] = 0;
@@ -107,7 +105,7 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         if (!is_tdc_measure(hit))  continue;
         
         int const tdc_ch = get_tdc_ch(hit);
-        int const val = get_tdc_val(hit);
+        int const val = calibration_funcs[tdc_i](tdc_ch, get_tdc_val(hit));
         int const branch_no = branch_tdc0 + tdc_ch;
         int const ch_hit_no = n_hits[tdc_ch];
         out_branches[branch_no].data[ch_hit_no] = val;
