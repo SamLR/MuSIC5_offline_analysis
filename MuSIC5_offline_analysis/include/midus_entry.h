@@ -35,12 +35,8 @@ private:
     midus_entry();
     void init(midus_out_branch const []);
     
-<<<<<<< HEAD
-    static int const n_branches = n_branches_in_trigger_tree;
-=======
     static int const n_branches = n_branches_in_entry;
->>>>>>> upstream/master
-    midus_out_branch branches_m[n_branches];
+    midus_out_branch branches_m[n_branches_in_entry];
     
 };
 

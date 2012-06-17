@@ -15,7 +15,7 @@
 class TTree;
 class smart_tfile;
 
-typedef int (*calibrate_func)(const int ch, const int val);
+typedef int (calibrate_func)(const int ch, const int val);
 
 class midus_file : public input_file{
 public:
