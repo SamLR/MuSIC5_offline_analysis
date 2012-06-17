@@ -21,7 +21,7 @@ public:
     inline int get_entries_in_branch(int const b) const 
         {return branches_m[b].n_entries;};
     inline int get_value_in_branch(int const b, int const i) const 
-        {return branches_m[b].data[i];};    
+        {return branches_m[b].data[i];};  
 
 private:
     midus_entry();
