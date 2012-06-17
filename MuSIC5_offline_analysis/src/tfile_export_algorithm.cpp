@@ -10,7 +10,7 @@ tfile_export_algorithm::tfile_export_algorithm(smart_tfile *const out_file): out
 }
 
 tfile_export_algorithm::~tfile_export_algorithm() {
-	out_file_m->close(); // will write if no more pointer pointing
+	out_file_m->close(); // will write if no more pointers pointing
 }
 
 void tfile_export_algorithm::process(midus_entry const *) {

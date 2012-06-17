@@ -32,6 +32,7 @@ private:
     std::string const filename_m;
     TTree* trigger_tree_m;
     TTree* scaler_tree_m;
+
     midus_out_branch branches_m[n_branches];
     int n_entries;
 };

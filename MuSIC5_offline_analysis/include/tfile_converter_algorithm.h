@@ -7,6 +7,7 @@
 
 #include "tfile_export_algorithm.h"
 
+#include "TFile.h"
 #include "TTree.h"
 
 class tfile_converter_algorithm : public tfile_export_algorithm {
@@ -19,6 +20,8 @@ public:
 
 private:
 	TTree* tree_m;
+	
+	int ref_count_m;
 };
 
 #endif

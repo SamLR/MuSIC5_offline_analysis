@@ -38,6 +38,7 @@ void midus_file::loop() {
 
 void midus_file::init() {
     file_m = smart_tfile::getTFile(filename_m, "READ");
+
     trigger_tree_m = (TTree*) file_m->Get("Trigger");
     if (!trigger_tree_m) {
         std::cerr << "There was a problem opening the tree" << std::endl;

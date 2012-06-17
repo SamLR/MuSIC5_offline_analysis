@@ -9,6 +9,7 @@
 #include "midus_entry.h"
 
 #include "smart_tfile.h"
+#include "TFile.h"
 
 class tfile_export_algorithm : public algorithm {
 public:

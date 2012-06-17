@@ -19,5 +19,5 @@ void hist_QDC_channel::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
 	
 	// Fill the histogram
-	hist_maker_algorithm::fill_hist(in_entry->get_QDC_value(channel_m-1));
+	//hist_maker_algorithm::fill_hist(in_entry->get_QDC_value(channel_m-1));
 }
