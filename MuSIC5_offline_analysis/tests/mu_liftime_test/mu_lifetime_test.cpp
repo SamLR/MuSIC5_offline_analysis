@@ -13,7 +13,7 @@ int main() {
 	smart_tfile* file = smart_tfile::getTFile("test.root", "RECREATE");
 	
 	// Create a mu_lifetime histogram
-	hist_mu_lifetime* hist = new hist_mu_lifetime(file, "mu_lifetime"); 
+	hist_mu_lifetime* hist = new hist_mu_lifetime(file, "mu_lifetime", 200, 0, 100); 
 	
 	// Create some mock events
 	midus_out_branch tr1 [n_branches_in_trigger_tree]; // 0 = ADC, 1 = PHADC, 2 = T0, 3 = TDC1, 4 = TDC2
@@ -27,10 +27,10 @@ int main() {
 	}
 	tr1[branch_T0].data[0] = 1000;
 	for (int i = 0; i < tr1[branch_TDC1].n_entries; i++) {
-		tr1[branch_TDC1].data[i] = (i+1)*1040;
+		tr1[branch_TDC1].data[i] = 1040 + i;
 	}
 	for (int i = 0; i < tr1[branch_TDC2].n_entries; i++) {
-		tr1[branch_TDC2].data[i] = (i+1)*1050;
+		tr1[branch_TDC2].data[i] = i + 1050;
 	}
 	
 	midus_out_branch tr2 [n_branches_in_trigger_tree]; // 0 = ADC, 1 = PHADC, 2 = T0, 3 = TDC1, 4 = TDC2
@@ -44,10 +44,10 @@ int main() {
 	}
 	tr2[branch_T0].data[0] = 2000;
 	for (int i = 0; i < tr2[branch_TDC1].n_entries; i++) {
-		tr2[branch_TDC1].data[i] = (i+1)*2030;
+		tr2[branch_TDC1].data[i] = i + 2030;
 	}
 	for (int i = 0; i < tr2[branch_TDC2].n_entries; i++) {
-		tr2[branch_TDC2].data[i] = (i+1)*2020;
+		tr2[branch_TDC2].data[i] = i + 2020;
 	}
 	
 	int n_events = 2;

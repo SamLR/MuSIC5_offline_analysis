@@ -18,9 +18,14 @@ void hist_mu_lifetime::process(line_entry const * in_entry) {
 void hist_mu_lifetime::process(midus_entry const * in_entry) {
 	
 	int tdc0 = in_entry->get_value_in_branch(branch_T0, 0);
-	int tdc1 = in_entry->get_value_in_branch(branch_TDC1, 0);
-	int tdc2 = in_entry->get_value_in_branch(branch_TDC2, 0);
 	
-	hist_maker_algorithm::fill_hist(tdc1 -tdc0);
-	hist_maker_algorithm::fill_hist(tdc2 -tdc0);
+	for (int i = 0; i < in_entry->get_entries_in_branch(branch_TDC1); i++) {
+		int tdc1 = in_entry->get_value_in_branch(branch_TDC1, i);
+		hist_maker_algorithm::fill_hist(tdc1 -tdc0);
+	}
+	
+	for (int i = 0; i < in_entry->get_entries_in_branch(branch_TDC2); i++) {
+		int tdc2 = in_entry->get_value_in_branch(branch_TDC2, i);
+		hist_maker_algorithm::fill_hist(tdc2 -tdc0);
+	}
 }
