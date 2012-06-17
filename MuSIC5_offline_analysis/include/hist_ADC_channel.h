@@ -10,7 +10,7 @@
 
 class hist_ADC_channel : public hist_maker_algorithm {
 public:
-	hist_ADC_channel(smart_tfile *const, std::string, int n_bins = 100, double x_low = 0, double x_high = 100);
+	hist_ADC_channel(smart_tfile *const, std::string, int channel, int n_bins = 100, double x_low = 0, double x_high = 100);
 	~hist_ADC_channel();
 	
 	void process(line_entry const *);
