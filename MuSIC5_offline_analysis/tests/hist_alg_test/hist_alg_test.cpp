@@ -1,6 +1,6 @@
 // To test the tfile_export_algorithm class
 
-#include "../../include/hist_ADC_channel.h"
+#include "../../include/hist_branch_channel.h"
 #include "../../include/midus_entry.h"
 #include "../../include/midus_tree_structs.h"
 #include "../../include/smart_tfile.h"
@@ -9,8 +9,8 @@
 
 int main() {
 	smart_tfile* file = smart_tfile::getTFile("test.root", "RECREATE");
-	hist_ADC_channel* adc_U1_hist = new hist_ADC_channel(file, "U1.ADC", 0);
-	hist_ADC_channel* adc_U2_hist = new hist_ADC_channel(file, "U2.ADC", 1);
+	hist_branch_channel* tdc0_U1_hist = new hist_branch_channel(file, "U1.TDC0", 0, 1, 200, 0, 3000);
+	hist_branch_channel* tdc0_U2_hist = new hist_branch_channel(file, "U2.TDC0", 1, 1, 200, 0, 3000);
 	
 	// Create some mock branches
 	midus_out_branch tr1 [4]; // 0 = ADC, 1 = TDC0, 2 = TDC1, 3 = TDC2
@@ -37,7 +37,7 @@ int main() {
 	for (int i = 0; i < tr2[0].n_entries; i++) {
 		tr2[0].data[i] = i + 1;
 	}
-	tr2[1].data[0] = 1000;
+	tr2[1].data[0] = 2000;
 	for (int i = 0; i < tr2[2].n_entries; i++) {
 		tr2[2].data[i] = i*3 + 1;
 	}
@@ -48,10 +48,10 @@ int main() {
 	midus_entry* event = new midus_entry(tr1);
 	midus_entry* event2 = new midus_entry(tr2);
 	
-	adc_U1_hist->process(event);
-	adc_U1_hist->process(event2);
-	adc_U2_hist->process(event);
-	adc_U2_hist->process(event2);
+	tdc0_U1_hist->process(event);
+	tdc0_U1_hist->process(event2);
+	tdc0_U2_hist->process(event);
+	tdc0_U2_hist->process(event2);
 	
 	file->close();
 	return 0;
