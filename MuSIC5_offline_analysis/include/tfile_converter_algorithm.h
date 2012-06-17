@@ -19,9 +19,8 @@ public:
 	void process(midus_entry const *);
 
 private:
+	void init();
 	TTree* tree_m;
-	
-	int ref_count_m;
 };
 
 #endif

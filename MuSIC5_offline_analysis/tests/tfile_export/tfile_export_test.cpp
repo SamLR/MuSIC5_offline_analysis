@@ -9,32 +9,30 @@
 
 int main() {
 	smart_tfile* file = smart_tfile::getTFile("test.root", "RECREATE");
-	tfile_converter_algorithm test(file);
+
+	tfile_converter_algorithm* test = new tfile_converter_algorithm(file);
 	
 	// Create some mock branches
-	midus_out_branch tr1 [2]; // 0 = ADC, 1 = TDC
-	tr1[0].n_entries = 1;
-	tr1[1].n_entries = 10;
+	midus_out_branch tr1 [4]; // 0 = ADC, 1 = TDC0, 2 = TDC1, 3 = TDC2
+	tr1[0].n_entries = 2; // ADC (2 channels - U1 U2)
+	tr1[1].n_entries = 1; // TDC0 (T0 - 1 entry (time when event triggered))
+	tr1[2].n_entries = 5; // TDC1 (channel U1)
+	tr1[3].n_entries = 10; // TDC2 (channel U2)
 	for (int i = 0; i < tr1[0].n_entries; i++) {
-		tr1[0].data[i] = i*3 + 1;
-	}	
-	for (int i = 0; i < tr1[1].n_entries; i++) {
-		tr1[1].data[i] = i*4 + 1;
+		tr1[0].data[i] = i + 1;
+	}
+	tr1[1].data[0] = 1000;
+	for (int i = 0; i < tr1[2].n_entries; i++) {
+		tr1[2].data[i] = i*4 + 1;
+	}
+	for (int i = 0; i < tr1[3].n_entries; i++) {
+		tr1[3].data[i] = i*10 + 1;
 	}
 	
-	midus_out_branch tr2[2]; // 0 = ADC, 1 = TDC
-	tr2[0].n_entries = 1;
-	tr2[1].n_entries = 20;
-	for (int i = 0; i < tr2[0].n_entries; i++) {
-		tr2[0].data[i] = i*5 + 1;
-	}	
-	for (int i = 0; i < tr2[1].n_entries; i++) {
-		tr2[1].data[i] = i*7 + 1;
-	}
+	midus_entry* event = new midus_entry(tr1); // an event
+	test->process(event);
 	
-	midus_entry* U1 = new midus_entry(tr1); // a channel
-	midus_entry* U2 = new midus_entry(tr2); // a channel
-	test.process(U1);
-	test.process(U2);
+	file->close();
+	
 	return 0;
 }
