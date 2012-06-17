@@ -17,11 +17,12 @@ int main() {
 	
 	// Create some mock events
 	midus_out_branch tr1 [n_branches_in_trigger_tree]; // 0 = ADC, 1 = PHADC, 2 = T0, 3 = TDC1, 4 = TDC2
-	tr1[branch_adc].n_entries = 2; // ADC (2 channels - U1 U2)
+	tr1[branch_adc].n_entries = n_channels; // ADC (2 channels - U1 U2)
 	tr1[branch_phadc].n_entries = 0; // PHADC
 	tr1[branch_T0].n_entries = 1; // TDC0 (T0 - 1 entry (time when event triggered))
 	tr1[branch_TDC1].n_entries = 5; // TDC1 (channel U1)
 	tr1[branch_TDC2].n_entries = 10; // TDC2 (channel U2)
+	tr1[branch_TDC3].n_entries = 20; // TDC3
 	for (int i = 0; i < tr1[branch_adc].n_entries; i++) {
 		tr1[branch_adc].data[i] = i + 1;
 	}
@@ -32,13 +33,17 @@ int main() {
 	for (int i = 0; i < tr1[branch_TDC2].n_entries; i++) {
 		tr1[branch_TDC2].data[i] = i + 1050;
 	}
+	for (int i = 0; i < tr1[branch_TDC3].n_entries; i++) {
+		tr1[branch_TDC3].data[i] = i + 1060;
+	}
 	
 	midus_out_branch tr2 [n_branches_in_trigger_tree]; // 0 = ADC, 1 = PHADC, 2 = T0, 3 = TDC1, 4 = TDC2
-	tr2[branch_adc].n_entries = 2; // ADC (2 channels - U1 U2)
+	tr2[branch_adc].n_entries = n_channels; // ADC (2 channels - U1 U2)
 	tr2[branch_phadc].n_entries = 0; // PHADC
 	tr2[branch_T0].n_entries = 1; // TDC0 (T0 - 1 entry (time when event triggered))
 	tr2[branch_TDC1].n_entries = 15; // TDC1 (channel U1)
 	tr2[branch_TDC2].n_entries = 20; // TDC2 (channel U2)
+	tr2[branch_TDC3].n_entries = 40; // TDC3
 	for (int i = 0; i < tr2[branch_adc].n_entries; i++) {
 		tr2[branch_adc].data[i] = i + 1;
 	}
@@ -48,6 +53,10 @@ int main() {
 	}
 	for (int i = 0; i < tr2[branch_TDC2].n_entries; i++) {
 		tr2[branch_TDC2].data[i] = i + 2020;
+	}
+	
+	for (int i = 0; i < tr2[branch_TDC3].n_entries; i++) {
+		tr2[branch_TDC3].data[i] = i + 2005;
 	}
 	
 	int n_events = 2;

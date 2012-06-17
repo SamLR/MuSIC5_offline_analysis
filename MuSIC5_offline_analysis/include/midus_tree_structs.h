@@ -13,7 +13,7 @@
 #ifndef MuSIC5_offline_analysis_midus_tree_structs_h
 #define MuSIC5_offline_analysis_midus_tree_structs_h
 
-static int const n_channels = 2;
+static int const n_channels = 3;
 // number of branches is n_channels + 3 (ADC, PHADC & T0)
 static int const n_branches_in_trigger_tree = n_channels + 3;
 static int const max_data_entries = 500;
@@ -35,7 +35,8 @@ enum branch_ids {
     branch_phadc = 1,
     branch_T0    = 2,
     branch_TDC1  = 3,
-    branch_TDC2  = 4
+    branch_TDC2  = 4,
+    branch_TDC3  = 5
     // for other TDC branches just ad to TDC1
     };
 
