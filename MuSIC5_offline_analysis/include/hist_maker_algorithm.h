@@ -8,6 +8,7 @@
 #include "tfile_export_algorithm.h"
 
 #include "TH1.h"
+#include "TF1.h"
 
 class hist_maker_algorithm : public tfile_export_algorithm {
 public:
@@ -21,7 +22,8 @@ public:
 	void set_x_axis_title(std::string title) { hist_m->GetXaxis()->SetTitle(title.c_str()); };
 	void set_y_axis_title(std::string title) { hist_m->GetYaxis()->SetTitle(title.c_str()); };
 	
-	void fill_hist(double value) { hist_m->Fill(value); };
+	void fill_hist(double value) { hist_m->Fill(value); }
+	void fit_hist(TF1* fit_fn) { hist_m->Fit(fit_fn); }
 
 private:
 	TH1* hist_m;
