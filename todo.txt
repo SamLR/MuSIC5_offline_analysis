@@ -1,0 +1,9 @@
+TODO 
+midus_file
+* change n_entries -> n_trigger_entries
+* move scaler vec up/move alg vec down? 
+
+midus_tree_structs
+* add namespace
+* rationalise & tidy names
+* Check and tidy tests

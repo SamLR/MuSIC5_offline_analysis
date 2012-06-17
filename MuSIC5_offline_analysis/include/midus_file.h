@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 // local gubbins
 #include "input_file.h"
@@ -14,8 +15,10 @@
 
 class TTree;
 class smart_tfile;
+class scaler_algorithm;
 
 typedef int (*calibrate_func)(const int ch, const int val);
+typedef std::vector<scaler_algorithm*> scaler_alg_vec;
 
 class midus_file : public input_file{
 public:
@@ -29,7 +32,7 @@ public:
     inline smart_tfile* get_file() {return file_m;};
     // register functions
     void add_calibration_func(int const, calibrate_func);
-    void add_scaler_algorithm(algorithm* a);
+    void add_scaler_algorithm(scaler_algorithm *const);
 	
 private:
     void init();
@@ -53,6 +56,8 @@ private:
     midus_out_branch branches_m[n_branches_in];
     calibrate_func calibration_funcs[n_branches_in];
     int n_entries;
+    int scaler_vals[n_scaler_ch];
+    scaler_alg_vec scaler_algs;
     
     enum in_branch_indexs{
         qdc_i  = 0,

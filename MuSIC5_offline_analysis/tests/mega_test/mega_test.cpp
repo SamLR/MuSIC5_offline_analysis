@@ -10,10 +10,11 @@
 #include "../../include/tfile_converter_algorithm.h"
 #include "../../include/smart_tfile.h"
 #include "../../include/printer_alg.h"
+#include "../../include/scaler_printer.h"
 
 int main() {
 	// Open midus file
-	midus_file* in_file = new midus_file("run00077.root");
+	midus_file* in_file = new midus_file("run00119.root");
 
 	// add algorithm and calibration functions
 	// Add calibration functions
@@ -29,6 +30,9 @@ int main() {
     smart_tfile* out_file = smart_tfile::getTFile("out.root", "RECREATE");
     tfile_converter_algorithm* tca = new tfile_converter_algorithm(out_file);
 //    printer_alg* pa = new printer_alg();
+    scaler_printer* sp = new scaler_printer();
+    
+    in_file->add_scaler_algorithm(sp);
     
     in_file->add_algorithm(tca);
 //    in_file->add_algorithm(pa);

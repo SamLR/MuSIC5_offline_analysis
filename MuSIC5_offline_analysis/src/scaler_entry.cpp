@@ -18,6 +18,6 @@ scaler_entry::scaler_entry(int const in_values[n_scaler_ch]) {
     }
 }
 
-void scaler_entry::accept(scaler_algorithm* alg) const{
+void scaler_entry::accept (scaler_algorithm *const alg) const{
     alg->process(this);
 }

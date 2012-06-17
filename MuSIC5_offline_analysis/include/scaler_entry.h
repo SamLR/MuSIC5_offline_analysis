@@ -19,13 +19,13 @@ public:
     scaler_entry(int const [n_scaler_ch]);
     ~scaler_entry(){;}
     
-    void accept (scaler_algorithm const*) const;
+    void accept (scaler_algorithm *const) const;
     
     inline int const get_value(int const ch) const { return data[ch]; };
     inline static int const get_n_channels() {return n_scaler_ch;};
     
     inline static std::string const get_channel_name(int const ch) {
-        static std::string names [] = {"Sec", "trigger"," UnotD"
+        static std::string names [n_scaler_ch] = {"Sec", "trigger"," UnotD"
             "U", "D","scint", "-", "clk"};
         return names[ch];
     };
