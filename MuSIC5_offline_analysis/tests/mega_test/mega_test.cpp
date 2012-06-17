@@ -10,12 +10,8 @@
 #include "../../include/tfile_converter_algorithm.h"
 #include "../../include/smart_tfile.h"
 #include "../../include/printer_alg.h"
-<<<<<<< HEAD
-#include "../../include/hist_mu_lifetime.h"
-=======
-
 #include "../../include/hist_branch_channel.h"
->>>>>>> upstream/master
+#include "../../include/hist_mu_lifetime.h"
 
 int main() {
 	// Open midus file
