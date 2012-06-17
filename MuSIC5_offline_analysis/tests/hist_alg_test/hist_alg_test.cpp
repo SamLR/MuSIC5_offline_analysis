@@ -9,7 +9,8 @@
 
 int main() {
 	smart_tfile* file = smart_tfile::getTFile("test.root", "RECREATE");
-	hist_ADC_channel* adc_channel_hist = new hist_ADC_channel(file, "ADC_ch1", 1);
+	hist_ADC_channel* adc_U1_hist = new hist_ADC_channel(file, "U1.ADC", 0);
+	hist_ADC_channel* adc_U2_hist = new hist_ADC_channel(file, "U2.ADC", 1);
 	
 	// Create some mock branches
 	midus_out_branch tr1 [4]; // 0 = ADC, 1 = TDC0, 2 = TDC1, 3 = TDC2
@@ -47,8 +48,10 @@ int main() {
 	midus_entry* event = new midus_entry(tr1);
 	midus_entry* event2 = new midus_entry(tr2);
 	
-	adc_channel_hist->process(event);
-	adc_channel_hist->process(event2);
+	adc_U1_hist->process(event);
+	adc_U1_hist->process(event2);
+	adc_U2_hist->process(event);
+	adc_U2_hist->process(event2);
 	
 	file->close();
 	return 0;
