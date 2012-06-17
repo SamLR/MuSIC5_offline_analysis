@@ -18,7 +18,7 @@ int main(){
     midus_file* mf = new midus_file(file);
     printer_alg* alg = new printer_alg();
     mf->add_algorithm(alg);
-    mf->loop();
+    mf->loop(10);
     
     // This seems to be working but need to test 
     // with a controlled file

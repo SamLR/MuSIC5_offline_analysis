@@ -22,7 +22,8 @@ void printer_alg::process(line_entry const* in_entry){
 void printer_alg::process(midus_entry const* in_entry){
     for (int b = 0; b < in_entry->get_number_of_branches(); ++b) {
         int leaves = in_entry->get_entries_in_branch(b);
-        std::cout << "number of leaves: " << leaves<<std::endl;
+        std::cout << leaves << " in "<< midus_entry::get_name_branch(b)<<std::endl;
+        
         for (int i = 0; i < leaves; ++i) {
             std::cout<<"data is: "<<in_entry->get_value_in_branch(b, i) << std::endl;
         }
