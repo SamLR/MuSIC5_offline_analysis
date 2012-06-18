@@ -24,6 +24,7 @@ public:
 	
 	void fill_hist(double value) { hist_m->Fill(value); }
 	void fit_hist(TF1* fit_fn) { hist_m->Fit(fit_fn); }
+	void draw_hist();
 
 private:
 	TH1* hist_m;

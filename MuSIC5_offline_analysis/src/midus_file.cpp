@@ -28,7 +28,7 @@ void midus_file::loop(int const n_events) {
 	input_file::loop();          
 	
     for (int entry_number = 0; entry_number<n_events; ++entry_number) {
-        trigger_tree_m->GetEntry();
+        trigger_tree_m->GetEntry(entry_number);
         if (branches_m[err_i].data[0] > 0) {
             std::cerr << "error found in entry " << entry_number;
             std::cerr << ". Skipping this entry"<< std::endl;

@@ -7,6 +7,7 @@
 
 #include "hist_maker_algorithm.h"
 
+#include "TCanvas.h"
 #include "TH1.h"
 
 hist_maker_algorithm::hist_maker_algorithm(smart_tfile *const out_file, std::string histname, int n_bins, double x_low, double x_high): tfile_export_algorithm(out_file), histname_m(histname), n_bins_m(n_bins), x_low_m(x_low), x_high_m(x_high) {
@@ -19,4 +20,8 @@ hist_maker_algorithm::~hist_maker_algorithm() {
 
 void hist_maker_algorithm::process(line_entry const * in_entry) {
 	std::cout << "Called with a line entry" << std::endl;
+}
+
+void hist_maker_algorithm::draw_hist() {
+	hist_m->Draw();
 }
