@@ -15,6 +15,9 @@
 #include "tfile_converter_algorithm.h"
 #include "hist_branch_channel.h"
 
+#include "TApplication.h"
+#include "TCanvas.h"
+
 void HelpMessage();
 
 int main(int argc, 	char * argv[])
@@ -32,18 +35,21 @@ int main(int argc, 	char * argv[])
 	int tdc_chs_to_draw[16]; 
 	int n_tdcs_to_draw = 0; // 0 to 15 (t0, U0...U7, D0...D4, Ge0, Ge1)
 	
+	bool display_hists = false;
+	
 	if (argc < 2) {
 		HelpMessage();
 		exit(1);
 	}
 	
 	int c;
-	while ((c = getopt(argc, argv, "hi:o:q:a:t:")) != -1) {
+	while ((c = getopt(argc, argv, "hi:o:q:a:t:d")) != -1) {
 		switch(c) {
 		case 'h':
 			HelpMessage();
 			return 0;
 			break;
+			
 		case 'i':
 			input_filename = optarg;
 			break;
@@ -97,6 +103,10 @@ int main(int argc, 	char * argv[])
 					channel.push_back(long_arg[i]);
 				}
 			}
+			break;
+		
+		case 'd':
+			display_hists = true;
 			break;
 			
 		default:
@@ -206,6 +216,32 @@ int main(int argc, 	char * argv[])
     // Loop through the file
     in_file->loop();
     
+    // Display the histograms if that's what has been asked for	
+    if (display_hists == true) {
+    	TApplication theApp("App", &argc, argv);
+		TCanvas *c = new TCanvas("c", "c");
+    	for (int i = 0; i < n_qdcs_to_draw; i++) {
+    		if (qdc_ch_hist[i] != NULL) {
+	  			qdc_ch_hist[i]->draw_hist();
+   				c->Update();
+   				getchar();
+   			}
+   		}
+   		for (int i = 0; i < n_adcs_to_draw; i++) {
+   			if (adc_ch_hist[i] != NULL) {
+	  			adc_ch_hist[i]->draw_hist();
+   				c->Update();
+   				getchar();
+   			}
+   		}
+   		for (int i = 0; i < n_tdcs_to_draw; i++) {
+   			if (tdc_ch_hist[i] != NULL) {
+	  			tdc_ch_hist[i]->draw_hist();
+   				c->Update();
+   				getchar();
+   			}
+   		}
+   	}
     // Write and close the output file
     out_file->close();
     
@@ -222,6 +258,8 @@ void HelpMessage() {
 	std::cout << "The following commands take an integer or a series of integers separated by spaces and enclosed within \" \"\n";
 	std::cout << "\t -q  --  channel numbers of the channels whose ADC values you want to plot\n\t\t (where 1 = U0, 2 = U1, ..., 8 = U7, 9 = D0, ..., 13 = D4)\n\t\t Example: -q \"1 10\" creates histograms of U0.ADC and D1,ADC\n";
 	std::cout << "\t -a  --  channel numbers of the Ge channels whose ADC values you want to plot\n\t\t (where 0 = Ge0, 1 = Ge1)\n\t\t Example -a 0 creates a histogram of Ge0.ADC\n";
-	std::cout << "\t -t  -- channel numbers of the channels whose TDC values you want to plot\n\t\t (where 0 = TDC0, 1 = U0, ..., 8 = U7, 9 = D0, ..., 13 = D4, 14 = Ge0, 15 = Ge1)\n\t\t Example -t \"12 0 4\" creates histograms of D3.TDC, TDC0 and U3.TDC\n";
+	std::cout << "\t -t  --  channel numbers of the channels whose TDC values you want to plot\n\t\t (where 0 = TDC0, 1 = U0, ..., 8 = U7, 9 = D0, ..., 13 = D4, 14 = Ge0, 15 = Ge1)\n\t\t Example -t \"12 0 4\" creates histograms of D3.TDC, TDC0 and U3.TDC\n\n";
+	std::cout << "Other useful commands:\n";
+	std::cout << "\t -d  --  displays all the histograms that are generated. Go through them by pressing enter on the command line\n";
 }
 
