@@ -29,6 +29,9 @@ int main(int argc, 	char * argv[])
 	// The command line arguments
 	std::string input_filename;
 	std::string output_filename;
+	
+	std::string long_arg;
+	std::string channel;
 	int qdc_chs_to_draw[13]; // NB need to change array limit
 	int n_qdcs_to_draw = 0; // 1 to 13
 	int adc_chs_to_draw[2]; 
@@ -38,8 +41,8 @@ int main(int argc, 	char * argv[])
 	
 	if (argc < 2) {
 		std::cout << "Incorrect number of arguments" << std::endl;
-		std::cout << "Arguments: -i [input_filename] -o [output_filename] -q [qdc_channel_number] -a [adc_channel_number] " 
-				<< "-t [tdc_channel_number]" << std::endl;
+		std::cout << "Arguments: -i [input_filename] -o [output_filename] -q \"[qdc_channel_numbers]\" -a \"[adc_channel_numbers]\" " 
+				<< "-t \"[tdc_channel_numbers]\" " << std::endl;
 		exit(1);
 	}
 	
@@ -55,9 +58,19 @@ int main(int argc, 	char * argv[])
 			break;
 			
 		case 'q':
-			// later will convert from string
-			qdc_chs_to_draw[n_qdcs_to_draw] = atoi(optarg);
-			n_qdcs_to_draw++;
+			// optarg will come in as a string of numbers separated by spaces
+			long_arg = optarg;
+			for (int i = 0; i <= long_arg.size(); i++) {
+				if (i == long_arg.size() || long_arg[i] == ' ') {
+					// later will convert from string
+					qdc_chs_to_draw[n_qdcs_to_draw] = atoi(channel.c_str());
+					n_qdcs_to_draw++;	
+					channel.clear();
+				}
+				else {
+					channel.push_back(long_arg[i]);
+				}
+			}
 			break;
 			
 		case 'a':
