@@ -3,6 +3,7 @@
 // Created: 15/06/2012 Andrew Edmonds
 
 #include <cstdlib>
+#include <assert.h>
 
 #include "midus_file.h"
 #include "midus_entry.h"
@@ -103,8 +104,10 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     // QDC branch
     int n_entries = branches_m[qdc_i].n_entries;
     out_branches[branch_qdc].n_entries = n_entries;
+    
     for (int ch = 0 ; ch<branches_m[qdc_i].n_entries; ++ch) {
-        int calc_ch = get_qdc_ch(ch);
+        int calc_ch = (get_qdc_ch(ch) - 1);
+        assert((calc_ch > 0 && calc_ch < midus_structure::n_qdc_channels));
         int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch));
         // the values require conversion 
         out_branches[0].data[calc_ch] = val; 
