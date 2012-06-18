@@ -74,9 +74,19 @@ int main(int argc, 	char * argv[])
 			break;
 			
 		case 'a':
-			// later will convert from string
-			adc_chs_to_draw[n_adcs_to_draw] = atoi(optarg);
-			n_adcs_to_draw++;
+			// optarg will come in as a string of numbers separated by spaces
+			long_arg = optarg;
+			for (int i = 0; i <= long_arg.size(); i++) {
+				if (i == long_arg.size() || long_arg[i] == ' ') {
+					// later will convert from string
+					adc_chs_to_draw[n_adcs_to_draw] = atoi(channel.c_str());
+					n_adcs_to_draw++;
+					channel.clear();
+				}
+				else {
+					channel.push_back(long_arg[i]);
+				}
+			}
 			break;
 			
 		case 't':
@@ -112,7 +122,8 @@ int main(int argc, 	char * argv[])
     hist_branch_channel* qdc_ch_hist[n_qdcs_to_draw];
     for (int i = 0; i < n_qdcs_to_draw; i++) {
    		if (qdc_chs_to_draw[i] < qdc_ch_U0 || qdc_chs_to_draw[i] > qdc_ch_D4) {
-   			std::cout << "Invalid channel number" << std::endl;
+   			std::cout << "Invalid qdc channel number " << qdc_chs_to_draw[i] << std::endl;
+    		qdc_ch_hist[i] = NULL;
    		}
    		std::stringstream histname;
    		histname << "X" << qdc_chs_to_draw[i] << ".ADC";
@@ -124,7 +135,8 @@ int main(int argc, 	char * argv[])
     hist_branch_channel* adc_ch_hist[n_adcs_to_draw];
     for (int i = 0; i < n_adcs_to_draw; i++) {
     	if (adc_chs_to_draw[i] < phadc_ch_Ge0 || adc_chs_to_draw[i] > phadc_ch_Ge1) {
-    		std::cout << "Invalid channel number" << std::endl;
+    		std::cout << "Invalid adc channel number " << adc_chs_to_draw[i] << std::endl;
+    		adc_ch_hist[i] = NULL;
     	}
     	else if (adc_chs_to_draw[i] == phadc_ch_Ge0) {
     		adc_ch_hist[i] = new hist_branch_channel(out_file, "Ge1.ADC", 0, branch_adc0, 100, 0, 3000);
@@ -139,7 +151,8 @@ int main(int argc, 	char * argv[])
     hist_branch_channel* tdc_ch_hist[n_tdcs_to_draw];
     for (int i = 0; i < n_tdcs_to_draw; i++) {
     	if (tdc_chs_to_draw[i] < tdc_ch_t0 || tdc_chs_to_draw[i] > tdc_ch_Ge1) {
-    		std::cout << "Invalid channel number" << std::endl;
+    		std::cout << "Invalid tdc channel number " << tdc_chs_to_draw[i] << std::endl;
+    		tdc_ch_hist[i] = NULL;
     	}
     	else if (tdc_chs_to_draw[i] == tdc_ch_t0) {
     		tdc_ch_hist[i] = new hist_branch_channel(out_file, "T0.TDC", 0, branch_tdc0, 100, 0, 3000);
@@ -158,13 +171,16 @@ int main(int argc, 	char * argv[])
     // Add algorithms to the midus_file
     in_file->add_algorithm(converter);
     for (int i = 0; i < n_qdcs_to_draw; i++) {
-    	in_file->add_algorithm(qdc_ch_hist[i]);
+    	if (qdc_ch_hist[i] != NULL)
+    		in_file->add_algorithm(qdc_ch_hist[i]);
     }
     for (int i = 0; i < n_adcs_to_draw; i++) {
-    	in_file->add_algorithm(adc_ch_hist[i]);
+    	if (adc_ch_hist[i] != NULL)
+       		in_file->add_algorithm(adc_ch_hist[i]);
     }
    for (int i = 0; i < n_tdcs_to_draw; i++) {
-    	in_file->add_algorithm(tdc_ch_hist[i]);
+    	if (tdc_ch_hist[i] != NULL)
+	    	in_file->add_algorithm(tdc_ch_hist[i]);
     }
     
     // Loop through the file
