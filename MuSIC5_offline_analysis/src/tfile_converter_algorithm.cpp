@@ -39,7 +39,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
 	
     for (int ch = 0; ch < n_tdc_channels; ++ch) {
-    	if (ch <= (qdc_ch_D4 - 1)) { // convert to index - qdc_ch_U0 = 1 !!!!)
+    	if (ch <= (qdc_ch_D4)) { // convert to index - qdc_ch_U0 = 1 !!!!)
         	channels_m[ch].adc = in_entry->get_value_in_branch(branch_qdc, ch);
         }
         else if (ch == 15) { // CdTe
