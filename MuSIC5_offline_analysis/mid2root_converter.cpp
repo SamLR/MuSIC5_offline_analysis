@@ -90,9 +90,18 @@ int main(int argc, 	char * argv[])
 			break;
 			
 		case 't':
-			// later will convert from string
-			tdc_chs_to_draw[n_tdcs_to_draw] = atoi(optarg);
-			n_tdcs_to_draw++;
+			long_arg = optarg;
+			for (int i = 0; i <= long_arg.size(); i++) {
+				if (i == long_arg.size() || long_arg[i] == ' ') {
+					// later will convert from string
+					tdc_chs_to_draw[n_tdcs_to_draw] = atoi(channel.c_str());
+					n_tdcs_to_draw++;
+					channel.clear();
+				}
+				else {
+					channel.push_back(long_arg[i]);
+				}
+			}
 			break;
 			
 		default:
@@ -124,6 +133,7 @@ int main(int argc, 	char * argv[])
    		if (qdc_chs_to_draw[i] < qdc_ch_U0 || qdc_chs_to_draw[i] > qdc_ch_D4) {
    			std::cout << "Invalid qdc channel number " << qdc_chs_to_draw[i] << std::endl;
     		qdc_ch_hist[i] = NULL;
+    		continue;
    		}
    		std::stringstream histname;
    		histname << "X" << qdc_chs_to_draw[i] << ".ADC";
@@ -137,6 +147,7 @@ int main(int argc, 	char * argv[])
     	if (adc_chs_to_draw[i] < phadc_ch_Ge0 || adc_chs_to_draw[i] > phadc_ch_Ge1) {
     		std::cout << "Invalid adc channel number " << adc_chs_to_draw[i] << std::endl;
     		adc_ch_hist[i] = NULL;
+    		continue;
     	}
     	else if (adc_chs_to_draw[i] == phadc_ch_Ge0) {
     		adc_ch_hist[i] = new hist_branch_channel(out_file, "Ge1.ADC", 0, branch_adc0, 100, 0, 3000);
@@ -153,6 +164,7 @@ int main(int argc, 	char * argv[])
     	if (tdc_chs_to_draw[i] < tdc_ch_t0 || tdc_chs_to_draw[i] > tdc_ch_Ge1) {
     		std::cout << "Invalid tdc channel number " << tdc_chs_to_draw[i] << std::endl;
     		tdc_ch_hist[i] = NULL;
+    		continue;
     	}
     	else if (tdc_chs_to_draw[i] == tdc_ch_t0) {
     		tdc_ch_hist[i] = new hist_branch_channel(out_file, "T0.TDC", 0, branch_tdc0, 100, 0, 3000);
