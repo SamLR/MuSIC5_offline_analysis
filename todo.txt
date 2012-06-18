@@ -1,9 +1,12 @@
-TODO 
-midus_file
-* change n_entries -> n_trigger_entries
-* move scaler vec up/move alg vec down? 
+TODO
+   * [ ]refactor struct file:
 
-midus_tree_structs
-* add namespace
-* rationalise & tidy names
-* Check and tidy tests
+      * add namespace
+      * rationalise & tidy enums
+      * change to using 1 as first value
+         * e.g. U1->U8
+   * [ ]propagate refactor changes
+
+   * [ ]refactor structure (remove in_file?)
+
+   * [ ]look at optimisations 
