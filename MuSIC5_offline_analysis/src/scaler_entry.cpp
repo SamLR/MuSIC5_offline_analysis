@@ -12,8 +12,8 @@
 #include "midus_structure.h"
 #include "scaler_algorithm.h"
 
-scaler_entry::scaler_entry(int const in_values[n_scaler_ch]) {
-    for (int ch = 0; ch < n_scaler_ch; ++ch) {
+scaler_entry::scaler_entry(int const in_values[midus_structure::n_scaler_ch]) {
+    for (int ch = 0; ch < midus_structure::n_scaler_ch; ++ch) {
         data[ch] = in_values[ch];
     }
 }
