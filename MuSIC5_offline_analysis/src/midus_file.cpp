@@ -29,6 +29,7 @@ void midus_file::loop(int const n_events) {
 	
     for (int entry_number = 0; entry_number<n_events; ++entry_number) {
         trigger_tree_m->GetEntry(entry_number);
+        if (entry_number%10000 == 0) std::cout << "Entry "<< entry_number<<std::endl;
         if (branches_m[err_i].data[0] > 0) {
             std::cerr << "error found in entry " << entry_number;
             std::cerr << ". Skipping this entry"<< std::endl;
@@ -45,6 +46,8 @@ void midus_file::loop(int const n_events) {
             entry.accept(get_algorithm(alg));
         }
     }
+    
+    if(scaler_algs.size()==0) return;
     
     int const n_scaler_entries = scaler_tree_m->GetEntries();
     for (int sclr_entry = 0; sclr_entry < n_scaler_entries; ++sclr_entry) {
@@ -108,6 +111,7 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         // channels 1-13 (which will become indexes 0-12)
         int calc_ch = (get_qdc_ch(ch) - 1);
         if ( 0 < calc_ch || calc_ch > 12) continue;
+        
         int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch));
         // the values require conversion 
         out_branches[0].data[calc_ch] = val; 
