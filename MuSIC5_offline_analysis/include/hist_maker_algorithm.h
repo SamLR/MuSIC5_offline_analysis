@@ -23,7 +23,7 @@ public:
 	void set_y_axis_title(std::string title) { hist_m->GetYaxis()->SetTitle(title.c_str()); };
 	
 	void fill_hist(double value) { hist_m->Fill(value); }
-	void fit_hist(TF1* fit_fn) { hist_m->Fit(fit_fn, "Q");/* gStyle->SetOptFit(1);*/}
+	void fit_hist(TF1* fit_fn) { hist_m->Fit(fit_fn, "QR");/* gStyle->SetOptFit(1);*/} // Q = quiet, R = use function range
 	void draw_hist();
 
 private:

@@ -74,18 +74,18 @@ int main(int argc, 	char * argv[])
     
     
     // Add the tdc histograms
-    hist_branch_channel* tdc_ch_hist[n_tdc_channels];
-    for (int i = 0; i < n_tdc_channels; i++) {
+    hist_branch_channel* tdc_ch_hist[midus_structure::n_tdc_channels];
+    for (int i = 0; i < midus_structure::n_tdc_channels; i++) {
     	std::stringstream histname;
     	histname << "TDC" << i;
-   		tdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), 0, branch_tdc0 + i, 100, 16700, 17000);
+   		tdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), 0, midus_structure::eMEB_tdc0 + i, 1000, -20000, 20000);
     }
     
     // Add calibration functions
-	in_file->add_calibration_func(branch_tdc0, &tdc_calibration); // NB all the tdc branches call the calib fn in calib[tdc0]
+	in_file->add_calibration_func(midus_structure::eMEB_tdc0, &tdc_calibration); // NB all the tdc branches call the calib fn in calib[tdc0]
     
     // Add algorithms to the midus_file
-    for (int i = 0; i < n_tdc_channels; i++) {
+    for (int i = 0; i < midus_structure::n_tdc_channels; i++) {
     	in_file->add_algorithm(tdc_ch_hist[i]);
     }
     
@@ -98,12 +98,12 @@ int main(int argc, 	char * argv[])
     }
     
     // Now fit function
-    TF1* fit_fn = new TF1("fit", "[0] + [1]*exp(-x)");
+    TF1* fit_fn = new TF1("fit", "[0] + [1]*exp(-x/[2])",0, 20000);
     fit_fn->SetParName(0, "N_{B}");
     fit_fn->SetParName(1, "N_{#mu^{+}}");
-    //fit_fn->SetParName(2, "#tau");
-    //fit_fn->SetParameter(2, 2.2);
-    for (int i = 0; i < n_tdc_channels; i++) {
+    fit_fn->SetParName(2, "#tau");
+    fit_fn->SetParameter(2, 2.2);
+    for (int i = 0; i < midus_structure::n_tdc_channels; i++) {
     	tdc_ch_hist[i]->fit_hist(fit_fn);
     }
     
