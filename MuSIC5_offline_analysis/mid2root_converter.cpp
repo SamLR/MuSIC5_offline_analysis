@@ -14,6 +14,7 @@
 
 #include "tfile_converter_algorithm.h"
 #include "hist_branch_channel.h"
+#include "printer_alg.h"
 
 #include "TApplication.h"
 #include "TCanvas.h"
@@ -39,6 +40,7 @@ int main(int argc, 	char * argv[])
 	int n_tdcs_to_draw = 0; // 0 to 15 (t0, U0...U7, D0...D4, Ge0, Ge1)
 	
 	bool display_hists = false;
+	int n_entries_to_process = 0;
 	
 	if (argc < 2) {
 		HelpMessage();
@@ -46,7 +48,7 @@ int main(int argc, 	char * argv[])
 	}
 	
 	int c;
-	while ((c = getopt(argc, argv, "hi:o:q:g:t:da")) != -1) {
+	while ((c = getopt(argc, argv, "hi:o:q:g:t:dan:")) != -1) {
 		switch(c) {
 		case 'h':
 			HelpMessage();
@@ -127,6 +129,9 @@ int main(int argc, 	char * argv[])
 			n_tdcs_to_draw = max_tdc_hists;
 			break;
 			
+		case 'n':
+			n_entries_to_process = atoi(optarg);
+			break;
 		default:
 			std::cout << "Invalid argument " << c << std::endl;
 			break;
@@ -231,8 +236,16 @@ int main(int argc, 	char * argv[])
 	    	in_file->add_algorithm(tdc_ch_hist[i]);
     }
     
+    //printer_alg* printer = new printer_alg();
+    //in_file->add_algorithm(printer);
+    
     // Loop through the file
-    in_file->loop();
+    if (n_entries_to_process != 0) {
+    	in_file->loop(n_entries_to_process);
+    }
+    else {
+    	in_file->loop();
+    }
     
     // Display the histograms if that's what has been asked for	
     if (display_hists == true) {
@@ -280,5 +293,6 @@ void HelpMessage() {
 	std::cout << "Other useful commands:\n";
 	std::cout << "\t -d  --  displays all the histograms that are generated. Go through them by pressing enter on the command line\n";
 	std::cout << "\t -a  --  create histograms for all ADC and TDC channels\n\t\t (don't use in conjunction with -q, -g or -t)\n";
+	std::cout << "\t -n  --  the number of entries in the input file to process\n";
 }
 
