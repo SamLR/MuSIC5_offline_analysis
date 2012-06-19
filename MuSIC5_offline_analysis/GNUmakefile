@@ -9,8 +9,8 @@
 
 # Glen Cowan, RHUL Physics, November 2007.
 
-PROGNAME      = mid2root_converter
-SOURCES       = mid2root_converter.cpp src/*.cpp
+PROGNAME      = mu_analysis
+SOURCES       = mu_analysis.cpp src/*.cpp
 INCLUDES      = include/
 ROOTFLAGS     = $(shell root-config --cflags)
 ROOTLIBS      = $(shell root-config --libs)

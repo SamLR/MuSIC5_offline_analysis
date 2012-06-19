@@ -1,5 +1,5 @@
 #!/bin/bash
 # setEnv.sh - sets the PATH and LD_LIBRARY_PATH to get ROOT to work
 
-LD_LIBRARY_PATH=xxx:$LD_LIBRARY_PATH
-PATH=xxx:$LF_LIBRARY_PATH
+export LD_LIBRARY_PATH="/home/andy/Work/comet/root/lib:$LD_LIBRARY_PATH"
+export PATH="/home/andy/Work/comet/root/bin:$PATH"

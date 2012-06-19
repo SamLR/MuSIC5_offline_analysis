@@ -43,7 +43,7 @@ void hist_branch_channel::process(midus_entry const * in_entry) {
 	else if (branch_m == branch_tdc0) {
 		hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_m, 0)); 
 	}
-	else if (branch_m > branch_tdc1) {
+	else if (branch_m >= branch_tdc1) {
 		for (int i = 0; i < in_entry->get_entries_in_branch(branch_m); i++) {
 			hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_m, i)); 
 		}
