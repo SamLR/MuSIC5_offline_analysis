@@ -6,7 +6,7 @@
 
 #include "midus_file.h"
 #include "midus_entry.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 #include "smart_tfile.h"
 #include "TTree.h"
 #include "calibration_functions.h"
@@ -104,7 +104,10 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     int n_entries = branches_m[qdc_i].n_entries;
     out_branches[branch_qdc].n_entries = n_entries;
     for (int ch = 0 ; ch<branches_m[qdc_i].n_entries; ++ch) {
-        int calc_ch = get_qdc_ch(ch);
+        // all QDC channels (0-15) are read out but only using 
+        // channels 1-13 (which will become indexes 0-12)
+        int calc_ch = (get_qdc_ch(ch) - 1);
+        if ( 0 < calc_ch || calc_ch > 12) continue;
         int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch));
         // the values require conversion 
         out_branches[0].data[calc_ch] = val; 
