@@ -15,6 +15,6 @@ void hist_x_ray::process(line_entry const * in_entry) {
 
 void hist_x_ray::process(midus_entry const * in_entry) {
 
-	hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_adc0, 0));
-	hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(branch_adc1, 0));
+	hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(midus_structure::eMEB_adc0, 0));
+	hist_maker_algorithm::fill_hist(in_entry->get_value_in_branch(midus_structure::eMEB_adc1, 0));
 }

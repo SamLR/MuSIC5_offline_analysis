@@ -7,10 +7,10 @@
 
 #include "midus_entry.h"
 #include "algorithm.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 
 
-midus_entry::midus_entry(midus_out_branch const branch []){
+midus_entry::midus_entry(midus_structure::midus_out_branch const branch []){
     init(branch);
 }
 
@@ -18,7 +18,7 @@ void midus_entry::accept(algorithm *const alg) const {
     alg->process(this);
 }
 
-void midus_entry::init(midus_out_branch const branch[]) {
+void midus_entry::init(midus_structure::midus_out_branch const branch[]) {
     for (int b = 0; b<n_branches; ++b) {
         branches_m[b].n_entries = branch[b].n_entries;
         for (int i = 0; i < branches_m[b].n_entries; ++i) {

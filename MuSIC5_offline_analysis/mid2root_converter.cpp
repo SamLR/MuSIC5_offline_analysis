@@ -30,13 +30,13 @@ int main(int argc, 	char * argv[])
 	
 	std::string long_arg;
 	std::string channel;
-	int max_qdc_hists = 13;
-	int qdc_chs_to_draw[max_qdc_hists]; // NB need to change array limit
-	int n_qdcs_to_draw = 0; // 1 to 13
-	int max_adc_hists = 2;
+	int max_qdc_hists = midus_structure::n_qdc_channels;
+	int qdc_chs_to_draw[max_qdc_hists];
+	int n_qdcs_to_draw = 0; // 0 to 12
+	int max_adc_hists = midus_structure::n_adc_channels;
 	int adc_chs_to_draw[max_adc_hists]; 
 	int n_adcs_to_draw = 0; // 0 to 1 (Ge0, Ge1)
-	int max_tdc_hists = 16;
+	int max_tdc_hists = midus_structure::n_tdc_channels;
 	int tdc_chs_to_draw[max_tdc_hists]; 
 	int n_tdcs_to_draw = 0; // 0 to 15 (t0, U0...U7, D0...D4, Ge0, Ge1)
 	
@@ -159,35 +159,30 @@ int main(int argc, 	char * argv[])
     // Find out if we want to plot a qdc channel
     hist_branch_channel* qdc_ch_hist[n_qdcs_to_draw];
     for (int i = 0; i < n_qdcs_to_draw; i++) {
-   		if (qdc_chs_to_draw[i] < qdc_ch_U0 || qdc_chs_to_draw[i] > qdc_ch_D4) {
+   		if (qdc_chs_to_draw[i] < midus_structure::eQDC_U1 || qdc_chs_to_draw[i] > midus_structure::eQDC_D5) {
    			std::cout << "Invalid qdc channel number " << qdc_chs_to_draw[i] << std::endl;
     		qdc_ch_hist[i] = NULL;
     		continue;
    		}
    		std::stringstream histname;
-   		if (qdc_chs_to_draw[i] <= qdc_ch_U7) {
-   			histname << "U" << qdc_chs_to_draw[i] - 1 << ".ADC";
-   		}
-   		else {
-   			histname << "D" << qdc_chs_to_draw[i] - qdc_ch_U7 - 1 << ".ADC";
-   		}
-   		qdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), qdc_chs_to_draw[i], branch_qdc, 100, 0, 3500);
+ 		histname << midus_structure::get_channel_name(qdc_chs_to_draw[i]) << ".ADC";
+   		qdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), qdc_chs_to_draw[i], midus_structure::eMEB_qdc, 100, 0, 3500);
     }	
     
     
     // Find out if we want to plot an adc channel
     hist_branch_channel* adc_ch_hist[n_adcs_to_draw];
     for (int i = 0; i < n_adcs_to_draw; i++) {
-    	if (adc_chs_to_draw[i] < phadc_ch_Ge0 || adc_chs_to_draw[i] > phadc_ch_Ge1) {
+    	if (adc_chs_to_draw[i] == 0) {
+    		adc_ch_hist[i] = new hist_branch_channel(out_file, "Ge1.ADC", 0, midus_structure::eMEB_adc0, 100, 0, 3000);
+    	}
+    	else if (adc_chs_to_draw[i] == 1) {
+    		adc_ch_hist[i] = new hist_branch_channel(out_file, "Ge2.ADC", 0, midus_structure::eMEB_adc1, 100, 0, 3000);
+    	}
+    	else {
     		std::cout << "Invalid adc channel number " << adc_chs_to_draw[i] << std::endl;
     		adc_ch_hist[i] = NULL;
     		continue;
-    	}
-    	else if (adc_chs_to_draw[i] == phadc_ch_Ge0) {
-    		adc_ch_hist[i] = new hist_branch_channel(out_file, "Ge1.ADC", 0, branch_adc0, 100, 0, 3000);
-    	}
-    	else if (adc_chs_to_draw[i] == phadc_ch_Ge1) {
-    		adc_ch_hist[i] = new hist_branch_channel(out_file, "Ge2.ADC", 0, branch_adc1, 100, 0, 3000);
     	}
     }
     
@@ -195,26 +190,18 @@ int main(int argc, 	char * argv[])
     // Find out if we want to plot a tdc channel
     hist_branch_channel* tdc_ch_hist[n_tdcs_to_draw];
     for (int i = 0; i < n_tdcs_to_draw; i++) {
-    	if (tdc_chs_to_draw[i] < tdc_ch_t0 || tdc_chs_to_draw[i] > tdc_ch_Ge1) {
+    	if (tdc_chs_to_draw[i] < midus_structure::eTDC_0 || tdc_chs_to_draw[i] > midus_structure::eTDC_15) {
     		std::cout << "Invalid tdc channel number " << tdc_chs_to_draw[i] << std::endl;
     		tdc_ch_hist[i] = NULL;
     		continue;
     	}
-    	else if (tdc_chs_to_draw[i] == tdc_ch_t0) {
-    		tdc_ch_hist[i] = new hist_branch_channel(out_file, "T0.TDC", 0, branch_tdc0, 100, 0, 500000);
+    	else if (tdc_chs_to_draw[i] == midus_structure::eTDC_0) {
+    		tdc_ch_hist[i] = new hist_branch_channel(out_file, "T0.TDC", 0, midus_structure::eMEB_tdc0, 100, 0, 500000);
     	}
-    	else if (tdc_chs_to_draw[i] > tdc_ch_t0) {
+    	else if (tdc_chs_to_draw[i] > midus_structure::eTDC_0) {
     		std::stringstream histname;
-    		if (tdc_chs_to_draw[i] <= tdc_ch_U7) {
-    			histname << "U" << tdc_chs_to_draw[i] - 1 << ".TDC";
-    		}
-    		else if (tdc_chs_to_draw[i] > tdc_ch_U7 && tdc_chs_to_draw[i] <= tdc_ch_D4) {
-    			histname << "D" << tdc_chs_to_draw[i] - tdc_ch_U7 - 1 << ".TDC";
-    		}
-    		else if (tdc_chs_to_draw[i] > tdc_ch_D4) {
-    			histname << "Ge" << tdc_chs_to_draw[i] - tdc_ch_D4 - 1 << ".TDC";
-    		}
-    		tdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), 0, branch_tdc0 + tdc_chs_to_draw[i], 100, 0, 500000);
+    		histname << midus_structure::get_channel_name(tdc_chs_to_draw[i]) << ".TDC";
+    		tdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), 0, tdc_chs_to_draw[i], 100, 0, 500000);
     	}
     }
     
@@ -223,7 +210,7 @@ int main(int argc, 	char * argv[])
     tfile_converter_algorithm* converter = new tfile_converter_algorithm(out_file);
     
     // Add calibration functions
-	in_file->add_calibration_func(branch_tdc0, &tdc_calibration); // NB all the tdc branches call the calib fn in calib[tdc0]
+	in_file->add_calibration_func(midus_file::tdc_i, &tdc_calibration); // NB all the tdc branches call the calib fn in calib[tdc0]
     
     // Add algorithms to the midus_file
     in_file->add_algorithm(converter);
@@ -240,7 +227,7 @@ int main(int argc, 	char * argv[])
 	    	in_file->add_algorithm(tdc_ch_hist[i]);
     }
     
-    //printer_alg* printer = new printer_alg();
+   // printer_alg* printer = new printer_alg();
     //in_file->add_algorithm(printer);
     
     // Loop through the file
@@ -291,7 +278,7 @@ void HelpMessage() {
 	std::cout << "\t -i  --  filename of the input MIDAS ROOT file to convert (e.g. -i example.root)\n";
 	std::cout << "\t -o  --  filename of the output ROOT file\n\t\t (if not given then the output file is called example_converted.root in the same directory as the input file)\n\n";
 	std::cout << "The following commands take an integer or a series of integers separated by spaces and enclosed within \" \"\n";
-	std::cout << "\t -q  --  channel numbers of the channels whose ADC values you want to plot\n\t\t (where 1 = U0, 2 = U1, ..., 8 = U7, 9 = D0, ..., 13 = D4)\n\t\t Example: -q \"1 10\" creates histograms of U0.ADC and D1,ADC\n";
+	std::cout << "\t -q  --  channel numbers of the channels whose ADC values you want to plot\n\t\t (where 0 = U1, 1 = U2, ..., 7 = U8, 8 = D1, ..., 12 = D5)\n\t\t Example: -q \"1 10\" creates histograms of U2.ADC and D3,ADC\n";
 	std::cout << "\t -g  --  channel numbers of the Ge channels whose ADC values you want to plot\n\t\t (where 0 = Ge0, 1 = Ge1)\n\t\t Example -a 0 creates a histogram of Ge0.ADC\n";
 	std::cout << "\t -t  --  channel numbers of the channels whose TDC values you want to plot\n\t\t (where 0 = TDC0, 1 = U0, ..., 8 = U7, 9 = D0, ..., 13 = D4, 14 = Ge0, 15 = Ge1)\n\t\t Example -t \"12 0 4\" creates histograms of D3.TDC, TDC0 and U3.TDC\n\n";
 	std::cout << "Other useful commands:\n";

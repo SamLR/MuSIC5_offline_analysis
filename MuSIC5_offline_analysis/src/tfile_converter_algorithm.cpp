@@ -9,7 +9,10 @@
 
 #include "TTree.h"
 
-std::string const tfile_converter_algorithm::channel_names[n_tdc_channels] = { "U1", "U2", "U3", "U4",  "U5", "U6",  "U7", "U8", "D1", "D2",  "D3", "D4", "D5",  "Ge0", "Ge1",  "CdTe"};
+
+std::string const tfile_converter_algorithm::channel_names[midus_structure::n_actual_channels] =
+{ "U1", "U2", "U3", "U4",  "U5", "U6",  "U7", "U8", "D1", "D2", "D3", "D4", "D5", "Ge1", "Ge2"};//,  "CdTe"}; ignore for now
+
 
 tfile_converter_algorithm::tfile_converter_algorithm(smart_tfile *const out_file)
 : tfile_export_algorithm(out_file) {
@@ -21,7 +24,7 @@ void tfile_converter_algorithm::init() {
 	tree_m = new TTree("Trigger", "Trigger");
     
     // Fill the data into the branch (channel) and create branch
-	for (int i = 0; i < n_tdc_channels; i++) {
+	for (int i = 0; i < midus_structure::n_actual_channels; i++) {
         std::string leaflist("ADC/I:TDC0:nHITS:TDC[nHITS]");
 		tree_m->Branch(channel_names[i].c_str(), &(channels_m[i]), leaflist.c_str());	
 	}
@@ -38,27 +41,24 @@ void tfile_converter_algorithm::process(line_entry const * in_entry) {
 void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
 	
-    for (int ch = 0; ch < n_tdc_channels; ++ch) {
-    	if (ch <= (qdc_ch_D4 - 1)) { // convert to index - qdc_ch_U0 = 1 !!!!)
-        	channels_m[ch].adc = in_entry->get_value_in_branch(branch_qdc, ch);
+    for (int ch = 0; ch < midus_structure::n_actual_channels	; ++ch) { // 15 output channels U1 - U8, D1 - D5, Ge1, Ge2
+    	if (ch <= midus_structure::eQDC_D5) { // get QDC values for upstream and downstream counters
+        	channels_m[ch].adc = in_entry->get_value_in_branch(midus_structure::eMEB_qdc, ch);
         }
-        else if (ch == 15) { // CdTe
-        	// no adc2 branch to assign
-        	channels_m[ch].adc= -100;
+        else if (ch == midus_structure::eQDC_D5 + 1) { // get ADC value for Ge1 counter
+        	channels_m[ch].adc = in_entry->get_value_in_branch(midus_structure::eMEB_adc0, 0);
         }
-        else {
-        	// Ge0 or Ge1 counter
-        	channels_m[ch].adc = in_entry->get_value_in_branch(ch - qdc_ch_D4 + 1, 0); // get the correct branch number (1 = adc0, 2 = adc1)
+        else if (ch == midus_structure::eQDC_D5 + 2) { // get ADC value for Ge2 counter
+        	channels_m[ch].adc = in_entry->get_value_in_branch(midus_structure::eMEB_adc1, 0);
         }
-		channels_m[ch].tdc0 = in_entry->get_value_in_branch(branch_tdc0, 0);
+		channels_m[ch].tdc0 = in_entry->get_value_in_branch(midus_structure::eMEB_tdc0, 0);
         
-        int tdc_branch = branch_tdc1 + ch;
+        int tdc_branch = ch + midus_structure::eMEB_tdc0 + 1;
         int n_hits = in_entry->get_entries_in_branch(tdc_branch);
         channels_m[ch].n_tdc_hits = n_hits;
 		for (int hit = 0; hit < n_hits; hit++) {
 			channels_m[ch].tdc[hit] = in_entry->get_value_in_branch(tdc_branch, hit);
 		}
-
     }
 	
 		

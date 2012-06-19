@@ -6,14 +6,14 @@
 #define MIDUS_ENTRY_H_
 
 #include "entry.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 #include <string>
 
 class algorithm;
 
 class midus_entry: public entry {
 public:
-    midus_entry(midus_out_branch const []);
+    midus_entry(midus_structure::midus_out_branch const []);
     ~midus_entry(){;} ;
     void accept(algorithm* const) const;
     
@@ -33,10 +33,10 @@ public:
 
 private:
     midus_entry();
-    void init(midus_out_branch const []);
+    void init(midus_structure::midus_out_branch const []);
     
-    static int const n_branches = n_branches_in_entry;
-    midus_out_branch branches_m[n_branches_in_entry];
+    static int const n_branches = midus_structure::n_branches_in_midus_entry;
+    midus_structure::midus_out_branch branches_m[midus_structure::n_branches_in_midus_entry];
     
 };
 

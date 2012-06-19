@@ -21,6 +21,6 @@ build/
 *.root
 *.mid
 mid2root_converter
-MuSIC5_offline_analysis/mid2root_converter.dSYM/
-MuSIC5_offline_analysis/MuSIC5_offline_analysis.build/
 *.log
+mid2root_converter.dSYM
+MuSIC5_offline_analysis.build/
