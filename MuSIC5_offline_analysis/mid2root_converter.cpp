@@ -223,7 +223,7 @@ int main(int argc, 	char * argv[])
     tfile_converter_algorithm* converter = new tfile_converter_algorithm(out_file);
     
     // Add calibration functions
-	//in_file->add_calibration_func(branch_tdc0, &tdc_calibration); // NB all the tdc branches call the calib fn in calib[tdc0]
+	in_file->add_calibration_func(branch_tdc0, &tdc_calibration); // NB all the tdc branches call the calib fn in calib[tdc0]
     
     // Add algorithms to the midus_file
     in_file->add_algorithm(converter);
