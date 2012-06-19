@@ -113,8 +113,8 @@ void midus_file::extract_values_to(midus_structure::midus_out_branch* out_branch
         // channels 1-13 (which will become indexes 0-12)
         int calc_ch = get_qdc_ch(ch);
 		bool good_dat = is_good_qdc_measure(ch);
-        if (   ch < midus_structure::eQDC_U1 
-            || ch > midus_structure::eQDC_D5 
+        if (   calc_ch < midus_structure::eQDC_U1 
+            || calc_ch > midus_structure::eQDC_D5 
             || !good_dat) continue;
         int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(ch), 0);
         out_branches[0].data[calc_ch - 1] = val;
@@ -154,6 +154,13 @@ void midus_file::extract_values_to(midus_structure::midus_out_branch* out_branch
     
     for (int ch = midus_structure::eMEB_tdc0; ch < (midus_structure::n_tdc_channels+ midus_structure::eMEB_tdc0); ++ch) {
         out_branches[ch].n_entries = n_hits[ch-midus_structure::eMEB_tdc0];
+        if (ch == midus_structure::eMEB_tdc0) continue;
+        int tdc0 = out_branches[midus_structure::eMEB_tdc0].data[0];
+        for (int hit = 0; hit < out_branches[ch].n_entries; ++hit) {
+            out_branches[ch].data[hit] = 
+                calibration_funcs[tdc_i](ch, out_branches[ch].data[hit], tdc0);
+            
+        }
     }
     
 }
