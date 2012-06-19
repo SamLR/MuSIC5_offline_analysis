@@ -26,8 +26,7 @@ midus_file::~midus_file() {
 void midus_file::loop(int const n_events) {
 	// Call default loop method
 	input_file::loop();          
-//    for (int entry_number = 0; entry_number<n_events; ++entry_number) {	
-    for (int entry_number = 0; entry_number<10; ++entry_number) {
+    for (int entry_number = 0; entry_number<n_events; ++entry_number) {	
         trigger_tree_m->GetEntry(entry_number);
         if (entry_number%10000 == 0) std::cout << "Entry "<< entry_number<<std::endl;
         if (branches_m[err_i].data[0] > 0) {
