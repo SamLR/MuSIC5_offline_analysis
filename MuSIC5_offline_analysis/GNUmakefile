@@ -16,7 +16,7 @@ ROOTFLAGS     = $(shell root-config --cflags)
 ROOTLIBS      = $(shell root-config --libs)
 
 ${PROGNAME}:
-	g++ -o $@ ${SOURCES} -I${INCLUDES} ${ROOTFLAGS} ${ROOTLIBS}
+	g++ -g -o $@ ${SOURCES} -I${INCLUDES} ${ROOTFLAGS} ${ROOTLIBS}
 
 clean:
 	rm -rf ${PROGNAME}

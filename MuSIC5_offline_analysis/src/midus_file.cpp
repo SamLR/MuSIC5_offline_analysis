@@ -60,7 +60,8 @@ void midus_file::loop(int const n_events) {
 }
 
 void midus_file::init() {
-    file_m = smart_tfile::getTFile(filename_m, "READ");
+    std::string const file_mode("READ");
+    file_m = smart_tfile::getTFile(filename_m, file_mode);
     
     trigger_tree_m = (TTree*) file_m->Get("Trigger");
     if (!trigger_tree_m) {
@@ -110,7 +111,8 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         // all QDC channels (0-15) are read out but only using 
         // channels 1-13 (which will become indexes 0-12)
         int calc_ch = (get_qdc_ch(ch) - 1);
-        if ( 0 < calc_ch || calc_ch > 12) continue;
+        bool good_dat = is_good_qdc_measure(ch);
+        if ( 0 < calc_ch || calc_ch > 12 || !good_dat) continue;
         
         int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch));
         // the values require conversion 
@@ -137,7 +139,7 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     
     n_entries = branches_m[tdc_i].n_entries;
     for (int hit = 0; hit<n_entries; ++hit) {
-        if (!is_tdc_measure(hit))  continue;
+        if (!is_good_tdc_measure(hit))  continue;
         
         int const tdc_ch = get_tdc_ch(hit);
         int const val = calibration_funcs[tdc_i](tdc_ch, get_tdc_val(hit));
