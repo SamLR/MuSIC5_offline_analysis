@@ -40,7 +40,7 @@ void midus_file::loop(int const n_events) {
         extract_values_to(parallel_branches);
         
         // Calibrate the values
-        for (int ch = qdc_ch_U0; ch <= qdc_ch_D4; ch++) { // QDC
+        for (int ch = qdc_ch_U0 - 1; ch <= qdc_ch_D4 - 1; ch++) { // QDC
         	parallel_branches[0].data[ch] = calibration_funcs[qdc_i](ch, parallel_branches[0].data[ch], 0);
         }
         for (int ch = phadc_ch_Ge0; ch <= phadc_ch_Ge1; ch++) {
@@ -124,13 +124,12 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     int n_entries = branches_m[qdc_i].n_entries;
     out_branches[branch_qdc].n_entries = n_entries;
     for (int ch = 0 ; ch<branches_m[qdc_i].n_entries; ++ch) {
-        // all QDC channels (0-15) are read out but only using 
+        // all QDC channels (0-18) are read out but only using 
         // channels 1-13 (which will become indexes 0-12)
         int calc_ch = get_qdc_ch(ch);
 		bool good_dat = is_good_qdc_measure(ch);
-        if (calc_ch < 1 || calc_ch > 13 || !good_dat) continue;
-        
-        out_branches[0].data[calc_ch - 1] = get_qdc_val(calc_ch);
+        if (calc_ch < 1 || calc_ch > 13 || !good_dat) continue;        
+        out_branches[0].data[calc_ch - 1] = get_qdc_val(ch);
 
     }
     
