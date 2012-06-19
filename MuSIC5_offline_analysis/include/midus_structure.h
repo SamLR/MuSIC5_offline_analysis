@@ -55,6 +55,7 @@ namespace midus_structure {
     int const n_tdc_channels = 16;
     int const n_qdc_channels = 13;
     int const n_adc_channels = 2;
+    int const n_actual_channels = n_qdc_channels + n_adc_channels; // i.e the 15 channels U1..U8, D1...D5, Ge1, Ge2
     // The TDC branch is split up so that each channel
     // has its own branch. This is in addition to the
     // QDC & 2 ADC branches
@@ -73,7 +74,7 @@ namespace midus_structure {
         "TDC_Ge1", "TDC_Ge2"
     };
     
-    std::string const tdc_names[n_qdc_channels] = {
+    std::string const tdc_names[n_tdc_channels] = {
         "t0",
         "U1",  "U2", "U3", "U4", "U5",  "U6", "U7", "U8",
         "D1",  "D2", "D3", "D4", "D5",

@@ -6,7 +6,7 @@
 #define TFILE_CONVERTER_ALGORITHM_H_
 
 #include "tfile_export_algorithm.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 #include <string>
 
 class TTree;
@@ -22,8 +22,8 @@ public:
 private:
 	void init();
 	TTree* tree_m;
-    channel channels_m[n_tdc_channels];
-    static std::string const channel_names[n_tdc_channels];
+    midus_structure::channel channels_m[midus_structure::n_tdc_channels];
+    static std::string const channel_names[midus_structure::n_actual_channels];
 };
 
 #endif

@@ -7,7 +7,7 @@
 
 #include "midus_file.h"
 #include "midus_entry.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 #include "smart_tfile.h"
 #include "TTree.h"
 #include "calibration_functions.h"
@@ -36,7 +36,7 @@ void midus_file::loop(int const n_events) {
             continue;
         }
         
-        midus_out_branch parallel_branches[n_branches_in_entry];
+        midus_structure::midus_out_branch parallel_branches[midus_structure::n_branches_in_midus_entry];
         
         extract_values_to(parallel_branches);
         
@@ -118,51 +118,54 @@ void midus_file::add_scaler_algorithm(scaler_algorithm *const alg){
     scaler_algs.push_back(alg);
 }
 
-void midus_file::extract_values_to(midus_out_branch* out_branches) const {
+void midus_file::extract_values_to(midus_structure::midus_out_branch* out_branches) const {
     // copy and process each branch in turn
     
     // QDC branch
     int n_entries = branches_m[qdc_i].n_entries;
-    out_branches[branch_qdc].n_entries = n_entries;
+    out_branches[midus_structure::eMEB_qdc].n_entries = n_entries;
     
     for (int ch = 0 ; ch<branches_m[qdc_i].n_entries; ++ch) {
         // all QDC channels (0-18) are read out but only using 
         // channels 1-13 (which will become indexes 0-12)
         int calc_ch = get_qdc_ch(ch);
 		bool good_dat = is_good_qdc_measure(ch);
-        if (calc_ch < 1 || calc_ch > 13 || !good_dat) continue;        
+        if (ch < midus_structure::eQDC_U1 || ch > midus_structure::eQDC_D5 || !good_dat) continue;
         out_branches[0].data[calc_ch - 1] = get_qdc_val(ch);
     }
     
     // ADC channel 0, just needs copying across
     n_entries = branches_m[adc0_i].n_entries;
-    out_branches[branch_adc0].n_entries = n_entries;
+    out_branches[midus_structure::eMEB_adc0].n_entries = n_entries;
     for (int ch = 0; ch < n_entries; ++ch) {
-        out_branches[branch_adc0].data[ch] = branches_m[adc0_i].data[ch];
+        int val = branches_m[adc0_i].data[ch];
+        out_branches[midus_structure::eMEB_adc0].data[ch] = val;
     }
     // ADC channel 1 is the same as channel 0
     n_entries = branches_m[adc1_i].n_entries;
-    out_branches[branch_adc1].n_entries = n_entries;
+    out_branches[midus_structure::eMEB_adc1].n_entries = n_entries;
     for (int ch = 0; ch < n_entries; ++ch) {
-        out_branches[branch_adc1].data[ch] = branches_m[adc1_i].data[ch];
+        int val = branches_m[adc1_i].data[ch];
+        out_branches[midus_structure::eMEB_adc1].data[ch] = val;
     }
     
-    int n_hits[n_tdc_channels];
-    for (int ch = 0; ch < n_tdc_channels; ++ch) n_hits[ch] = 0;
+    int n_hits[midus_structure::n_tdc_channels];
+    for (int ch = 0; ch < midus_structure::n_tdc_channels; ++ch) n_hits[ch] = 0;
     
     n_entries = branches_m[tdc_i].n_entries;
     for (int hit = 0; hit<n_entries; ++hit) {
         if (!is_good_tdc_measure(hit))  continue;
         
         int const tdc_ch = get_tdc_ch(hit);
-        int const branch_no = branch_tdc0 + tdc_ch;
+        int const val = calibration_funcs[tdc_i](tdc_ch, get_tdc_val(hit));
+        int const branch_no = midus_structure::eMEB_tdc0 + tdc_ch;
         int const ch_hit_no = n_hits[tdc_ch];
         out_branches[branch_no].data[ch_hit_no] = get_tdc_val(hit);
         ++n_hits[tdc_ch];
     }
     
-    for (int ch = branch_tdc0; ch < (n_tdc_channels+ branch_tdc0); ++ch) {
-        out_branches[ch].n_entries = n_hits[ch-branch_tdc0];
+    for (int ch = midus_structure::eMEB_tdc0; ch < (midus_structure::n_tdc_channels+ midus_structure::eMEB_tdc0); ++ch) {
+        out_branches[ch].n_entries = n_hits[ch-midus_structure::eMEB_tdc0];
     }
     
 }

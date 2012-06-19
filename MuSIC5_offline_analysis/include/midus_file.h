@@ -11,7 +11,7 @@
 
 // local gubbins
 #include "input_file.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 
 class TTree;
 class smart_tfile;
@@ -38,7 +38,7 @@ public:
 	
 private:
     void init();
-    void extract_values_to(midus_out_branch[n_tdc_channels]) const;
+    void extract_values_to(midus_structure::midus_out_branch[midus_structure::n_tdc_channels]) const;
     
     unsigned int get_qdc_val(int const) const;
     unsigned int get_qdc_ch(int const) const;
@@ -60,10 +60,10 @@ private:
     TTree* trigger_tree_m;
     TTree* scaler_tree_m;
 
-    midus_out_branch branches_m[n_branches_in];
+    midus_structure::midus_out_branch branches_m[n_branches_in];
     calibrate_func calibration_funcs[n_branches_in];
     int n_entries;
-    int scaler_vals[n_scaler_ch];
+    int scaler_vals[midus_structure::n_scaler_ch];
     scaler_alg_vec scaler_algs;
     
     enum in_branch_indexs{
