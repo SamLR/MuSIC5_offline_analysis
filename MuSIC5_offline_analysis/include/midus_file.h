@@ -33,6 +33,8 @@ public:
     // register functions
     void add_calibration_func(int const, calibrate_func);
     void add_scaler_algorithm(scaler_algorithm *const);
+    
+    static int get_branch_with_name(std::string const);
 	
 private:
     void init();

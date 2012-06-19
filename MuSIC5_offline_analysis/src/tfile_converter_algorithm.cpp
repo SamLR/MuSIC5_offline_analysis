@@ -9,7 +9,8 @@
 
 #include "TTree.h"
 
-std::string const tfile_converter_algorithm::channel_names[n_tdc_channels] = { "U1", "U2", "U3", "U4",  "U5", "U6",  "U7", "U8", "D1", "D2",  "D3", "D4", "D5",  "Ge0", "Ge1",  "CdTe"};
+std::string const tfile_converter_algorithm::channel_names[n_tdc_channels] =
+{ "U1", "U2", "U3", "U4",  "U5", "U6",  "U7", "U8", "D1", "D2", "D3", "D4", "D5", "Ge1", "Ge2",  "CdTe"};
 
 tfile_converter_algorithm::tfile_converter_algorithm(smart_tfile *const out_file)
 : tfile_export_algorithm(out_file) {
@@ -39,7 +40,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
 	tfile_export_algorithm::process(in_entry);
 	
     for (int ch = 0; ch < n_tdc_channels; ++ch) {
-    	if (ch <= (qdc_ch_D4 - 1)) { // convert to index - qdc_ch_U0 = 1 !!!!)
+    	if (ch <= (qdc_ch_D4)) { // convert to index - qdc_ch_U0 = 1 !!!!)
         	channels_m[ch].adc = in_entry->get_value_in_branch(branch_qdc, ch);
         }
         else if (ch == 15) { // CdTe
