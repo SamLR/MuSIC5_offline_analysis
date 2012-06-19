@@ -73,7 +73,7 @@ namespace midus_structure {
         "TDC_Ge1", "TDC_Ge2"
     };
     
-    std::string const tdc_names[n_qdc_channels] = {
+    std::string const tdc_names[n_tdc_channels] = {
         "t0",
         "U1",  "U2", "U3", "U4", "U5",  "U6", "U7", "U8",
         "D1",  "D2", "D3", "D4", "D5",
