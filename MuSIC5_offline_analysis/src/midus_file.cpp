@@ -6,7 +6,7 @@
 
 #include "midus_file.h"
 #include "midus_entry.h"
-#include "midus_structure.h"
+#include "midus_tree_structs.h"
 #include "smart_tfile.h"
 #include "TTree.h"
 #include "calibration_functions.h"

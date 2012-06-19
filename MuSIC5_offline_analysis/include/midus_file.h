@@ -64,11 +64,11 @@ private:
     scaler_alg_vec scaler_algs;
     
     enum in_branch_indexs{
-        eB_QDC_i  = 0,
-        eB_ADC0_i = 1,
-        eB_ADC1_i = 2,
-        eB_TDC_i  = 3,
-        eB_ERR_i  = 4
+        qdc_i  = 0,
+        adc0_i = 1,
+        adc1_i = 2,
+        tdc_i  = 3,
+        err_i  = 4
     };
 };
 
