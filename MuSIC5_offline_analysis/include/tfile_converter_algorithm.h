@@ -23,7 +23,7 @@ private:
 	void init();
 	TTree* tree_m;
     midus_structure::channel channels_m[midus_structure::n_tdc_channels];
-    static std::string const channel_names[midus_structure::n_tdc_channels];
+    static std::string const channel_names[midus_structure::n_actual_channels];
 };
 
 #endif
