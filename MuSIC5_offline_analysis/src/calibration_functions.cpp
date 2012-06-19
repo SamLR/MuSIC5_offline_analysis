@@ -14,11 +14,11 @@ int null_calibration(int const ch, int const val) {
     return val;
 }
 
-int adc_calibration(int const ch, int const val) {
+int qdc_calibration(int const ch, int const val) {
     return val;
 }
 
-int phadc_calibration(int const ch, int const val) {
+int adc_calibration(int const ch, int const val) {
     return val;
 }
 

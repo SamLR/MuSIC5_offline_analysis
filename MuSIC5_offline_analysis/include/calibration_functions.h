@@ -7,9 +7,9 @@
 
 int null_calibration(int const ch, int const val);
 
-int adc_calibration(int const ch, int const val);
+int qdc_calibration(int const ch, int const val);
 
-int phadc_calibration(int const ch, int const val);
+int adc_calibration(int const ch, int const val);
 
 int tdc_calibration(int const ch, int const val);
 #endif
