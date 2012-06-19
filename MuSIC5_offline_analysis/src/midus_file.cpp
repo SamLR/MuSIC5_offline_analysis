@@ -110,7 +110,7 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         // all QDC channels (0-15) are read out but only using 
         // channels 1-13 (which will become indexes 0-12)
         int calc_ch = (get_qdc_ch(ch) - 1);
-        if ( 0 < calc_ch || calc_ch > 12) continue;
+        if (calc_ch < 0 || calc_ch > 12) continue;
         
         int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch));
         // the values require conversion 
