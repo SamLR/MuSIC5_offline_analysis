@@ -129,9 +129,9 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         // channels 1-13 (which will become indexes 0-12)
         int calc_ch = (get_qdc_ch(ch) - 1);
 		bool good_dat = is_good_qdc_measure(ch);
-        if (calc_ch < 0 || calc_ch > 12 || !good_dat) continue;
+        if (calc_ch < 0 || calc_ch > 13 || !good_dat) continue;
 
-        out_branches[0].data[calc_ch] = get_qdc_val(calc_ch); 
+        out_branches[0].data[calc_ch - 1] = get_qdc_val(calc_ch);
     }
     
     // ADC channel 0, just needs copying across
