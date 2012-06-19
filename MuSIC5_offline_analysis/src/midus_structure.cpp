@@ -14,7 +14,7 @@ namespace {
     // define a useful local-only function
     int const _get_id_from_string(std::string const str, 
                                   int const max, 
-                                  std::string const vals[max]) {
+                                  std::string const vals[]) {
         for (int i = 0; i < max; ++i) {
             if (str == vals[i]) {
                 return i;
@@ -35,7 +35,7 @@ namespace midus_structure {
     // The QDC and TDC share channel numbers
     int const get_channel_number(std::string const channel_name) {
         return _get_id_from_string(channel_name, 
-                                   n_tdc_channels, qdc_names);
+                                   n_tdc_channels, tdc_names);
     }
     
     std::string const get_branch_name(const int b) {
