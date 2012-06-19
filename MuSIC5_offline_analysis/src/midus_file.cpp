@@ -26,8 +26,8 @@ midus_file::~midus_file() {
 void midus_file::loop(int const n_events) {
 	// Call default loop method
 	input_file::loop();          
-	
-    for (int entry_number = 0; entry_number<n_events; ++entry_number) {
+//    for (int entry_number = 0; entry_number<n_events; ++entry_number) {	
+    for (int entry_number = 0; entry_number<10; ++entry_number) {
         trigger_tree_m->GetEntry(entry_number);
         if (entry_number%10000 == 0) std::cout << "Entry "<< entry_number<<std::endl;
         if (branches_m[err_i].data[0] > 0) {
@@ -110,13 +110,13 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     for (int ch = 0 ; ch<branches_m[qdc_i].n_entries; ++ch) {
         // all QDC channels (0-15) are read out but only using 
         // channels 1-13 (which will become indexes 0-12)
-        int calc_ch = (get_qdc_ch(ch) - 1);
+        int calc_ch = get_qdc_ch(ch);
 		bool good_dat = is_good_qdc_measure(ch);
-        if (calc_ch < 0 || calc_ch > 12 || !good_dat) continue;
+        if (calc_ch < 1 || calc_ch > 13 || !good_dat) continue;
         
         int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch), 0);
         // the values require conversion 
-        out_branches[0].data[calc_ch] = val; 
+        out_branches[0].data[calc_ch-1] = val; 
     }
     
     // ADC channel 0, just needs copying across
