@@ -17,7 +17,7 @@ class TTree;
 class smart_tfile;
 class scaler_algorithm;
 
-typedef int (*calibrate_func)(const int ch, const int val);
+typedef int (*calibrate_func)(const int ch, const int val, const int para1);
 typedef std::vector<scaler_algorithm*> scaler_alg_vec;
 
 class midus_file : public input_file{

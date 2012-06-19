@@ -114,7 +114,7 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
 		bool good_dat = is_good_qdc_measure(ch);
         if (calc_ch < 0 || calc_ch > 12 || !good_dat) continue;
         
-        int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch));
+        int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch), 0);
         // the values require conversion 
         out_branches[0].data[calc_ch] = val; 
     }
@@ -123,14 +123,14 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
     n_entries = branches_m[adc0_i].n_entries;
     out_branches[branch_adc0].n_entries = n_entries;
     for (int ch = 0; ch < n_entries; ++ch) {
-        int val = calibration_funcs[adc0_i](ch, branches_m[adc0_i].data[ch]);
+        int val = calibration_funcs[adc0_i](ch, branches_m[adc0_i].data[ch], 0);
         out_branches[branch_adc0].data[ch] = val;
     }
     // ADC channel 1 is the same as channel 0
     n_entries = branches_m[adc1_i].n_entries;
     out_branches[branch_adc1].n_entries = n_entries;
     for (int ch = 0; ch < n_entries; ++ch) {
-        int val = calibration_funcs[adc1_i](ch, branches_m[adc1_i].data[ch]);
+        int val = calibration_funcs[adc1_i](ch, branches_m[adc1_i].data[ch], 0);
         out_branches[branch_adc1].data[ch] = val;
     }
     
@@ -142,7 +142,7 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         if (!is_good_tdc_measure(hit))  continue;
         
         int const tdc_ch = get_tdc_ch(hit);
-        int const val = calibration_funcs[tdc_i](tdc_ch, get_tdc_val(hit));
+        int const val = calibration_funcs[tdc_i](tdc_ch, get_tdc_val(hit), 0);
         int const branch_no = branch_tdc0 + tdc_ch;
         int const ch_hit_no = n_hits[tdc_ch];
         out_branches[branch_no].data[ch_hit_no] = val;
