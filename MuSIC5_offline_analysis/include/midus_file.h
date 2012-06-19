@@ -38,11 +38,12 @@ private:
     void init();
     void extract_values_to(midus_out_branch[n_tdc_channels]) const;
     
-    int get_qdc_val(int const) const;
-    int get_qdc_ch(int const) const;
-    int get_tdc_val(int const) const;
-    int get_tdc_ch(int const) const;
-    bool is_tdc_measure(int const) const;
+    unsigned int get_qdc_val(int const) const;
+    unsigned int get_qdc_ch(int const) const;
+    unsigned int get_tdc_val(int const) const;
+    unsigned int get_tdc_ch(int const) const;
+    bool is_good_tdc_measure(int const) const;
+    bool is_good_qdc_measure(int const) const;
     
     // in branches correspond to:
     // QDC
@@ -72,42 +73,41 @@ private:
     };
 };
 
-inline int midus_file::get_qdc_val(int const index) const {
-    static int const underflow_mask = 0x00002000;
-    static int const overflow_mask  = 0x00001000;
+inline unsigned int midus_file::get_qdc_val(int const index) const {
     static int const data_mask      = 0x00000fff;
-    int const val = static_cast<unsigned int>(branches_m[qdc_i].data[index]);
-    
-    if (   !(val & underflow_mask)
-        && !(val & overflow_mask)) { 
-        return (val & data_mask); 
-    } else {
-        return 0;
-    }
+    unsigned const val = static_cast<unsigned int>(branches_m[qdc_i].data[index]);
+    return (val & data_mask); 
 }
 
-inline int midus_file::get_qdc_ch(const int index) const {
+inline unsigned int midus_file::get_qdc_ch(const int index) const {
     static int const channel_mask = 0x001f0000;
     int const val = static_cast<unsigned int>(branches_m[qdc_i].data[index]);
     return (val & channel_mask) >> 17;
 }
 
-inline int midus_file::get_tdc_val(const int index) const {
+inline unsigned int midus_file::get_tdc_val(const int index) const {
     static int const tdc_data_mask    =   0x1fffff;
     int const val = static_cast<unsigned int>(branches_m[tdc_i].data[index]);
     return (val & tdc_data_mask);
 }
 
-inline int midus_file::get_tdc_ch(const int index) const {
+inline unsigned int midus_file::get_tdc_ch(const int index) const {
     static int const tdc_channel_mask = 0x03e00000;
     int const val = static_cast<unsigned int>(branches_m[tdc_i].data[index]);
     return (val & tdc_channel_mask) >> 21;
 }
 
-inline bool midus_file::is_tdc_measure(const int index) const {
+inline bool midus_file::is_good_tdc_measure(const int index) const {
     static int const tdc_data_type_mask = 0xf8000000;
     static int const tdc_measurement    = 0x00000000;
     int const val = static_cast<unsigned int>(branches_m[tdc_i].data[index]);
     return ((val & tdc_data_type_mask) == tdc_measurement);
+}
+
+inline bool midus_file::is_good_qdc_measure(const int index) const {
+    static int const underflow_mask = 0x00002000;
+    static int const overflow_mask  = 0x00001000;
+    int const val = static_cast<unsigned int>(branches_m[tdc_i].data[index]);
+    return !((underflow_mask & val) || (overflow_mask & val));
 }
 #endif

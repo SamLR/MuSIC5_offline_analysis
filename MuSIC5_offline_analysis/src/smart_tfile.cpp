@@ -6,20 +6,17 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#include "smart_tfile.h"
 #include <iostream>
 #include <cstdlib>
 #include <map>
 #include <string>
-#include "smart_tfile.h"
 #include "TFile.h"
 
 smart_tfile::file_map smart_tfile::file_map_m = file_map();
 
-smart_tfile::smart_tfile(): mPtrCount(1) {;}
-
-smart_tfile::smart_tfile(std::string filename, std::string options)
-:TFile(filename.c_str(), options.c_str()), mPtrCount(1) 
-{;}
+smart_tfile::smart_tfile(std::string const filename, std::string const options)
+: TFile(filename.c_str(), options.c_str(), "", 1), mPtrCount (1) {;}
 
 smart_tfile::~smart_tfile() {;}
 
@@ -41,7 +38,7 @@ void smart_tfile::force_close_all() {
     }
 }
 
-smart_tfile* smart_tfile::getTFile(std::string filename, std::string options) {
+smart_tfile* smart_tfile::getTFile(std::string const filename, std::string const options) {
     std::map<std::string, smart_tfile*>::iterator iter;
     iter = file_map_m.find(filename);
     if (iter == file_map_m.end()) {

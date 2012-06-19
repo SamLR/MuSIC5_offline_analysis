@@ -16,7 +16,7 @@
 class smart_tfile: public TFile {
 public:
     typedef std::map<std::string, smart_tfile*> file_map; 
-    static smart_tfile* getTFile(std::string, std::string); // returns the smart file of given name with options
+    static smart_tfile* getTFile(std::string const, std::string const); // returns the smart file of given name with options
     
     void close();
     static void force_close_all();
@@ -24,7 +24,7 @@ public:
 private:
     // you shouldn't call these constructors directly
     smart_tfile();
-    smart_tfile(std::string, std::string);
+    smart_tfile(std::string const, std::string const);
     ~smart_tfile();
     
     // these methods shouldn't be used by clients but
