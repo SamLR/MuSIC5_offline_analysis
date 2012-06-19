@@ -40,6 +40,23 @@ void midus_file::loop(int const n_events) {
         
         extract_values_to(parallel_branches);
         
+        // Calibrate the values
+        for (int ch = qdc_ch_U0; ch <= qdc_ch_D4; ch++) { // QDC
+        	parallel_branches[0].data[ch] = calibration_funcs[qdc_i](ch, parallel_branches[0].data[ch], 0);
+        }
+        for (int ch = phadc_ch_Ge0; ch <= phadc_ch_Ge1; ch++) {
+        	if (ch == phadc_ch_Ge0)
+        		parallel_branches[adc0_i].data[0] = calibration_funcs[adc0_i](ch, parallel_branches[adc0_i].data[0], 0);
+        	else if (ch == phadc_ch_Ge1)
+        		parallel_branches[adc1_i].data[0] = calibration_funcs[adc1_i](ch, parallel_branches[adc1_i].data[0], 0);
+        }
+        for (int ch = tdc_ch_t0; ch < tdc_ch_Ge1; ch++) {
+        	int tdc_ch = branch_tdc0 + ch;
+        	for (int hit = 0; hit < parallel_branches[tdc_ch].n_entries; hit++) {
+        		parallel_branches[tdc_ch].data[hit] = calibration_funcs[tdc_i](tdc_ch, parallel_branches[tdc_ch].data[hit], parallel_branches[branch_tdc0].data[0]);
+        	}
+        }
+        
         midus_entry entry(parallel_branches);
         // Loop over all the registered algorithms
         for (int alg = 0; alg < get_number_algorithms() ; ++alg) {
@@ -113,25 +130,21 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         int calc_ch = (get_qdc_ch(ch) - 1);
 		bool good_dat = is_good_qdc_measure(ch);
         if (calc_ch < 0 || calc_ch > 12 || !good_dat) continue;
-        
-        int val = calibration_funcs[qdc_i](calc_ch, get_qdc_val(calc_ch), 0);
-        // the values require conversion 
-        out_branches[0].data[calc_ch] = val; 
+
+        out_branches[0].data[calc_ch] = get_qdc_val(calc_ch); 
     }
     
     // ADC channel 0, just needs copying across
     n_entries = branches_m[adc0_i].n_entries;
     out_branches[branch_adc0].n_entries = n_entries;
     for (int ch = 0; ch < n_entries; ++ch) {
-        int val = calibration_funcs[adc0_i](ch, branches_m[adc0_i].data[ch], 0);
-        out_branches[branch_adc0].data[ch] = val;
+        out_branches[branch_adc0].data[ch] = branches_m[adc0_i].data[ch];
     }
     // ADC channel 1 is the same as channel 0
     n_entries = branches_m[adc1_i].n_entries;
     out_branches[branch_adc1].n_entries = n_entries;
     for (int ch = 0; ch < n_entries; ++ch) {
-        int val = calibration_funcs[adc1_i](ch, branches_m[adc1_i].data[ch], 0);
-        out_branches[branch_adc1].data[ch] = val;
+        out_branches[branch_adc1].data[ch] = branches_m[adc1_i].data[ch];
     }
     
     int n_hits[n_tdc_channels];
@@ -142,10 +155,9 @@ void midus_file::extract_values_to(midus_out_branch* out_branches) const {
         if (!is_good_tdc_measure(hit))  continue;
         
         int const tdc_ch = get_tdc_ch(hit);
-        int const val = calibration_funcs[tdc_i](tdc_ch, get_tdc_val(hit), 0);
         int const branch_no = branch_tdc0 + tdc_ch;
         int const ch_hit_no = n_hits[tdc_ch];
-        out_branches[branch_no].data[ch_hit_no] = val;
+        out_branches[branch_no].data[ch_hit_no] = get_tdc_val(hit);
         ++n_hits[tdc_ch];
     }
     
