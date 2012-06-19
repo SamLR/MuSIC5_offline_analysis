@@ -116,7 +116,7 @@ void midus_file::extract_values_to(midus_structure::midus_out_branch* out_branch
         
         int val = calibration_funcs[qdc_i](ch, get_qdc_val(ch));
         // the values require conversion 
-        out_branches[0].data[ch] = val; 
+        out_branches[qdc_i].data[ch] = val; 
     }
     
     // ADC channel 0, just needs copying across
