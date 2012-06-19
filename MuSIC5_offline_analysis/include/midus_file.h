@@ -11,7 +11,7 @@
 
 // local gubbins
 #include "input_file.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 
 class TTree;
 class smart_tfile;

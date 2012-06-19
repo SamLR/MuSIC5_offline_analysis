@@ -6,7 +6,7 @@
 #define TFILE_CONVERTER_ALGORITHM_H_
 
 #include "tfile_export_algorithm.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 #include <string>
 
 class TTree;

@@ -9,7 +9,7 @@
 #include <iostream>
 
 #include "scaler_entry.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 #include "scaler_algorithm.h"
 
 scaler_entry::scaler_entry(int const in_values[n_scaler_ch]) {

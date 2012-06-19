@@ -7,7 +7,7 @@
 
 #include "midus_entry.h"
 #include "algorithm.h"
-#include "midus_tree_structs.h"
+#include "midus_structure.h"
 
 
 midus_entry::midus_entry(midus_out_branch const branch []){
