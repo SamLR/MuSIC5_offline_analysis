@@ -77,8 +77,19 @@ int main(int argc, 	char * argv[])
     hist_branch_channel* tdc_ch_hist[midus_structure::n_tdc_channels];
     for (int i = 0; i < midus_structure::n_tdc_channels; i++) {
     	std::stringstream histname;
-    	histname << "TDC" << i;
-   		tdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), 0, midus_structure::eMEB_tdc0 + i, 1000, -20000, 20000);
+    	if (i == midus_structure::eTDC_0) {
+    		histname << "TDC0";
+    	}
+    	else if (i <= midus_structure::eQDC_U8 + 1) {
+    		histname << "U" << i << ".TDC";
+    	}
+    	else if (i <= midus_structure::eQDC_D5 + 1) {
+    		histname << "D" << i - (midus_structure::eQDC_U8 + 1);
+    	}
+    	else {
+    		histname << "Ge" << i - (midus_structure::eQDC_D5 + 1);
+    	}
+   		tdc_ch_hist[i] = new hist_branch_channel(out_file, histname.str().c_str(), 0, midus_structure::eMEB_tdc0 + i, 100, 0, 20000);
     }
     
     // Add calibration functions
@@ -98,11 +109,14 @@ int main(int argc, 	char * argv[])
     }
     
     // Now fit function
-    TF1* fit_fn = new TF1("fit", "[0] + [1]*exp(-x/[2])",0, 20000);
+    TF1* fit_fn = new TF1("fit", "[0] + [1]*exp(-x/[2]) + [3]*exp(-x/[4])",0, 20000);
     fit_fn->SetParName(0, "N_{B}");
-    fit_fn->SetParName(1, "N_{#mu^{+}}");
-    fit_fn->SetParName(2, "#tau");
-    fit_fn->SetParameter(2, 2.2);
+    fit_fn->SetParName(1, "N_{#mu^{-}}");
+    fit_fn->SetParName(2, "#tau_{Cu}");
+    fit_fn->SetParameter(2, 160);
+    fit_fn->SetParName(3, "N_{#mu^{+}}");
+    fit_fn->SetParName(4, "#tau_{#mu}");
+    fit_fn->SetParameter(4, 2200);
     for (int i = 0; i < midus_structure::n_tdc_channels; i++) {
     	tdc_ch_hist[i]->fit_hist(fit_fn);
     }
