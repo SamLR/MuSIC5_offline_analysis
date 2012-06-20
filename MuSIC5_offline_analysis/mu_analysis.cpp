@@ -31,7 +31,7 @@ int main(int argc, 	char * argv[])
 	}
 	
 	int c;
-	while ((c = getopt(argc, argv, "hi:on:")) != -1) {
+	while ((c = getopt(argc, argv, "hi:o:n:")) != -1) {
 		switch(c) {
 		case 'h':
 			HelpMessage();
