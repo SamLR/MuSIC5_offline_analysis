@@ -15,6 +15,8 @@
 
 #include "calibration_functions.h"
 #include "hist_branch_channel.h"
+#include "midus_structure.h"
+#include "TPaveStats.h"
 
 void HelpMessage();
 
@@ -23,6 +25,7 @@ int main(int argc, 	char * argv[])
 	// The command line arguments
 	std::string input_filename;
 	std::string output_filename;
+    bool draw = false;
 	int n_entries_to_process = 0;
 	
 	if (argc < 2) {
@@ -33,26 +36,27 @@ int main(int argc, 	char * argv[])
 	int c;
 	while ((c = getopt(argc, argv, "hi:o:n:")) != -1) {
 		switch(c) {
-		case 'h':
-			HelpMessage();
-			return 0;
-			break;
-			
-		case 'i':
-			input_filename = optarg;
-			break;
-			
-		case 'o':
-			output_filename = optarg;
-			break;
-			
-		case 'n':
-			n_entries_to_process = atoi(optarg);
-			break;
-			
-		default:
-			std::cout << "Invalid argument " << c << std::endl;
-			break;
+            case 'h':
+                HelpMessage();
+                return 0;
+                break;
+                
+            case 'i':
+                input_filename = optarg;
+                break;
+                
+            case 'o':
+                output_filename = optarg;
+                break;
+                
+            case 'n':
+                n_entries_to_process = atoi(optarg);
+                break;
+            case 'd':
+                draw = true;
+            default:
+                std::cout << "Invalid argument " << c << std::endl;
+                break;
 		}
 	}
 	
@@ -61,17 +65,27 @@ int main(int argc, 	char * argv[])
     
     // Create the output file object
     if (output_filename == "") {
-    	std::string temp = input_filename;
-    	std::string temp_2;
-    	std::stringstream temp_in_file;
-    	
-    	temp_in_file << temp;
-    	std::getline(temp_in_file, temp_2, '.');
-    	output_filename = temp_2;
-    	output_filename += "_mu_analysis.root";
+        // std::string temp = input_filename;
+        // std::string temp_2;
+        // std::stringstream temp_in_file;
+        // 
+        // temp_in_file << temp;
+        // std::getline(temp_in_file, temp_2, '.');
+        // output_filename = temp_2;
+        // output_filename += "_mu_analysis.root";
+        // 
+
+        std::string temp(input_filename);
+        std::string root_ext(".root");
+        size_t found = temp.rfind(root_ext); // find the last occurance of '.root'
+        temp.replace(found, root_ext.length(), "_mu_analysis.root");
+        output_filename = temp;
     }
     smart_tfile* out_file = smart_tfile::getTFile(output_filename, "RECREATE");
     
+    int n_bins = 200; 
+    int x_min = 0;
+    int x_max = 20000;
     
     // Add the tdc histograms
     hist_branch_channel* tdc_ch_hist[midus_structure::n_tdc_channels];
@@ -128,11 +142,13 @@ int main(int argc, 	char * argv[])
 }
 
 void HelpMessage() {
-	std::cout << "The mu_analysis program does stuff\n";
+	std::cout << "The mu_analysis program does stuff"<<std::endl;
 	std::cout << "Command line arguments: " << std::endl;
-	std::cout << "\t -h  --  prints this help message\n";
-	std::cout << "\t -i  --  filename of the input MIDAS ROOT file to convert (e.g. -i example.root)\n";
-	std::cout << "\t -o  --  filename of the output ROOT file\n\t\t (if not given then the output file is called example_converted.root in the same directory as the input file)\n\n";
-	std::cout << "\t -n  --  the number of entries in the input file to process\n";
+	std::cout << "\t -h  --  prints this help message"<<std::endl;
+	std::cout << "\t -i  --  filename of the input MIDAS ROOT file to convert (e.g. -i example.root)"<<std::endl;
+	std::cout << "\t -o  --  filename of the output ROOT file (if not given then the output file is"<<std::endl;
+    std::cout << "\t\t called example_mu_analysis.root in the same directory as the input file)"<<std::endl;
+	std::cout << "\t -n  --  the number of entries in the input file to process"<<std::endl;
+    std::cout << "\t -d  --  Draw the fitted histograms"<<std::endl;
 }
 
