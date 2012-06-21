@@ -6,7 +6,8 @@
 #include <iostream>
 #include "hist_branch_channel.h"
 
-hist_branch_channel::hist_branch_channel(smart_tfile *const out_file, std::string histname, int channel, int branch, int n_bins, double x_low, double x_high): hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high), channel_m(channel), branch_m(branch) {
+hist_branch_channel::hist_branch_channel(smart_tfile *const out_file, std::string histname, int channel, int branch, int n_bins, double x_low, double x_high):
+ hist_maker_algorithm(out_file, histname, n_bins, x_low, x_high), channel_m(channel), branch_m(branch) {
 
 	// if this is an adc branch - check that the channel number is valid (i.e between 1 and 13 - see adc_channel_names)
 	if (branch_m == midus_structure::eMEB_qdc) {
