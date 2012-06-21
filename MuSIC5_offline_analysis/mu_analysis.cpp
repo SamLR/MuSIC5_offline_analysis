@@ -65,14 +65,21 @@ int main(int argc, 	char * argv[])
     
     // Create the output file object
     if (output_filename == "") {
-    	std::string temp = input_filename;
-    	std::string temp_2;
-    	std::stringstream temp_in_file;
-    	
-    	temp_in_file << temp;
-    	std::getline(temp_in_file, temp_2, '.');
-    	output_filename = temp_2;
-    	output_filename += "_mu_analysis.root";
+        // std::string temp = input_filename;
+        // std::string temp_2;
+        // std::stringstream temp_in_file;
+        // 
+        // temp_in_file << temp;
+        // std::getline(temp_in_file, temp_2, '.');
+        // output_filename = temp_2;
+        // output_filename += "_mu_analysis.root";
+        // 
+
+        std::string temp(input_filename);
+        std::string root_ext(".root");
+        size_t found = temp.rfind(root_ext); // find the last occurance of '.root'
+        temp.replace(found, root_ext.length(), "_mu_analysis.root");
+        output_filename = temp;
     }
     smart_tfile* out_file = smart_tfile::getTFile(output_filename, "RECREATE");
     
