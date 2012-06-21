@@ -25,16 +25,16 @@ header="#\n\
 # Generated on:\t $(date)\n\
 #\n"
 
-echo -r $header >> $notes_file
+echo -e $header >> $notes_file
 
 echo -e "File \t\t degarder \t target" >> $notes_file
 for (( i = 0; i < ${len}; i++ ));
 do
 	infile=$in_file_dir$preffix${fileids[i]}$file_suffix
 	outfile=$out_file_dir$preffix${fileids[i]}"_converted"$file_suffix
-	echo $exe -i $infile -o $outfile -a  
-	echo $exe -i $infile -o $outfile -a >> $log_file
-	$exe -i $infile -o $outfile -a >> $log_file
+	echo $exe -i $infile -o $outfile  
+	echo $exe -i $infile -o $outfile >> $log_file
+	$exe -i $infile -o $outfile >> $log_file
 	echo -e $preffix${fileids[i]}"\t" ${notes[i]} "Aluminium \t 0.5mm Copper" >> $notes_file
 	echo >> $log_file
 	chmod u-w $outfile
