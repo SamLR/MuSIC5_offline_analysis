@@ -4,8 +4,8 @@
 #include <iostream>
 #include "root_functions.h"
 
-void set_branch_addresses(in_branch branches[midus_structure::n_tdc_channels], TTree* in_tree) {
-	for (int i = 1; i < midus_structure::n_tdc_channels; i++) {
-		in_tree->SetBranchAddress(midus_structure::tdc_names[i].c_str(), &branches[i-1].in_channel);
+void set_branch_addresses(in_branch branches[midus_structure::n_actual_channels], TTree* in_tree) {
+	for (int i = 0; i < midus_structure::n_actual_channels; i++) {
+		in_tree->SetBranchAddress(midus_structure::tdc_names[i+1].c_str(), &branches[i].in_channel);
 	}
 }

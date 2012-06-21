@@ -16,6 +16,6 @@ struct in_branch {
 	midus_structure::channel in_channel;
 };
 
-void set_branch_addresses(in_branch branches[midus_structure::n_tdc_channels], TTree* in_tree);
+void set_branch_addresses(in_branch branches[midus_structure::n_actual_channels], TTree* in_tree);
 
 #endif
