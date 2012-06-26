@@ -49,15 +49,17 @@ void convert_odd_root(){
 	out_branch branches[n_channels];
 	TString const leaflist = "ADC/I:TDC0:nHITS:TDC[nHITS]";
 	// set all the branches
-	for(unsigned int ch = 0; ch < n_channels - 1; ++ch) {
+	for(unsigned int ch = 0; ch < n_channels; ++ch) {
 		out_tree->Branch(channel_names[ch], &(branches[ch]), leaflist);
 	}
 	
 	// loop over the entries in the input file and write the results to the output
 	unsigned int const n_entries = in_tree->GetEntries();
+	cout << n_entries << " entries found, looping"<< endl;
 	for(unsigned int entry = 0; entry < n_entries; ++entry) {
 		in_tree->GetEntry(entry);
 		if (entry%1000 == 0) cout<<"Entry "<< entry << " of "<< n_entries <<endl;
+		
 		// Loop over the OUTPUT channels writing to them from the input channels. 
 		// NOTE: Channel 0 (input) is either the trigger time, t0, for tdc
 		// 		 readings or not used (but present) for ADC. Output channels
@@ -74,13 +76,12 @@ void convert_odd_root(){
 			branches[ch].t0  = in_tdc[0][0];
 			unsigned int n = static_cast<unsigned int>(in_nhits[ch+1]);
 			branches[ch].n_hits = static_cast<int>( n );
-			// return;
 			for(unsigned int hit = 0; hit < n; ++hit) {
 				// make sure the tdc data is in a sensible form
 				branches[ch].tdc[hit] = static_cast<int>(in_tdc[ch+1][hit]);
 			}
-			out_tree->Fill();
-		}
+		}	
+		out_tree->Fill();
 	}
 	out_file->Write();
 }
