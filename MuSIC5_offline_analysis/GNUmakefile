@@ -24,3 +24,4 @@ ${PROGNAME2}: ${PROGNAME2}.o ${OBJECTS}
 
 clean:
 	rm -rf ${PROGNAME} ${OBJECTS}
+	rm -rf ${PROGNAME2} ${OBJECTS}

@@ -52,7 +52,7 @@ void tfile_converter_algorithm::process(midus_entry const * in_entry) {
         	channels_m[ch].adc = in_entry->get_value_in_branch(midus_structure::eMEB_adc1, 0);
         }
 		channels_m[ch].tdc0 = in_entry->get_value_in_branch(midus_structure::eMEB_tdc0, 0);
-        
+		
         int tdc_branch = ch + midus_structure::eMEB_tdc0 + 1;
         int n_hits = in_entry->get_entries_in_branch(tdc_branch);
         channels_m[ch].n_tdc_hits = n_hits;

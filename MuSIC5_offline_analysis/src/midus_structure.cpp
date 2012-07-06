@@ -42,6 +42,6 @@ namespace midus_structure {
         return branch_names[b];
     }
     std::string const get_channel_name(const int ch) {
-        return branch_names[ch];
+        return tdc_names[ch];
     }    
 }

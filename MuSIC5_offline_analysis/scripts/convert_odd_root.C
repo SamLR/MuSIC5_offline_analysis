@@ -78,7 +78,7 @@ void convert_odd_root(){
 			branches[ch].n_hits = static_cast<int>( n );
 			for(unsigned int hit = 0; hit < n; ++hit) {
 				// make sure the tdc data is in a sensible form
-				branches[ch].tdc[hit] = static_cast<int>(in_tdc[ch+1][hit]);
+				branches[ch].tdc[hit] = static_cast<int>(in_tdc[ch+1][hit] - in_tdc[0][0]);
 			}
 		}	
 		out_tree->Fill();

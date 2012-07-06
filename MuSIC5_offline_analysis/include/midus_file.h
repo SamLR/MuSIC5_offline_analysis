@@ -48,10 +48,10 @@ private:
     void init();
     void extract_values_to(midus_structure::midus_out_branch[midus_structure::n_tdc_channels]) const;
     
-    unsigned int get_qdc_val(int const) const;
-    unsigned int get_qdc_ch(int const) const;
-    unsigned int get_tdc_val(int const) const;
-    unsigned int get_tdc_ch(int const) const;
+    int get_qdc_val(int const) const;
+    int get_qdc_ch(int const) const;
+    int get_tdc_val(int const) const;
+    int get_tdc_ch(int const) const;
     bool is_good_tdc_measure(int const) const;
     bool is_good_qdc_measure(int const) const;
     
@@ -75,28 +75,28 @@ private:
     scaler_alg_vec scaler_algs;
 };
 
-inline unsigned int midus_file::get_qdc_val(int const index) const {
+inline int midus_file::get_qdc_val(int const index) const {
     static unsigned int const data_mask      = 0x00000fff;
-    unsigned const val = static_cast<unsigned int>(branches_m[qdc_i].data[index]);
-    return (val & data_mask); 
+    unsigned int const val = static_cast<unsigned int>(branches_m[qdc_i].data[index]);
+    return static_cast<int>(val & data_mask); 
 }
 
-inline unsigned int midus_file::get_qdc_ch(const int index) const {
+inline int midus_file::get_qdc_ch(const int index) const {
     static unsigned int const channel_mask = 0x001f0000;
     unsigned int const val = static_cast<unsigned int>(branches_m[qdc_i].data[index]);
-    return (val & channel_mask) >> 17;
+    return static_cast<int>((val & channel_mask) >> 17);
 }
 
-inline unsigned int midus_file::get_tdc_val(const int index) const {
+inline int midus_file::get_tdc_val(const int index) const {
     static unsigned int const tdc_data_mask    =   0x1fffff;
     unsigned int const val = static_cast<unsigned int>(branches_m[tdc_i].data[index]);
-    return (val & tdc_data_mask);
+    return static_cast<int>(val & tdc_data_mask);
 }
 
-inline unsigned int midus_file::get_tdc_ch(const int index) const {
+inline int midus_file::get_tdc_ch(const int index) const {
     static unsigned int const tdc_channel_mask = 0x03e00000;
     unsigned int const val = static_cast<unsigned int>(branches_m[tdc_i].data[index]);
-    return (val & tdc_channel_mask) >> 21;
+    return static_cast<int>((val & tdc_channel_mask) >> 21);
 }
 
 inline bool midus_file::is_good_tdc_measure(const int index) const {

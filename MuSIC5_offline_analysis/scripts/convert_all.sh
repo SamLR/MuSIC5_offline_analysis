@@ -28,6 +28,12 @@ header="#\n\
 echo -e $header >> $notes_file
 
 echo -e "File \t\t degarder \t target" >> $notes_file
+
+# convert run 448 which is odd
+echo root convert_odd_root.C
+/Applications/ROOT/root/bin/root -l convert_odd_root.C
+echo -e ${preffix}448 \t none \t 0.5 Copper >> $notes_file
+
 for (( i = 0; i < ${len}; i++ ));
 do
 	infile=$in_file_dir$preffix${fileids[i]}$file_suffix
