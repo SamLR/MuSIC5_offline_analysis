@@ -28,3 +28,5 @@ MuSIC5_offline_analysis.build/
 mu_analysis
 *.d
 images/
+*.pyc
+*.eps

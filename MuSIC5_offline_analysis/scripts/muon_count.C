@@ -39,6 +39,7 @@ void muon_count(){
 	TCanvas* canvases[n_files];
 	TH1F* tdc_hists [n_files][n_ch];
 	TH1F* all_muon_hists [n_ch]; 
+	TH1F* all_muon_hists_norm [n_ch]; 
 	// TH1F* fast_muon_hists [n_ch]; 
 	// TH1F* slow_muon_hists [n_ch];
 
@@ -46,12 +47,18 @@ void muon_count(){
 	TF1* comb_muons_fns [n_files][n_ch];
 	TF1* fast_muons_fns [n_files][n_ch];
 	TF1* slow_muons_fns [n_files][n_ch];
+	
+	TH1F* all_ch_count = new TH1F("muon_count_all_ch","muon_count_all_ch",6, -0.5, 5.5);;
+	TH1F* all_ch_count_norm = new TH1F("muon_count_all_ch_norm","muon_count_all_ch_norm",6, -0.5, 5.5);;
+	
 
 	for(unsigned int ch = 0; ch < n_ch; ++ch) {
 		TString name("muons_Vs_degrader_channel:");
 		name += midus_structure::tdc_names[ch+1];
 		// all_muon_hists[ch] = new TH2F(name,name,12, -0.25, 5.75, 2000, 0, 10000);
 		all_muon_hists[ch] = new TH1F(name,name,6, -0.5, 5.5);
+		name += "norm";
+		all_muon_hists_norm[ch] = new TH1F(name,name,6, -0.5, 5.5);
 	}
 
 
@@ -97,9 +104,12 @@ void muon_count(){
 			tdc_hists[f_id][ch]->Fit(fit_fns[f_id][ch], "RQ");
 			get_component_funcs(fit_fns[f_id][ch], comb_muons_fns[f_id][ch],
 				fast_muons_fns[f_id][ch], slow_muons_fns[f_id][ch]);
-			double const weight = comb_muons_fns[f_id][ch]->Integral(0,20000)/n_entries;
+			double const weight = comb_muons_fns[f_id][ch]->Integral(0,20000);
 			cout << weight << endl;
 			all_muon_hists[ch]->Fill(f_id, weight);
+			all_ch_count->Fill(f_id, weight);
+			all_muon_hists_norm[ch]->Fill(f_id, (weight/n_entries));
+			all_ch_count_norm->Fill(f_id, (weight/n_entries));
 			// all_muon_hists[ch]->Fill(thicknesses[f_id], weight);
 			TString save_file(*can_name);
 			// save_file += ".eps";
@@ -113,20 +123,34 @@ void muon_count(){
 		delete in_file;
 	}	
 	TCanvas* can_final[n_ch];
+	TCanvas* can_final_norm[n_ch];
 	for(unsigned int ch = 0; ch < n_ch; ++ch) {
 		TString f_can_name ("mu_vs_z_");
 		f_can_name += ch;
 		can_final[ch] =  new TCanvas(f_can_name,f_can_name, 1436,856);
 		all_muon_hists[ch]->Draw();
+		
+		can_final_norm[ch] =  new TCanvas((f_can_name+"norm"),(f_can_name+"norm"), 1436,856);
+		all_muon_hists_norm[ch]->Draw();
 		for(unsigned int f_id = 0; f_id < n_files; ++f_id) {
 			TString binname("");
 			binname+=thicknesses[f_id];
 			all_muon_hists[ch]->GetXaxis()->SetBinLabel(f_id+1, binname);
+			all_muon_hists_norm[ch]->GetXaxis()->SetBinLabel(f_id+1, binname);
 		}
 //		f_can_name += ".eps";
-		f_can_name = "images/"+f_can_name + ".eps";
-		if(!testing) can_final[ch]->SaveAs(f_can_name);
+		// f_can_name = "images/"+f_can_name + ".eps";
+		if(!testing) can_final[ch]->SaveAs("images/"+f_can_name + ".eps");
+		// if(!testing) can_final[ch]->SaveAs(f_can_name);
+		if(!testing) can_final_norm[ch]->SaveAs("images/"+f_can_name + "norm.eps");
 	}	
+	
+	TCanvas* c_all_ch = new TCanvas("all_ch_summed","all_ch_summed", 1436,856);
+	all_ch_count->Draw();
+	c_all_ch->SaveAs("all_ch_summed.eps");
+	TCanvas* c_all_ch_norm = new TCanvas("all_ch_summed_norm","all_ch_summed_norm", 1436,856);
+	all_ch_count_norm->Draw();
+	c_all_ch_norm->SaveAs("all_ch_summed_norm.eps");
 	out_file->Write();
 }
 
