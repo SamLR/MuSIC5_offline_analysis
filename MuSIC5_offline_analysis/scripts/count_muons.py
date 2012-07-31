@@ -26,11 +26,11 @@ d_channels = tuple(["D%i"%i for i in range(1,6)])
 all_channels = u_channels + d_channels
     
 branch_struct = "int adc, tdc0, nhits; int tdc[500];"
-fitting_defaults = {"N_{B}"    :200,                  
-                  "N_{#mu^{-}}":100,
-                  "#tau_{Cu}"  :163.5, # PDG value
-                  "N_{#mu^{+}}":50 ,
-                  "#tau_{#mu}" :2000}
+fitting_defaults =(("N_{B}"      ,200  ),               
+                   ("N_{#mu^{-}}",100  ),
+                   ("#tau_{Cu}"  ,163.5), # PDG value
+                   ("N_{#mu^{+}}",50   ),
+                   ("#tau_{#mu}" ,2000 ))
 
 t_window_start = 100
 t_window_stop  = 20000
@@ -97,16 +97,17 @@ def create_tdc_hist_file(in_file_info, out_file_name):
 
 
 def get_fitting_func(name):
-    # discriminator times are: D1L = 100ns, D2R=40ns all others = 10ns
+    #
     res = TF1(name, "[0] + [1]*exp(-x/[2]) + [3]*exp(-x/[4])", t_window_start, t_window_stop)
-    param = 0
     for val in fitting_defaults:
-        res.SetParName(param, val)
-        if val == "#tau_{Cu}":
-            res.FixParameter(param, fitting_defaults[val])
+        param_number = fitting_defaults.index(val)
+        res.SetParName(param_number, val[0])
+        if val[0] == "#tau_{Cu}":
+            res.SetParameter(param_number, val[1])
+            # The error on the lifetime of muonic copper is 1, limit the fit to this
+            res.SetParLimits(param_number, val[1] - 1, val[1] + 1)
         else:
-            res.SetParameter(param, fitting_defaults[val])
-        param += 1
+            res.SetParameter(param_number, val[1])
     return res
 
 
@@ -142,25 +143,75 @@ def get_divided_canvas(name, n_x=4, n_y=4, max=False):
 
 def get_parameter_dict(fitting_func):
     """Get a human readable dictionary of parameter values"""
-    param_names = ("N_b", "N_mu-_cu", "t_mu-_cu", "N_mu_slow", "t_mu_slow")
-    return dict(zip(param_names, fitting_func.GetParameters()))
+    param_names = ("N_b", "N_mu_slow", "t_mu_slow", "N_mu-_cu", "t_mu-_cu")
+    param = dict(zip(param_names, fitting_func.GetParameters()))
+    errors = dict(zip(param_names, fitting_func.GetParErrors()))
+    errors["t_mu-_cu"] = 1.0 # manually set the error given by PDG
+    return param, errors
 
 
-def get_muon_counts_dict(fitting_func):
-    param = get_parameter_dict(fitting_func)
-    n_background = param['N_b'] * (t_window_start - t_window_stop) # background is modeled as flat
+def error_on_integral(param, covariance):
+    for p in param:       
+        # check that parameter error is not zero - otherwise skip it    
+        # should check the limits 
+        double integral  = 0;
+        index = param.index(p)
+        if (covariance[i][i] > 0 ) {          
+           TF1 gradFunc("gradFunc",TGradientParFunction(i,func),0,0,0);
+           integral = gradFunc.Integral(*a,*b,(double*)0,epsilon);
+              
+        }
+        ig[i] = integral; 
+     } 
+     double err2 =  covMatrix.Similarity(ig); 
+
+     // restore old parameters in TF1
+     if (!oldParams.empty()) { 
+        func->SetParameters(&oldParams.front()); 
+     }
+
+     return std::sqrt(err2);
+
+def get_muon_counts_dict(fitting_func, covariance_matrix):
+    params, errors = get_parameter_dict(fitting_func)
+    
+    n_background = params['N_b'] * (t_window_start - t_window_stop) # background is modeled as flat
     
     func_cu = TF1("cu_func", "[0]*exp(-x/[1])", t_window_start, t_window_stop)
-    func_cu.FixParameter(0, param['N_mu-_cu'])
-    func_cu.FixParameter(1, param['t_mu-_cu'])
-    n_mu_cu = func_cu.Integral(t_window_start, t_window_stop)
+    func_cu.SetParameter(0, fitting_func.GetParameter(1))
+    func_cu.SetParError (0, fitting_func.GetParError(1))
+    
+    func_cu.SetParameter(1, fitting_func.GetParameter(2))
+    func_cu.SetParError (1, fitting_func.GetParError(2))
+    
+    n_cu = func_cu.Integral(t_window_start, t_window_stop)
+    cu_covariance = covariance_matrix.GetSub(1,2,1,2).GetMatrixArray()
+    n_cu_er = func_cu.IntegralError(t_window_start, t_window_stop, func_cu.GetParameters(), cu_covariance)
+    print "%f er: %.2e" % (n_cu, n_cu_er)
     
     func_mu = TF1("slow_func", "[0]*exp(-x/[1])", t_window_start, t_window_stop)
-    func_mu.FixParameter(0, param['N_mu_slow'])
-    func_mu.FixParameter(1, param['t_mu_slow'])
+    func_mu.SetParameter(0, fitting_func.GetParameter(3))
+    func_mu.SetParError (0, fitting_func.GetParError(3))
+    
+    func_mu.SetParameter(1, fitting_func.GetParameter(4))
+    func_mu.SetParError (1, fitting_func.GetParError(4))
     n_mu = func_mu.Integral(t_window_start, t_window_stop)
     
-    return {"n_bkgnd":n_background, "n_mu-_cu":n_mu_cu, "n_mu_slow":n_mu, "n_muons":(n_mu+n_mu_cu)}
+    mu_covariance = covariance_matrix.GetSub(3,4,3,4).GetMatrixArray()
+    for i in range(2): print func_mu.GetParameters()[i]
+    n_mu_er = func_mu.IntegralError(t_window_start, t_window_stop, func_mu.GetParameters(), mu_covariance)
+    print "%f er: %.2e" % (n_mu, n_mu_er)
+    
+    
+    return {"n_bkgnd":n_background, "n_mu-_cu":(n_cu, n_cu_er), "n_mu_slow":(n_mu, n_mu_er), "n_muons":(n_mu+n_cu)}
+
+
+def print_covariance_matrix(covariance_matrix):
+    dimension = covariance_matrix.GetNcols()
+    fmt_string = "% 5.2e " * dimension 
+    for i in range (dimension):
+        row = tuple([covariance_matrix[i][n] for n in range(dimension)])
+        print fmt_string % row
 
 
 def get_file_index_from_id(id):
@@ -170,6 +221,7 @@ def get_file_index_from_id(id):
 
 def convert_current_to_protons(current):
     return current * 6.241e9 # current * n protons in 1nA
+
 
 def main():
     # open .root files
@@ -195,8 +247,10 @@ def main():
         rebin(hist, 400)
         # get the fitting function and fit it to the histogram
         fitting_func = get_fitting_func("fit_file%i_ch%s"%(file_id, ch))
-        hist.Fit(fitting_func, "R") # fit in the function range
-        counts = get_muon_counts_dict(fitting_func)
+        fit_res = hist.Fit(fitting_func, "S") # fit in the function range
+        covariance_matrix = fit_res.GetCovarianceMatrix()
+        print_covariance_matrix(covariance_matrix) 
+        counts = get_muon_counts_dict(fitting_func, covariance_matrix)
         # save the info
         if 'results' in file_info[index].keys():
             file_info[index]['results'][ch] = counts
@@ -206,14 +260,17 @@ def main():
             file_info[index]['results'][ch] = counts
             file_info[index]['results']['n_muons'] = counts['n_muons']
             
-    print "*"*40 
+    print "*"*40, '\n'
+    print "Thickness | Muon count | Rate (mu/s) | Norm. Rate (mu/s/p)"
     for file in file_info: 
         dz = file['deg_dz']
         n_mu = file['results']['n_muons']
-        n_mu_norm = float(n_mu)/(file['time']*convert_current_to_protons(file['current']))
-        print "dz: %f number of muons: %i muons/s/proton: %f"%(dz, n_mu, n_mu_norm )
+        mu_rate = float(n_mu)/file['time']
+        mu_rate_n = mu_rate/convert_current_to_protons(file['current'])
+        print "%9.1f | %10i | %11.0f | %19.1e" % (dz, n_mu, mu_rate, mu_rate_n)
     # sleep (20)
         
+
 
 if __name__ == '__main__':
     main()
