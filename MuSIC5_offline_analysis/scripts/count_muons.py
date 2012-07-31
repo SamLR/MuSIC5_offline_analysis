@@ -150,28 +150,6 @@ def get_parameter_dict(fitting_func):
     return param, errors
 
 
-def error_on_integral(param, covariance):
-    for p in param:       
-        # check that parameter error is not zero - otherwise skip it    
-        # should check the limits 
-        double integral  = 0;
-        index = param.index(p)
-        if (covariance[i][i] > 0 ) {          
-           TF1 gradFunc("gradFunc",TGradientParFunction(i,func),0,0,0);
-           integral = gradFunc.Integral(*a,*b,(double*)0,epsilon);
-              
-        }
-        ig[i] = integral; 
-     } 
-     double err2 =  covMatrix.Similarity(ig); 
-
-     // restore old parameters in TF1
-     if (!oldParams.empty()) { 
-        func->SetParameters(&oldParams.front()); 
-     }
-
-     return std::sqrt(err2);
-
 def get_muon_counts_dict(fitting_func, covariance_matrix):
     params, errors = get_parameter_dict(fitting_func)
     
