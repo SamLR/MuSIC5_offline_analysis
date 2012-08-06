@@ -26,7 +26,7 @@
 //
 // $Id: SteppingAction.hh,v 1.8 2006-06-29 17:47:48 gunter Exp $
 // GEANT4 tag $Name: not supported by cvs2svn $
-// 
+//
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -34,16 +34,29 @@
 #define SteppingAction_h 1
 
 #include "G4UserSteppingAction.hh"
+//#include <vector>
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+//typedef std::vector<int> idvec;
+
 class SteppingAction : public G4UserSteppingAction
 {
-  public:
+public:
     SteppingAction();
-   ~SteppingAction(){};
-
-    void UserSteppingAction(const G4Step*);
+    ~SteppingAction(){};
+    
+    void UserSteppingAction(const G4Step* step);
+    
+    int const getScint1Count() {return scint1_count;};
+    int const getScint2Count() {return scint2_count;};
+    
+private:
+    int scint1_count;
+//    idvec scint1_tracks;
+    int scint2_count;
+//    idvec scint2_tracks;
+    
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -35,13 +35,27 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-SteppingAction::SteppingAction()
-{ }
+SteppingAction::SteppingAction():
+scint1_count(0), //scint1_tracks(0),
+scint2_count(0)//, scint2_tracks(0)
+{  }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void SteppingAction::UserSteppingAction(const G4Step*)
-{ 
+void SteppingAction::UserSteppingAction(const G4Step* step) {
+    G4StepPoint* prePoint = step->GetPreStepPoint();
+//    G4StepPoint* postPoint = step->GetPostStepPoint();
+    
+    const G4String& volname = prePoint->GetTouchableHandle()->GetVolume()->GetName();
+    
+    
+    const bool first_step = (prePoint->GetStepStatus() == fGeomBoundary);
+    if (volname == "Scint1" && first_step) {
+        ++scint1_count;
+    } else if (volname == "Scint2" && first_step) {
+        ++scint2_count;
+    }
+    
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

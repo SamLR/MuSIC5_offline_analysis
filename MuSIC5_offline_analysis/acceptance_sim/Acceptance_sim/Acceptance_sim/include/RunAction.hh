@@ -26,7 +26,7 @@
 //
 // $Id: RunAction.hh,v 1.8 2006-06-29 17:47:45 gunter Exp $
 // GEANT4 tag $Name: not supported by cvs2svn $
-// 
+//
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -39,16 +39,20 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 class G4Run;
+class SteppingAction;
 
 class RunAction : public G4UserRunAction
 {
-  public:
+public:
+    RunAction(SteppingAction* stepping_action);
+    ~RunAction();
+    
+public:
     RunAction();
-   ~RunAction();
-
-  public:
     void BeginOfRunAction(const G4Run*);
     void EndOfRunAction(const G4Run*);
+    
+    SteppingAction* fAction;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

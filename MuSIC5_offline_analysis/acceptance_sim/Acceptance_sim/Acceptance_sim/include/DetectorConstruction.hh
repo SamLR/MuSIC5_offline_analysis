@@ -35,7 +35,6 @@
 
 #include "globals.hh"
 #include "G4VUserDetectorConstruction.hh"
-#include "MagneticField.hh"
 
 class G4Box;
 class G4LogicalVolume;
@@ -49,60 +48,49 @@ class DetectorMessenger;
 
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
-  public:
-  
-     DetectorConstruction();
+public:
+    
+    DetectorConstruction();
     ~DetectorConstruction();
-
-  public:
-  
-     G4VPhysicalVolume* Construct();
-     
-     const 
-     G4VPhysicalVolume* GetTracker() {return physiTracker;};
-     G4double GetTrackerFullLength() {return fTrackerLength;};
-     G4double GetTargetFullLength()  {return fTargetLength;};
-     G4double GetWorldFullLength()   {return fWorldLength;}; 
-     
-     void setTargetMaterial (G4String);
-     void setChamberMaterial(G4String);
-     void SetMagField(G4double);
-     void SetMaxStep (G4double);     
-     
-  private:
-
-     G4Box*             solidWorld;    // pointer to the solid envelope 
-     G4LogicalVolume*   logicWorld;    // pointer to the logical envelope
-     G4VPhysicalVolume* physiWorld;    // pointer to the physical envelope
-     
-     G4Box*             solidTarget;   // pointer to the solid Target
-     G4LogicalVolume*   logicTarget;   // pointer to the logical Target
-     G4VPhysicalVolume* physiTarget;   // pointer to the physical Target
-               
-     G4Box*             solidTracker;  // pointer to the solid Tracker
-     G4LogicalVolume*   logicTracker;  // pointer to the logical Tracker
-     G4VPhysicalVolume* physiTracker;  // pointer to the physical Tracker
-     
-     G4Box*             solidChamber;  // pointer to the solid Chamber
-     G4LogicalVolume*   logicChamber;  // pointer to the logical Chamber
-     G4VPhysicalVolume* physiChamber;  // pointer to the physical Chamber
-     
-     G4Material*         TargetMater;  // pointer to the target  material
-     G4Material*         ChamberMater; // pointer to the chamber material
-
-     G4VPVParameterisation* chamberParam; // pointer to chamber parameterisation
-     G4UserLimits* stepLimit;             // pointer to user step limits
-
-     MagneticField* fpMagField;   // pointer to the magnetic field 
-     
-     DetectorMessenger* detectorMessenger;  // pointer to the Messenger
-       
-     G4double fWorldLength;            // Full length of the world volume
-     G4double fTargetLength;           // Full length of Target
-     G4double fTrackerLength;          // Full length of Tracker
-     G4int    NbOfChambers;            // Nb of chambers in the tracker region
-     G4double ChamberWidth;            // width of the chambers
-     G4double ChamberSpacing;	       // distance between chambers
+    
+public:
+    
+    G4VPhysicalVolume* Construct();
+        
+private:
+    
+    G4Box*             solidWorld;    // pointer to the solid envelope
+    G4LogicalVolume*   logicWorld;    // pointer to the logical envelope
+    G4VPhysicalVolume* physiWorld;    // pointer to the physical envelope
+    
+    G4Box*             solidTarget;   // pointer to the solid Target
+    G4LogicalVolume*   logicTarget;   // pointer to the logical Target
+    G4VPhysicalVolume* physiTarget;   // pointer to the physical Target
+    
+    G4Box*             solidScint1;  // pointer to the solid Scint1
+    G4LogicalVolume*   logicScint1;  // pointer to the logical Scint1
+    G4VPhysicalVolume* physiScint1;  // pointer to the physical Scint1
+    
+    G4Box*             solidScint2;  // pointer to the solid Scint2
+    G4LogicalVolume*   logicScint2;  // pointer to the logical Scint2
+    G4VPhysicalVolume* physiScint2;  // pointer to the physical Scint2
+    
+    G4double fWorldX;
+    G4double fTargetX;
+    G4double fScint1X;
+    G4double fScint2X;
+    
+    G4double fWorldY;
+    G4double fTargetY;
+    G4double fScint1Y;
+    G4double fScint2Y;
+    
+    G4double fWorldZ;
+    G4double fTargetZ;
+    G4double fScint1Z;
+    G4double fScint2Z;
+    
+    G4double fSeparatorZ;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

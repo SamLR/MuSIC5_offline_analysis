@@ -37,6 +37,9 @@
 #include "G4ParticleGun.hh"
 #include "G4ParticleTable.hh"
 #include "G4ParticleDefinition.hh"
+
+#include "Randomize.hh"
+#include "G4RandomDirection.hh"
 #include "globals.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -45,34 +48,41 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(
                                                DetectorConstruction* myDC)
 :myDetector(myDC)
 {
-  G4int n_particle = 1;
-  particleGun = new G4ParticleGun(n_particle);
-
-// default particle
-
-  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-  G4ParticleDefinition* particle = particleTable->FindParticle("proton");
-  
-  particleGun->SetParticleDefinition(particle);
-  particleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
-  particleGun->SetParticleEnergy(3.0*GeV);
+    G4int n_particle = 1;
+    particleGun = new G4ParticleGun(n_particle);
+    
+    // default particle
+    
+    G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+    G4ParticleDefinition* particle = particleTable->FindParticle("e-");
+    
+    particleGun->SetParticleDefinition(particle);
+    particleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
+    particleGun->SetParticleEnergy(50*MeV);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
-  delete particleGun;
+    delete particleGun;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
-{ 
-  G4double position = -0.5*(myDetector->GetWorldFullLength());
-  particleGun->SetParticlePosition(G4ThreeVector(0.*cm,0.*cm,position));
-  
-  particleGun->GeneratePrimaryVertex(anEvent);
+{
+    // Randomise the position of the particle within the stopping target
+    float x =  37*cm * (G4UniformRand() - 0.5);
+    float y =  31*cm * (G4UniformRand() - 0.5);
+    float z = 0.5*mm * (G4UniformRand() - 0.5);
+    // And radomise its direction
+    G4ThreeVector direction = G4RandomDirection();
+    
+    particleGun->SetParticleMomentumDirection(direction);
+    particleGun->SetParticlePosition(G4ThreeVector(x,y,z));
+    
+    particleGun->GeneratePrimaryVertex(anEvent);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
