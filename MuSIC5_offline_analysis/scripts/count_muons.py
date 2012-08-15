@@ -8,7 +8,7 @@ Copyright (c) 2012 . All rights reserved.
 """
 
 from time import sleep
-from ROOT import TH1F, TFile, TF1, Double
+from ROOT import TH1F, TFile, TF1, Double, TCanvas, gStyle
 import os.path
 
 from utilities import *
@@ -201,6 +201,15 @@ def convert_current_to_protons(current):
     return current * 6.241e9 # current * n protons in 1nA
 
 
+def make_canvases():
+    res = {}
+    for i in file_info:
+        id = i['id']
+        res[id] = TCanvas(str(id),str(id),1436,856)
+        res[id].Divide(3,2)
+    return res
+
+
 def main():
     # open .root files
     # for each root file
@@ -213,21 +222,27 @@ def main():
     # get the file containing all the tdc histograms
     tdc_hist_file_name = "music5_tdc_data.root"
     tdc_file = get_tdc_file(tdc_hist_file_name)
-    # make a dictionary of blank canvases ready to be
+    # make a dictionary of blank canvases ready to be drawn in
+    canvases = make_canvases()
+    
+    gStyle.SetOptFit()
     
     for key in tdc_file.GetListOfKeys():
         # get the histogram and extract the info about it
         hist = key.ReadObj()
         file_id, ch = get_id_and_ch_from_hist(hist)
+        if 'U' in ch: continue
+        
         index = get_file_index_from_id(file_id)
         
         # rebin it into bins 50ns (20000/400 = 50) wide 
         rebin(hist, 400)
+        canvases[int(file_id)].cd(int(ch[1:]))
         # get the fitting function and fit it to the histogram
         fitting_func = get_fitting_func("fit_file%i_ch%s"%(file_id, ch))
         fit_res = hist.Fit(fitting_func, "S") # fit in the function range
         covariance_matrix = fit_res.GetCovarianceMatrix()
-        print_covariance_matrix(covariance_matrix) 
+        # print_covariance_matrix(covariance_matrix) 
         counts = get_muon_counts_dict(fitting_func, covariance_matrix)
         # save the info
         if 'results' in file_info[index].keys():
@@ -246,7 +261,8 @@ def main():
         mu_rate = float(n_mu)/file['time']
         mu_rate_n = mu_rate/convert_current_to_protons(file['current'])
         print "%9.1f | %10i | %11.0f | %19.1e" % (dz, n_mu, mu_rate, mu_rate_n)
-    # sleep (20)
+    for can in canvases.values(): can.Update()
+    sleep (20)
         
 
 
