@@ -1,0 +1,461 @@
+Found TDC hist file (music5_tdc_data.root) opening...
+ FCN=1005.32 FROM MIGRAD    STATUS=CONVERGED     242 CALLS         243 TOTAL
+                     EDM=1.51898e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.8 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        1.79948e+03   2.98963e+00  -5.24759e-03   1.64921e-04
+   2  N_{#mu^{-}}   9.22494e+02   8.14937e+01   2.27844e-01   4.96386e-07
+   3  #tau_{Cu}    1.62500e+02   1.98586e+00   4.31469e-03** at limit **
+   4  N_{#mu^{+}}   4.17319e+03   2.65445e+01  -1.06210e-01   1.40341e-06
+   5  #tau_{#mu}   2.19807e+03   1.65050e+01   5.09650e-02   3.59545e-06
+ 6.64e+03 -2.99e-03 
+-2.99e-03  8.85e-06 
+81013.759144 er: 7.16e+03
+ 7.05e+02 -3.32e+02 
+-3.32e+02  2.72e+02 
+8763977.511131 er: 4.50e+04
+ FCN=1514.15 FROM MIGRAD    STATUS=CONVERGED     333 CALLS         334 TOTAL
+                     EDM=7.30538e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        2.84819e+03   3.70932e+00   5.42027e-02  -1.18203e-04
+   2  N_{#mu^{-}}   1.77484e+03   9.90647e+01   1.47906e+00   7.93835e-07
+   3  #tau_{Cu}    1.62500e+02   1.74497e+00   3.96266e-02** at limit **
+   4  N_{#mu^{+}}   5.86366e+03   3.21240e+01   3.26369e-01  -1.13118e-05
+   5  #tau_{#mu}   2.21782e+03   1.45673e+01   1.41861e-01  -4.46919e-05
+ 9.81e+03 -3.60e-06 
+-3.60e-06  3.62e-10 
+155866.972682 er: 8.70e+03
+ 1.03e+03 -3.53e+02 
+-3.53e+02  2.12e+02 
+12429627.828937 er: 5.60e+04
+ FCN=707.594 FROM MIGRAD    STATUS=CONVERGED     221 CALLS         222 TOTAL
+                     EDM=1.67376e-06    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        5.11635e+02   1.58091e+00   1.61291e-02   2.47005e-04
+   2  N_{#mu^{-}}   6.89417e+02   5.26746e+01   5.44825e-01   3.05522e-05
+   3  #tau_{Cu}    1.62500e+02   1.75135e+00   2.72580e-02** at limit **
+   4  N_{#mu^{+}}   1.89261e+03   1.63656e+01   1.13615e-01  -3.67562e-05
+   5  #tau_{#mu}   2.18281e+03   2.10427e+01   1.40356e-01  -1.91594e-05
+ 2.77e+03 -2.20e-06 
+-2.20e-06  1.10e-09 
+60544.808805 er: 4.63e+03
+ 2.68e+02 -2.64e+02 
+-2.64e+02  4.43e+02 
+3945783.486642 er: 2.58e+04
+ FCN=502.633 FROM MIGRAD    STATUS=CONVERGED     162 CALLS         163 TOTAL
+                     EDM=4.63416e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        9.90736e+01   7.03091e-01   6.09638e-03  -1.05395e-04
+   2  N_{#mu^{-}}   3.27003e+02   2.76169e+01   2.45810e-01   1.04039e-05
+   3  #tau_{Cu}    1.62500e+02   1.98074e+00   3.13723e-02** at limit **
+   4  N_{#mu^{+}}   5.09585e+02   8.01816e+00   4.73714e-02  -1.54725e-05
+   5  #tau_{#mu}   2.19446e+03   3.69190e+01   2.08197e-01  -9.34643e-06
+ 7.63e+02 -5.86e-07 
+-5.86e-07  1.62e-10 
+28717.547607 er: 2.43e+03
+ 6.43e+01 -2.28e+02 
+-2.28e+02  1.36e+03 
+1068326.100174 er: 1.22e+04
+ FCN=460.942 FROM MIGRAD    STATUS=CONVERGED     182 CALLS         183 TOTAL
+                     EDM=1.77255e-08    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   5.2 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        8.58947e+01   6.51313e-01  -1.73471e-05   1.53445e-04
+   2  N_{#mu^{-}}   1.44624e+02   2.05771e+01  -1.71896e-02  -8.46477e-06
+   3  #tau_{Cu}    1.62500e+02   1.48251e+00  -1.40954e-03** at limit **
+   4  N_{#mu^{+}}   2.58715e+02   6.28307e+00   2.12474e-03  -2.61316e-05
+   5  #tau_{#mu}   2.21587e+03   6.20292e+01  -3.37719e-02   2.88370e-06
+ 4.23e+02  5.75e-06 
+ 5.75e-06  1.80e-07 
+12700.927479 er: 1.81e+03
+ 3.95e+01 -2.98e+02 
+-2.98e+02  3.85e+03 
+547915.132582 er: 1.04e+04
+ FCN=486.998 FROM MIGRAD    STATUS=CONVERGED     260 CALLS         261 TOTAL
+                     EDM=2.35783e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        1.16705e+02   7.55801e-01   6.29032e-03   8.10842e-05
+   2  N_{#mu^{-}}   2.07478e+01   2.07159e+01   1.75250e-01   2.42044e-06
+   3  #tau_{Cu}    1.62500e+02   1.49996e+00   1.85913e-01   1.13771e-05
+   4  N_{#mu^{+}}   3.01157e+02   6.86047e+00   3.95445e-02   2.12272e-05
+   5  #tau_{#mu}   2.22635e+03   5.96741e+01   3.30058e-01   1.19113e-06
+ 4.29e+02 -5.10e-03 
+-5.10e-03  8.57e-04 
+1822.083122 er: 1.82e+03
+ 4.71e+01 -3.10e+02 
+-3.10e+02  3.56e+03 
+640948.311624 er: 1.18e+04
+ FCN=582.812 FROM MIGRAD    STATUS=CONVERGED     238 CALLS         239 TOTAL
+                     EDM=5.3732e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        1.82406e+02   9.81887e-01   8.69124e-03   3.47802e-04
+   2  N_{#mu^{-}}   1.73155e+02   2.75369e+01   2.61783e-01   3.71078e-05
+   3  #tau_{Cu}    1.62500e+02   1.34350e+00   5.91609e-02   1.10244e-04
+   4  N_{#mu^{+}}   5.05458e+02   8.35832e+00   5.36081e-02   1.33043e-04
+   5  #tau_{#mu}   2.39925e+03   4.74385e+01   2.82693e-01   1.05795e-05
+ 7.58e+02 -5.74e-04 
+-5.74e-04  4.93e-05 
+15206.537018 er: 2.42e+03
+ 6.99e+01 -2.98e+02 
+-2.98e+02  2.25e+03 
+1162922.526733 er: 1.58e+04
+ FCN=503.081 FROM MIGRAD    STATUS=CONVERGED     169 CALLS         170 TOTAL
+                     EDM=8.82264e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        3.30700e+01   4.15109e-01   3.53999e-03   5.37872e-04
+   2  N_{#mu^{-}}   1.00677e+02   1.57564e+01   1.40541e-01  -3.63343e-05
+   3  #tau_{Cu}    1.62500e+02   1.13669e+00   6.12173e-02   1.07844e-04
+   4  N_{#mu^{+}}   1.69067e+02   4.54898e+00   2.67362e-02   2.16899e-04
+   5  #tau_{#mu}   2.28205e+03   6.68995e+01   3.70633e-01   5.73195e-06
+ 2.48e+02 -5.06e-04 
+-5.06e-04  8.29e-05 
+8841.510955 er: 1.38e+03
+ 2.07e+01 -2.35e+02 
+-2.35e+02  4.48e+03 
+369217.206297 er: 7.27e+03
+ FCN=473.58 FROM MIGRAD    STATUS=CONVERGED     180 CALLS         181 TOTAL
+                     EDM=9.68026e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        5.19367e+00   1.66218e-01   1.41434e-03  -2.84715e-03
+   2  N_{#mu^{-}}   1.65453e+01   7.91572e+00   6.84842e-02   9.45892e-05
+   3  #tau_{Cu}    1.62500e+02   1.77488e+00   8.96285e-02  -4.74668e-05
+   4  N_{#mu^{+}}   4.98008e+01   2.26801e+00   1.30358e-02   7.10943e-04
+   5  #tau_{#mu}   2.24972e+03   1.02363e+02   5.62927e-01   1.30949e-05
+ 6.27e+01 -4.88e-04 
+-4.88e-04  2.03e-04 
+1453.013437 er: 6.95e+02
+ 5.14e+00 -1.80e+02 
+-1.80e+02  1.05e+04 
+107151.443345 er: 3.35e+03
+ FCN=483.715 FROM MIGRAD    STATUS=CONVERGED     209 CALLS         210 TOTAL
+                     EDM=4.28822e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        4.72521e+00   1.49010e-01   1.30218e-03   2.18683e-04
+   2  N_{#mu^{-}}   2.61062e+01   6.40206e+00   5.73014e-02  -1.50500e-05
+   3  #tau_{Cu}    1.62500e+02   1.03074e+00   1.31212e-01** at limit **
+   4  N_{#mu^{+}}   2.54539e+01   1.74058e+00   1.06732e-02  -3.80634e-05
+   5  #tau_{#mu}   2.09357e+03   1.46415e+02   8.66058e-01   3.59555e-08
+ 4.10e+01 -1.32e-04 
+-1.32e-04  5.07e-06 
+2292.653918 er: 5.62e+02
+ 3.03e+00 -1.89e+02 
+-1.89e+02  2.14e+04 
+50800.136480 er: 2.59e+03
+ FCN=798.672 FROM MIGRAD    STATUS=CONVERGED     237 CALLS         238 TOTAL
+                     EDM=1.65215e-06    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        4.75978e+02   1.56223e+00   1.63486e-02   2.99703e-04
+   2  N_{#mu^{-}}   3.45850e+02   4.32000e+01   4.77416e-01   4.33694e-05
+   3  #tau_{Cu}    1.62500e+02   1.36212e+00   6.87013e-02   1.97189e-04
+   4  N_{#mu^{+}}   1.25292e+03   1.34848e+01   1.00962e-01   1.23875e-04
+   5  #tau_{#mu}   2.33794e+03   2.99827e+01   2.10786e-01   2.17908e-05
+ 1.87e+03 -2.00e-03 
+-2.00e-03  1.51e-04 
+30372.686661 er: 3.79e+03
+ 1.82e+02 -3.04e+02 
+-3.04e+02  8.99e+02 
+2806033.714804 er: 2.48e+04
+ FCN=1113.44 FROM MIGRAD    STATUS=CONVERGED     184 CALLS         185 TOTAL
+                     EDM=9.33449e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   1.3 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        7.43351e+02   2.01099e+00   8.02289e-04   3.39829e-05
+   2  N_{#mu^{-}}   7.71491e+02   5.72038e+01  -3.70025e-02   2.44497e-06
+   3  #tau_{Cu}    1.62500e+02   1.95227e+00   2.81542e-03** at limit **
+   4  N_{#mu^{+}}   2.27221e+03   1.76909e+01   5.40406e-03  -3.19323e-06
+   5  #tau_{#mu}   2.35130e+03   2.21819e+01  -3.69611e-03  -5.74865e-07
+ 3.27e+03 -1.89e-04 
+-1.89e-04  7.71e-08 
+67752.625902 er: 5.02e+03
+ 3.13e+02 -2.93e+02 
+-2.93e+02  4.92e+02 
+5119120.102588 er: 3.35e+04
+ FCN=550.36 FROM MIGRAD    STATUS=CONVERGED     156 CALLS         157 TOTAL
+                     EDM=2.80355e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.5 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        1.35524e+02   8.51701e-01   1.40016e-05  -3.21125e-05
+   2  N_{#mu^{-}}   3.84730e+02   3.24818e+01  -2.96852e-02   1.48406e-06
+   3  #tau_{Cu}    1.62500e+02   1.94726e+00  -1.83757e-03** at limit **
+   4  N_{#mu^{+}}   7.72505e+02   9.33131e+00   2.87781e-03  -7.33522e-06
+   5  #tau_{#mu}   2.32095e+03   3.04221e+01  -2.06926e-02  -5.18268e-06
+ 1.06e+03  1.68e-06 
+ 1.68e-06  2.59e-10 
+33787.119555 er: 2.85e+03
+ 8.71e+01 -2.17e+02 
+-2.17e+02  9.26e+02 
+1717007.945724 er: 1.54e+04
+ FCN=401.82 FROM MIGRAD    STATUS=CONVERGED     159 CALLS         160 TOTAL
+                     EDM=7.85905e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   4.7 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        2.51968e+01   3.78514e-01  -2.22902e-04  -7.92843e-05
+   2  N_{#mu^{-}}   1.31985e+02   1.70864e+01   1.50001e-02   9.00403e-06
+   3  #tau_{Cu}    1.62500e+02   1.97479e+00   1.16653e-03** at limit **
+   4  N_{#mu^{+}}   2.12951e+02   4.60326e+00  -2.57433e-03   2.79948e-05
+   5  #tau_{#mu}   2.40004e+03   5.36455e+01   4.87378e-02  -1.59994e-06
+ 2.92e+02 -1.34e-05 
+-1.34e-05  2.52e-09 
+11590.996552 er: 1.50e+03
+ 2.12e+01 -1.90e+02 
+-1.90e+02  2.88e+03 
+490111.226902 er: 7.48e+03
+ FCN=539.905 FROM MIGRAD    STATUS=CONVERGED     184 CALLS         185 TOTAL
+                     EDM=1.16692e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        2.22797e+01   3.51239e-01   3.01302e-03  -1.71469e-04
+   2  N_{#mu^{-}}   8.71004e+01   1.27631e+01   1.19145e-01   3.17860e-05
+   3  #tau_{Cu}    1.62500e+02   1.08864e+00   3.46829e-01** at limit **
+   4  N_{#mu^{+}}   1.03250e+02   3.55356e+00   2.14954e-02   1.91616e-04
+   5  #tau_{#mu}   2.40658e+03   9.35560e+01   5.20602e-01   2.66529e-06
+ 1.63e+02 -3.17e-02 
+-3.17e-02  8.90e-04 
+7649.185233 er: 1.12e+03
+ 1.26e+01 -2.58e+02 
+-2.58e+02  8.75e+03 
+238304.365223 er: 6.13e+03
+ FCN=772.039 FROM MIGRAD    STATUS=CONVERGED     200 CALLS         201 TOTAL
+                     EDM=6.14036e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.9 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        5.54998e+02   1.69876e+00  -1.13714e-04  -3.17128e-05
+   2  N_{#mu^{-}}   4.37717e+02   4.80356e+01  -6.95970e-02   1.44452e-06
+   3  #tau_{Cu}    1.62500e+02   1.63949e+00   1.26936e-03** at limit **
+   4  N_{#mu^{+}}   1.54940e+03   1.50736e+01   1.51899e-02  -6.04408e-07
+   5  #tau_{#mu}   2.33392e+03   2.74572e+01  -1.32036e-02  -6.38261e-06
+ 2.31e+03  5.74e-04 
+ 5.74e-04  5.18e-07 
+38440.449242 er: 4.22e+03
+ 2.27e+02 -3.15e+02 
+-3.15e+02  7.54e+02 
+3463829.831570 er: 2.76e+04
+ FCN=1066.3 FROM MIGRAD    STATUS=CONVERGED     186 CALLS         187 TOTAL
+                     EDM=6.82365e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.7 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        8.69857e+02   2.11998e+00   1.98497e-03   5.43160e-05
+   2  N_{#mu^{-}}   9.79469e+02   6.42334e+01  -9.25793e-02   2.28808e-06
+   3  #tau_{Cu}    1.62500e+02   1.85635e+00  -3.73947e-04** at limit **
+   4  N_{#mu^{+}}   2.80545e+03   1.96955e+01   3.02222e-02   1.15845e-05
+   5  #tau_{#mu}   2.31734e+03   1.87660e+01  -3.36091e-02   7.18943e-06
+ 4.13e+03  3.09e-05 
+ 3.09e-05  1.86e-09 
+86017.323397 er: 5.64e+03
+ 3.88e+02 -2.80e+02 
+-2.80e+02  3.52e+02 
+6225460.220889 er: 3.45e+04
+ FCN=554.975 FROM MIGRAD    STATUS=CONVERGED     149 CALLS         150 TOTAL
+                     EDM=6.61917e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.7 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        1.59870e+02   9.10899e-01   5.70513e-04  -2.66049e-05
+   2  N_{#mu^{-}}   4.39364e+02   3.61523e+01  -4.71639e-02   2.34500e-06
+   3  #tau_{Cu}    1.62500e+02   1.93438e+00  -2.33134e-03** at limit **
+   4  N_{#mu^{+}}   9.64605e+02   1.04468e+01   4.78455e-03   1.04143e-05
+   5  #tau_{#mu}   2.26040e+03   2.63208e+01  -9.09510e-03   2.94849e-06
+ 1.31e+03 -1.25e-04 
+-1.25e-04  1.53e-07 
+38585.121935 er: 3.17e+03
+ 1.09e+02 -2.13e+02 
+-2.13e+02  6.93e+02 
+2085725.800422 er: 1.63e+04
+ FCN=458.959 FROM MIGRAD    STATUS=CONVERGED     181 CALLS         182 TOTAL
+                     EDM=2.44163e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        2.93616e+01   4.03936e-01   3.30709e-03  -4.81430e-05
+   2  N_{#mu^{-}}   2.14990e+02   1.90486e+01   1.66758e-01   1.03838e-05
+   3  #tau_{Cu}    1.62500e+02   1.97544e+00   3.62099e-02** at limit **
+   4  N_{#mu^{+}}   2.46612e+02   5.01924e+00   2.86844e-02   6.10735e-05
+   5  #tau_{#mu}   2.35289e+03   4.94026e+01   2.62906e-01   3.60279e-06
+ 3.63e+02 -1.29e-05 
+-1.29e-05  8.70e-08 
+18880.506910 er: 1.67e+03
+ 2.52e+01 -1.92e+02 
+-1.92e+02  2.44e+03 
+555987.706213 er: 7.94e+03
+ FCN=462.047 FROM MIGRAD    STATUS=CONVERGED     171 CALLS         172 TOTAL
+                     EDM=1.66748e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        2.67905e+01   3.71008e-01   3.04310e-03  -4.52403e-04
+   2  N_{#mu^{-}}   1.10006e+02   1.42967e+01   1.23776e-01   2.59390e-06
+   3  #tau_{Cu}    1.62500e+02   1.28887e+00   5.41185e-02** at limit **
+   4  N_{#mu^{+}}   1.29563e+02   3.97061e+00   2.27906e-02  -3.36561e-05
+   5  #tau_{#mu}   2.27636e+03   7.58172e+01   4.09332e-01  -1.23760e-06
+ 2.04e+02 -6.00e-06 
+-6.00e-06  1.71e-08 
+9660.763015 er: 1.26e+03
+ 1.58e+01 -2.30e+02 
+-2.30e+02  5.75e+03 
+282211.691900 er: 6.44e+03
+ FCN=515.581 FROM MIGRAD    STATUS=CONVERGED     185 CALLS         186 TOTAL
+                     EDM=2.11104e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        2.17751e+02   1.06616e+00   9.15691e-03  -2.35075e-04
+   2  N_{#mu^{-}}   2.33760e+02   3.61845e+01   3.23819e-01  -3.15574e-07
+   3  #tau_{Cu}    1.62500e+02   1.45507e+00   5.33784e-02** at limit **
+   4  N_{#mu^{+}}   1.01872e+03   1.10655e+01   6.63091e-02   4.74679e-05
+   5  #tau_{#mu}   2.30516e+03   2.77794e+01   1.57131e-01  -1.90828e-06
+ 1.31e+03 -3.23e-04 
+-3.23e-04  1.28e-05 
+20528.911220 er: 3.18e+03
+ 1.22e+02 -2.35e+02 
+-2.35e+02  7.72e+02 
+2248220.731219 er: 1.84e+04
+ FCN=732.866 FROM MIGRAD    STATUS=CONVERGED     163 CALLS         164 TOTAL
+                     EDM=7.00513e-10    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.0 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        3.36435e+02   1.34061e+00   1.05249e-03  -1.49660e-05
+   2  N_{#mu^{-}}   6.69491e+02   4.74027e+01  -1.32685e-02   2.55156e-08
+   3  #tau_{Cu}    1.62500e+02   1.85804e+00   3.05847e-06** at limit **
+   4  N_{#mu^{+}}   1.63218e+03   1.38283e+01   1.47269e-03   1.91645e-06
+   5  #tau_{#mu}   2.34506e+03   2.20158e+01  -1.67753e-02   1.46652e-06
+ 2.25e+03 -4.36e-05 
+-4.36e-05  8.50e-09 
+58794.937492 er: 4.16e+03
+ 1.91e+02 -2.33e+02 
+-2.33e+02  4.85e+02 
+3667021.126951 er: 2.34e+04
+ FCN=471.692 FROM MIGRAD    STATUS=CONVERGED     169 CALLS         170 TOTAL
+                     EDM=8.09659e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        6.17753e+01   5.88629e-01   4.86324e-03   1.16973e-04
+   2  N_{#mu^{-}}   2.44055e+02   2.54495e+01   2.23940e-01   4.17968e-05
+   3  #tau_{Cu}    1.62500e+02   1.48907e+00   5.01157e-02   1.66248e-04
+   4  N_{#mu^{+}}   5.09305e+02   7.12984e+00   4.12905e-02   1.92491e-04
+   5  #tau_{#mu}   2.37392e+03   3.47020e+01   1.87263e-01   2.02957e-05
+ 6.48e+02 -7.67e-04 
+-7.67e-04  7.79e-05 
+21432.966968 er: 2.23e+03
+ 5.08e+01 -1.91e+02 
+-1.91e+02  1.20e+03 
+1158910.026902 er: 1.15e+04
+ FCN=462.113 FROM MIGRAD    STATUS=CONVERGED     188 CALLS         189 TOTAL
+                     EDM=1.28121e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        9.84888e+00   2.39243e-01   2.00001e-03  -7.26831e-05
+   2  N_{#mu^{-}}   8.65536e+01   1.32637e+01   1.17552e-01  -9.49759e-06
+   3  #tau_{Cu}    1.62500e+02   1.58912e+00   4.76450e-02** at limit **
+   4  N_{#mu^{+}}   1.38036e+02   3.46783e+00   2.03894e-02   2.22111e-05
+   5  #tau_{#mu}   2.35903e+03   5.74033e+01   3.16028e-01   2.60754e-06
+ 1.76e+02 -1.64e-05 
+-1.64e-05  2.35e-07 
+7601.168908 er: 1.16e+03
+ 1.20e+01 -1.52e+02 
+-1.52e+02  3.30e+03 
+312048.097831 er: 5.39e+03
+ FCN=531.576 FROM MIGRAD    STATUS=CONVERGED     159 CALLS         160 TOTAL
+                     EDM=7.17369e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        9.93790e+00   2.28417e-01   2.04489e-03   1.35942e-03
+   2  N_{#mu^{-}}   3.37093e+01   9.82608e+00   9.09759e-02   8.02616e-05
+   3  #tau_{Cu}    1.64500e+02   1.51976e+00   8.87553e-02  -1.20616e-04
+   4  N_{#mu^{+}}   7.94481e+01   2.93191e+00   1.78829e-02   3.42678e-04
+   5  #tau_{#mu}   2.23564e+03   8.50947e+01   4.92448e-01   6.26931e-06
+ 9.66e+01  2.22e-04 
+ 2.22e-04  8.76e-04 
+3019.305190 er: 8.80e+02
+ 8.60e+00 -1.93e+02 
+-1.93e+02  7.24e+03 
+169824.306921 er: 4.38e+03
+ FCN=442.281 FROM MIGRAD    STATUS=CONVERGED     242 CALLS         243 TOTAL
+                     EDM=1.52996e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        8.98924e+01   7.01071e-01   5.47890e-03  -6.84481e-04
+   2  N_{#mu^{-}}   1.55814e+02   2.90574e+01   2.01557e-01   1.22203e-05
+   3  #tau_{Cu}    1.63575e+02   1.53341e+00   2.88508e-01   5.21557e-06
+   4  N_{#mu^{+}}   4.46808e+02   9.06964e+00   4.02023e-02  -1.78226e-06
+   5  #tau_{#mu}   2.33347e+03   4.72868e+01   2.17689e-01  -2.31354e-06
+ 8.44e+02 -8.38e+02 
+-8.38e+02  2.67e+03 
+13829.938272 er: 5.99e+03
+ 8.23e+01 -3.53e+02 
+-3.53e+02  2.24e+03 
+998680.884608 er: 1.24e+04
+ FCN=529.757 FROM MIGRAD    STATUS=CONVERGED     154 CALLS         155 TOTAL
+                     EDM=4.05736e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.6 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        1.40538e+02   8.78698e-01  -2.44410e-04   3.98423e-05
+   2  N_{#mu^{-}}   3.49064e+02   3.19178e+01   4.12703e-02  -1.66791e-06
+   3  #tau_{Cu}    1.62500e+02   1.95639e+00   5.42577e-04** at limit **
+   4  N_{#mu^{+}}   7.31652e+02   9.17636e+00  -4.82689e-03   7.26450e-06
+   5  #tau_{#mu}   2.36444e+03   3.28441e+01   5.13580e-02   5.25540e-06
+ 1.02e+03 -1.24e-05 
+-1.24e-05  2.85e-08 
+30654.965364 er: 2.80e+03
+ 8.42e+01 -2.31e+02 
+-2.31e+02  1.08e+03 
+1657938.114242 er: 1.55e+04
+ FCN=385.862 FROM MIGRAD    STATUS=CONVERGED     188 CALLS         189 TOTAL
+                     EDM=9.55427e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        2.47632e+01   3.79536e-01   2.82035e-03   6.57313e-04
+   2  N_{#mu^{-}}   1.17789e+02   1.68149e+01   1.34736e-01  -1.89430e-05
+   3  #tau_{Cu}    1.64500e+02   1.82589e+00   2.01067e-01  -6.03750e-06
+   4  N_{#mu^{+}}   2.28223e+02   4.64977e+00   2.44538e-02   4.19016e-05
+   5  #tau_{#mu}   2.42766e+03   5.13333e+01   2.49691e-01   1.17544e-05
+ 2.83e+02  1.57e-02 
+ 1.57e-02  8.08e-04 
+10550.210333 er: 1.51e+03
+ 2.16e+01 -1.84e+02 
+-1.84e+02  2.64e+03 
+531543.422790 er: 7.67e+03
+ FCN=431.14 FROM MIGRAD    STATUS=CONVERGED     185 CALLS         186 TOTAL
+                     EDM=1.38618e-06    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        3.53994e+00   1.48161e-01   1.18349e-03  -5.62774e-03
+   2  N_{#mu^{-}}   5.09697e+01   9.01631e+00   7.72913e-02  -1.20869e-04
+   3  #tau_{Cu}    1.64500e+02   1.19516e+00   1.18116e-01   9.11958e-05
+   4  N_{#mu^{+}}   6.09966e+01   2.34525e+00   1.27977e-02  -7.17411e-04
+   5  #tau_{#mu}   2.41291e+03   8.98907e+01   4.54655e-01  -2.03932e-05
+ 8.13e+01  6.62e-03 
+ 6.62e-03  5.21e-03 
+4565.293727 er: 8.08e+02
+ 5.50e+00 -1.67e+02 
+-1.67e+02  8.08e+03 
+141167.661504 er: 3.52e+03
+ FCN=474.157 FROM MIGRAD    STATUS=CONVERGED     153 CALLS         154 TOTAL
+                     EDM=1.11912e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{B}        3.31026e+00   1.37752e-01   1.15461e-03  -6.82037e-04
+   2  N_{#mu^{-}}   1.71790e+01   6.56226e+00   5.77169e-02  -7.44196e-05
+   3  #tau_{Cu}    1.64500e+02   1.08495e+00   2.74109e-01** at limit **
+   4  N_{#mu^{+}}   3.51862e+01   1.88656e+00   1.07273e-02  -1.92487e-04
+   5  #tau_{#mu}   2.32162e+03   1.25997e+02   6.72359e-01   8.55759e-07
+ 4.31e+01  1.93e-03 
+ 1.93e-03  2.93e-04 
+1538.702205 er: 5.88e+02
+ 3.56e+00 -1.87e+02 
+-1.87e+02  1.59e+04 
+78230.401487 er: 2.83e+03
+**************************************** 
+
+Thickness | Muon count | Rate (mu/s) | Norm. Rate (mu/s/p)
+      0.0 |   27094474 |        2938 |             3.1e-05
+      0.5 |    2360655 |        2358 |             2.4e-05
+      0.5 |   10521729 |        2128 |             2.6e-05
+      1.0 |   12804799 |        2030 |             2.4e-05
+      5.0 |    7667401 |        1491 |             1.8e-05
+      5.0 |    3468699 |        1415 |             1.8e-05
+press ctrl+C to stop

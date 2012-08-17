@@ -7,7 +7,6 @@ Created by Sam Cook on 2012-07-23.
 Copyright (c) 2012 . All rights reserved.
 """
 
-from time import sleep
 from ROOT import TH1F, TFile, TF1, Double, TCanvas, gStyle
 import os.path
 
@@ -96,16 +95,22 @@ def create_tdc_hist_file(in_file_info, out_file_name):
     return TFile(out_file_name, "READ")
 
 
-def get_fitting_func(name):
+def get_fitting_func(name, hist):
     #
     res = TF1(name, "[0] + [1]*exp(-x/[2]) + [3]*exp(-x/[4])", t_window_start, t_window_stop)
-    for val in fitting_defaults:
-        param_number = fitting_defaults.index(val)
+    max = hist.GetMaximum()
+    for param_number, val in enumerate(fitting_defaults):
         res.SetParName(param_number, val[0])
         if val[0] == "#tau_{Cu}":
             res.SetParameter(param_number, val[1])
             # The error on the lifetime of muonic copper is 1, limit the fit to this
             res.SetParLimits(param_number, val[1] - 1, val[1] + 1)
+        elif val[0] == "N_{#mu^{-}}":
+            res.SetParameter(param_number, max)
+        elif val[0] == "N_{#mu^{+}}":
+            res.SetParameter(param_number, (max/2))
+        elif val[0] == "N_{B}":
+            res.SetParameter(param_number, (max/10))
         else:
             res.SetParameter(param_number, val[1])
     return res
@@ -163,8 +168,9 @@ def get_muon_counts_dict(fitting_func, covariance_matrix):
     func_cu.SetParError (1, fitting_func.GetParError(2))
     
     n_cu = func_cu.Integral(t_window_start, t_window_stop)
-    cu_covariance = covariance_matrix.GetSub(1,2,1,2).GetMatrixArray()
-    n_cu_er = func_cu.IntegralError(t_window_start, t_window_stop, func_cu.GetParameters(), cu_covariance)
+    cu_covariance = covariance_matrix.GetSub(1,2,1,2)
+    print_covariance_matrix(cu_covariance)
+    n_cu_er = func_cu.IntegralError(t_window_start, t_window_stop, func_cu.GetParameters(), cu_covariance.GetMatrixArray())
     print "%f er: %.2e" % (n_cu, n_cu_er)
     
     func_mu = TF1("slow_func", "[0]*exp(-x/[1])", t_window_start, t_window_stop)
@@ -175,9 +181,9 @@ def get_muon_counts_dict(fitting_func, covariance_matrix):
     func_mu.SetParError (1, fitting_func.GetParError(4))
     n_mu = func_mu.Integral(t_window_start, t_window_stop)
     
-    mu_covariance = covariance_matrix.GetSub(3,4,3,4).GetMatrixArray()
-    for i in range(2): print func_mu.GetParameters()[i]
-    n_mu_er = func_mu.IntegralError(t_window_start, t_window_stop, func_mu.GetParameters(), mu_covariance)
+    mu_covariance = covariance_matrix.GetSub(3,4,3,4)
+    print_covariance_matrix(mu_covariance)
+    n_mu_er = func_mu.IntegralError(t_window_start, t_window_stop, func_mu.GetParameters(), mu_covariance.GetMatrixArray())
     print "%f er: %.2e" % (n_mu, n_mu_er)
     
     
@@ -239,7 +245,7 @@ def main():
         rebin(hist, 400)
         canvases[int(file_id)].cd(int(ch[1:]))
         # get the fitting function and fit it to the histogram
-        fitting_func = get_fitting_func("fit_file%i_ch%s"%(file_id, ch))
+        fitting_func = get_fitting_func("fit_file%i_ch%s"%(file_id, ch), hist)
         fit_res = hist.Fit(fitting_func, "S") # fit in the function range
         covariance_matrix = fit_res.GetCovarianceMatrix()
         # print_covariance_matrix(covariance_matrix) 
@@ -262,7 +268,13 @@ def main():
         mu_rate_n = mu_rate/convert_current_to_protons(file['current'])
         print "%9.1f | %10i | %11.0f | %19.1e" % (dz, n_mu, mu_rate, mu_rate_n)
     for can in canvases.values(): can.Update()
-    sleep (20)
+    print "press ctrl+C to stop"
+    try:
+        while(True):
+            pass
+    except KeyboardInterrupt, e:
+        pass
+    print "bye bye"
         
 
 
