@@ -7,7 +7,7 @@ Created by Sam Cook on 2012-07-25.
 Copyright (c) 2012 . All rights reserved.
 """
 
-from ROOT import gROOT, TFile, TTree, TBranch, TCanvas
+from ROOT import gROOT, TFile, TTree, TBranch, TCanvas, TH1F
 
 class Branch(object):
     """Represents a branch of a TTree, but also local stores the associated data"""
@@ -59,7 +59,7 @@ def make_hist(name, xmin=0, xmax=20000, description=None, xtitle="time since tri
     return res
 
 
-def rebin(hist, n_bins, new_name=''):
+def rebin_nbins(hist, n_bins, new_name=''):
     """
     Rebins a histogram to have n_bins, if new_name is not provided then 
     the original is modified. 
@@ -69,14 +69,21 @@ def rebin(hist, n_bins, new_name=''):
     """
     if n_bins == 0:
         return hist
-    xmin = hist.GetXaxis().GetXmin()
-    xmax = hist.GetXaxis().GetXmax()
-    new_bin_width = int(float(xmax - xmin)/n_bins)
-    if (hist.GetNbinsX()%new_bin_width != 0): 
-        print "WARNING: unable to form an integer number of bins, \
-        x max will be lowered"
-    return hist.Rebin(new_bin_width, new_name)
+    else:
+        xmin = hist.GetXaxis().GetXmin()
+        xmax = hist.GetXaxis().GetXmax()
+        new_bin_width = int(float(xmax - xmin)/n_bins)
+        if (hist.GetNbinsX()%new_bin_width != 0): 
+            print "WARNING: unable to form an integer number of bins, \
+            x max will be lowered"
+        return rebin_bin_width(hist, new_bin_width, new_name)
 
+
+def rebin_bin_width(hist, bin_width, new_name=''):
+    if bin_width == 0: 
+        return hist
+    else:
+        return hist.Rebin(bin_width, new_name)
 
 def make_canvas(name, n_x=4, n_y=4, maximised=False):
     name = str(name)
