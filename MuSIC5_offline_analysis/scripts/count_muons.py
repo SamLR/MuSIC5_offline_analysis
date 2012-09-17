@@ -14,7 +14,7 @@ from utilities import make_hist, rebin_bin_width, make_canvas, print_matrix, \
 
 from tdc_file import get_tdc_file
 
-
+# current in nA, time in seconds
 file_info = ({'id':448, 'deg_dz':0,  'time':9221 ,'current':0.0153375  },
              {'id':451, 'deg_dz':0.5,'time':1001 ,'current':0.0154625  },
              {'id':452, 'deg_dz':0.5,'time':4944 ,'current':0.013132143},
@@ -25,8 +25,14 @@ file_info = ({'id':448, 'deg_dz':0,  'time':9221 ,'current':0.0153375  },
 u_channels = tuple(["U%i"%i for i in range(1,9)]) # range(x,y) returns x:(y-1)
 d_channels = tuple(["D%i"%i for i in range(1,6)])
 all_channels = u_channels + d_channels
-    
+ # magic numbers weeee! combination of muon (beam) acceptance 
+ # in scint 1 & electron acceptance in scint 2
+combined_acceptance = 0.4159891591  
+detector_efficiency = 0.5 # FIXME THIS IS A MADE UP NUMBER!  
+nA = 1e-9 # scale for nano
 
+draw = False
+# draw = True
 # lambdas allow dynamically calculated parameters
 # form (parameter name, initial value function, [optional] range)
 fitting_parameters =(("N_{B}"      ,lambda hist: float(hist.GetMaximum())/10),               
@@ -35,15 +41,26 @@ fitting_parameters =(("N_{B}"      ,lambda hist: float(hist.GetMaximum())/10),
                      ("N_{#mu^{+}}",lambda hist: float(hist.GetMaximum())/2),
                      ("#tau_{#mu}" ,lambda hist: 2000 ))
 
-t_window_starts = (50, 75, 100, 125, 150)     
-t_window_stops  = (15000, 20000)
+# t_window_starts = (50, 75, 100, 125, 150)     
+t_window_starts = (50,)
+# t_window_stops  = (15000, 20000)
+t_window_stops  = (20000,)
 # bin_widths      = (50, 100)  # 0 refers to no rebinning
-bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning
+# bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning
+bin_widths      = (100,)  # 0 refers to no rebinning
 # t_window_start = 50 #50 #200 #
 # t_window_stop  = 15000 #15000#20000
 # n_bins         = 50 #50 #100 #0
 
 fitting_settings = [(i,j,k) for i in t_window_starts for j in t_window_stops for k in bin_widths]
+
+def get_muon_yield(file):
+    """converts file data into a muon yield with units muons/s /A (proton current)"""
+    n_mu, n_mu_er = get_number_muons(file['results'])
+    mu_yield = n_mu / (combined_acceptance * file['time'] * file['current'] * nA)
+    mu_yield_er = n_mu_er / (detector_efficiency* combined_acceptance * file['time'] * file['current'] * nA)
+    return mu_yield, mu_yield_er
+    
 
 def get_fitting_func(name, hist, window_lo, window_hi, initial_fit_params):
     res = TF1(name, "[0] + [1]*exp(-x/[2]) + [3]*exp(-x/[4])", window_lo, window_hi)
@@ -207,7 +224,6 @@ def main():
     #       add to file sum the integral of the exp corresponding to muons 
     # plot normalised integral of number of muons against file id (hence deg dz)
     
-    draw = False
     
     # get the file containing all the tdc histograms
     tdc_hist_file_name = "music5_tdc_data.root"
@@ -249,8 +265,16 @@ def main():
             muon_count_rates.Draw()
             can_final = make_canvas("mu_counts_%s"%set_name, maximised=True)
             muon_count.Draw()
-        
     
+    for file in file_info:
+        muon_yield, muon_yield_er = [i*1e-6 for i in get_muon_yield(file)]
+        print "degrader dz %.1f yields %5.2e er %5.2e"%(file['deg_dz'], muon_yield, muon_yield_er)
+    
+    print "\n\n\n WARNING: early return!"
+    return    
+    
+    
+     
     parameter_canvas = {i['id']:make_canvas("%i"%i['id'], maximised=True) for i in file_info}
     chi_canvases =  make_ch_canvases(file_info,"chi")
     cu_canvases  =  make_ch_canvases(file_info,"cu")
@@ -260,6 +284,8 @@ def main():
     name_chi = "Chi squared/NDF for different fit settings, file: %i, ch:%s"
     name_cu  = "#tau_{cu} squared/NDF for different fit settings, file: %i, ch:%s"
     name_mu  = "#tau_{mu} squared/NDF for different fit settings, file: %i, ch:%s"
+    
+    # HACK HACK HACK
     hists = {}
     for file in file_info:
         id = file['id']
@@ -289,7 +315,8 @@ def main():
             
     
     for settings, id, n_mu, n_mu_er, fit in dat:
-        print settings, id, n_mu, n_mu_er
+        # print settings, id, n_mu, n_mu_er, 
+        
         bin_number = fitting_settings.index(settings) + 1
         hists[id].SetBinContent(bin_number, n_mu)
         hists[id].SetBinError(bin_number, n_mu_er)
@@ -326,8 +353,8 @@ def main():
             mu_id="mu_%i_%s"%(id, ch)
             hists[mu_id].Draw()
         
-    # for canvas_collection in canvases.values():
-    #     for can in canvas_collection.values(): can.Update()
+    for canvas_collection in canvases.values():
+        for can in canvas_collection.values(): can.Update()
     
     # hack to keep stuff displayed
     wait_to_quit()
