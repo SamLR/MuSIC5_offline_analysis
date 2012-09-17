@@ -44,9 +44,9 @@
 #include "G4VisExecutive.hh"
 #endif
 
-#ifdef G4UI_USE
+//#ifdef G4UI_USE
 #include "G4UIExecutive.hh"
-#endif
+//#endif
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -65,8 +65,8 @@ int main(int argc,char** argv)
     runManager->SetUserInitialization(physics);
     
     // User Action classes
-    //
-    G4VUserPrimaryGeneratorAction* gen_action = new PrimaryGeneratorAction(detector);
+    ///Users/samcook/code/MuSIC/offline_analysis_music5/MuSIC5_offline_analysis/MuSIC5_offline_analysis/acceptance_sim/acceptance_sim.cc
+    PrimaryGeneratorAction* gen_action = new PrimaryGeneratorAction(detector, "../../../inputs/monitor6_By-0T_cor.root");
     runManager->SetUserAction(gen_action);
     //
     SteppingAction* stepping_action = new SteppingAction;
@@ -77,46 +77,43 @@ int main(int argc,char** argv)
     runManager->SetUserAction(run_action);
     
     
-    // Initialize G4 kernel
-    //
-    runManager->Initialize();
-    runManager->BeamOn(1000000);
-    
-//#ifdef G4VIS_USE
-//    G4VisManager* visManager = new G4VisExecutive;
-//    visManager->Initialize();
-//#endif
+#ifdef G4VIS_USE
+    G4VisManager* visManager = new G4VisExecutive;
+    visManager->Initialize();
+#endif
     
     // Get the pointer to the User Interface manager
-//    //
-//    G4UImanager * UImanager = G4UImanager::GetUIpointer();
-//    
-//    if (argc!=1)   // batch mode
-//    {
-//        G4String command = "/control/execute ";
-//        G4String fileName = argv[1];
-//        UImanager->ApplyCommand(command+fileName);
-//    }
-//    else           // interactive mode : define UI session
-//    {
-//#ifdef G4UI_USE
-//        G4UIExecutive * ui = new G4UIExecutive(argc,argv);
-//#ifdef G4VIS_USE
-//        UImanager->ApplyCommand("/control/execute vis.mac");
-//#endif
-//        ui->SessionStart();
-//        delete ui;
-//#endif
-//        
-//#ifdef G4VIS_USE
-//        delete visManager;
-//#endif
-//    }
+
+    
+    if (argc!=1)   // use macro
+    {
+        G4cout << "WARNING: gun mode set to beam pipe" << G4endl;
+        gen_action->SetGunMode(beam_pipe);
+        G4UImanager * UImanager = G4UImanager::GetUIpointer();
+        G4String command = "/control/execute ";
+        G4String fileName = argv[1];
+        UImanager->ApplyCommand(command+fileName);
+        delete UImanager;
+    }
+    else           // dumb mode
+    {
+        
+        // Initialize G4 kernel
+        //
+        runManager->Initialize();
+        runManager->BeamOn(1000000);
+        gen_action->SetGunMode(beam_pipe);
+        G4cout << "Starting beam run"<< G4endl;
+        runManager->BeamOn(1000000);
+    }
     
     // Free the store: user actions, physics_list and detector_description are
     //                 owned and deleted by the run manager, so they should not
     //                 be deleted in the main() program !
     
+#ifdef G4VIS_USE
+    delete visManager;
+#endif
     delete runManager;
     
     return 0;

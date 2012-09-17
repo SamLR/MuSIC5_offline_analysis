@@ -1,0 +1,31 @@
+#
+# Macro file for the initialization phase of "exampleN02.cc"
+# when runing in interactive mode
+#
+# Sets some default verbose
+#
+/control/verbose 2
+/run/verbose 2
+
+#/vis/open OGLIX 600x600-0+0
+
+/vis/open HepRepFile
+
+# Draw geometry:
+
+/vis/drawVolume
+
+#/vis/viewer/set/hiddenEdge 0
+#/vis/viewer/set/viewpointThetaPhi 90 0 deg
+#/vis/viewer/zoom 4
+
+# for drawing the tracks
+/vis/scene/add/trajectories smooth
+
+/vis/scene/add/hits
+
+/vis/scene/endOfEventAction accumulate
+
+
+/run/initialize
+/run/beamOn 10

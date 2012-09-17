@@ -48,6 +48,8 @@ RunAction::~RunAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void RunAction::BeginOfRunAction(const G4Run* aRun) {
+    G4cout << "Zeroing counts" << G4endl;
+    fAction->resetCounts();
     G4cout << "### Run " << aRun->GetRunID() << " start." << G4endl;
 }
 
@@ -56,13 +58,15 @@ void RunAction::BeginOfRunAction(const G4Run* aRun) {
 void RunAction::EndOfRunAction(const G4Run* aRun) {
     float scint1count = static_cast<float>(fAction->getScint1Count());
     float scint2count = static_cast<float>(fAction->getScint2Count());
+    float daughterCount = static_cast<float>(fAction->getDaughterCount());
     float initial_particles = static_cast<float>(aRun->GetNumberOfEvent());
 
-    float acceptance = (scint1count + scint2count)/initial_particles;
+    G4cout << "*************" << G4endl;
     G4cout << "Scint1 count: " << scint1count <<G4endl;
     G4cout << "Scint2 count: " << scint2count <<G4endl;
+    G4cout << "Daughter count: " << daughterCount <<G4endl;
     G4cout << "Initial particles: " << initial_particles <<G4endl;
-    G4cout << "Acceptance: " << acceptance << G4endl;
+    G4cout << "*************" << G4endl << G4endl;
     
 }
 

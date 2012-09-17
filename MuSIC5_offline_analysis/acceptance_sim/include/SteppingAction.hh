@@ -48,14 +48,19 @@ public:
     
     void UserSteppingAction(const G4Step* step);
     
-    int const getScint1Count() {return scint1_count;};
-    int const getScint2Count() {return scint2_count;};
+    inline int const getScint1Count() {return scint1_count;};
+    inline int const getScint2Count() {return scint2_count;};
+    inline int const getDaughterCount() {return daughter_count;};
+    
+    inline void resetCounts() {
+        scint1_count = 0;
+        scint2_count = 0;
+    };
     
 private:
     int scint1_count;
-//    idvec scint1_tracks;
     int scint2_count;
-//    idvec scint2_tracks;
+    int daughter_count;
     
 };
 

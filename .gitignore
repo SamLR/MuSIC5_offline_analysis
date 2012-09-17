@@ -28,6 +28,6 @@ MuSIC5_offline_analysis.build/
 mu_analysis
 *.d
 *.pyc
-*.eps
+MuSIC5_offline_analysis/scripts/images/*.eps
 
 Acceptance_sim.xcodeproj/

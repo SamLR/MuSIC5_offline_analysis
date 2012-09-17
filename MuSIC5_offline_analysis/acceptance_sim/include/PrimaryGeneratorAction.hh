@@ -38,21 +38,54 @@
 class DetectorConstruction;
 class G4ParticleGun;
 class G4Event;
+class TFile;
+class TTree;
+
+enum position_mode {
+    target = 0,
+    beam_pipe = 1
+    };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
  
 class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
   public:
-    PrimaryGeneratorAction(DetectorConstruction*);    
+    PrimaryGeneratorAction(DetectorConstruction* myDC, const char* file_name);
    ~PrimaryGeneratorAction();
 
   public:
     void GeneratePrimaries(G4Event*);
+    
+    position_mode GetGunMode() {return gun_position_mode; };
+    void SetGunMode(position_mode new_mode) {gun_position_mode = new_mode; };
+    
+    void OpenG4BL(const char* file_name);
 
   private:
+    position_mode gun_position_mode;
     G4ParticleGun* particleGun;
     DetectorConstruction* myDetector;
+    
+    TFile* g4blFile;
+    TTree* particle_tree;
+    
+    int g_iev;
+    int in_EventID;
+    int in_TrackID;
+    int in_PDGid;
+    double in_x;
+    double in_y;
+    double in_z;
+    double in_Px;
+    double in_Py;
+    double in_Pz;
+    double in_tof;
+    double in_Weight;
+    double in_x_new;
+    double in_z_new;
+    double in_Px_new;
+    double in_Pz_new;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

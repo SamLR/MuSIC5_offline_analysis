@@ -56,6 +56,10 @@ void SteppingAction::UserSteppingAction(const G4Step* step) {
         ++scint2_count;
     }
     
+    if (step->GetTrack()->GetParentID() != 0) {
+        G4cout << step->GetTrack()->GetParticleDefinition()->GetParticleName() << " is a daughter! " << G4endl;
+        ++daughter_count;
+    }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
