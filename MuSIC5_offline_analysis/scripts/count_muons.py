@@ -10,57 +10,21 @@ Copyright (c) 2012 . All rights reserved.
 from ROOT import TH1F, TFile, TF1, gStyle, gPad
 
 from utilities import make_hist, rebin_bin_width, make_canvas, print_matrix, \
-            set_param_and_error, get_param_and_error, wait_to_quit
+            set_param_and_error, get_param_and_error, wait_to_quit, \
+            printTraverse, saveTraverse
 
 from tdc_file import get_tdc_file
 
-# current in nA, time in seconds
-file_info = ({'id':448, 'deg_dz':0,  'time':9221 ,'current':0.0153375  },
-             {'id':451, 'deg_dz':0.5,'time':1001 ,'current':0.0154625  },
-             {'id':452, 'deg_dz':0.5,'time':4944 ,'current':0.013132143},
-             {'id':455, 'deg_dz':1,  'time':6307 ,'current':0.013321429},
-             {'id':458, 'deg_dz':5,  'time':5144 ,'current':0.013625   },
-             {'id':459, 'deg_dz':5,  'time':2452 ,'current':0.012383929})
-    
-u_channels = tuple(["U%i"%i for i in range(1,9)]) # range(x,y) returns x:(y-1)
-d_channels = tuple(["D%i"%i for i in range(1,6)])
-all_channels = u_channels + d_channels
- # magic numbers weeee! combination of muon (beam) acceptance 
- # in scint 1 & electron acceptance in scint 2
-combined_acceptance = 0.4159891591  
-detector_efficiency = 0.5 # FIXME THIS IS A MADE UP NUMBER!  
-nA = 1e-9 # scale for nano
+from config import *
 
-draw = False
-# draw = True
-# lambdas allow dynamically calculated parameters
-# form (parameter name, initial value function, [optional] range)
-fitting_parameters =(("N_{B}"      ,lambda hist: float(hist.GetMaximum())/10),               
-                     ("N_{#mu^{-}}",lambda hist: float(hist.GetMaximum())),
-                     ("#tau_{Cu}"  ,lambda hist: 163.5, 1), # PDG value is ± 1 
-                     ("N_{#mu^{+}}",lambda hist: float(hist.GetMaximum())/2),
-                     ("#tau_{#mu}" ,lambda hist: 2000 ))
-
-# t_window_starts = (50, 75, 100, 125, 150)     
-t_window_starts = (50,)
-# t_window_stops  = (15000, 20000)
-t_window_stops  = (20000,)
-# bin_widths      = (50, 100)  # 0 refers to no rebinning
-# bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning
-bin_widths      = (100,)  # 0 refers to no rebinning
-# t_window_start = 50 #50 #200 #
-# t_window_stop  = 15000 #15000#20000
-# n_bins         = 50 #50 #100 #0
-
-fitting_settings = [(i,j,k) for i in t_window_starts for j in t_window_stops for k in bin_widths]
-
-def get_muon_yield(file):
-    """converts file data into a muon yield with units muons/s /A (proton current)"""
-    n_mu, n_mu_er = get_number_muons(file['results'])
-    mu_yield = n_mu / (combined_acceptance * file['time'] * file['current'] * nA)
-    mu_yield_er = n_mu_er / (detector_efficiency* combined_acceptance * file['time'] * file['current'] * nA)
+def get_muon_yield_per_amp(n_mu, n_mu_er, file_info):
+    """Convert number of muons & error to a yield per A proton current"""
+    x = detector_efficiency* combined_acceptance* nA
+    mu_yield = n_mu / (x * file_info['time'] * file_info['current'])
+    mu_yield_er = n_mu_er / (x * file_info['time'] * file_info['current'])
     return mu_yield, mu_yield_er
     
+
 
 def get_fitting_func(name, hist, window_lo, window_hi, initial_fit_params):
     res = TF1(name, "[0] + [1]*exp(-x/[2]) + [3]*exp(-x/[4])", window_lo, window_hi)
@@ -114,58 +78,50 @@ def calc_integral_from_exp_fit(param_mapping, fitting_func, covariance_matrix, w
 
 
 def make_muon_counts_dict(fitting_func, covariance_matrix, window_lo, window_hi, bin_width=0):
-    n_background = fitting_func.GetParameter(0) * (window_lo - window_hi) # background is modeled as flat
-    
+    n_bkgnd = fitting_func.GetParameter(0) * (window_lo - window_hi) # background is modeled as flat
+    # TODO calculate n_background properly!
     bin_width = 1 if bin_width == 0 else bin_width # dodge div0 errors (bin width 0 == no rebin)
     print "bin_width:", bin_width
     # create and intialise the parameters for the copper portion of the exponential
     cu_mapping = ((1,0), (2,1))
     n_cu, n_cu_er = calc_integral_from_exp_fit(cu_mapping, fitting_func, \
-                            covariance_matrix, window_lo, window_hi)
-    n_cu_norm, n_cu_er_norm = n_cu/bin_width, n_cu_er/bin_width
+                            covariance_matrix, window_lo, window_hi)                            
     print "Integral results (copper):            %.2e er: %.2e" % (n_cu, n_cu_er)
-    print "Integral results (copper normalised): %.2e er: %.2e" % (n_cu_norm, n_cu_er_norm)
+    n_cu, n_cu_er = n_cu/bin_width, n_cu_er/bin_width
+    print "Integral results (copper normalised): %.2e er: %.2e" % (n_cu, n_cu_er)
     
     # now intialise the slow portion
     mu_mapping = ((3,0), (4,1))
     n_mu, n_mu_er = calc_integral_from_exp_fit(mu_mapping, fitting_func, \
                             covariance_matrix, window_lo, window_hi)
-    n_mu_norm, n_mu_er_norm = n_mu/bin_width, n_mu_er/bin_width
     print "Integral results (slow)             %.2e er: %.2e" % (n_mu, n_mu_er)
-    print "Integral results (slow normalised): %.2e er: %.2e" % (n_mu_norm, n_mu_er_norm)
+    n_mu, n_mu_er = n_mu/bin_width, n_mu_er/bin_width
+    print "Integral results (slow normalised): %.2e er: %.2e" % (n_mu, n_mu_er)
     
-    return {"n_bkgnd":(n_background, 0), "n_mu_cu":(n_cu, n_cu_er), "n_mu_slow":(n_mu, n_mu_er),\
-            "n_mu_cu_norm":(n_cu_norm, n_cu_er_norm), "n_mu_slow_norm":(n_mu_norm, n_mu_er_norm),}
-
-
-def get_file_index_from_id(id):
-    for file in file_info:
-        if file['id'] == id: return file_info.index(file)
+    return {"n_bkgnd":(n_bkgnd, 0), "n_mu_cu":(n_cu, n_cu_er), "n_mu_slow":(n_mu, n_mu_er),}
 
 
 def convert_current_to_protons(current):
     return current * 6.241e9 # current * n protons in 1nA
 
 
-def make_ch_canvases(file_info,suffix=''):
+def make_ch_canvases(files_info,suffix=''):
     res = {}
-    for i in file_info:
-        id = i['id']
+    for id in files_info:
         name = "%s_%s"%(id, suffix) if suffix else "%s"%id
         res[id] = make_canvas(name, n_x=3, n_y=2, maximised=True)
     return res
 
 
-def get_number_muons(in_dict):
+def sum_muons_for_all_ch(fit_dict):
     n_muons = 0
     squared_errors = []
-    for ch in in_dict.values():
-        n_muons += ch['n_mu_cu_norm'][0] + ch["n_mu_slow_norm"][0]
-        squared_errors.append( ch['n_mu_cu_norm'][1]**2 )
-        squared_errors.append( ch["n_mu_slow_norm"][1]**2 )
-    # print "sum: %.2e sq-sum: %.2e, sqrt(sum): %.2e"% (n_muons, sum(squared_errors), sum(squared_errors)**0.5)
+    for ch_id in fit_dict:
+        counts = fit_dict[ch_id]['counts']
+        n_muons += counts['n_mu_cu'][0] + counts["n_mu_slow"][0]
+        squared_errors.append(counts['n_mu_cu'][1]**2 )
+        squared_errors.append(counts["n_mu_slow"][1]**2 )
     return n_muons, sum(squared_errors)**0.5
-        
 
 
 def get_fit_param(fit_func):
@@ -179,41 +135,72 @@ def get_fit_param(fit_func):
     res['chi2'] = (fit_func.GetChisquare(), fit_func.GetNDF())
     return res
 
-def process_tdc_file(tdc_file, file_info, window_lo, window_hi, bin_width, initial_fit_params, canvases):
-    for key in tdc_file.GetListOfKeys():
-        # get the histogram and extract the info about it
-        hist = key.ReadObj()
-        file_id, ch = get_id_and_ch_from_hist(hist)
-        if 'U' in ch: continue
-        
-        index = get_file_index_from_id(file_id)
-        
-        print "*" * 40, "\n \n", file_id, ch
-        
-        # rebin it into bins 50ns (20000/400 = 50) wide 
-        rebin_bin_width(hist, bin_width)
-        # rebin_nbins(hist, bin_width)
-        if canvases: canvases[int(file_id)].cd(int(ch[1:])) # get it drawn in the correct place
-        
-        # get the fitting function and fit it to the histogram
-        fitting_func = get_fitting_func("fit_file%i_ch%s"%(file_id, ch), hist,\
-                                        window_lo, window_hi, initial_fit_params)
-        fit_res = hist.Fit(fitting_func, "RS") # fit in the function range
-        # the covariance matrix can only be retrived from the fit result
-        fit_param = get_fit_param(fitting_func)
-        covariance_matrix = fit_res.GetCovarianceMatrix()
-        # get the integrals & errors
-        counts = make_muon_counts_dict(fitting_func, covariance_matrix, window_lo, window_hi, bin_width)
-        # save the info
-        if 'results' in file_info[index].keys():
-            file_info[index]['results'][ch] = counts
-            file_info[index]['fit'][ch] = fit_param
-        else:
-            file_info[index]['results'] = {}
-            file_info[index]['results'][ch] = counts
-            file_info[index]['fit'] = {}
-            file_info[index]['fit'][ch] = fit_param
 
+def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width, save_hist=False):
+    """
+    Workhorse function, reads the TDC file, fits the histograms & calculates integrals 
+    """
+    for file_id in files_info:
+        for ch_str in files_info[file_id]['hists']:
+            if not ch_str in d_channels: continue
+        
+            # upstream scintillators are not calibrated to detect decay electrons well so skip them
+            setting_str = settings_str(fit_lo, fit_hi, bin_width)
+            print "*" * 40, "\n \n", file_id, ch_str, setting_str
+            
+            orig_hist = files_info[file_id]['hists'][ch_str]
+            
+            new_name = orig_hist.GetName() + "_" + setting_str
+            # local, rebinned copy of the hist
+            hist = rebin_bin_width(orig_hist, bin_width, new_name) 
+        
+            # get the fitting function and fit it to the histogram
+            fit_name = "fit_" + new_name
+            fitting_func = get_fitting_func(fit_name, hist,\
+                                            fit_lo, fit_hi, initial_fit_params)
+                                            
+            # the covariance matrix can only be retrived from the fit result
+            fit_res = hist.Fit(fitting_func, "RS") # fit in the function range
+            covariance_matrix = fit_res.GetCovarianceMatrix()
+            fit_param = get_fit_param(fitting_func)
+            # get the integrals & errors
+            counts = make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_width)
+        
+            fit_results = {}
+            fit_results['counts']    = counts
+            fit_results['fit_param'] = fit_param
+        
+            if save_hist: fit_results['hist'] = hist
+        
+            # Save the generated information in the appropriate dictionary
+            if not 'fits' in files_info[file_id].keys():
+                files_info[file_id]['fits'] = {setting_str:{ch_str:fit_results}}
+            elif not setting_str in files_info[file_id]['fits']:
+                files_info[file_id]['fits'][setting_str] = {ch_str:fit_results}
+            else:
+                files_info[file_id]['fits'][setting_str][ch_str] = fit_results
+        
+
+
+def set_bin_val_er_label(hist, bin, val, er, name):
+    hist.SetBinContent(bin, float(val))
+    hist.SetBinError(bin, float(er))
+    hist.GetXaxis().SetBinLabel(bin, str(name))
+
+
+def settings_str(fit_lo, fit_hi, bin_width):
+    return "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
+
+
+def get_all_val_er_pair(files_info, search_terms, path=()):
+    """
+    Recursively walks through files_info looking for keys
+    that match the given search_terms. As matching keys are met 
+    they are popped. When all the search terms have been met
+    the resultant value is added to a dictionary of all results 
+    which is returned
+    """
+    
 
 def main():
     # open .root files
@@ -224,140 +211,38 @@ def main():
     #       add to file sum the integral of the exp corresponding to muons 
     # plot normalised integral of number of muons against file id (hence deg dz)
     
-    
     # get the file containing all the tdc histograms
-    tdc_hist_file_name = "music5_tdc_data.root"
-    tdc_file = get_tdc_file(tdc_hist_file_name)
+    tdc_file = get_tdc_file(tdc_hist_file_name, files_info, all_channels)
     gStyle.SetOptFit()
     gStyle.SetOptStat(0)
-    
+    # TODO Add function to display dictionary item X vs Y
     # make a dictionary of blank canvases ready to be drawn in
     canvases = {}
     
-    dat = []
     for settings in fitting_settings:
-        set_name = "lo_%i_hi_%i_bins_%i"%(settings)
+        set_name = settings_str(**settings)
         
-        canvases[set_name] = make_ch_canvases(file_info, set_name) if draw else None
+        print "*"*40, "\n\nSettings now: ", settings, "\n"
         
-        process_tdc_file(tdc_file, file_info, settings[0], \
-                settings[1], settings[2], fitting_parameters, canvases[set_name])
+        get_derived_values(files_info, fitting_parameters, save_hist=save_hist, **settings)        
+        for id in files_info:
+            fit_data = files_info[id]['fits'][set_name]
+            n_muons, n_muons_er = sum_muons_for_all_ch(fit_data)
+            fit_data['total_muons'] = (n_muons, n_muons_er)
+            
+            mu_yield, mu_yield_er = get_muon_yield_per_amp(n_muons, n_muons_er, files_info[id])
+            mu_yield, mu_yield_er = [i*uA for i in (mu_yield, mu_yield_er)]
+            fit_data['muon_yields'] = (mu_yield, mu_yield_er)
+            display_string = "degrader dz %.1f yields %5.2e er %5.2e"
+            print '*'*40
+            print display_string%(files_info[id]['deg_dz'], mu_yield, mu_yield_er)
     
-        print "*"*40, '\n'
-        name = "Muon_count_%s"%set_name
-        muon_count = make_hist(name, 1, 7, xtitle="Al Degrader Thickness (mm)", ytitle="Count")
-        name2 = "Muon_count_time_normalised_%s"%set_name
-        muon_count_rates = make_hist(name2, 1, 7, xtitle="Al Degrader Thickness (mm)", ytitle="Normalised Count")
-        for bin, file in enumerate(file_info, 1): # bin 0 is underflow 
-            n_muons, n_muons_er = get_number_muons(file['results'])
-            dat.append((settings, file['id'], n_muons, n_muons_er,file['fit']))
-            
-            muon_count_rates.SetBinContent(bin, float(n_muons)/file['time'])
-            muon_count_rates.SetBinError(bin, float(n_muons_er)/file['time'])
-            muon_count_rates.GetXaxis().SetBinLabel(bin, str(file['deg_dz']))
-            
-            muon_count.SetBinContent(bin, float(n_muons))
-            muon_count.SetBinError(bin, float(n_muons_er))
-            muon_count.GetXaxis().SetBinLabel(bin, str(file['deg_dz']))
-            
-        if draw: 
-            can_final = make_canvas("mu_rates_%s"%set_name, maximised=True)
-            muon_count_rates.Draw()
-            can_final = make_canvas("mu_counts_%s"%set_name, maximised=True)
-            muon_count.Draw()
-    
-    for file in file_info:
-        muon_yield, muon_yield_er = [i*1e-6 for i in get_muon_yield(file)]
-        print "degrader dz %.1f yields %5.2e er %5.2e"%(file['deg_dz'], muon_yield, muon_yield_er)
-    
-    print "\n\n\n WARNING: early return!"
-    return    
-    
-    
-     
-    parameter_canvas = {i['id']:make_canvas("%i"%i['id'], maximised=True) for i in file_info}
-    chi_canvases =  make_ch_canvases(file_info,"chi")
-    cu_canvases  =  make_ch_canvases(file_info,"cu")
-    mu_canvases  =  make_ch_canvases(file_info,"mu")
-    xmax = len(fitting_settings) + 1
-    name_count = "Muon count for different fit settings, file: %i"
-    name_chi = "Chi squared/NDF for different fit settings, file: %i, ch:%s"
-    name_cu  = "#tau_{cu} squared/NDF for different fit settings, file: %i, ch:%s"
-    name_mu  = "#tau_{mu} squared/NDF for different fit settings, file: %i, ch:%s"
-    
-    # HACK HACK HACK
-    hists = {}
-    for file in file_info:
-        id = file['id']
-        hists[id] = make_hist(name_count%id, 1, xmax, None, "Settings", "Count") 
-        hists[id].GetXaxis().SetTitleOffset(2)
-        hists[id].GetXaxis().SetLabelSize(0.03)
-        hists[id].GetYaxis().SetTitleOffset(1.5)
-        hists[id].LabelsOption("v", "X")
-        for ch in d_channels:
-            chi_id="chi_%i_%s"%(id, ch)
-            hists[chi_id] = make_hist(name_chi%(id,ch), 1, xmax, None, "Settings", "Chi-squared/NDF") 
-            hists[chi_id].GetXaxis().SetTitleOffset(2)
-            hists[chi_id].GetXaxis().SetLabelSize(0.03)
-            hists[chi_id].GetYaxis().SetTitleOffset(1.5)
-            
-            cu_id="cu_%i_%s"%(id, ch)
-            hists[cu_id] = make_hist(name_cu%(id,ch), 1, xmax, None, "Settings", "#tau_{cu}") 
-            hists[cu_id].GetXaxis().SetTitleOffset(2)
-            hists[cu_id].GetXaxis().SetLabelSize(0.03)
-            hists[cu_id].GetYaxis().SetTitleOffset(1.5)
-            
-            mu_id="mu_%i_%s"%(id, ch)
-            hists[mu_id] = make_hist(name_mu%(id,ch), 1, xmax, None, "Settings", "#tau_{mu}") 
-            hists[mu_id].GetXaxis().SetTitleOffset(2)
-            hists[mu_id].GetXaxis().SetLabelSize(0.03)
-            hists[mu_id].GetYaxis().SetTitleOffset(1.5)
-            
-    
-    for settings, id, n_mu, n_mu_er, fit in dat:
-        # print settings, id, n_mu, n_mu_er, 
-        
-        bin_number = fitting_settings.index(settings) + 1
-        hists[id].SetBinContent(bin_number, n_mu)
-        hists[id].SetBinError(bin_number, n_mu_er)
-        hists[id].GetXaxis().SetBinLabel(bin_number, "lo_%i_hi_%i_bins_%i"%(settings))
-        for ch in d_channels:
-            chi_id="chi_%i_%s"%(id, ch)
-            hists[chi_id].SetBinContent(bin_number, fit[ch]['chi2'][0]/fit[ch]['chi2'][1])
-            hists[chi_id].GetXaxis().SetBinLabel(bin_number, "lo_%i_hi_%i_bins_%i"%(settings))
-            
-            cu_id="cu_%i_%s"%(id, ch)
-            hists[cu_id].SetBinContent(bin_number, fit[ch]["#tau_{Cu}"][0])
-            hists[cu_id].SetBinError(bin_number, fit[ch]["#tau_{Cu}"][1])
-            hists[cu_id].GetXaxis().SetBinLabel(bin_number, "lo_%i_hi_%i_bins_%i"%(settings))
-            
-            mu_id="mu_%i_%s"%(id, ch)
-            hists[mu_id].SetBinContent(bin_number, fit[ch]["#tau_{#mu}"][0])
-            hists[mu_id].SetBinError(bin_number, fit[ch]["#tau_{#mu}"][1])
-            hists[mu_id].GetXaxis().SetBinLabel(bin_number, "lo_%i_hi_%i_bins_%i"%(settings))
-    
-    for id, can in parameter_canvas.items():
-        can.cd()
-        hists[id].Draw()
-        can.Update()
-        for i, ch in enumerate(d_channels, 1):
-            chi_canvases[id].cd(i)
-            chi_id="chi_%i_%s"%(id, ch)
-            hists[chi_id].Draw()
-            
-            cu_canvases[id].cd(i)
-            cu_id="cu_%i_%s"%(id, ch)
-            hists[cu_id].Draw()
-            
-            mu_canvases[id].cd(i)
-            mu_id="mu_%i_%s"%(id, ch)
-            hists[mu_id].Draw()
-        
-    for canvas_collection in canvases.values():
-        for can in canvas_collection.values(): can.Update()
-    
+    # for general checking, save the final state of files_info
+    with open("file_info.txt", "write") as log_file:
+        # TODO write a proper logger
+        saveTraverse(files_info, log_file,header="# Current state of file_info")
     # hack to keep stuff displayed
-    wait_to_quit()
+    # wait_to_quit()
 
 
 if __name__ == '__main__':

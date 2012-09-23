@@ -1,0 +1,61 @@
+There are 4 important files:
+	config.py      -- This carries non-derived values and control values 
+						(e.g. beam current, fit settings)
+	count_mouns.py -- This is the 'main' analysis function (e.g. fits the
+	 					histograms, counts muons)
+	tdc_file.py    -- This generates the tdc histograms from the calibrated
+	 					data files
+	utilities.py   -- A collection of non-specific but useful functions
+
+Count_muons and tdc_file both make use of the 'file_info' dictionary from 
+config.py. This dictionary is indexed by file number (i.e. run number, and 
+indicates degrader thickness) both count_mouns and tdc_file modify it in
+several ways ultimately leading to the structure below:
+{
+	<file_id>: {
+		current: value in µA
+		time   : value in s
+		deg_dz : value in mm
+		hists  : {
+			<ch_id> : <ROOT TH1 object> 
+			# ch_id in U<1-8> & D<1-5>
+		}
+		fits   : {
+			<fit_settings> : { 
+			# format = lo_<X>_hi_<Y>_bins_<Z>
+			# X = time in ns of lower edge of fit window
+			# Y = time in ns of high edge of fit window
+			# Z = width of bins for fitted histogram in ns
+				<ch_id> : {
+					counts : {
+						n_bkgnd   : (value, er), 
+						# integral of background counts
+						n_mu_cu   : (value, er),
+						# integral of Copper (fast) counts
+						n_mu_slow : (value, er),
+						# integral of slow counts
+					}
+					fit_param : { 
+					#note: '#' and '{}' give LaTeX formatting in ROOT
+						N_{B}           : (value, er),
+						# Value for the flat background
+						N_{#mu_{Cu}}    : (value, er),
+						# Scale of the fast exp
+						#tau_{#mu_{Cu}} : (value, er),
+						# exponent for fast exp
+						N_{#mu_{All}}   : (value, er),
+						# Scale for slow 
+					    #tau_{#mu_{All}}: (value, er),
+						# exponent for slow
+					    chi2            : (value, NDF)
+						# Chi-squared and Number of Degrees of Freedom of fit
+					}
+				}
+				total_muons : (value, er)
+				# number of muons summbed across all channels
+			}
+		}
+	}
+}
+
+	

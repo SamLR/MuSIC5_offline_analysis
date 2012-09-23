@@ -51,7 +51,7 @@ def get_struct(struct_fmt, struct_name):
     
 
 
-def make_hist(name, xmin=0, xmax=20000, description=None, xtitle="time since trigger (ns)", ytitle="count"):
+def make_hist(name, xmin, xmax, xtitle, ytitle, description=None):
     description = description if description != None else name
     res = TH1F(name, description, (xmax - xmin), xmin, xmax)
     res.GetXaxis().SetTitle(xtitle)
@@ -84,6 +84,7 @@ def rebin_bin_width(hist, bin_width, new_name=''):
         return hist
     else:
         return hist.Rebin(bin_width, new_name)
+
 
 def make_canvas(name, n_x=4, n_y=4, maximised=False):
     name = str(name)
@@ -118,3 +119,52 @@ def wait_to_quit():
         pass
     print "bye bye"
 
+
+def traverse(obj, pmode=False, level=0):
+    """
+    Traverses an object yielding its contents. Strings are not traversed.
+    For dictionaries the key is first returned then the contents at that key.
+    Level is a depth counter. 
+    A 'True' value of pmode will yield both the value and the level 
+    
+    Based on the solution given by Jeremy Banks, here: http://stackoverflow.com/questions/6290105/traversing-a-list-tree-and-get-the-typeitem-list-with-same-structure-in-pyth#6290211
+    """
+    if hasattr(obj, 'keys'):
+        for val in obj:
+            yield val if not pmode else ('{'+str(val), level)
+            level += 1
+            for subval in traverse(obj[val], pmode, level):
+                yield subval
+            level -= 1    
+            if pmode: yield ('}', level)
+    elif hasattr(obj, '__iter__'):
+        for val in obj:
+            level += 1
+            for subval in traverse(val, pmode, level):
+                yield subval
+            # yield subval, level 
+            level -= 1 
+    else:
+        yield obj if not pmode else (obj, level)
+
+
+def printTraverse(obj,spacer='.'):
+    """
+    prints the contents of obj in a nested manner
+    """
+    for i in traverse(obj, pmode=True): print "%s%s"%(spacer*i[1], i[0])          
+
+def saveTraverse(obj,file,spacer='.',header=''):
+    """
+    Save the contents of obj to a file
+    """
+    header += "\n"
+    file.write(header)
+    for i in traverse(obj, pmode=True): file.write("%s%s\n"%(spacer*i[1], i[0]))
+
+if __name__ == '__main__':
+    d = {'a':1,'b':2,'c':(9,8,7),'d':{'aa':12,'bb':22}}
+    for i,j in traverse(d, True): print "%s%s"%(".."*j,i)
+
+    
+        
