@@ -17,7 +17,7 @@ several ways ultimately leading to the structure below:
 		time   : value in s
 		deg_dz : value in mm
 		hists  : {
-			<ch_id> : <ROOT TH1 object> 
+			<ch_id>	 : <ROOT TH1 object> 
 			# ch_id in U<1-8> & D<1-5>
 		}
 		fits   : {

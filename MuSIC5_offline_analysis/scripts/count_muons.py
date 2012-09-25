@@ -105,14 +105,6 @@ def convert_current_to_protons(current):
     return current * 6.241e9 # current * n protons in 1nA
 
 
-def make_ch_canvases(files_info,suffix=''):
-    res = {}
-    for id in files_info:
-        name = "%s_%s"%(id, suffix) if suffix else "%s"%id
-        res[id] = make_canvas(name, n_x=3, n_y=2, maximised=True)
-    return res
-
-
 def sum_muons_for_all_ch(fit_dict):
     n_muons = 0
     squared_errors = []
@@ -182,25 +174,71 @@ def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width
         
 
 
-def set_bin_val_er_label(hist, bin, val, er, name):
+def set_bin_val_er_label(hist, bin, val, er, bin_name):
     hist.SetBinContent(bin, float(val))
     hist.SetBinError(bin, float(er))
-    hist.GetXaxis().SetBinLabel(bin, str(name))
+    hist.GetXaxis().SetBinLabel(bin, str(bin_name))
 
 
 def settings_str(fit_lo, fit_hi, bin_width):
     return "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
 
 
-def get_all_val_er_pair(files_info, search_terms, path=()):
+def fitting_parameter_plots_vs_settings(files_info, parameter, setting_strs, canvas=None):
+    # setting strings could be culled from the files info but would 
+    # come out in a less than useful order
     """
-    Recursively walks through files_info looking for keys
-    that match the given search_terms. As matching keys are met 
-    they are popped. When all the search terms have been met
-    the resultant value is added to a dictionary of all results 
-    which is returned
-    """
+    Generate plots of the fitting parameter (e.g. '#Tau_{#mu_{Cu}}')
+    against the settings used to generate the fit. 
     
+    Produces a single canvas of one plot per channel; each
+    channel's entry displays the values for all settings grouped by 
+    file.
+    """
+    # simple wrapper for make hist with the required defaults
+    make_settings_hist = lambda name: make_hist(name, 0, len(setting_strs), 'fit settings', parameter)
+    get_hist_key = lambda file_id, ch_id: "%s_file_%i_ch_%s"%(parameter, file_id, ch_id)
+    hists = {}
+    ch_ranges = {}
+    for file_id, file_dat in files_info.items():
+        for bin, setting_str in enumerate(setting_strs, 1):
+            # bin 0 == underflow. bin number != x_axis value
+            for ch_id, ch_dat in file_dat['fits'][setting_str].items():
+                if not ch_id in all_channels:continue
+                
+                hist_key = get_hist_key(file_id, ch_id)
+                val, er  = ch_dat['fit_param'][parameter][0], ch_dat['fit_param'][parameter][1]
+                
+                if not hist_key in hists.keys():
+                    hists[hist_key] = make_settings_hist(hist_key)
+                set_bin_val_er_label(hists[hist_key], bin, val, er, setting_str)
+                
+                if not ch_id in ch_ranges.keys(): 
+                    ch_ranges[ch_id] = {'min':val-er, 'max':val+er}
+                elif (val + er) > ch_ranges[ch_id]['max']:
+                    ch_ranges[ch_id]['max'] = val + er
+                elif (val - er) < ch_ranges[ch_id]['min']:
+                    ch_ranges[ch_id]['min'] = val - er
+    # now draw it
+    print ch_ranges
+    canvas = canvas if canvas else make_canvas(parameter, 3, 2, True) 
+    for pad_id, ch_id in enumerate(ch_ranges.keys(), 1): # pad 0 is the entire canvas
+        canvas.cd(pad_id)
+        first = True
+        draw_options = "P"
+        for colour_id, file_id in enumerate(files_info,1):
+            hist_key = get_hist_key(file_id, ch_id)
+            if first:
+                # TODO ADD legend
+                hists[hist_key].SetMinimum(ch_ranges[ch_id]['min'])
+                hists[hist_key].SetMaximum(ch_ranges[ch_id]['max'])
+                
+            hists[hist_key].SetLineColor(colour_id)
+            hists[hist_key].Draw(draw_options)
+            draw_options= "P SAME"
+            first = False
+    return canvas, hists
+
 
 def main():
     # open .root files
@@ -215,7 +253,6 @@ def main():
     tdc_file = get_tdc_file(tdc_hist_file_name, files_info, all_channels)
     gStyle.SetOptFit()
     gStyle.SetOptStat(0)
-    # TODO Add function to display dictionary item X vs Y
     # make a dictionary of blank canvases ready to be drawn in
     canvases = {}
     
@@ -234,15 +271,20 @@ def main():
             mu_yield, mu_yield_er = [i*uA for i in (mu_yield, mu_yield_er)]
             fit_data['muon_yields'] = (mu_yield, mu_yield_er)
             display_string = "degrader dz %.1f yields %5.2e er %5.2e"
-            print '*'*40
+            print '\n','*'*40
             print display_string%(files_info[id]['deg_dz'], mu_yield, mu_yield_er)
     
     # for general checking, save the final state of files_info
     with open("file_info.txt", "write") as log_file:
         # TODO write a proper logger
         saveTraverse(files_info, log_file,header="# Current state of file_info")
-    # hack to keep stuff displayed
-    # wait_to_quit()
+    
+    setting_strs = [settings_str(**i) for i in fitting_settings]
+    
+    canvas = make_canvas('#tau_{#mu_{All}}', 3, 2, True) 
+    canvas, hists = fitting_parameter_plots_vs_settings(files_info,'#tau_{#mu_{All}}',setting_strs, canvas)
+    canvas.Update()
+    wait_to_quit()
 
 
 if __name__ == '__main__':

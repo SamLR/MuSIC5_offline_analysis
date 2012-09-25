@@ -30,12 +30,13 @@ fitting_parameters =(("N_{B}",           lambda hist: float(hist.GetMaximum())/1
                      ("N_{#mu_{All}}",   lambda hist: float(hist.GetMaximum())/2),
                      ("#tau_{#mu_{All}}",lambda hist: 2000 ))
 
-# t_window_starts = (50, 75, 100, 125, 150)     
-t_window_starts = (50,)
-# t_window_stops  = (15000, 20000)
-t_window_stops  = (20000,)
-# bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning
-bin_widths      = (100,)  # 0 refers to no rebinning
+
+# t_window_starts = (50,)
+# t_window_stops  = (20000,)
+# bin_widths      = (100,)  
+t_window_starts = (50, 75, 100, 125, 150)  
+t_window_stops  = (15000, 20000)
+bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning
 
 fitting_settings = [(i,j,k) for i in t_window_starts for j in t_window_stops for k in bin_widths]
 setting_names = ("fit_lo", "fit_hi", "bin_width")
