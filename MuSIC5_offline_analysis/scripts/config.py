@@ -1,11 +1,11 @@
 tdc_hist_file_name = "music5_tdc_data.root"
 # current in nA, time in seconds
-files_info = {448:{ 'deg_dz':0,  'time':9221 ,'current':0.0153375  },
-              451:{ 'deg_dz':0.5,'time':1001 ,'current':0.0154625  },
-              452:{ 'deg_dz':0.5,'time':4944 ,'current':0.013132143},
-              455:{ 'deg_dz':1,  'time':6307 ,'current':0.013321429},
-              458:{ 'deg_dz':5,  'time':5144 ,'current':0.013625   },
-              459:{ 'deg_dz':5,  'time':2452 ,'current':0.012383929}
+files_info = {448:{ 'deg_dz':0,  'time':9221, 'current':0.0153375  , 'acceptance':0.121},
+              451:{ 'deg_dz':0.5,'time':1001, 'current':0.0154625  , 'acceptance':0.081},
+              452:{ 'deg_dz':0.5,'time':4944, 'current':0.013132143, 'acceptance':0.074},
+              455:{ 'deg_dz':1,  'time':6307, 'current':0.013321429, 'acceptance':0.050},
+              458:{ 'deg_dz':5,  'time':5144, 'current':0.013625   , 'acceptance':0.040},
+              459:{ 'deg_dz':5,  'time':2452, 'current':0.012383929, 'acceptance':0.026}
               }
     
 u_channels = tuple(["U%i"%i for i in range(1,9)]) # range(x,y) returns x:(y-1)
@@ -32,12 +32,12 @@ fitting_parameters =(("N_{B}",           lambda hist: float(hist.GetMaximum())/1
                      ("#tau_{#mu_{All}}",lambda hist: 2000 ))
 
 
-# t_window_starts = (100,)
-# t_window_stops  = (20000,)
-# bin_widths      = (10,)  
-t_window_starts = (50, 75, 100, 125, 150)  
-t_window_stops  = (15000, 20000)
-bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning
+t_window_starts = (100,)
+t_window_stops  = (20000,)
+bin_widths      = (100,)  
+# t_window_starts = (50, 75, 100, 125, 150)  
+# t_window_stops  = (15000, 20000)
+# bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning
 
 fitting_settings = [(i,j,k) for i in t_window_starts for j in t_window_stops for k in bin_widths]
 setting_names = ("fit_lo", "fit_hi", "bin_width")
