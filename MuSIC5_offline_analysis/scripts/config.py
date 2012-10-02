@@ -20,7 +20,8 @@ uA = 1e-6 # scale for micro; i.e. the maximum proton current
 draw = False
 # draw = True
 
-save_hist = False # save the derived histograms (expensive!)
+# save_hist = False # save the derived histograms (expensive!)
+save_hist = True # save the derived histograms (expensive!)
 
 # lambdas allow dynamically calculated parameters
 # form (parameter name, initial value function, [optional] range)
@@ -31,9 +32,9 @@ fitting_parameters =(("N_{B}",           lambda hist: float(hist.GetMaximum())/1
                      ("#tau_{#mu_{All}}",lambda hist: 2000 ))
 
 
-# t_window_starts = (50,)
+# t_window_starts = (100,)
 # t_window_stops  = (20000,)
-# bin_widths      = (100,)  
+# bin_widths      = (10,)  
 t_window_starts = (50, 75, 100, 125, 150)  
 t_window_stops  = (15000, 20000)
 bin_widths      = (10, 50, 100, 200)  # 0 refers to no rebinning

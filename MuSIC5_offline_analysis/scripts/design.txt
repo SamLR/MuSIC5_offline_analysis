@@ -50,6 +50,7 @@ several ways ultimately leading to the structure below:
 					    chi2            : (value, NDF)
 						# Chi-squared and Number of Degrees of Freedom of fit
 					}
+					hists <optional save all hists>
 				}
 				total_muons : (value, er)
 				# number of muons summbed across all channels
