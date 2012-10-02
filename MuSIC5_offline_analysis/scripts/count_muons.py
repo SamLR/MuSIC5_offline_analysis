@@ -140,30 +140,9 @@ def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width
             setting_str = settings_str(fit_lo, fit_hi, bin_width)
             print "*" * 40, "\n \n", file_id, ch_str, setting_str
             
-            orig_hist = files_info[file_id]['hists'][ch_str]
+            hist = files_info[file_id]['hists'][ch_str]
+            fit_results = fit_hist(hist,fit_lo, fit_hi, bin_width, initial_fit_params, save_hist)
             
-            new_name = orig_hist.GetName() + "_" + setting_str
-            # local, rebinned copy of the hist
-            hist = rebin_bin_width(orig_hist, bin_width, new_name) 
-        
-            # get the fitting function and fit it to the histogram
-            fit_name = "fit_" + new_name
-            fitting_func = get_fitting_func(fit_name, hist,\
-                                            fit_lo, fit_hi, initial_fit_params)
-                                            
-            # the covariance matrix can only be retrived from the fit result
-            fit_res = hist.Fit(fitting_func, "RS") # fit in the function range
-            covariance_matrix = fit_res.GetCovarianceMatrix()
-            fit_param = get_fit_param(fitting_func)
-            # get the integrals & errors
-            counts = make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_width)
-        
-            fit_results = {}
-            fit_results['counts']    = counts
-            fit_results['fit_param'] = fit_param
-        
-            if save_hist: fit_results['hist'] = hist
-        
             # Save the generated information in the appropriate dictionary
             if not 'fits' in files_info[file_id].keys():
                 files_info[file_id]['fits'] = {setting_str:{ch_str:fit_results}}
@@ -171,7 +150,31 @@ def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width
                 files_info[file_id]['fits'][setting_str] = {ch_str:fit_results}
             else:
                 files_info[file_id]['fits'][setting_str][ch_str] = fit_results
-        
+                
+def fit_hist(hist,fit_lo, fit_hi, bin_width, initial_fit_params, save_hist=False):
+    name = hist.GetName() + "_" + settings_str(fit_lo, fit_hi, bin_width)
+    # local, rebinned copy of the hist
+    hist = rebin_bin_width(hist, bin_width, name) 
+    
+    # get the fitting function and fit it to the histogram
+    fit_name = "fit_" + name
+    fitting_func = get_fitting_func(fit_name, hist, \
+                                    fit_lo, fit_hi, initial_fit_params)
+                                    
+    # the covariance matrix can only be retrived from the fit result
+    fit_res = hist.Fit(fitting_func, "RS") # fit in the function range
+    covariance_matrix = fit_res.GetCovarianceMatrix()
+    fit_param = get_fit_param(fitting_func)
+    # get the integrals & errors
+    counts = make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_width)
+    
+    results = {}
+    results['counts']    = counts
+    results['fit_param'] = fit_param
+    
+    if save_hist: results['hist'] = hist
+    return results
+
 
 
 def set_bin_val_er_label(hist, bin, val, er, bin_name):
@@ -220,7 +223,6 @@ def fitting_parameter_plots_vs_settings(files_info, parameter, setting_strs, can
                 elif (val - er) < ch_ranges[ch_id]['min']:
                     ch_ranges[ch_id]['min'] = val - er
     # now draw it
-    print ch_ranges
     canvas = canvas if canvas else make_canvas(parameter, 3, 2, True) 
     for pad_id, ch_id in enumerate(ch_ranges.keys(), 1): # pad 0 is the entire canvas
         canvas.cd(pad_id)
@@ -273,6 +275,7 @@ def main():
             display_string = "degrader dz %.1f yields %5.2e er %5.2e"
             print '\n','*'*40
             print display_string%(files_info[id]['deg_dz'], mu_yield, mu_yield_er)
+            
     
     # for general checking, save the final state of files_info
     with open("file_info.txt", "write") as log_file:
@@ -280,10 +283,15 @@ def main():
         saveTraverse(files_info, log_file,header="# Current state of file_info")
     
     setting_strs = [settings_str(**i) for i in fitting_settings]
-    
-    canvas = make_canvas('#tau_{#mu_{All}}', 3, 2, True) 
-    canvas, hists = fitting_parameter_plots_vs_settings(files_info,'#tau_{#mu_{All}}',setting_strs, canvas)
+    # TODO make chi2, tau_mu_all etc a variable
+    canvas = make_canvas('chi2', 3, 2, True) 
+    canvas2 = make_canvas('#tau_{#mu_{All}}', 3, 2, True) 
+    canvas, hists = fitting_parameter_plots_vs_settings(files_info,'chi2',setting_strs, canvas)
+    canvas2, hists = fitting_parameter_plots_vs_settings(files_info,'#tau_{#mu_{All}}',setting_strs, canvas2)
     canvas.Update()
+    canvas2.Update()
+    canvas3 = make_canvas('c2')
+    files_info[451]['fits']['lo_50_hi_15000_bins_10']['D4']['hist'].Draw()
     wait_to_quit()
 
 
