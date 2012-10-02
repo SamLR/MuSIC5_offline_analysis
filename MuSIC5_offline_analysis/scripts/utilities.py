@@ -86,18 +86,43 @@ def rebin_bin_width(hist, bin_width, new_name=''):
         return hist.Rebin(bin_width, new_name)
 
 
-def make_canvas(name, n_x=4, n_y=4, maximised=False):
+def make_canvas(name, n_x=0, n_y=0, maximised=False):
     name = str(name)
     canvas = TCanvas(name, name,1436,856) if maximised else TCanvas(name,name) 
     if n_x or n_y: canvas.Divide(n_x, n_y)
     return canvas
 
 
-def print_matrix(covariance_matrix):
-    dimension = covariance_matrix.GetNcols()
+def get_dict_of_keys_and_file(filename, keyfunc=lambda x:x):
+    """
+    Opens the named TFile and creates a dictionary out of the 
+    objects saved with in it. 
+    
+    The returned dictionary is formed of object:object_name pairs
+    
+    The pointer to the file is also returned to keep it in scope.
+    
+    Keyfunc is a function applied to the object's name to create 
+    the dictionary key
+    """
+    # TODO Look at creating a recursive version of this
+    # i.e. if the object has crawlable sub structure (trees, dirs etc)
+    # write it into a dict format
+    in_file = TFile(filename, "READ")
+    res = {}
+    for key in in_file.GetListOfKeys():
+        # name looks like "Muon_momentum_with_Aluminium_0.5mm"
+        obj = key.ReadObj()
+        key = keyfunc(obj.GetName())
+        res[key] = obj
+    return res, in_tfile
+
+
+def print_square_matrix(matrix):
+    dimension = matrix.GetNcols()
     fmt_string = "% 5.2e " * dimension 
     for i in range (dimension):
-        row = tuple([covariance_matrix[i][n] for n in range(dimension)])
+        row = tuple([matrix[i][n] for n in range(dimension)])
         print fmt_string % row
 
 
@@ -154,6 +179,7 @@ def printTraverse(obj,spacer='.'):
     """
     for i in traverse(obj, pmode=True): print "%s%s"%(spacer*i[1], i[0])          
 
+
 def saveTraverse(obj,file,spacer='.',header=''):
     """
     Save the contents of obj to a file
@@ -161,6 +187,12 @@ def saveTraverse(obj,file,spacer='.',header=''):
     header += "\n"
     file.write(header)
     for i in traverse(obj, pmode=True): file.write("%s%s\n"%(spacer*i[1], i[0]))
+
+
+def set_bin_val_er_label(hist, bin, val, er, bin_name):
+    hist.SetBinContent(bin, float(val))
+    hist.SetBinError(bin, float(er))
+    hist.GetXaxis().SetBinLabel(bin, str(bin_name))
 
 if __name__ == '__main__':
     d = {'a':1,'b':2,'c':(9,8,7),'d':{'aa':12,'bb':22}}
