@@ -53,6 +53,7 @@ several ways ultimately leading to the structure below:
 					hists <optional save all hists>
 				}
 				total_muons : (value, er)
+				muon_yields : (value, er)
 				# number of muons summbed across all channels
 			}
 		}
