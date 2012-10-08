@@ -27,30 +27,26 @@ several ways ultimately leading to the structure below:
 			# Y = time in ns of high edge of fit window
 			# Z = width of bins for fitted histogram in ns
 				<ch_id> : {
-					counts : {
+					fit : {
 						n_bkgnd   : (value, er), 
-						# integral of background counts
+							# integral of background counts
 						n_mu_cu   : (value, er),
-						# integral of Copper (fast) counts
+							# integral of Copper (fast) counts
 						n_mu_slow : (value, er),
-						# integral of slow counts
-					}
-					fit_param : { 
-					#note: '#' and '{}' give LaTeX formatting in ROOT
+							# integral of slow counts
 						N_{B}           : (value, er),
-						# Value for the flat background
+							# Value for the flat background
 						N_{#mu_{Cu}}    : (value, er),
-						# Scale of the fast exp
+							# Scale of the fast exp
 						#tau_{#mu_{Cu}} : (value, er),
-						# exponent for fast exp
+							# exponent for fast exp
 						N_{#mu_{All}}   : (value, er),
-						# Scale for slow 
+							# Scale for slow 
 					    #tau_{#mu_{All}}: (value, er),
-						# exponent for slow
+							# exponent for slow
 					    chi2            : (value, NDF)
-						# Chi-squared and Number of Degrees of Freedom of fit
+							# Chi-squared and Number of Degrees of Freedom of fit
 					}
-					hists <optional save all hists>
 				}
 				total_muons : (value, er)
 				muon_yields : (value, er)
