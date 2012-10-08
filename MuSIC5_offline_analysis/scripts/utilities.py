@@ -9,19 +9,6 @@ Copyright (c) 2012 . All rights reserved.
 
 from ROOT import gROOT, TFile, TTree, TBranch, TCanvas, TH1F
 
-class Branch(object):
-    """Represents a branch of a TTree, but also local stores the associated data"""
-    # TODO make this an iterable object so we can easily loop over all entries
-    def __init__(self, branch_ptr, data_object):
-        self.ptr = branch_ptr
-        self.data = data_object
-    
-    def __getitem__(self, key):
-        return self.data.__getattribute__(key)
-        
-    def __getattr__(self, name):
-        return self.ptr.__getattribute__(name)
-
 
 def get_branch(tree, branch_name, data_class):
     """
@@ -194,9 +181,7 @@ def set_bin_val_er_label(hist, bin, val, er, bin_name):
     hist.SetBinError(bin, float(er))
     hist.GetXaxis().SetBinLabel(bin, str(bin_name))
 
-if __name__ == '__main__':
-    d = {'a':1,'b':2,'c':(9,8,7),'d':{'aa':12,'bb':22}}
-    for i,j in traverse(d, True): print "%s%s"%(".."*j,i)
 
-    
-        
+if __name__ == '__main__':
+    pass
+
