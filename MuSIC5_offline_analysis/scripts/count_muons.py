@@ -18,9 +18,8 @@ from fitting import fit_hist
 
 from config import *
 
-def get_muon_yield_per_amp(file_info):
+def get_muon_yield_per_amp(n_mu, n_mu_er, ):
     """Convert number of muons & error to a yield per A proton current"""
-    n_mu, n_mu_er = file_info['fits']['total_muons']
     x = detector_efficiency* file_info['acceptance'] * file_info['time'] * file_info['current'] *nA
     mu_yield = float(n_mu) / x
     mu_yield_er = float(n_mu_er) / x
