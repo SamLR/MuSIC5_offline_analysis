@@ -5,20 +5,137 @@ images/fitted_simulation_data_Air_5mm.svg
 </title>
 <desc>
 Creator: ROOT Version 5.32/00
-CreationDate: Tue Oct  2 21:49:33 2012</desc>
+CreationDate: Wed Oct  3 00:18:07 2012</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
 <rect x="57" y="33" width="453" height="262" fill="white"/>
 <rect x="57" y="33" width="453" height="262" fill="none" stroke="black"/>
-<path d="M57,45h 2v 37h 2v 8h 2v 26h 3v -12h 2v 14h 2v 12h 3v 17h 2v -15h 2v 18h 2v -17h 3v 33h 2v 1h 2v -24h 2v 29h 3v 21h 2v 7h 2v -19h 3v 19h 2v 10h 2v 5h 2v 6h 3v -20h 2v 23h 2v -12h 2v 3h 3v 25h 2v -13h 2v 11h 2v -8h 3v 8h 2v 2h 2v 4h 3v -1h 2v
- 18h 2v -10h 2v 3h 3v 10h 2v -9h 2v -9h 2v 15h 3v -7h 2v -11h 2v 1h 2v 13h 5v 6h 2v 6h 3v 5h 2v -8h 2v 3h 2v 8h 3v 7h 2v -10h 2v -5h 2v 14h 3v -5h 2v -1h 2v 7h 2v -6h 3v 3h 2v 5h 2v -5h 3v 7h 4v -10h 2v 8h 5v -3h 2v 8h 2v -7h 3v 7h 2v 1h 2v -6h 3v 8h
- 2v -3h 2v 1h 2v -3h 3v 5h 2v -5h 4v -1h 3v 6h 2v -5h 2v -1h 2v -4h 3v 8h 2v -3h 2v 3h 5v -1h 4v 1h 3v -1h 2v -2h 2v 2h 2v -2h 3v 2h 2v 3h 2v -2h 2v 3h 3v -1h 2v -3h 2v -3h 3v 6h 4v 1h 2v -1h 5v -2h 4v -3h 3v 5h 4v 1h 14v -1h 2v 1h 5v -1h 6v -2h 3v
- 3h 2v -1h 2v 1h 14v -1h 7v 1h 4v -1h 2v 1h 10v -1h 2v 1h 20v -1h 2v 1h 16v -1h 5v 1h 20v -1h 3v 1h 56" fill="none" stroke="#000099"/>
-<path d="M60,72l 5, 21l 4, 19l 5, 18l 4, 15l 5, 14l 4, 13l 5, 12l 4, 10l 5, 10l 4, 8l 5, 8l 4, 7l 5, 7l 4, 5l 5, 6l 4, 4l 5, 5l 4, 3l 5, 4l 5, 3l 4, 3l 5, 3l 4, 2l 5, 2l 4, 2l 5, 2l 4, 1l 5, 2l 4, 1l 5, 1l 4, 1l 5, 1l 4, 1l 5, 1l 4, 1h 5l 4, 1h 5l 5,
- 1h 4l 5, 1h 9l 4, 1h 18l 5, 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M282,293h 27l 4, 1h 190" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M503,294h 5" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M57,45h 4v 55h 5v 4h 4v 19h 5v -3h 4v 25h 5v 8h 4v 38h 5v -3h 9v 50h 5v -12h 4v -22h 5v 29h 4v 8h 5v 6h 4v -3h 5v 13h 4v -3h 5v -1h 4v 1h 5v -9h 4v 3h 5v 11h 5v 4h 4v 6h 5v 7h 4v 4h 5v -11h 4v 16h 5v -2h 4v 2h 5v -2h 4v -3h 5v 3h 4v 5h 10v
+ 4h 13v -6h 5v 6h 4v -13h 5v 10h 4v 5h 5v -2h 18v -1h 4v 3h 5v -2h 5v 2h 9v -3h 9v 3h 4v 1h 14v -1h 4v 1h 5v -1h 13v 1h 14v -1h 5v 1h 36v -1h 4v 1h 41v -1h 5v 1h 54" fill="none" stroke="#000099"/>
+<path d="M60,61l 5, 27l 4, 21l 5, 18l 4, 16l 5, 14l 4, 13l 5, 11l 4, 11l 5, 9l 4, 9l 5, 8l 4, 7l 5, 6l 4, 6l 5, 6l 4, 4l 5, 5l 4, 4l 5, 3l 5, 4l 4, 3l 5, 2l 4, 3l 5, 2l 4, 2l 5, 2l 4, 1l 5, 2l 4, 1l 5, 1l 4, 2l 5, 1h 4l 5, 1l 4, 1l 5, 1h 4l 5, 1h 5l
+ 4, 1h 5l 4, 1h 9l 5, 1h 13l 5, 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M282,293h 27l 4, 1h 186l 4, 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M503,295h 5" fill="none" stroke="#ff0000" stroke-width="2"/>
+<rect x="351" y="22" width="205" height="91" fill="white"/>
+<path d="M351,113h 205" fill="none" stroke="black"/>
+<path d="M556,113v -91" fill="none" stroke="black"/>
+<path d="M556,22h -205" fill="none" stroke="black"/>
+<path d="M351,22v 91" fill="none" stroke="black"/>
+<text x="373" y="33" fill="black" font-size="13" font-family="Helvetica">
+ / ndf 
+</text>
+<text x="369" y="29" fill="black" font-size="9" font-family="Helvetica">
+2
+</text>
+<text x="361" y="33" fill="black" font-size="13" font-family="Times">
+&#0967;
+</text>
+<text x="484" y="34" fill="black" font-size="13" font-family="Helvetica">
+ 64.88 / 59
+</text>
+<text x="376" y="47" fill="black" font-size="13" font-family="Helvetica">
+    
+</text>
+<text x="370" y="51" fill="black" font-size="9" font-family="Helvetica">
+B
+</text>
+<text x="361" y="47" fill="black" font-size="13" font-family="Helvetica">
+N
+</text>
+<text x="502" y="49" fill="black" font-size="13" font-family="Helvetica">
+ 0.3075
+</text>
+<text x="495" y="49" fill="black" font-size="13" font-family="Times">
+&#0177;
+</text>
+<text x="448" y="49" fill="black" font-size="13" font-family="Helvetica">
+ 0.4639 
+</text>
+<text x="383" y="61" fill="black" font-size="13" font-family="Helvetica">
+ 
+</text>
+<text x="375" y="68" fill="black" font-size="6" font-family="Helvetica">
+Cu
+</text>
+<text x="370" y="64" fill="black" font-size="9" font-family="Times">
+&#0956;
+</text>
+<text x="361" y="61" fill="black" font-size="13" font-family="Helvetica">
+N
+</text>
+<text x="511" y="64" fill="black" font-size="13" font-family="Helvetica">
+ 27.91
+</text>
+<text x="504" y="64" fill="black" font-size="13" font-family="Times">
+&#0177;
+</text>
+<text x="466" y="64" fill="black" font-size="13" font-family="Helvetica">
+ 16.71 
+</text>
+<text x="380" y="75" fill="black" font-size="13" font-family="Helvetica">
+ 
+</text>
+<text x="372" y="82" fill="black" font-size="6" font-family="Helvetica">
+Cu
+</text>
+<text x="367" y="78" fill="black" font-size="9" font-family="Times">
+&#0956;
+</text>
+<text x="361" y="75" fill="black" font-size="13" font-family="Times">
+&#0964;
+</text>
+<text x="524" y="80" fill="black" font-size="13" font-family="Helvetica">
+ 1.2
+</text>
+<text x="517" y="80" fill="black" font-size="13" font-family="Times">
+&#0177;
+</text>
+<text x="477" y="80" fill="black" font-size="13" font-family="Helvetica">
+ 162.5 
+</text>
+<text x="382" y="91" fill="black" font-size="13" font-family="Helvetica">
+ 
+</text>
+<text x="375" y="99" fill="black" font-size="6" font-family="Helvetica">
+All
+</text>
+<text x="370" y="94" fill="black" font-size="9" font-family="Times">
+&#0956;
+</text>
+<text x="361" y="91" fill="black" font-size="13" font-family="Helvetica">
+N
+</text>
+<text x="524" y="95" fill="black" font-size="13" font-family="Helvetica">
+ 7.4
+</text>
+<text x="517" y="95" fill="black" font-size="13" font-family="Times">
+&#0177;
+</text>
+<text x="479" y="95" fill="black" font-size="13" font-family="Helvetica">
+ 159.1 
+</text>
+<text x="379" y="105" fill="black" font-size="13" font-family="Helvetica">
+ 
+</text>
+<text x="372" y="113" fill="black" font-size="6" font-family="Helvetica">
+All
+</text>
+<text x="367" y="108" fill="black" font-size="9" font-family="Times">
+&#0956;
+</text>
+<text x="361" y="105" fill="black" font-size="13" font-family="Times">
+&#0964;
+</text>
+<text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 78.8
+</text>
+<text x="510" y="110" fill="black" font-size="13" font-family="Times">
+&#0177;
+</text>
+<text x="470" y="110" fill="black" font-size="13" font-family="Helvetica">
+  2050 
+</text>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="441" y="317" fill="black" font-size="11" font-family="Helvetica">
 Delta time (ns)
@@ -104,64 +221,64 @@ Count
 <path d="M70,295h -13" fill="none" stroke="black"/>
 <path d="M63,288h -6" fill="none" stroke="black"/>
 <path d="M63,280h -6" fill="none" stroke="black"/>
-<path d="M63,272h -6" fill="none" stroke="black"/>
-<path d="M70,264h -13" fill="none" stroke="black"/>
+<path d="M63,273h -6" fill="none" stroke="black"/>
+<path d="M70,265h -13" fill="none" stroke="black"/>
 <path d="M63,257h -6" fill="none" stroke="black"/>
-<path d="M63,249h -6" fill="none" stroke="black"/>
-<path d="M63,241h -6" fill="none" stroke="black"/>
-<path d="M70,234h -13" fill="none" stroke="black"/>
-<path d="M63,226h -6" fill="none" stroke="black"/>
-<path d="M63,218h -6" fill="none" stroke="black"/>
-<path d="M63,210h -6" fill="none" stroke="black"/>
-<path d="M70,203h -13" fill="none" stroke="black"/>
-<path d="M63,195h -6" fill="none" stroke="black"/>
-<path d="M63,187h -6" fill="none" stroke="black"/>
-<path d="M63,180h -6" fill="none" stroke="black"/>
-<path d="M70,172h -13" fill="none" stroke="black"/>
-<path d="M63,164h -6" fill="none" stroke="black"/>
-<path d="M63,156h -6" fill="none" stroke="black"/>
-<path d="M63,149h -6" fill="none" stroke="black"/>
-<path d="M70,141h -13" fill="none" stroke="black"/>
-<path d="M63,133h -6" fill="none" stroke="black"/>
-<path d="M63,126h -6" fill="none" stroke="black"/>
-<path d="M63,118h -6" fill="none" stroke="black"/>
-<path d="M70,110h -13" fill="none" stroke="black"/>
-<path d="M63,103h -6" fill="none" stroke="black"/>
-<path d="M63,95h -6" fill="none" stroke="black"/>
-<path d="M63,87h -6" fill="none" stroke="black"/>
-<path d="M70,79h -13" fill="none" stroke="black"/>
-<path d="M63,72h -6" fill="none" stroke="black"/>
-<path d="M63,64h -6" fill="none" stroke="black"/>
-<path d="M63,56h -6" fill="none" stroke="black"/>
-<path d="M70,49h -13" fill="none" stroke="black"/>
-<path d="M70,49h -13" fill="none" stroke="black"/>
-<path d="M63,41h -6" fill="none" stroke="black"/>
-<path d="M63,33h -6" fill="none" stroke="black"/>
+<path d="M63,250h -6" fill="none" stroke="black"/>
+<path d="M63,242h -6" fill="none" stroke="black"/>
+<path d="M70,235h -13" fill="none" stroke="black"/>
+<path d="M63,227h -6" fill="none" stroke="black"/>
+<path d="M63,220h -6" fill="none" stroke="black"/>
+<path d="M63,212h -6" fill="none" stroke="black"/>
+<path d="M70,204h -13" fill="none" stroke="black"/>
+<path d="M63,197h -6" fill="none" stroke="black"/>
+<path d="M63,189h -6" fill="none" stroke="black"/>
+<path d="M63,182h -6" fill="none" stroke="black"/>
+<path d="M70,174h -13" fill="none" stroke="black"/>
+<path d="M63,167h -6" fill="none" stroke="black"/>
+<path d="M63,159h -6" fill="none" stroke="black"/>
+<path d="M63,151h -6" fill="none" stroke="black"/>
+<path d="M70,144h -13" fill="none" stroke="black"/>
+<path d="M63,136h -6" fill="none" stroke="black"/>
+<path d="M63,129h -6" fill="none" stroke="black"/>
+<path d="M63,121h -6" fill="none" stroke="black"/>
+<path d="M70,114h -13" fill="none" stroke="black"/>
+<path d="M63,106h -6" fill="none" stroke="black"/>
+<path d="M63,98h -6" fill="none" stroke="black"/>
+<path d="M63,91h -6" fill="none" stroke="black"/>
+<path d="M70,83h -13" fill="none" stroke="black"/>
+<path d="M63,76h -6" fill="none" stroke="black"/>
+<path d="M63,68h -6" fill="none" stroke="black"/>
+<path d="M63,61h -6" fill="none" stroke="black"/>
+<path d="M70,53h -13" fill="none" stroke="black"/>
+<path d="M70,53h -13" fill="none" stroke="black"/>
+<path d="M63,45h -6" fill="none" stroke="black"/>
+<path d="M63,38h -6" fill="none" stroke="black"/>
 <text x="48" y="299" fill="black" font-size="11" font-family="Helvetica">
 0
 </text>
-<text x="42" y="268" fill="black" font-size="11" font-family="Helvetica">
+<text x="42" y="269" fill="black" font-size="11" font-family="Helvetica">
 20
 </text>
-<text x="42" y="237" fill="black" font-size="11" font-family="Helvetica">
+<text x="42" y="239" fill="black" font-size="11" font-family="Helvetica">
 40
 </text>
-<text x="42" y="206" fill="black" font-size="11" font-family="Helvetica">
+<text x="42" y="208" fill="black" font-size="11" font-family="Helvetica">
 60
 </text>
-<text x="42" y="176" fill="black" font-size="11" font-family="Helvetica">
+<text x="42" y="178" fill="black" font-size="11" font-family="Helvetica">
 80
 </text>
-<text x="36" y="145" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="147" fill="black" font-size="11" font-family="Helvetica">
 100
 </text>
-<text x="36" y="114" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="117" fill="black" font-size="11" font-family="Helvetica">
 120
 </text>
-<text x="36" y="83" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="87" fill="black" font-size="11" font-family="Helvetica">
 140
 </text>
-<text x="36" y="52" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="57" fill="black" font-size="11" font-family="Helvetica">
 160
 </text>
 <text x="171" y="16" fill="black" font-size="15" font-family="Helvetica">
@@ -181,8 +298,8 @@ Muon_momentum_with_Air_5mm
 <text x="361" y="33" fill="black" font-size="13" font-family="Times">
 &#0967;
 </text>
-<text x="477" y="34" fill="black" font-size="13" font-family="Helvetica">
- 116.5 / 122
+<text x="484" y="34" fill="black" font-size="13" font-family="Helvetica">
+ 64.88 / 59
 </text>
 <text x="376" y="47" fill="black" font-size="13" font-family="Helvetica">
     
@@ -194,13 +311,13 @@ B
 N
 </text>
 <text x="502" y="49" fill="black" font-size="13" font-family="Helvetica">
- 0.1595
+ 0.3075
 </text>
 <text x="495" y="49" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="448" y="49" fill="black" font-size="13" font-family="Helvetica">
- 0.5565 
+ 0.4639 
 </text>
 <text x="383" y="61" fill="black" font-size="13" font-family="Helvetica">
  
@@ -214,14 +331,14 @@ Cu
 <text x="361" y="61" fill="black" font-size="13" font-family="Helvetica">
 N
 </text>
-<text x="502" y="64" fill="black" font-size="13" font-family="Helvetica">
- 1.4074
+<text x="511" y="64" fill="black" font-size="13" font-family="Helvetica">
+ 27.91
 </text>
-<text x="495" y="64" fill="black" font-size="13" font-family="Times">
+<text x="504" y="64" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="448" y="64" fill="black" font-size="13" font-family="Helvetica">
- 0.1513 
+<text x="466" y="64" fill="black" font-size="13" font-family="Helvetica">
+ 16.71 
 </text>
 <text x="380" y="75" fill="black" font-size="13" font-family="Helvetica">
  
@@ -236,13 +353,13 @@ Cu
 &#0964;
 </text>
 <text x="524" y="80" fill="black" font-size="13" font-family="Helvetica">
- 1.3
+ 1.2
 </text>
 <text x="517" y="80" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="477" y="80" fill="black" font-size="13" font-family="Helvetica">
- 164.5 
+ 162.5 
 </text>
 <text x="382" y="91" fill="black" font-size="13" font-family="Helvetica">
  
@@ -257,13 +374,13 @@ All
 N
 </text>
 <text x="524" y="95" fill="black" font-size="13" font-family="Helvetica">
- 1.3
+ 7.4
 </text>
 <text x="517" y="95" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="477" y="95" fill="black" font-size="13" font-family="Helvetica">
- 155.3 
+<text x="479" y="95" fill="black" font-size="13" font-family="Helvetica">
+ 159.1 
 </text>
 <text x="379" y="105" fill="black" font-size="13" font-family="Helvetica">
  
@@ -277,14 +394,14 @@ All
 <text x="361" y="105" fill="black" font-size="13" font-family="Times">
 &#0964;
 </text>
-<text x="524" y="110" fill="black" font-size="13" font-family="Helvetica">
- 1.4
+<text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 78.8
 </text>
-<text x="517" y="110" fill="black" font-size="13" font-family="Times">
+<text x="510" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="477" y="110" fill="black" font-size="13" font-family="Helvetica">
-  2003 
+<text x="470" y="110" fill="black" font-size="13" font-family="Helvetica">
+  2050 
 </text>
 <text x="171" y="16" fill="black" font-size="15" font-family="Helvetica">
 Muon_momentum_with_Air_5mm
