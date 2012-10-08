@@ -76,7 +76,11 @@ def fitting_parameter_plots_vs_settings(files_info, parameter, setting_strs, can
                 if not ch_id in all_channels:continue
                 
                 hist_key = get_hist_key(file_id, ch_id)
-                val, er  = ch_dat['fit_param'][parameter][0], ch_dat['fit_param'][parameter][1]
+                if parameter=="chi2":
+                    val = float(ch_dat['fit_param'][parameter][0])/ch_dat['fit_param'][parameter][1]
+                    er = 0.0
+                else:
+                    val, er  = ch_dat['fit_param'][parameter][0], ch_dat['fit_param'][parameter][1]
                 
                 if not hist_key in hists.keys():
                     hists[hist_key] = make_settings_hist(hist_key)
@@ -112,12 +116,12 @@ def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width
     """
     Workhorse function, reads the TDC file, fits the histograms & calculates integrals 
     """
+    setting_str = settings_str(fit_lo, fit_hi, bin_width)
     for file_id in files_info:
         for ch_str in files_info[file_id]['hists']:
             if not ch_str in d_channels: continue
-            
             # upstream scintillators are not calibrated to detect decay electrons well so skip them
-            setting_str = settings_str(fit_lo, fit_hi, bin_width)
+            
             print "*" * 40, "\n \n", file_id, ch_str, setting_str
             
             hist = files_info[file_id]['hists'][ch_str]
@@ -130,6 +134,14 @@ def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width
                 files_info[file_id]['fits'][setting_str] = {ch_str:fit_results}
             else:
                 files_info[file_id]['fits'][setting_str][ch_str] = fit_results
+                
+        fit_data = files_info[file_id]['fits'][setting_str]
+        n_muons, n_muons_er = sum_muons_for_all_ch(fit_data)
+        files_info[file_id]['fits'][setting_str]['total_muons'] = (n_muons, n_muons_er)
+        
+        mu_yield, mu_yield_er = get_muon_yield_per_amp(files_info[file_id])
+        mu_yield, mu_yield_er = [i*uA for i in (mu_yield, mu_yield_er)]
+        files_info[file_id]['fits'][setting_str]['muon_yields'] = (mu_yield, mu_yield_er)
 
 
 def main():
@@ -154,17 +166,6 @@ def main():
         print "*"*40, "\n\nSettings now: ", settings, "\n"
         
         get_derived_values(files_info, fitting_parameters, save_hist=save_hist, **settings)        
-        for id in files_info:
-            fit_data = files_info[id]['fits'][set_name]
-            n_muons, n_muons_er = sum_muons_for_all_ch(fit_data)
-            files_info[id]['fits']['total_muons'] = (n_muons, n_muons_er)
-            
-            mu_yield, mu_yield_er = get_muon_yield_per_amp(files_info[id])
-            mu_yield, mu_yield_er = [i*uA for i in (mu_yield, mu_yield_er)]
-            files_info[id]['fits']['muon_yields'] = (mu_yield, mu_yield_er)
-            display_string = "degrader dz %.1f yields %5.3e er %5.2e"
-            print '\n','*'*40
-            print display_string%(files_info[id]['deg_dz'], mu_yield, mu_yield_er)
             
     
     # for general checking, save the final state of files_info
@@ -174,15 +175,24 @@ def main():
     
     setting_strs = [settings_str(**i) for i in fitting_settings]
     # TODO make chi2, tau_mu_all etc a variable
-    canvas = make_canvas('chi2', 3, 2, True) 
-    canvas2 = make_canvas('#tau_{#mu_{All}}', 3, 2, True) 
-    canvas, hists = fitting_parameter_plots_vs_settings(files_info,'chi2',setting_strs, canvas)
-    canvas2, hists = fitting_parameter_plots_vs_settings(files_info,'#tau_{#mu_{All}}',setting_strs, canvas2)
-    canvas.Update()
-    canvas2.Update()
-    canvas3 = make_canvas('c2')
-    files_info[451]['fits']['lo_50_hi_15000_bins_10']['D4']['hist'].Draw()
-    wait_to_quit()
+    # canvas = make_canvas('chi2', 3, 2, True) 
+    # canvas2 = make_canvas('#tau_{#mu_{All}}', 3, 2, True) 
+    # canvas, hists = fitting_parameter_plots_vs_settings(files_info,'chi2',setting_strs, canvas)
+    # canvas2, hists = fitting_parameter_plots_vs_settings(files_info,'#tau_{#mu_{All}}',setting_strs, canvas2)
+    # canvas.Update()
+    # canvas2.Update()
+    # canvas3 = make_canvas('c2')
+    # files_info[451]['fits']['lo_50_hi_15000_bins_10']['D4']['hist'].Draw()
+    fmt_str = u"%26s " + u" %.2e \xb1 %.0e "*len(files_info.keys())
+    head_fmt = "%26s " + " %16s "*len(files_info.keys())
+    print head_fmt%(('settings',)+tuple(files_info.keys()))
+    for set_str in setting_strs:
+        vals = [set_str,]
+        for id in files_info:
+            mu_yield, mu_yield_er = files_info[id]['fits'][set_str]['muon_yields']
+            vals.append(mu_yield)
+            vals.append(mu_yield_er)
+        print fmt_str%tuple(vals)
 
 
 if __name__ == '__main__':
