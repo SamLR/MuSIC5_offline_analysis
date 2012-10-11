@@ -72,7 +72,7 @@ def get_hists_fitting_parameter_vs_settings(files_info, parameter):
     """
     # simple wrapper for make hist with the required defaults
     make_settings_hist = lambda name, n_settings: make_hist(name, 0, n_settings, 'Fit settings', parameter)
-    get_hist_key = lambda file_id, ch_id: "%s_file_%i_ch_%s"%(parameter, file_id, ch_id)
+    get_hist_key = lambda file_id, ch_id: "%s_file_%s_ch_%s"%(parameter, str(file_id), ch_id)
     hists = {}
     
     for file_id in files_info:
@@ -121,6 +121,7 @@ def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width
 
 
 def main():
+    # files_info and channels info is importated
     tdc_file = get_tdc_file(tdc_hist_file_name, files_info, all_channels)
     gStyle.SetOptFit()
     gStyle.SetOptStat(0)
@@ -130,9 +131,7 @@ def main():
     
     for settings in fitting_settings:
         set_name = settings_str(**settings)
-        
         print "*"*40, "\n\nSettings now: ", settings, "\n"
-            
         get_derived_values(files_info, fitting_parameters, save_hist=save_hist, **settings)        
             
     
