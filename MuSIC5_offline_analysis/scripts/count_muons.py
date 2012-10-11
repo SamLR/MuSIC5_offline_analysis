@@ -41,13 +41,6 @@ def calc_muon_yield_at_1uA(n_mu, n_mu_er, acceptance, time, current, scale=uA, *
     return mu_yield*uA, mu_yield_er*uA   
 
 
-def get_id_and_ch_from_hist(hist):
-    # TODO give sim data run numbers to mimic real dat?
-    junk1, file_id, junk2, channel = (hist.GetName()).split('_')
-    file_id = int(file_id)
-    return file_id, channel
-
-
 def convert_current_to_protons(current):
     return current * n_protons_per_amp * nA
 
