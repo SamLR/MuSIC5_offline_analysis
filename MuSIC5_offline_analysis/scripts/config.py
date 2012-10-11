@@ -1,22 +1,32 @@
 tdc_hist_file_name = "music5_tdc_data.root"
 # current in nA, time in seconds
-files_info = {448:{ 'deg_dz':0,  'time':9221, 'current':0.0153375  , 'acceptance':0.121},
-              451:{ 'deg_dz':0.5,'time':1001, 'current':0.0154625  , 'acceptance':0.081},
-              452:{ 'deg_dz':0.5,'time':4944, 'current':0.013132143, 'acceptance':0.081},
-              455:{ 'deg_dz':1,  'time':6307, 'current':0.013321429, 'acceptance':0.074},
-              458:{ 'deg_dz':5,  'time':5144, 'current':0.013625   , 'acceptance':0.050},
-              459:{ 'deg_dz':5,  'time':2452, 'current':0.012383929, 'acceptance':0.050}
-              }
-    
+
 u_channels = tuple(["U%i"%i for i in range(1,9)]) # range(x,y) returns x:(y-1)
 d_channels = tuple(["D%i"%i for i in range(1,6)])
 all_channels = u_channels + d_channels
+
+files_info = {448:{ 'run_conditions': 
+                    {'deg_dz':0,  'time':9221, 'current':0.0153375  , 'acceptance':0.121, 'ch_used':d_channels},
+                  },
+              451:{ 'run_conditions':
+                    {'deg_dz':0.5,'time':1001, 'current':0.0154625  , 'acceptance':0.081, 'ch_used':d_channels},
+                  },
+              452:{ 'run_conditions':
+                    {'deg_dz':0.5,'time':4944, 'current':0.013132143, 'acceptance':0.081, 'ch_used':d_channels},
+                  },
+              455:{ 'run_conditions':
+                    {'deg_dz':1,  'time':6307, 'current':0.013321429, 'acceptance':0.074, 'ch_used':d_channels},
+                  },
+              458:{ 'run_conditions':
+                    {'deg_dz':5,  'time':5144, 'current':0.013625   , 'acceptance':0.050, 'ch_used':d_channels},
+                  },
+              459:{ 'run_conditions':
+                    {'deg_dz':5,  'time':2452, 'current':0.012383929, 'acceptance':0.050, 'ch_used':d_channels},
+                  }
+              }
+
  # magic numbers weeee! combination of muon (beam) acceptance 
  # in scint 1 & electron acceptance in scint 2
-combined_acceptance = 0.4159891591  
-detector_efficiency = 0.5 # FIXME THIS IS A MADE UP NUMBER!  
-nA = 1e-9 # scale for nano; i.e. the used proton current
-uA = 1e-6 # scale for micro; i.e. the maximum proton current
 draw = False
 # draw = True
 

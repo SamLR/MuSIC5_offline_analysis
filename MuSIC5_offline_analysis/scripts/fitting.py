@@ -1,8 +1,8 @@
 from ROOT import TH1F, TF1
 
-from utilities import set_param_and_error, get_param_and_error, rebin_bin_width, wait_to_quit
+from utilities import set_param_and_error, get_param_and_error, rebin_bin_width
 
-def fit_hist(orig_hist, fit_lo, fit_hi, bin_width, initial_fit_params, save_hist=False):
+def fit_hist(orig_hist, fit_lo, fit_hi, bin_width, initial_fit_params):
     name = orig_hist.GetName() + "_" + "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
     
     # local, rebinned copy of the hist
@@ -19,10 +19,9 @@ def fit_hist(orig_hist, fit_lo, fit_hi, bin_width, initial_fit_params, save_hist
     
     # get the integrals & errors
     counts = make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_width)
-    
-    results = {'counts':counts, 'fit_param': fit_param}
-    if save_hist: results['hist'] = hist
-    return results
+    # 'add' the counts dictionary to fit_param
+    fit_param.update(counts)
+    return fit_param
 
 
 def get_fitting_func(name, hist, fit_lo, fit_hi, initial_fit_params):
