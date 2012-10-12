@@ -12,7 +12,7 @@ from ROOT import TH1F, TFile, TF1, gStyle, gPad
 from root_utilities import make_hist, make_canvas, set_bin_val_er_label,\
                             get_canvas_with_hists
                       
-from list_utils import add_as_sub_dict, saveTraverse, printTraverse, \
+from list_utilities import add_as_sub_dict, saveTraverse, printTraverse, \
                         create_sub_dicts_from_keys
 
 from general_utilities import wait_to_quit, get_quantised_width_height
@@ -29,7 +29,8 @@ from config import files_info, tdc_hist_file_name, u_channels, d_channels, \
 from constants import uA, nA, detector_efficiency, n_protons_per_amp    
 
 from sys import maxint             
-    
+   
+# TODO make all keys lowercase
 
 def calc_muon_yield_at_1uA(n_mu, n_mu_er, acceptance, time, current, scale=uA, **kwargs ):
     """Convert number of muons & error to a yield per A proton current"""
@@ -59,7 +60,7 @@ def settings_str(fit_lo, fit_hi, bin_width):
     return "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
 
 
-def get_hists_fitting_parameter_vs_settings(files_info, parameter):
+def get_hists_fitting_parameter_vs_setting(files_info, parameter):
     # setting strings could be culled from the files info but would 
     # come out in a less than useful order
     """
@@ -85,9 +86,8 @@ def get_hists_fitting_parameter_vs_settings(files_info, parameter):
             
             for bin, setting_str in enumerate(fits, 1):
             # bin 0 == underflow. bin number != x_axis value
-                ch_dat = fits[setting_str]['ch_dat'][ch_id]
+                val, er  = fits[setting_str]['ch_dat'][ch_id][parameter]                
                 
-                val, er  = ch_dat[parameter]                
                 if parameter=="chi2":
                     val = float(val)/er # express chi2 as chi2/NDF
                     er = 0.0
@@ -96,18 +96,95 @@ def get_hists_fitting_parameter_vs_settings(files_info, parameter):
     return hists
 
 
-def get_derived_values(files_info, initial_fit_params, fit_lo, fit_hi, bin_width, save_hist=False):
+def get_hists_file_val_vs_setting(files_info, file_val):
+    """
+    Get a set of histograms of file values (i.e. muon yields, muon counts) 
+    against settings
+    """
+    make_settings_hist = lambda name, n_settings: make_hist(name, 0, n_settings, 'Fit settings', file_val)
+    get_hist_key = lambda file_id: "%s_file_%s"%(file_val, str(file_id))
+    hists = {}
+    
+    for file_id in files_info:
+        fits = files_info[file_id]['fits']
+        n_settings = len(fits)
+        
+        hist_key = get_hist_key (file_id)
+        hists[hist_key] = make_settings_hist(hist_key, n_settings)
+        
+        for bin, setting_str in enumerate(fits, 1):
+        # bin 0 == underflow. bin number != x_axis value
+            val, er = fits[setting_str][file_val]
+            set_bin_val_er_label(hists[hist_key], bin, val, er, setting_str)
+    return hists
+        
+
+
+def get_hists_fitting_parameter_vs_deg_dz(files_info, parameter):
+    """
+    Get a set of histograms of parameter Vs degrader thickness
+    """
+    make_dz_hist = lambda name: make_hist(name, 0, len(files_info), 'Degrader thickness (mm)', parameter)
+    get_hist_key = lambda ch, setting_str: "%s_ch_%s_settings_%s"%(parameter, ch, setting_str)
+    hists = {}
+    
+    # dictionary ordering is not gaurenteed 
+    deg_dzs = [(i,files_info[i]['run_conditions']['deg_dz']) for i in files_info]
+    deg_dzs.sort(key = lambda x:x[1]) # sort by thickness
+    
+    for bin, (file_id, dz) in enumerate(deg_dzs, 1):
+        for ch_id in files_info[file_id]['run_conditions']['ch_used']:
+            for setting_str in files_info[file_id]['fit_settings']:
+                
+                hist_key = get_hist_key(ch_id, setting_str)
+                if hist_key not in hists: hists[hist_key] = make_dz_hist(hist_key)
+                
+                val, er = files_info[file_id]['fits'][setting_str]['ch_dat'][ch_id][parameter]
+            
+                if parameter=="chi2":
+                    val = float(val)/er # express chi2 as chi2/NDF
+                    er = 0.0
+                
+                set_bin_val_er_label(hists[hist_key], bin, val, er, dz)
+    return hists
+
+
+def get_hists_file_val_vs_deg_dz(files_info, file_val):
+    """
+    Get a set of histograms of file vals Vs degrader thickness
+    """
+    make_dz_hist = lambda name: make_hist(name, 0, len(files_info), 'Degrader thickness (mm)', file_val)
+    get_hist_key = lambda setting_str: "%s_settings_%s"%(file_val, setting_str)
+    hists = {}
+    
+    # dictionary ordering is not gaurenteed 
+    deg_dzs = [(i,files_info[i]['run_conditions']['deg_dz']) for i in files_info]
+    deg_dzs.sort(key = lambda x:x[1]) # sort by thickness
+    
+    for bin, (file_id, dz) in enumerate(deg_dzs, 1):
+        
+        for setting_str in files_info[file_id]['fit_settings']:
+            hist_key = get_hist_key(setting_str)
+            if hist_key not in hists: hists[hist_key] = make_dz_hist(hist_key)
+            val, er = files_info[file_id]['fits'][setting_str][file_val]
+            set_bin_val_er_label(hists[hist_key], bin, val, er, dz)
+            
+    return hists
+
+
+def get_derived_values(files_info, initial_fit_params, fit_settings, save_hist=False):
     """
     Workhorse function, reads the TDC file, fits the histograms & calculates integrals 
     """
-    setting_str = settings_str(fit_lo, fit_hi, bin_width)
+    setting_str = settings_str(**fit_settings)
     for file_id in files_info:
+        add_as_sub_dict(files_info[file_id], 'fit_settings', setting_str, fit_settings)
         file_res = {'ch_dat':{}}
         for ch_str in files_info[file_id]['run_conditions']['ch_used']:
             # upstream scintillators are not calibrated to detect decay electrons well so skip them
             
             hist = files_info[file_id]['hists'][ch_str]
-            fit_results = fit_hist(hist, fit_lo, fit_hi, bin_width, initial_fit_params)
+            fit_results = fit_hist(hist, initial_fit_params, **fit_settings)
             file_res['ch_dat'][ch_str] = fit_results
             
         n_mu, n_mu_er   = sum_muons_over_all_ch(file_res['ch_dat'])
@@ -128,23 +205,32 @@ def main():
     # TODO look through variable names and improve
     # specifically 'files_info' and the fit parameter names (e.g. N_b->C_b)
     
-    
+    # from this point it shouldn't matter if it's data or sim_data
     for settings in fitting_settings:
         set_name = settings_str(**settings)
         print "*"*40, "\n\nSettings now: ", settings, "\n"
-        get_derived_values(files_info, fitting_parameters, save_hist=save_hist, **settings)        
+        get_derived_values(files_info, fitting_parameters, settings, save_hist=save_hist)        
             
     
     # for general checking, save the final state of files_info
     with open("file_info.txt", "write") as log_file:
         # TODO write a proper logger
         saveTraverse(files_info, log_file,header="# Current state of file_info")
-    
-    hists= get_hists_fitting_parameter_vs_settings(files_info, "n_bkgnd")
-    ch_id_hists = create_sub_dicts_from_keys(hists,
-                keysplit_function=lambda x: (x.split('_')[5], x.split('_')[3]))
-    canvas = get_canvas_with_hists(ch_id_hists, pad_preffix="channel: ", 
-                                legend_preffix="file: ")
+        
+    # hists= get_hists_fitting_parameter_vs_settings(files_info, "n_bkgnd")
+    # ch_id_hists = create_sub_dicts_from_keys(hists,
+    #             keysplit_function=lambda x: (x.split('_')[5], x.split('_')[3]))
+    # canvas = get_canvas_with_hists(ch_id_hists, pad_preffix="channel: ", 
+    #                             legend_preffix="file: ")
+    # hists= get_hists_fitting_parameter_vs_deg_dz(files_info, "n_bkgnd")
+    # setting_ch_hists = create_sub_dicts_from_keys(hists,
+    #             keysplit_function=lambda x: (x.split('_')[3], x.split('settings_')[1]))
+    # canvas = get_canvas_with_hists(setting_ch_hists, pad_preffix="Settings: ", 
+    #                             legend_preffix="ch: ")
+    # hists= get_hists_file_val_vs_setting(files_info, "muon_yields")
+    # canvas = get_canvas_with_hists(hists, pad_preffix="File: ", legend_preffix="")
+    hists= get_hists_file_val_vs_deg_dz(files_info, "muon_yields")
+    canvas = get_canvas_with_hists(hists, pad_preffix="Setting: ", legend_preffix="")
     wait_to_quit()
 
 

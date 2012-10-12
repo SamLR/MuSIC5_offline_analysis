@@ -4,50 +4,54 @@
 # real data
 # 
 
-from config_sim_data import *
+import config_sim_data as config
 
-from ROOT import TFile, TH1F, gStyle
+from ROOT import TFile, TH1F, gStyle, gROOT
 
 from fitting import fit_hist
 
-from utilities import make_canvas, wait_to_quit, make_hist,\
-                      set_bin_val_er_label, printTraverse
+from root_utilities import make_canvas, make_hist, set_bin_val_er_label
 
+from general_utilities import wait_to_quit
 
-# def get_data_dict(file_name):
-#     """
-#     Opens the 
-#     """
-#     in_tfile = TFile(file_name, "READ")
-#     res = {}
-#     for key in in_tfile.GetListOfKeys():
-#         # name looks like "Muon_momentum_with_Aluminium_0.5mm"
-#         hist = key.ReadObj()
-#         name_bits = (hist.GetName()).split("_")
-#         dict_key = "%s_%s"%(name_bits[3],name_bits[4])
-#         
-#         # use the [:-2] to trim the 'mm' from the thickness
-#         res[dict_key] = {'thickness':float(name_bits[4][:-2]), 'material':name_bits[3], 'hist':hist}
-#     return res, in_tfile
+from list_utilities import printTraverse
+                      
+import os.path
 
-def get_data_dict(file_name):
+def get_data_dict(file_name, recreate=False):
     """
     Opens the TFile containing the dt plots for simulated data
     and returns a dict with the same structure as the real data.
     """
     # TODO Add autogeneration of the appropriate file if needed
+    # the below seems to fail pretty spectacularly needs fixing at some point
+    # if (not os.path.isfile(file_name)) or recreate:
+    #     print "Creating TDC file: %s"% file_name
+    #     root_line = ".x "+config.sim_data_macro_name
+    #     print "Root will try '%s'"% root_line
+    #     gROOT.ProcessLine(root_line)
+    #     print "%s creation complete"% file_name
+    
     in_tfile = TFile(file_name, "READ")
     res = {}
     for key in in_tfile.GetListOfKeys():
-        # name looks like "Muon_momentum_with_Aluminium_0.5mm"
         hist = key.ReadObj()
-        junk1, junk2, junk3, deg_mat, deg_dz = (hist.GetName()).split("_")
+            # name looks like "Muon_momentum_with_Aluminium_0.5mm", j = junk
+        j1, j2, j3, deg_mat, deg_dz = (hist.GetName()).split("_")
+        
+        if deg_mat.lower() == "air": deg_dz = "0mm"
         dict_key = "%s_%s"%(deg_mat, deg_dz)
-
+        
+        # Create the 'run_conditions' dictionary & update with the sim values
         # use the [:-2] to trim the 'mm' from the thickness
-        res[dict_key] = {'thickness':float(name_bits[4][:-2]), 'material':name_bits[3], 'hist':hist}
-        return res, in_tfile
+        hist_conditions = {'deg_dz':float(deg_dz[:-2]), 'material':deg_mat}
+        hist_conditions.update(config.sim_run_conditions)
+        res[dict_key] = {'run_conditions': hist_conditions,
+                        'hists':{config.ch_used:hist}}
+                        # hists: {ch_id: hist, ch_id2:hist2....}
+    return res, in_tfile
     
+
 
 def get_muon_yield_per_amp(file_info):
     """Convert number of muons & error to a yield per A proton current"""
@@ -73,10 +77,10 @@ def main():
     gStyle.SetOptFit()
     gStyle.SetOptStat(0)
     
-    hist_dict, in_file = get_data_dict(sim_data_file_name)
-    if draw: canvases = {}
-    
-    for fit_lo, fit_hi, bin_width, in settings:
+    hist_dict, in_file = get_data_dict(config.sim_data_file_name, True)
+    if config.draw: canvases = {}
+    printTraverse (hist_dict)
+    for fit_lo, fit_hi, bin_width, in config.settings:
         setting_str = settings_str(fit_lo, fit_hi, bin_width)
         
         for key, data in hist_dict.items():

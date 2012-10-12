@@ -1,8 +1,6 @@
 
-# sim_data_file_name = "~/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/MuSIC5_detector/scripts/dt_hists.root"
-tdc_hist_file_name = "~/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/MuSIC5_detector/scripts/dt_hists.root"
-
-
+sim_data_file_name = "~/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/MuSIC5_detector/scripts/dt_hists.root"
+sim_data_macro_name = "~/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/MuSIC5_detector/scripts/quick_dt_stopped_muons.c"
 # steal these from config? share them somehow? 
 #  merge this to config? 
 draw = True
@@ -24,13 +22,17 @@ initial_fit_params = (("N_{B}",          lambda hist: float(hist.GetMaximum())/1
 sim_time = 0.000016
 sim_current = 1000
 sim_acceptance = 1
-hist_keys = ("Air_5mm", "Aluminium_0.5mm", "Aluminium_1mm", 
-             "Aluminium_5mm", "Aluminium_8mm", "Aluminium_12mm")
+ch_used = 'NA' # the simulation doesn't have any channels
+sim_run_conditions = {'time':sim_time, 'current':sim_current, # common values
+                          'acceptance':sim_acceptance, 'ch_used':(ch_used,)}
 
-make_value = lambda x:{'deg_dz':x.split('_')[1], 'material':x.split('_')[0], \
-                    'time':sim_time, 'current':sim_current, 'acceptance':sim_acceptance}
-
-files_info = {i:make_value(i) for i in hist_keys}
+# hist_keys = ("Air_5mm", "Aluminium_0.5mm", "Aluminium_1mm", 
+#              "Aluminium_5mm", "Aluminium_8mm", "Aluminium_12mm")
+# 
+# make_value = lambda x:{'deg_dz':x.split('_')[1], 'material':x.split('_')[0], \
+#                     'time':sim_time, 'current':sim_current, 'acceptance':sim_acceptance}
+# 
+# files_info = {i:make_value(i) for i in hist_keys}
 
 save_hist=False
 # save_hist=True
