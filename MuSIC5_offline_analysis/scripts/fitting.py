@@ -1,8 +1,8 @@
 from ROOT import TH1F, TF1
 
-from utilities import set_param_and_error, get_param_and_error, rebin_bin_width
+from root_utilities import set_param_and_error, get_param_and_error, rebin_bin_width
 
-def fit_hist(orig_hist, fit_lo, fit_hi, bin_width, initial_fit_params):
+def fit_hist(orig_hist, initial_fit_params, fit_lo, fit_hi, bin_width):
     name = orig_hist.GetName() + "_" + "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
     
     # local, rebinned copy of the hist
