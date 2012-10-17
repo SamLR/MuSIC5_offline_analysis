@@ -4,7 +4,7 @@
 tdc_file.py
 
 Created by Sam Cook on 2012-08-20.
-Copyright (c) 2012 . All rights reserved.
+
 """
 import os.path
 
@@ -51,7 +51,7 @@ def _attach_hist_to_file_info(tfile_ptr,files_info):
         
         
 
-def get_tdc_file(tdc_hist_file_name, files_info, channels, recreate=False):
+def get_tdc_file_dict(tdc_hist_file_name, files_info, channels, recreate=False):
     """
     If the file already exists open it, if not recreate it
     """
@@ -107,7 +107,7 @@ def main():
     # TODO move file info etc into a config file
     print "You probably don't want to do that"
     return
-    from config import files_info, tdc_hist_file_name, all_channels
+    from config_Cu_data import files_info, tdc_hist_file_name, all_channels
     create_tdc_hist_file(files_info, tdc_hist_file_name, all_channels)
 
 

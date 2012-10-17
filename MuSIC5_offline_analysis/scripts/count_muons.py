@@ -22,7 +22,7 @@ from tdc_file import get_tdc_file_dict
 from fitting import fit_hist
 
 # TODO reduce this to "file_info", "run_settings", "fit_settings"
-from config import files_info, tdc_hist_file_name, u_channels, d_channels, \
+from config_Cu_data import files_info, tdc_hist_file_name, u_channels, d_channels, \
                     all_channels, draw, save_hist, fitting_parameters, \
                     fitting_settings
     
