@@ -18,19 +18,13 @@ from list_utilities import printTraverse
                       
 import os.path
 
-def get_data_dict(file_name, recreate=False):
+def get_sim_file_dict(file_name,  recreate=False):
+def get_sim_file_dict(file_name, files_info, channels, recreate=False):
     """
     Opens the TFile containing the dt plots for simulated data
     and returns a dict with the same structure as the real data.
     """
     # TODO Add autogeneration of the appropriate file if needed
-    # the below seems to fail pretty spectacularly needs fixing at some point
-    # if (not os.path.isfile(file_name)) or recreate:
-    #     print "Creating TDC file: %s"% file_name
-    #     root_line = ".x "+config.sim_data_macro_name
-    #     print "Root will try '%s'"% root_line
-    #     gROOT.ProcessLine(root_line)
-    #     print "%s creation complete"% file_name
     
     in_tfile = TFile(file_name, "READ")
     res = {}
@@ -77,7 +71,7 @@ def main():
     gStyle.SetOptFit()
     gStyle.SetOptStat(0)
     
-    hist_dict, in_file = get_data_dict(config.sim_data_file_name, True)
+    hist_dict, in_file = get_sim_file_dict(config.sim_data_file_name, True)
     if config.draw: canvases = {}
     printTraverse (hist_dict)
     for fit_lo, fit_hi, bin_width, in config.settings:
