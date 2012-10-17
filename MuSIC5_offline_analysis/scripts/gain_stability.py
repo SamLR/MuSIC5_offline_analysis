@@ -5,7 +5,7 @@ counted.
 
 from sclr_branch_func import * 
 from root_utilities import make_canvas, make_hist
-from ROOT import TGraphErrors, TGaxis
+from ROOT import TGraphErrors, TGaxis, gStyle, TF1
 from array import array
 from math import log
 
@@ -89,7 +89,6 @@ def get_trigger_count_hist_for_file(data, file_id):
     xbins = len(data)
     titles = ("Time (ns)", "Trigger Count")
     res = make_hist(name, xmin, xmax, titles, xbins)
-    print '\n'
     times = data.keys()
     times.sort(key=lambda x:x[0])
     for bin, time in enumerate(times):
@@ -121,10 +120,61 @@ def print_times(in_data):
             prev = time
 
 
+def make_pretty_axis(TGaxis_args, color, font_size, title_offset, title="Trigger count"):
+    hist_axis = TGaxis(*TGaxis_args)
+    hist_axis.SetTitle(title)
+    hist_axis.SetLineColor(color)
+    set_axis_offset_size_color(hist_axis,title_offset,font_size,color)
+    return hist_axis
+
+
+def set_axis_offset_size_color(axis,offset,size,color):
+    axis.SetLabelColor(color)
+    axis.SetLabelSize(size)
+    axis.SetTitleColor(color)
+    axis.SetTitleSize(size)
+    axis.SetTitleOffset(offset)
+
+
+def move_stats_box(tgraph, point1, point2):
+    stats_box = tgraph.GetListOfFunctions().FindObject("stats")
+    stats_box.SetX1NDC(point1[0])
+    stats_box.SetY1NDC(point1[1])
+    stats_box.SetX2NDC(point2[0])
+    stats_box.SetY2NDC(point2[1])
+
+
+def draw_gain_and_count_hist(gain_hist, count_hist, canvas, pad_id, color=4,font_size=0.035, title_offset=1.2):
+    pad = canvas.cd(pad_id)
+    gain_hist.SetMaximum(2.3)
+    set_axis_offset_size_color(gain_hist.GetXaxis(),title_offset,font_size, 1)
+    set_axis_offset_size_color(gain_hist.GetYaxis(),title_offset,font_size, 1)
+    gain_hist.Draw("AP")
+    pad.Update()
+    move_stats_box(gain_hist,(0.55,0.75),(0.9,0.9))
+    
+    rightmax = count_hist.GetMaximum() * 1.3
+    rightmin = count_hist.GetMinimum()
+    scale    = pad.GetUymax()/rightmax
+    count_hist.SetLineColor(color)
+    count_hist.Scale(scale)
+    count_hist.Draw("SAME")
+    tgaxis_args = (pad.GetUxmax(), pad.GetUymin(), 
+                   pad.GetUxmax(), pad.GetUymax(), 
+                   rightmin, rightmax, 110,"+L")
+    hist_axis = make_pretty_axis(tgaxis_args,color,font_size,title_offset)
+    hist_axis.Draw()
+    # need to keep hist_axis in scope so 
+    # attach it as an attribute to the canvas
+    setattr(canvas,'axis_'+str(pad_id),hist_axis)
+    canvas.Update()
+
+
 def main():
+    gStyle.SetOptFit()
     res = {'data':{}}
     for file_id, file_data in files_info.items():
-        print "\n", file_id
+        print "Processing", file_id
         name = file_prefix + file_id + file_suffix
         tfile, tree, branch = get_tfile_tree_and_branch(name, **file_data)
         key = int(file_id)
@@ -134,42 +184,22 @@ def main():
     canvas = make_canvas("Gain Stability", 3,2, True)
     # add the histograms to the dictionary
     res.update({'gain_hist':{}, 'count_hist':{}})
-    axis = []
     for pad_id, (file_id, data) in enumerate(res['data'].items(), 1):
-        res['gain_hist'][file_id] = get_gain_stability_hist_for_file(data, file_id)
-        res['count_hist'][file_id] = get_trigger_count_hist_for_file(data, file_id)
-        pad = canvas.cd(pad_id)
-        res['gain_hist'][file_id].Draw("AP")
-        canvas.Update()
+        gain_hist  = get_gain_stability_hist_for_file(data, file_id)
+        count_hist = get_trigger_count_hist_for_file(data, file_id)
         
-        rightmax = 1.1*res['count_hist'][file_id].GetMaximum()
-        rightmin = res['count_hist'][file_id].GetMinimum() + 1
-        scale = pad.GetUymax()/rightmax
-        res['count_hist'][file_id].SetLineColor(2)
-        res['count_hist'][file_id].Scale(scale)
-        res['count_hist'][file_id].Draw("SAME")
-            
-        hist_axis = TGaxis(pad.GetUxmax(), pad.GetUymin(), 
-                          pad.GetUxmax(), pad.GetUymax(), 
-                          rightmin, rightmax, 110,"+L")
-                          
-        print res['count_hist'][file_id].GetBinContent(1), res['count_hist'][file_id].GetBinContent(9)
-        hist_axis.SetLineColor(2)
-        hist_axis.SetLabelColor(2)
-        hist_axis.SetLabelSize(.035)
-        hist_axis.SetTitle("Trigger count")
-        hist_axis.SetTitleColor(2)
-        hist_axis.SetTitleSize(.035)
-        hist_axis.SetTitleOffset(1.2)
-        hist_axis.Draw()
-        axis.append(hist_axis)
-        canvas.Update()
-    
+        # fit_function = TF1("Linear fit"+str(pad_id), "")
+        gain_hist.Fit("pol0") # attempt to fit the gain with a flat function
+        
+        draw_gain_and_count_hist(gain_hist, count_hist, canvas, pad_id)
+        
+        res['gain_hist'][file_id] = gain_hist
+        res['count_hist'][file_id] = count_hist
     canvas.SaveAs("images/gain_stability.svg")
     canvas.SaveAs("images/gain_stability.eps")
         
     from time import sleep
-    sleep (10)
+    sleep (40)
     
 
 if __name__=="__main__":
