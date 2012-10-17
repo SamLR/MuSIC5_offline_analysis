@@ -1,6 +1,15 @@
 from ROOT import TH1F, TF1
 
-from root_utilities import set_param_and_error, get_param_and_error, rebin_bin_width
+from root_utilities import rebin_bin_width, print_square_matrix
+
+def get_param_and_error(param_number, function):
+    return function.GetParameter(param_number), function.GetParError(param_number)
+
+
+def set_param_and_error(param_number, param, error, function):
+    function.SetParameter(param_number, param)
+    function.SetParError (param_number, error)
+
 
 def fit_hist(orig_hist, initial_fit_params, fit_lo, fit_hi, bin_width):
     name = orig_hist.GetName() + "_" + "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
@@ -11,9 +20,8 @@ def fit_hist(orig_hist, initial_fit_params, fit_lo, fit_hi, bin_width):
     # get the fitting function and fit it to the histogram
     fit_name = "fit_" + name
     fitting_func = get_fitting_func(fit_name, hist, fit_lo, fit_hi, initial_fit_params)
-                                    
     # the covariance matrix can only be retrived from the fit result
-    fit_res = hist.Fit(fitting_func, "RS") # fit in the function range
+    fit_res = hist.Fit(fitting_func, "QNRS") # fit in the function range
     covariance_matrix = fit_res.GetCovarianceMatrix()
     fit_param = get_fit_params(fitting_func)
     
@@ -65,21 +73,17 @@ def make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_w
     n_mu, n_mu_er = calc_integral_from_exp_fit(mu_mapping, fitting_func, \
                             covariance_matrix, fit_lo, fit_hi)
     n_mu, n_mu_er = n_mu/bin_width, n_mu_er/bin_width
-    
     return {"n_bkgnd":(n_bkgnd, 0), "n_mu_cu":(n_cu, n_cu_er), "n_mu_slow":(n_mu, n_mu_er),}
 
 
 def calc_integral_from_exp_fit(param_mapping, fitting_func, covariance_matrix, fit_lo, fit_hi):
-    func = TF1("tmp", "[0]*exp(-x/[1])", fit_lo, fit_hi)    
-    
+    func = TF1("tmp", "[0]*exp(-x/[1])", fit_lo, fit_hi)
     copy_param_and_er(param_mapping, fitting_func, func)
-    
     # get the integral and then calculate the error on it
     count = func.Integral(fit_lo, fit_hi)
     sub_matrix_vals = (param_mapping[0][0], param_mapping[1][0],\
                        param_mapping[0][0], param_mapping[1][0])
     sub_matrix = covariance_matrix.GetSub(*sub_matrix_vals)
-    
     er = func.IntegralError(fit_lo, fit_hi, \
                 func.GetParameters(), sub_matrix.GetMatrixArray())
     return count, er

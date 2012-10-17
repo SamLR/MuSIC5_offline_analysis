@@ -8,9 +8,11 @@ Created by Sam Cook on 2012-08-20.
 """
 import os.path
 
-from ROOT import TH1F, TFile, TBranch
+from ROOT import TFile
 
 from root_utilities import get_branch, get_struct, make_hist
+
+from config_cu_data import files_info
 
 _branch_struct = "int adc, tdc0, nhits; int tdc[500];"
 _file_location_fmt = "../../../converted_data/run00%i_converted.root"
@@ -20,6 +22,7 @@ def _make_tdc_hist(name):
     """Wrapper that sets basic values"""
     return make_hist(name, xmin=0, xmax=20000, xtitle="Time (ns)", ytitle="Count")
     
+
 
 def _get_file_name_from_id(id):
     """Simple helper function"""
@@ -31,6 +34,7 @@ def _get_id_and_ch_from_hist(hist):
     junk1, file_id, junk2, channel = name.split('_') # get the useful info
     file_id = int(file_id)
     return file_id, channel
+
 
 def _attach_hist_to_file_info(tfile_ptr,files_info):
     """
@@ -51,21 +55,22 @@ def _attach_hist_to_file_info(tfile_ptr,files_info):
         
         
 
-def get_tdc_file_dict(tdc_hist_file_name, files_info, channels, recreate=False):
+
+def get_tdc_file_and_dict(tdc_hist_file_name, recreate=False):
     """
     If the file already exists open it, if not recreate it
     """
     if (not os.path.isfile(tdc_hist_file_name)) or recreate:
         print "TDC hist file (%s) not found, creating... "%tdc_hist_file_name
-        create_tdc_hist_file(files_info, tdc_hist_file_name, channels)
+        create_tdc_hist_file(files_info, tdc_hist_file_name)
         print "TDC hist file creation complete"
     print "Loading histograms"
     file_ptr = TFile(tdc_hist_file_name, "READ")
     _attach_hist_to_file_info(file_ptr, files_info)
-    return file_ptr
+    return file_ptr, files_info
 
 
-def create_tdc_hist_file(in_file_info, out_file_name, channels):
+def create_tdc_hist_file(in_file_info, out_file_name):
     """
     Open all the files (based on ID) in in_file_info using the 
     _file_location_fmt, process all the information inside them and
@@ -85,7 +90,7 @@ def create_tdc_hist_file(in_file_info, out_file_name, channels):
         
         # load all the branches and create the histograms in the out file
         branches = {}
-        for ch in channels:
+        for ch in file_entry['ch_used']:
             branches[ch] = get_branch(tree, ch, in_branch_struct)
             hist_name = "file_%i_ch_%s"%(id,ch)
             out_file.cd()
