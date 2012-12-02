@@ -1,0 +1,204 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="567" height="328" viewBox="0 0 567 328" xmlns="http://www.w3.org/2000/svg">
+<title>
+/Users/samcook/code/MuSIC/offline_analysis_music5/MuSIC5_offline_analysis/MuSIC5_offline_analysis/scripts/images/sim_1Bn_tau_mu_all_relaxed_fit.svg
+</title>
+<desc>
+Creator: ROOT Version 5.32/00
+CreationDate: Wed Oct 24 19:49:49 2012</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="567" height="328" fill="white"/>
+<rect x="6" y="3" width="555" height="322" fill="white"/>
+<rect x="61" y="36" width="445" height="257" fill="white"/>
+<rect x="61" y="36" width="445" height="257" fill="none" stroke="black"/>
+<rect x="61" y="36" width="445" height="257" fill="white"/>
+<rect x="61" y="36" width="445" height="257" fill="none" stroke="black"/>
+<path d="M117,221v -68" fill="none" stroke="#000099"/>
+<path d="M117,153v -68" fill="none" stroke="#000099"/>
+<path d="M61,153h 56" fill="none" stroke="#000099"/>
+<path d="M117,153h 55" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="116" y1="153" x2="117" y2="153"/>
+</g>
+<path d="M228,223v -83" fill="none" stroke="#000099"/>
+<path d="M228,140v -83" fill="none" stroke="#000099"/>
+<path d="M172,140h 56" fill="none" stroke="#000099"/>
+<path d="M228,140h 55" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="227" y1="140" x2="228" y2="140"/>
+</g>
+<path d="M339,251v -82" fill="none" stroke="#000099"/>
+<path d="M339,169v -83" fill="none" stroke="#000099"/>
+<path d="M283,169h 56" fill="none" stroke="#000099"/>
+<path d="M339,169h 56" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="338" y1="169" x2="339" y2="169"/>
+</g>
+<path d="M450,281v -117" fill="none" stroke="#000099"/>
+<path d="M450,164v -116" fill="none" stroke="#000099"/>
+<path d="M395,164h 55" fill="none" stroke="#000099"/>
+<path d="M450,164h 56" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="449" y1="164" x2="450" y2="164"/>
+</g>
+<rect x="439" y="24" width="111" height="52" fill="white"/>
+<path d="M439,76h 111" fill="none" stroke="black"/>
+<path d="M550,76v -52" fill="none" stroke="black"/>
+<path d="M550,24h -111" fill="none" stroke="black"/>
+<path d="M439,24v 52" fill="none" stroke="black"/>
+<text x="449" y="31" fill="black" font-size="5" font-family="Helvetica">
++ch_na+settings_lo_50_hi_20000_bins_50
+</text>
+<text x="446" y="35" fill="black" font-size="2" font-family="Helvetica">
+All
+</text>
+<text x="444" y="33" fill="black" font-size="3" font-family="Times">
+&#0956;
+</text>
+<text x="441" y="31" fill="black" font-size="5" font-family="Times">
+&#0964;
+</text>
+<path d="M439,37h 111" fill="none" stroke="black"/>
+<text x="444" y="48" fill="black" font-size="11" font-family="Helvetica">
+Entries 
+</text>
+<text x="536" y="48" fill="black" font-size="11" font-family="Helvetica">
+ 4
+</text>
+<text x="444" y="61" fill="black" font-size="11" font-family="Helvetica">
+Mean  
+</text>
+<text x="511" y="61" fill="black" font-size="11" font-family="Helvetica">
+  1.998
+</text>
+<text x="444" y="73" fill="black" font-size="11" font-family="Helvetica">
+RMS   
+</text>
+<text x="512" y="73" fill="black" font-size="11" font-family="Helvetica">
+  1.118
+</text>
+<path d="M61,293h 445" fill="none" stroke="black"/>
+<text x="386" y="314" fill="black" font-size="10" font-family="Helvetica">
+Degrader thickness (mm)
+</text>
+<text x="111" y="301" fill="black" font-size="7" font-family="Helvetica">
+0.0
+</text>
+<text x="222" y="301" fill="black" font-size="7" font-family="Helvetica">
+0.5
+</text>
+<text x="334" y="301" fill="black" font-size="7" font-family="Helvetica">
+1.0
+</text>
+<text x="445" y="301" fill="black" font-size="7" font-family="Helvetica">
+5.0
+</text>
+<path d="M61,285v 8" fill="none" stroke="black"/>
+<path d="M172,285v 8" fill="none" stroke="black"/>
+<path d="M283,285v 8" fill="none" stroke="black"/>
+<path d="M395,285v 8" fill="none" stroke="black"/>
+<path d="M506,285v 8" fill="none" stroke="black"/>
+<path d="M61,293v -257" fill="none" stroke="black"/>
+<g transform="rotate(-90,36,41)">
+<text x="36" y="41" fill="black" font-size="5" font-family="Helvetica">
+All
+</text>
+</g>
+<g transform="rotate(-90,32,45)">
+<text x="32" y="45" fill="black" font-size="7" font-family="Times">
+&#0956;
+</text>
+</g>
+<g transform="rotate(-90,30,50)">
+<text x="30" y="50" fill="black" font-size="10" font-family="Times">
+&#0964;
+</text>
+</g>
+<path d="M75,261h -14" fill="none" stroke="black"/>
+<path d="M68,249h -7" fill="none" stroke="black"/>
+<path d="M68,238h -7" fill="none" stroke="black"/>
+<path d="M68,226h -7" fill="none" stroke="black"/>
+<path d="M75,214h -14" fill="none" stroke="black"/>
+<path d="M68,203h -7" fill="none" stroke="black"/>
+<path d="M68,191h -7" fill="none" stroke="black"/>
+<path d="M68,179h -7" fill="none" stroke="black"/>
+<path d="M75,167h -14" fill="none" stroke="black"/>
+<path d="M68,156h -7" fill="none" stroke="black"/>
+<path d="M68,144h -7" fill="none" stroke="black"/>
+<path d="M68,132h -7" fill="none" stroke="black"/>
+<path d="M75,121h -14" fill="none" stroke="black"/>
+<path d="M68,109h -7" fill="none" stroke="black"/>
+<path d="M68,97h -7" fill="none" stroke="black"/>
+<path d="M68,86h -7" fill="none" stroke="black"/>
+<path d="M75,74h -14" fill="none" stroke="black"/>
+<path d="M75,261h -14" fill="none" stroke="black"/>
+<path d="M68,273h -7" fill="none" stroke="black"/>
+<path d="M68,284h -7" fill="none" stroke="black"/>
+<path d="M75,74h -14" fill="none" stroke="black"/>
+<path d="M68,62h -7" fill="none" stroke="black"/>
+<path d="M68,51h -7" fill="none" stroke="black"/>
+<path d="M68,39h -7" fill="none" stroke="black"/>
+<text x="35" y="265" fill="black" font-size="10" font-family="Helvetica">
+1940
+</text>
+<text x="35" y="218" fill="black" font-size="10" font-family="Helvetica">
+1960
+</text>
+<text x="35" y="171" fill="black" font-size="10" font-family="Helvetica">
+1980
+</text>
+<text x="35" y="125" fill="black" font-size="10" font-family="Helvetica">
+2000
+</text>
+<text x="35" y="78" fill="black" font-size="10" font-family="Helvetica">
+2020
+</text>
+<rect x="439" y="24" width="111" height="52" fill="white"/>
+<path d="M439,76h 111" fill="none" stroke="black"/>
+<path d="M550,76v -52" fill="none" stroke="black"/>
+<path d="M550,24h -111" fill="none" stroke="black"/>
+<path d="M439,24v 52" fill="none" stroke="black"/>
+<text x="449" y="31" fill="black" font-size="5" font-family="Helvetica">
++ch_na+settings_lo_50_hi_20000_bins_50
+</text>
+<text x="446" y="35" fill="black" font-size="2" font-family="Helvetica">
+All
+</text>
+<text x="444" y="33" fill="black" font-size="3" font-family="Times">
+&#0956;
+</text>
+<text x="441" y="31" fill="black" font-size="5" font-family="Times">
+&#0964;
+</text>
+<path d="M439,37h 111" fill="none" stroke="black"/>
+<text x="444" y="48" fill="black" font-size="11" font-family="Helvetica">
+Entries 
+</text>
+<text x="536" y="48" fill="black" font-size="11" font-family="Helvetica">
+ 4
+</text>
+<text x="444" y="61" fill="black" font-size="11" font-family="Helvetica">
+Mean  
+</text>
+<text x="511" y="61" fill="black" font-size="11" font-family="Helvetica">
+  1.998
+</text>
+<text x="444" y="73" fill="black" font-size="11" font-family="Helvetica">
+RMS   
+</text>
+<text x="512" y="73" fill="black" font-size="11" font-family="Helvetica">
+  1.118
+</text>
+<text x="136" y="20" fill="black" font-size="16" font-family="Helvetica">
++ch_na+settings_lo_50_hi_20000_bins_50
+</text>
+<text x="127" y="29" fill="black" font-size="7" font-family="Helvetica">
+All
+</text>
+<text x="121" y="23" fill="black" font-size="11" font-family="Times">
+&#0956;
+</text>
+<text x="114" y="20" fill="black" font-size="16" font-family="Times">
+&#0964;
+</text></svg>

@@ -1,8 +1,7 @@
 detector_efficiency = 0.5 # FIXME  THIS IS A MADE UP NUMBER!  
 nA = 1e-9                 # scale for nano; i.e. the used proton current
 uA = 1e-6                 # scale for micro; i.e. the maximum proton current
-e_charge = -1.60217e-19
-n_protons_per_amp = abs(1.0/e_charge)
+e_charge = 1.60217e-19
 
 if __name__=="__main__":
     print "The constants.py currently defines:\n"

@@ -11,24 +11,24 @@ def set_param_and_error(param_number, param, error, function):
     function.SetParError (param_number, error)
 
 
-def fit_hist(orig_hist, initial_fit_params, fit_lo, fit_hi, bin_width):
+def fit_hist(orig_hist, initial_fit_params, fit_lo, fit_hi, bin_width, save_hist=False,fit_opt="QNRS"):
     name = orig_hist.GetName() + "_" + "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
     
     # local, rebinned copy of the hist
     hist = rebin_bin_width(orig_hist, bin_width, name) 
-        
     # get the fitting function and fit it to the histogram
     fit_name = "fit_" + name
     fitting_func = get_fitting_func(fit_name, hist, fit_lo, fit_hi, initial_fit_params)
     # the covariance matrix can only be retrived from the fit result
-    fit_res = hist.Fit(fitting_func, "QNRS") # fit in the function range
+    fit_res = hist.Fit(fitting_func, fit_opt) # fit in the function range
     covariance_matrix = fit_res.GetCovarianceMatrix()
     fit_param = get_fit_params(fitting_func)
     
     # get the integrals & errors
     counts = make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_width)
-    # 'add' the counts dictionary to fit_param
+    # 'add' the counts dictionary to fit_param 
     fit_param.update(counts)
+    if save_hist: fit_param.update({'hist':hist})
     return fit_param
 
 
@@ -58,7 +58,7 @@ def get_fit_params(fit_func):
     return res
 
 
-def make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_width=0):
+def make_muon_counts_dict(fitting_func, covariance_matrix, fit_lo, fit_hi, bin_width):
     n_bkgnd = fitting_func.GetParameter(0) * (fit_hi-fit_lo) # background is modeled as flat
     bin_width = 1 if bin_width == 0 else bin_width # dodge div0 errors (bin width 0 == no rebin)
     
@@ -81,6 +81,7 @@ def calc_integral_from_exp_fit(param_mapping, fitting_func, covariance_matrix, f
     copy_param_and_er(param_mapping, fitting_func, func)
     # get the integral and then calculate the error on it
     count = func.Integral(fit_lo, fit_hi)
+    
     sub_matrix_vals = (param_mapping[0][0], param_mapping[1][0],\
                        param_mapping[0][0], param_mapping[1][0])
     sub_matrix = covariance_matrix.GetSub(*sub_matrix_vals)

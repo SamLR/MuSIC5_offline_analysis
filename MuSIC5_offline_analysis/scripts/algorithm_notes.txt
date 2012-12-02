@@ -1,0 +1,30 @@
+What my code is doing:
+
+for data:
+1. convert & re-calibrate TDC data for each channel* in each run
+2. align all the TDC data to the trigger time (stored as tdc0 in the trees) by subtracting this from the TDC time to create histograms of dt 
+
+* 13 channels of counters were used in total: 8 upstream (U1-8) optimised to detect MIP muons (i.e having a lower discriminator threshold) and 5 downstream (D1-5) optimised for electrons (a higher discriminator threshold). Due to the lower threshold for the upstream scintillators these are not used to calculate the number of muons as they are not very good at detecting the electrons produced by the decay and so have low statistics to fit to.
+
+for sim
+1. use g4bl to create initial particles and simulate these in Geant4
+2. for parents in the upstream scintillator (1) and daughter particles in the downstream scintillator (2) plot dt: time of child at scint2 - time of parent at scint1
+
+for both data and simulat:
+3. fit the dt histograms
+	- with a function like "N_cu*exp(-x/tau_cu) + N_all*exp(-x/tau_all) + N_bkgnd" 
+	- with fit settings:
+		window_starts is the low edge of the fit (50, 75, 100, 125, or 150ns)
+		window_stops is the high edge of the fit (20µs)
+		bin_width (50, 100 or 200ns)
+	- with initial parameters:
+		- N_cu set to the maximum value in the histogram
+		- tau_cu set to 163.5ns and constrained to ±1ns of that 
+		- N_all set to 0.5*maximum
+		- tau_all set to 2000ns
+		- N_bkgnd set to 0.1*maximum
+4. Calculate the integral of the exponential portions of the fit and normalise by bin width to estimate the number of decay electrons detected.
+	- The error on this is calculated using Root's IntegralError function which uses the covariance matrix of the fit, the fit parameters and the fit range to calculate the error on the integral.
+5. Normalise the the integral by the run length(time) and proton beam current to get the number of muons produced per proton
+
+

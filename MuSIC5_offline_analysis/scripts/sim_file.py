@@ -29,7 +29,7 @@ def get_sim_file_and_dict(file_name,  recreate=False):
     res = {}
     for key in in_tfile.GetListOfKeys():
         hist = key.ReadObj()
-        # name looks like "Muon_momentum_with_Aluminium_0.5mm", j = junk
+        # name looks like "parent-daughter_dts_for_Aluminium_0.5mm", j = junk
         j1, j2, j3, deg_mat, deg_dz = (hist.GetName()).split("_")
         
         if deg_mat.lower() == "air": deg_dz = "0mm"
@@ -39,6 +39,9 @@ def get_sim_file_and_dict(file_name,  recreate=False):
         # use the [:-2] to trim the 'mm' from the thickness
         hist_conditions = {'deg_dz':float(deg_dz[:-2]), 'material':deg_mat}
         hist_conditions.update(sim_run_conditions)
+        # print hist_conditions['acceptance']
+        hist_conditions['acceptance'] = hist_conditions['acceptance'](hist.Integral())
+        # print hist_conditions['acceptance']
         res[dict_key] = {'run_conditions': hist_conditions,
                         'hists':{sim_run_conditions['ch_used'][0]:hist}}
                         # hists: {ch_id: hist, ch_id2:hist2....}

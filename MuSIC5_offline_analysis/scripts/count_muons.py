@@ -13,9 +13,10 @@ from list_utilities import add_as_sub_dict, create_sub_dicts_from_keys
 
 from fitting import fit_hist
 
-from constants import uA, nA, detector_efficiency, n_protons_per_amp
+from constants import uA, nA, detector_efficiency, e_charge
 
-def settings_str(fit_lo, fit_hi, bin_width):
+
+def settings_str(fit_lo, fit_hi, bin_width, **kargs):
  return "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)
 
 
@@ -51,19 +52,20 @@ def calculate_derived_values(files_info, initial_fit_params, fit_settings):
     print setting_str
     for file_id in files_info:
         print "file id:", file_id
+        run_cond = files_info[file_id]['run_conditions']
         add_as_sub_dict(files_info[file_id], 'fit_settings', setting_str, fit_settings)
         file_res = {'ch_dat':{}}
         
-        for ch_str in files_info[file_id]['run_conditions']['ch_used']:
+        for ch_str in run_cond['ch_used']:
             # upstream scintillators are not calibrated to detect decay electrons well so skip them
             hist = files_info[file_id]['hists'][ch_str]
             fit_results = fit_hist(hist, initial_fit_params, **fit_settings)
             file_res['ch_dat'][ch_str] = fit_results
         
         n_mu, n_mu_er   = sum_muons_over_all_ch(file_res['ch_dat'])
-        mu_yield, mu_yield_er = calc_muon_yield_at_1uA(n_mu, n_mu_er, 
-                                        **files_info[file_id]['run_conditions'])
         file_res['total_muons'] = (n_mu, n_mu_er)
+        
+        mu_yield, mu_yield_er = calc_muon_yield_at_1uA(n_mu, n_mu_er, **run_cond)
         file_res['muon_yields'] = (mu_yield, mu_yield_er)
         
         add_as_sub_dict(files_info[file_id], 'fits', setting_str, file_res)
@@ -71,7 +73,7 @@ def calculate_derived_values(files_info, initial_fit_params, fit_settings):
 
 # def main():
 #     # files_info and channels info is importated
-#     tdc_file = get_tdc_file_dict(tdc_hist_file_name, files_info, all_channels)
+#     tdc_file = get_tdc_file_and_dict(tdc_hist_file_name, files_info, all_channels)
 #     gStyle.SetOptFit()
 #     gStyle.SetOptStat(0)
 #     sleep_time = 30
@@ -90,7 +92,7 @@ def calculate_derived_values(files_info, initial_fit_params, fit_settings):
 #         # TODO write a proper logger
 #         saveTraverse(files_info, log_file,header="# Current state of file_info")
 #         
-#     hists= get_hists_fitting_parameter_vs_setting(files_info, "n_bkgnd")
+#     hists= get_hists_fitting_parameter_vs_setting(files_info, "#tau_{#mu_{All}}")
 #     ch_id_hists = create_sub_dicts_from_keys(hists,
 #                 keysplit_function=lambda x: (x.split('+')[1], x.split('+')[2]))
 #     canvas = get_canvas_with_hists(ch_id_hists)
@@ -107,9 +109,9 @@ def calculate_derived_values(files_info, initial_fit_params, fit_settings):
 #     # canvas = get_canvas_with_hists(hists3)
 #     
 #     sleep (sleep_time)
-
-
-
-if __name__ == '__main__':
-    main()
-
+# 
+# 
+# 
+# if __name__ == '__main__':
+#     main()
+# 

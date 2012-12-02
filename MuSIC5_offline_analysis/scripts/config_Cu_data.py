@@ -3,22 +3,22 @@ d_channels = tuple(["D%i"%i for i in range(1,6)])
 all_channels = u_channels + d_channels
 
 files_info = {448:{ 'run_conditions': 
-                    {'deg_dz':0,  'time':9221, 'current':0.0153375  , 'acceptance':0.121, 'ch_used':d_channels},
+                    {'deg_dz':0,  'time':9221, 'current':0.0153375  , 'acceptance':0.087, 'ch_used':d_channels},
                   },
               451:{ 'run_conditions':
-                    {'deg_dz':0.5,'time':1001, 'current':0.0154625  , 'acceptance':0.081, 'ch_used':d_channels},
+                    {'deg_dz':0.5,'time':1001, 'current':0.0154625  , 'acceptance':0.077, 'ch_used':d_channels},
                   },
               452:{ 'run_conditions':
-                    {'deg_dz':0.5,'time':4944, 'current':0.013132143, 'acceptance':0.081, 'ch_used':d_channels},
+                    {'deg_dz':0.5,'time':4944, 'current':0.013132143, 'acceptance':0.077, 'ch_used':d_channels},
                   },
               455:{ 'run_conditions':
-                    {'deg_dz':1,  'time':6307, 'current':0.013321429, 'acceptance':0.074, 'ch_used':d_channels},
+                    {'deg_dz':1,  'time':6307, 'current':0.013321429, 'acceptance':0.069, 'ch_used':d_channels},
                   },
               458:{ 'run_conditions':
-                    {'deg_dz':5,  'time':5144, 'current':0.013625   , 'acceptance':0.050, 'ch_used':d_channels},
+                    {'deg_dz':5,  'time':5144, 'current':0.013625   , 'acceptance':0.045, 'ch_used':d_channels},
                   },
               459:{ 'run_conditions':
-                    {'deg_dz':5,  'time':2452, 'current':0.012383929, 'acceptance':0.050, 'ch_used':d_channels},
+                    {'deg_dz':5,  'time':2452, 'current':0.012383929, 'acceptance':0.045, 'ch_used':d_channels},
                   }
               }
 

@@ -36,7 +36,8 @@ several ways ultimately leading to the structure below:
 						#tau_{#mu_{Cu}} : (value, er),
 						N_{#mu_{All}}   : (value, er),
 					    #tau_{#mu_{All}}: (value, er),
-					    chi2            : (value, NDF)
+					    chi2            : (value, NDF),
+						[hist           : the fit hist]
 					}
 				}
 				total_muons : (value, er)

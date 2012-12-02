@@ -1,0 +1,1008 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="567" height="359" viewBox="0 0 567 359" xmlns="http://www.w3.org/2000/svg">
+<title>
+images/raw_tdc_452.svg
+</title>
+<desc>
+Creator: ROOT Version 5.32/00
+CreationDate: Mon Nov  5 16:05:26 2012</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="567" height="359" fill="white"/>
+<rect x="6" y="3" width="177" height="173" fill="white"/>
+<rect x="23" y="21" width="143" height="138" fill="white"/>
+<rect x="23" y="21" width="143" height="138" fill="none" stroke="black"/>
+<path d="M23,159h 11v -1v 1v -1v 1v -1h 1v 1v -19v 2v -10v 10v -14v 10h 1v -7v 10v -11v 8v -7v 10v -9v 9v -8h 1v 5v -12v 12v -8v 8v -10v 14v -11v 8h 1v 1v -11v 11v -7v 9v -10v 6v -9v 12v -8h 1v 5v -8v 9v -12v 10v -7v 10v -9v 11v -3h 1v -9v 11v -9v 7v
+ -6v 9v -11v 11v -13h 1v 12v -10v 10v -13v 14v -12v 13v -10v 8h 1v -8v 9v -8v 5v -7v 8v -6v 8v -9h 1v 10v -16v 16v -16v 13v -11v 9v -10v 14h 1v -14v 13v -6v 5v -10v 12v -11v 9v -8v 1h 1v 5v -10v 10v -7v 9v -11v 11v -9v 7v -1h 1v -4v 8v -10v 7v -7v
+ 11v -10v 6v -7h 1v 12v -15v 12v -15v 15v -11v 15v -14v 12h 1v -12v 9v -7v 9v -10v 9v -10v 11v -11h 1v 11v -14v 14v -11v 8v -9v 12v -14v 14h 1v -9v 5v -3v 7v -10v 10v -15v 14v -10h 1v 9v -13v 15v -13v 13v -9v 10v -14v 14v -9h 1v 11v -12v 8v -7v 6v
+ -9v 11v -12v 12h 1v -12v 9v -9v 11v -11v 10v -6v 6v -5h 1v -1v 5v -7v 9v -8v 5v -7v 14v -13v 6h 1v -7v 11v -10v 9v -13v 12v -9v 12v -8h 1v 7v -8v 8v -7v 8v -11v 10v -11v 10h 1v -8v 9v -13v 13v -13v 11v -8v 11v -6h 1v -5v 8v -7v 8v -12v 13v -6v 5v
+ -12v 12h 1v -5v 5v -6v 7v -9v 10v -9v 9v -9h 1v -1v 8v -8v 7v -7v 7v -9v 11v -12v 11h 1v -8v 9v -11v 11v -15v 13v -7v 8v -6h 1v 7v -8v 8v -7v 6v -11v 10v -12v 13h 1v 1v -9v 7v -8v 8v -11v 13v -5v 5v -9h 1v -5v 13v -10v 10v -9v 8v -9v 8v -11v 8h 1v
+ 3v -7v 9v -9v 7v -3v 3v -6v 10v -10h 1v 8v -10v 12v -13v 12v -13v 12v -7v 8h 1v -7v 8v -7v 7v -9v 7v -10v 11v -10h 1v 8v -8v 9v -7v 8v -14v 14v -8v 7h 1v -8v 10v -9v 8v -9v 10v -12v 9v -9h 1v 11v -11v 8v -11v 14v -11v 9v -7v 10h 1v -13v 10v -8v 6v
+ -7v 7v -10v 14v -14h 1v 11v -10v 12v -9v 9v -9v 10v -9v 10h 1v -12v 9v -6v 4v -7v 10v -8v 8v -11h 1v 12v -13v 12v -11v 12v -9v 9v -12v 9v -2h 1v -4v 8v -7v 6v -7v 8v -7v 7v -13h 1v 13v -10v 10v -12v 11v -7v 12v -10v 7h 1v -9v 9v -8v 7v -6v 6v -10v
+ 11v -13h 1v 11v -9v 8v -3v 5v -13v 14v -8v 8h 1v -8v 4v -7v 8v -8v 8v -8v 7v -6v 8h 1v -10v 14v -15v 13v -11v 12v -14v 12v -7h 1v -1v 9v -8v 7v -13v 11v -11v 11v -10v 11h 1v -8v 9v -12v 12v -9v 8v -9v 7h 1v -9v 10v -7v 10v -12v 9v -11v 12v -8v 6h 1v
+ 3v -10v 9v -9v 11v -10v 9v -7v 7v -6h 1v -3v 8v -13v 14v -12v 9v -10v 11v -7v 6h 1v -9v 10v -7v 7v -7v 11v -12v 6v -2h 1v -6v 12v -8v 5v -7v 12v -14v 10v -10v 10h 1v -9v 12v -12v 8v -7v 8v -5v 4h 1v -10v 10v -8v 10v -13v 12v -9v 9v -10v 4h 1v 8v
+ -11v 8v -5v 6v -9v 12v -12v 11v -5h 1v -3v 6v -10v 12v -12v 11v -13v 12v -10v 4h 1v 3v -6v 9v -7v 8v -9v 7v -7v 8v -12h 1v 10v -8v 8v -11v 10v -7v 9v -10v 10h 1v -8v 8v -79v 61v -92v 20h 1v 25v -11v 17v -9v 15v -14v 15v -8v 4v -4v 10h 1v -12v 9v -1v
+ 9v -10v 7v -1v 9v -14h 1v 12v -18v 20v -11v 8v -10v 12v -9v 15v -4h 1v 2v -5v 9v -14v 9v -6v 14v -12v 8v -11h 1v 12v -10v 12v -13v 14v -10v 8v -6v 8v -4h 1v -2v 9v -11v 8v -11v 11v -3v 7v -12h 1v 13v -15v 20v -15v 13v -9v 10v -10v 12h 1v -13v 10v
+ -6v 6v -7v 9v -12v 11v -13h 1v 13v -12v 11v -4v 10v -18v 16v -7v 6h 1v -4v 8v -9v 10v -11v 13v -14v 13v -10h 1v 7v -11v 16v -16v 14v -10v 11v -7v 6h 1v -10v 13v -7v 6v -8v 7v -12v 14v -10v 11h 1v -13v 14v -12v 11v -9v 11v -9v 10v -11h 1v 11v -14v
+ 11v -7v 6v -10v 11v -11v 11h 1v 3v -13v 9v -5v 8v -9v 10v -7v 8v -8h 1v -3v 9v -8v 8v -14v 15v -7v 5v -11v 15h 1v -12v 14v -15v 10v -6v 13v -15v 10v -7h 1v -2v 11v -10v 7v -9v 11v -11v 13v -11v 10h 1v -13v 12v -10v 13v -11v 10v -11v 10v -7h 1v -1v
+ 10v -11v 12v -16v 14v -11v 9v -12v 12h 1v 2v -11v 9v -7v 8v -7v 12v -11v 7v -4h 1v -6v 9v -10v 14v -13v 11v -6v 5v -10v 11h 1v -9v 12v -10v 7v -5v 3v -5v 9v -1h 1v -12v 11v -7v 9v -13v 13v -15v 16v -11v 7h 1v 4v -14v 12v -8v 8v -10v 11v -10v 7v -7h
+ 1v 9v -9v 9v -10v 11v -11v 10v -8v 10h 1v -11v 9v -7v 4v -4v 10v -10v 7v -9h 1v 10v -10v 8v -9v 12v -12v 12v -9v 6h 1v -6v 12v -13v 10v -9v 7v -8v 9v -10h 1v 11v -11v 10v -9v 12v -15v 12v -7v 10h 1v -10v 7v -7v 8v -8v 4v -8v 10v -8h 1v 9v -12v 13v
+ -8v 9v -12v 14v -12v 9h 1v -7v 9v -8v 4v -6v 9v -11v 9v -11h 1v 13v -11v 10v -14v 16v -12v 9v -4v 7h 1v -11v 9v -5v 6v -8v 5v -8v 9v -7h 1v 7v -9v 12v -10v 10v -12v 9v -4v 6h 1v -9v 7v -7v 10v -12v 9v -9v 8v -6h 1v 8v -9v 10v -7v 6v -8v 9v -9v 7h 1v
+ -7v 10v -8v 8v -14v 13v -9v 8v -12v 13h 1v -8v 8v -11v 9v -5v 8v -10v 8v -3h 1v -8v 10v -10v 12v -11v 10v -11v 12v -9v 6h 1v 2v -8v 9v -10v 8v -10v 8v -3v 6v -7h 1v -1v 11v -10v 9v -13v 11v -11v 9v -6v 5h 1v 3v -11v 12v -5v 5v -12v 12v -7v 7v -1h 1v
+ -14v 16v -9v 10v -11v 9v -10v 8v -9v 7h 1v 4v -9v 9v -9v 9v -8v 4v -3v 7v -1h 1v -12v 13v -9v 9v -13v 10v -7v 9v -9v 7h 1v 4v -15v 14v -7v 8v -7v 7v -7v 8v -9h 1v 7v -16v 19v -15v 12v -15v 13v -6v 3h 1v 5v -14v 13v -9v 9v -6v 7v -8v 8v -3h 1v -6v 9v
+ -10v 9v -12v 12v -7v 10v -14v 10h 1v -4v 3v -7v 8v -7v 10v -9v 8h 1v -14v 13v -10v 9v -9v 9v -8v 9v -9v 9h 1v -4v 5v -10v 13v -10v 9v -12v 8v -9h 1v 10v -11v 14v -11v 9v -7v 5v -9v 11h 1v -8v 7v -7v 5v -8v 15v -12v 7v -12h 1v 14v -10v 7v -10v 10v
+ -8v 9v -8v 10h 1v -9v 7v -5v 4v -6v 7v -7v 8v -10h 1v 9v -8v 9v -10v 8v -5v 7v -8v 11h 1v -13v 11v -13v 12v -9v 9v -11v 15v -14h 1v 11v -8v 8v -10v 7v -7v 8v -7v 10h 1v -10v 5v -7v 11v -9v 9v -8v 6v -9h 1v 11v -8v 9v -12v 9v -5v 7v -9v 8h 1v -10v
+ 12v -7v 3v -7v 11v -10v 9v -12h 1v 11v -7v 5v -7v 11v -11v 8v -7v 12h 1v -10v 3v -6v 10v -8v 7v -13v 15v -12v 6h 1v 3v -12v 13v -10v 8v -6v 10v -9v 8v -5h 1v -5v 11v -7v 3v -7v 7v -8v 10v -7v 5h 1v 1v -6v 9v -13v 9v -4v 5v -6v 5h 1v -12v 11v -7v 10v
+ -9v 9v -12v 13v -9v 10h 1v -14v 10v -5v 8v -7v 9v -12v 10v -3h 1" fill="none" stroke="#000099"/>
+<path d="M23,159h 143" fill="none" stroke="black"/>
+<text x="142" y="170" fill="black" font-size="6" font-family="Helvetica">
+Time (ns)
+</text>
+<path d="M23,154v 5" fill="none" stroke="black"/>
+<path d="M27,156v 3" fill="none" stroke="black"/>
+<path d="M31,156v 3" fill="none" stroke="black"/>
+<path d="M34,156v 3" fill="none" stroke="black"/>
+<path d="M38,156v 3" fill="none" stroke="black"/>
+<path d="M41,154v 5" fill="none" stroke="black"/>
+<path d="M45,156v 3" fill="none" stroke="black"/>
+<path d="M48,156v 3" fill="none" stroke="black"/>
+<path d="M52,156v 3" fill="none" stroke="black"/>
+<path d="M55,156v 3" fill="none" stroke="black"/>
+<path d="M59,154v 5" fill="none" stroke="black"/>
+<path d="M63,156v 3" fill="none" stroke="black"/>
+<path d="M66,156v 3" fill="none" stroke="black"/>
+<path d="M70,156v 3" fill="none" stroke="black"/>
+<path d="M73,156v 3" fill="none" stroke="black"/>
+<path d="M77,154v 5" fill="none" stroke="black"/>
+<path d="M80,156v 3" fill="none" stroke="black"/>
+<path d="M84,156v 3" fill="none" stroke="black"/>
+<path d="M87,156v 3" fill="none" stroke="black"/>
+<path d="M91,156v 3" fill="none" stroke="black"/>
+<path d="M94,154v 5" fill="none" stroke="black"/>
+<path d="M98,156v 3" fill="none" stroke="black"/>
+<path d="M102,156v 3" fill="none" stroke="black"/>
+<path d="M105,156v 3" fill="none" stroke="black"/>
+<path d="M109,156v 3" fill="none" stroke="black"/>
+<path d="M112,154v 5" fill="none" stroke="black"/>
+<path d="M116,156v 3" fill="none" stroke="black"/>
+<path d="M119,156v 3" fill="none" stroke="black"/>
+<path d="M123,156v 3" fill="none" stroke="black"/>
+<path d="M126,156v 3" fill="none" stroke="black"/>
+<path d="M130,154v 5" fill="none" stroke="black"/>
+<path d="M134,156v 3" fill="none" stroke="black"/>
+<path d="M137,156v 3" fill="none" stroke="black"/>
+<path d="M141,156v 3" fill="none" stroke="black"/>
+<path d="M144,156v 3" fill="none" stroke="black"/>
+<path d="M148,154v 5" fill="none" stroke="black"/>
+<path d="M151,156v 3" fill="none" stroke="black"/>
+<path d="M155,156v 3" fill="none" stroke="black"/>
+<path d="M158,156v 3" fill="none" stroke="black"/>
+<path d="M162,156v 3" fill="none" stroke="black"/>
+<path d="M166,154v 5" fill="none" stroke="black"/>
+<text x="14" y="164" fill="black" font-size="6" font-family="Helvetica">
+-20000
+</text>
+<text x="32" y="164" fill="black" font-size="6" font-family="Helvetica">
+-15000
+</text>
+<text x="50" y="164" fill="black" font-size="6" font-family="Helvetica">
+-10000
+</text>
+<text x="69" y="164" fill="black" font-size="6" font-family="Helvetica">
+-5000
+</text>
+<text x="92" y="164" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="105" y="164" fill="black" font-size="6" font-family="Helvetica">
+5000
+</text>
+<text x="122" y="164" fill="black" font-size="6" font-family="Helvetica">
+10000
+</text>
+<text x="139" y="164" fill="black" font-size="6" font-family="Helvetica">
+15000
+</text>
+<text x="157" y="164" fill="black" font-size="6" font-family="Helvetica">
+20000
+</text>
+<path d="M23,159v -138" fill="none" stroke="black"/>
+<g transform="rotate(-90,16,35)">
+<text x="16" y="35" fill="black" font-size="6" font-family="Helvetica">
+Count
+</text>
+</g>
+<path d="M28,159h -5" fill="none" stroke="black"/>
+<path d="M26,153h -3" fill="none" stroke="black"/>
+<path d="M26,147h -3" fill="none" stroke="black"/>
+<path d="M26,141h -3" fill="none" stroke="black"/>
+<path d="M28,135h -5" fill="none" stroke="black"/>
+<path d="M26,129h -3" fill="none" stroke="black"/>
+<path d="M26,123h -3" fill="none" stroke="black"/>
+<path d="M26,117h -3" fill="none" stroke="black"/>
+<path d="M28,111h -5" fill="none" stroke="black"/>
+<path d="M26,105h -3" fill="none" stroke="black"/>
+<path d="M26,99h -3" fill="none" stroke="black"/>
+<path d="M26,93h -3" fill="none" stroke="black"/>
+<path d="M28,87h -5" fill="none" stroke="black"/>
+<path d="M26,81h -3" fill="none" stroke="black"/>
+<path d="M26,75h -3" fill="none" stroke="black"/>
+<path d="M26,70h -3" fill="none" stroke="black"/>
+<path d="M28,64h -5" fill="none" stroke="black"/>
+<path d="M26,58h -3" fill="none" stroke="black"/>
+<path d="M26,52h -3" fill="none" stroke="black"/>
+<path d="M26,46h -3" fill="none" stroke="black"/>
+<path d="M28,40h -5" fill="none" stroke="black"/>
+<path d="M28,40h -5" fill="none" stroke="black"/>
+<path d="M26,34h -3" fill="none" stroke="black"/>
+<path d="M26,28h -3" fill="none" stroke="black"/>
+<path d="M26,22h -3" fill="none" stroke="black"/>
+<text x="19" y="161" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="13" y="137" fill="black" font-size="6" font-family="Helvetica">
+200
+</text>
+<text x="13" y="113" fill="black" font-size="6" font-family="Helvetica">
+400
+</text>
+<text x="13" y="89" fill="black" font-size="6" font-family="Helvetica">
+600
+</text>
+<text x="13" y="66" fill="black" font-size="6" font-family="Helvetica">
+800
+</text>
+<text x="9" y="42" fill="black" font-size="6" font-family="Helvetica">
+1000
+</text>
+<text x="56" y="12" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D1_ch_452
+</text>
+<rect x="144" y="14" width="36" height="28" fill="white"/>
+<path d="M144,42h 36" fill="none" stroke="black"/>
+<path d="M180,42v -28" fill="none" stroke="black"/>
+<path d="M180,14h -36" fill="none" stroke="black"/>
+<path d="M144,14v 28" fill="none" stroke="black"/>
+<text x="146" y="19" fill="black" font-size="3" font-family="Helvetica">
+TDC_file_D1_ch_452
+</text>
+<path d="M144,21h 36" fill="none" stroke="black"/>
+<text x="146" y="27" fill="black" font-size="5" font-family="Helvetica">
+Entries 
+</text>
+<text x="161" y="27" fill="black" font-size="5" font-family="Helvetica">
+ 438950
+</text>
+<text x="146" y="33" fill="black" font-size="5" font-family="Helvetica">
+Mean  
+</text>
+<text x="163" y="33" fill="black" font-size="5" font-family="Helvetica">
+   1692
+</text>
+<text x="146" y="40" fill="black" font-size="5" font-family="Helvetica">
+RMS   
+</text>
+<text x="163" y="40" fill="black" font-size="5" font-family="Helvetica">
+   9784
+</text>
+<text x="56" y="12" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D1_ch_452
+</text>
+<rect x="195" y="3" width="177" height="173" fill="white"/>
+<rect x="212" y="21" width="143" height="138" fill="white"/>
+<rect x="212" y="21" width="143" height="138" fill="none" stroke="black"/>
+<path d="M212,159h 11v -1v 1v -1v 1v -1h 1v -19v 6v -8v 9v -3h 1v -5v 7v -9v 8v -8v 9v -8v 9v -8v 2h 1v 4v -4v 5v -6v 6v -6v 6v -8v 8v -2h 1v -7v 9v -8v 9v -9v 8v -4v 4v -5v 2h 1v 3v -5v 5v -5v 5v -6v 6v -8v 7h 1v -9v 10v -11v 11v -6v 6v -9v 9v -6v
+ 2h 1v 4v -5v 4v -6v 7v -10v 9v -7v 7h 1v -7v 8v -8v 8v -10v 10v -5v 5v -5h 1v 4v -6v 6v -8v 9v -10v 9v -8v 9h 1v -6v 5v -6v 8v -7v 6v -4v 4v -6h 1v 6v -10v 11v -9v 10v -10v 8v -7v 6h 1v -7v 9v -8v 6v -5v 7v -10v 9v -7h 1v 7v -8v 8v -9v 8v -8v 9v -9v
+ 8v -7h 1v 9v -10v 9v -5v 4v -4v 6v -7v 5h 1v -7v 8v -7v 8v -10v 9v -9v 10v -8h 1v 8v -7v 7v -8v 7v -5v 5v -5v 5h 1v -8v 8v -10v 11v -9v 9v -8v 6v -5h 1v 6v -10v 10v -6v 7v -7v 6v -7v 6h 1v -5v 7v -10v 10v -8v 6v -8v 8v -5h 1v 4v -4v 8v -10v 8v -6v
+ 7v -5v 3h 1v -7v 9v -8v 7v -9v 10v -8v 7v -7h 1v 6v -6v 7v -5v 5v -5v 6v -7v 4h 1v -6v 6v -5v 7v -8v 9v -8v 5v -5h 1v 7v -4v 4v -8v 9v -5v 4v -9v 10h 1v -7v 6v -10v 10v -7v 6v -8v 8v -5h 1v 6v -5v 5v -6v 5v -7v 8v -7v 7h 1v -9v 9v -9v 8v -8v 7v -4v
+ 6v -5v 2h 1v 3v -5v 6v -7v 6v -9v 8v -7v 7v -1h 1v -7v 9v -9v 9v -7v 6v -6v 6v -6h 1v 7v -6v 5v -7v 8v -6v 6v -9v 11v -2h 1v -7v 7v -10v 11v -7v 5v -5v 6v -4h 1v 5v -8v 8v -8v 6v -8v 10v -9v 7h 1v -8v 9v -7v 8v -7v 6v -5v 3v -5v 1h 1v 7v -8v 6v -4v
+ 4v -9v 9v -7v 8v -1h 1v -6v 6v -6v 7v -6v 7v -7v 5v -7h 1v 9v -7v 5v -6v 7v -7v 8v -13v 13v -1h 1v -7v 6v -7v 8v -6v 6v -6v 6v -4h 1v 5v -8v 8v -10v 10v -10v 10v -8v 7h 1v -8v 8v -6v 5v -5v 7v -6v 6v -6h 1v 7v -9v 7v -9v 8v -7v 7v -7v 7v -8h 1v 9v
+ -8v 9v -7v 7v -8v 8v -9v 9h 1v -8v 8v -9v 8v -7v 7v -9v 9v -7h 1v 7v -6v 6v -9v 8v -8v 10v -8v 5h 1v 1v -10v 10v -7v 9v -10v 8v -5v 6v -6h 1v 5v -5v 7v -7v 5v -6v 7v -5v 4h 1v 1v -7v 8v -7v 6v -8v 8v -8v 8v -6h 1v 5v -6v 5v -4v 7v -7v 5v -10v 10h 1v
+ -7v 8v -9v 9v -8v 7v -7v 7v -4h 1v 4v -4v 7v -8v 3v -6v 9v -7v 6h 1v -8v 8v -8v 8v -9v 9v -6v 8v -7h 1v 5v -5v 7v -7v 6v -8v 7v -8v 7h 1v -10v 11v -8v 9v -8v 9v -9v 7v -6h 1v 4v -4v 4v -5v 7v -6v 6v -7v 8h 1v -8v 8v -8v 8v -9v 8v -6v 6v -6h 1v 6v
+ -5v 6v -8v 8v -8v 7v -8v 8h 1v -8v 8v -6v 8v -9v 6v -5v 7v -8h 1v 8v -9v 9v -10v 8v -7v 8v -9v 7h 1v -5v 6v -7v 6v -5v 8v -7v 5v -6h 1v 7v -8v 7v -7v 6v -6v 8v -9v 9v -2h 1v -4v 6v -10v 6v -11v 30v -132v 33h 1v 24v -6v 15v -10v 8v -6v 10v -5v 10h 1v
+ -10v 12v -11v 10v -7v 8v -2v 6v -13v 6h 1v 4v -6v 11v -8v 7v -11v 15v -11v 11v -2h 1v -7v 9v -9v 10v -7v 6v -6v 7v -7h 1v 12v -10v 9v -9v 9v -7v 9v -12v 15v -6h 1v -6v 10v -10v 8v -3v 6v -8v 11v -9h 1v 3v -5v 12v -9v 6v -10v 10v -4v 6v -10h 1v 11v
+ -5v 6v -6v 5v -5v 8v -8v 6h 1v 1v -8v 10v -9v 8v -11v 9v -6v 8v -9h 1v 9v -6v 7v -5v 6v -5v 3v -6v 10h 1v -8v 8v -8v 8v -9v 11v -14v 13v -8h 1v 9v -8v 8v -7v 5v -4v 7v -8v 6h 1v 2v -9v 9v -8v 6v -7v 10v -8v 7v -7h 1v 6v -3v 4v -4v 4v -8v 9v -6v 6h
+ 1v -7v 8v -7v 9v -10v 8v -9v 9v -6h 1v 9v -8v 5v -6v 7v -5v 6v -8v 7h 1v -7v 8v -9v 8v -7v 10v -9v 9v -7h 1v 5v -4v 5v -8v 7v -7v 8v -6v 7h 1v -11v 9v -8v 13v -12v 7v -5v 6v -6h 1v 7v -7v 5v -3v 6v -10v 10v -9v 7h 1v 1v -9v 9v -8v 8v -7v 8v -5v 4v
+ -4h 1v 5v -5v 4v -7v 7v -7v 8v -8v 9v -2h 1v -7v 7v -9v 10v -6v 8v -7v 5v -5h 1v 6v -6v 7v -8v 6v -7v 8v -7v 7h 1v -10v 10v -7v 8v -10v 9v -6v 8v -6h 1v 5v -7v 8v -8v 6v -8v 9v -6v 6v -2h 1v -7v 10v -7v 5v -4v 5v -5v 5v -7h 1v 7v -5v 4v -8v 11v -10v
+ 8v -7v 8v -2h 1v -6v 9v -8v 6v -6v 6v -6v 6v -7h 1v 7v -7v 7v -8v 7v -8v 10v -7v 7h 1v -8v 7v -5v 6v -7v 6v -5v 8v -8h 1v 5v -9v 8v -6v 8v -8v 8v -9v 9h 1v -8v 8v -8v 9v -7v 5v -6v 6v -6h 1v 6v -7v 8v -7v 8v -10v 9v -9v 9v -6h 1v 6v -7v 6v -6v 8v
+ -7v 6v -7v 7h 1v -10v 11v -9v 10v -10v 9v -10v 10v -9h 1v 7v -5v 7v -7v 7v -8v 8v -10v 9h 1v -7v 7v -6v 7v -9v 10v -9v 6v -5h 1v 7v -6v 5v -7v 8v -9v 7v -6v 6h 1v -6v 8v -11v 11v -8v 9v -8v 7v -6h 1v 5v -5v 5v -6v 6v -7v 7v -5v 6h 1v -10v 9v -7v 6v
+ -5v 7v -7v 7v -6h 1v 7v -7v 5v -5v 5v -7v 7v -6v 4h 1v 2v -8v 8v -8v 8v -6v 6v -6v 7v -4h 1v -1v 4v -5v 4v -5v 7v -7v 8v -9v 6h 1v 2v -8v 10v -12v 10v -7v 6v -4v 5v -4h 1v -2v 6v -8v 8v -9v 10v -10v 8v -7v 4h 1v 5v -9v 8v -8v 8v -7v 6v -4v 6v -8h 1v
+ 7v -6v 7v -7v 5v -9v 10v -9v 8h 1v -7v 7v -7v 8v -6v 7v -6v 5v -8h 1v 9v -9v 7v -9v 8v -6v 8v -7v 7v -1h 1v -7v 7v -6v 6v -4v 7v -9v 6v -5h 1v 7v -6v 4v -7v 8v -9v 9v -9v 9h 1v -9v 8v -6v 7v -7v 8v -6v 5v -6h 1v 6v -9v 8v -8v 8v -6v 7v -8v 7h 1v -7v
+ 7v -7v 7v -5v 6v -5v 4v -5h 1v 5v -8v 8v -7v 7v -9v 9v -7v 7h 1v -7v 8v -6v 6v -6v 6v -5v 4v -7h 1v 7v -5v 5v -6v 7v -9v 9v -8v 8h 1v -6v 5v -3v 6v -8v 6v -8v 9v -8h 1v 9v -9v 8v -9v 8v -10v 10v -7v 5h 1v -5v 5v -3v 6v -7v 6v -5v 5v -9v 9h 1v -7v 7v
+ -9v 11v -9v 6v -6v 7v -6h 1v 5v -5v 6v -7v 8v -8v 5v -7v 9h 1v -9v 10v -9v 9v -9v 7v -7v 9v -7h 1v 5v -6v 8v -7v 6v -6v 7v -8v 6h 1v -8v 8v -8v 9v -7v 7v -8v 9v -6h 1v -1v 7v -8v 8v -9v 8v -9v 9v -8v 9h 1v -8v 7v -9v 8v -6v 9v -10v 8v -5h 1v -1v 8v
+ -7v 5v -9v 8v -6v 7v -9v 9h 1v -10v 12v -8v 6v -8v 9v -6v 6v -6h 1" fill="none" stroke="#000099"/>
+<path d="M212,159h 143" fill="none" stroke="black"/>
+<text x="330" y="170" fill="black" font-size="6" font-family="Helvetica">
+Time (ns)
+</text>
+<path d="M212,154v 5" fill="none" stroke="black"/>
+<path d="M216,156v 3" fill="none" stroke="black"/>
+<path d="M220,156v 3" fill="none" stroke="black"/>
+<path d="M223,156v 3" fill="none" stroke="black"/>
+<path d="M227,156v 3" fill="none" stroke="black"/>
+<path d="M230,154v 5" fill="none" stroke="black"/>
+<path d="M234,156v 3" fill="none" stroke="black"/>
+<path d="M237,156v 3" fill="none" stroke="black"/>
+<path d="M241,156v 3" fill="none" stroke="black"/>
+<path d="M244,156v 3" fill="none" stroke="black"/>
+<path d="M248,154v 5" fill="none" stroke="black"/>
+<path d="M251,156v 3" fill="none" stroke="black"/>
+<path d="M255,156v 3" fill="none" stroke="black"/>
+<path d="M259,156v 3" fill="none" stroke="black"/>
+<path d="M262,156v 3" fill="none" stroke="black"/>
+<path d="M266,154v 5" fill="none" stroke="black"/>
+<path d="M269,156v 3" fill="none" stroke="black"/>
+<path d="M273,156v 3" fill="none" stroke="black"/>
+<path d="M276,156v 3" fill="none" stroke="black"/>
+<path d="M280,156v 3" fill="none" stroke="black"/>
+<path d="M283,154v 5" fill="none" stroke="black"/>
+<path d="M287,156v 3" fill="none" stroke="black"/>
+<path d="M291,156v 3" fill="none" stroke="black"/>
+<path d="M294,156v 3" fill="none" stroke="black"/>
+<path d="M298,156v 3" fill="none" stroke="black"/>
+<path d="M301,154v 5" fill="none" stroke="black"/>
+<path d="M305,156v 3" fill="none" stroke="black"/>
+<path d="M308,156v 3" fill="none" stroke="black"/>
+<path d="M312,156v 3" fill="none" stroke="black"/>
+<path d="M315,156v 3" fill="none" stroke="black"/>
+<path d="M319,154v 5" fill="none" stroke="black"/>
+<path d="M323,156v 3" fill="none" stroke="black"/>
+<path d="M326,156v 3" fill="none" stroke="black"/>
+<path d="M330,156v 3" fill="none" stroke="black"/>
+<path d="M333,156v 3" fill="none" stroke="black"/>
+<path d="M337,154v 5" fill="none" stroke="black"/>
+<path d="M340,156v 3" fill="none" stroke="black"/>
+<path d="M344,156v 3" fill="none" stroke="black"/>
+<path d="M347,156v 3" fill="none" stroke="black"/>
+<path d="M351,156v 3" fill="none" stroke="black"/>
+<path d="M355,154v 5" fill="none" stroke="black"/>
+<text x="203" y="164" fill="black" font-size="6" font-family="Helvetica">
+-20000
+</text>
+<text x="221" y="164" fill="black" font-size="6" font-family="Helvetica">
+-15000
+</text>
+<text x="239" y="164" fill="black" font-size="6" font-family="Helvetica">
+-10000
+</text>
+<text x="258" y="164" fill="black" font-size="6" font-family="Helvetica">
+-5000
+</text>
+<text x="282" y="164" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="294" y="164" fill="black" font-size="6" font-family="Helvetica">
+5000
+</text>
+<text x="310" y="164" fill="black" font-size="6" font-family="Helvetica">
+10000
+</text>
+<text x="328" y="164" fill="black" font-size="6" font-family="Helvetica">
+15000
+</text>
+<text x="346" y="164" fill="black" font-size="6" font-family="Helvetica">
+20000
+</text>
+<path d="M212,159v -138" fill="none" stroke="black"/>
+<g transform="rotate(-90,205,35)">
+<text x="205" y="35" fill="black" font-size="6" font-family="Helvetica">
+Count
+</text>
+</g>
+<path d="M217,159h -5" fill="none" stroke="black"/>
+<path d="M215,156h -3" fill="none" stroke="black"/>
+<path d="M215,153h -3" fill="none" stroke="black"/>
+<path d="M215,150h -3" fill="none" stroke="black"/>
+<path d="M217,147h -5" fill="none" stroke="black"/>
+<path d="M215,145h -3" fill="none" stroke="black"/>
+<path d="M215,142h -3" fill="none" stroke="black"/>
+<path d="M215,139h -3" fill="none" stroke="black"/>
+<path d="M217,136h -5" fill="none" stroke="black"/>
+<path d="M215,133h -3" fill="none" stroke="black"/>
+<path d="M215,131h -3" fill="none" stroke="black"/>
+<path d="M215,128h -3" fill="none" stroke="black"/>
+<path d="M217,125h -5" fill="none" stroke="black"/>
+<path d="M215,122h -3" fill="none" stroke="black"/>
+<path d="M215,119h -3" fill="none" stroke="black"/>
+<path d="M215,117h -3" fill="none" stroke="black"/>
+<path d="M217,114h -5" fill="none" stroke="black"/>
+<path d="M215,111h -3" fill="none" stroke="black"/>
+<path d="M215,108h -3" fill="none" stroke="black"/>
+<path d="M215,105h -3" fill="none" stroke="black"/>
+<path d="M217,103h -5" fill="none" stroke="black"/>
+<path d="M215,100h -3" fill="none" stroke="black"/>
+<path d="M215,97h -3" fill="none" stroke="black"/>
+<path d="M215,94h -3" fill="none" stroke="black"/>
+<path d="M217,91h -5" fill="none" stroke="black"/>
+<path d="M215,89h -3" fill="none" stroke="black"/>
+<path d="M215,86h -3" fill="none" stroke="black"/>
+<path d="M215,83h -3" fill="none" stroke="black"/>
+<path d="M217,80h -5" fill="none" stroke="black"/>
+<path d="M215,77h -3" fill="none" stroke="black"/>
+<path d="M215,75h -3" fill="none" stroke="black"/>
+<path d="M215,72h -3" fill="none" stroke="black"/>
+<path d="M217,69h -5" fill="none" stroke="black"/>
+<path d="M215,66h -3" fill="none" stroke="black"/>
+<path d="M215,63h -3" fill="none" stroke="black"/>
+<path d="M215,61h -3" fill="none" stroke="black"/>
+<path d="M217,58h -5" fill="none" stroke="black"/>
+<path d="M215,55h -3" fill="none" stroke="black"/>
+<path d="M215,52h -3" fill="none" stroke="black"/>
+<path d="M215,49h -3" fill="none" stroke="black"/>
+<path d="M217,47h -5" fill="none" stroke="black"/>
+<path d="M215,44h -3" fill="none" stroke="black"/>
+<path d="M215,41h -3" fill="none" stroke="black"/>
+<path d="M215,38h -3" fill="none" stroke="black"/>
+<path d="M217,35h -5" fill="none" stroke="black"/>
+<path d="M215,33h -3" fill="none" stroke="black"/>
+<path d="M215,30h -3" fill="none" stroke="black"/>
+<path d="M215,27h -3" fill="none" stroke="black"/>
+<path d="M217,24h -5" fill="none" stroke="black"/>
+<path d="M217,24h -5" fill="none" stroke="black"/>
+<path d="M215,21h -3" fill="none" stroke="black"/>
+<text x="208" y="161" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="202" y="149" fill="black" font-size="6" font-family="Helvetica">
+200
+</text>
+<text x="202" y="138" fill="black" font-size="6" font-family="Helvetica">
+400
+</text>
+<text x="202" y="127" fill="black" font-size="6" font-family="Helvetica">
+600
+</text>
+<text x="202" y="116" fill="black" font-size="6" font-family="Helvetica">
+800
+</text>
+<text x="199" y="104" fill="black" font-size="6" font-family="Helvetica">
+1000
+</text>
+<text x="199" y="94" fill="black" font-size="6" font-family="Helvetica">
+1200
+</text>
+<text x="199" y="82" fill="black" font-size="6" font-family="Helvetica">
+1400
+</text>
+<text x="199" y="71" fill="black" font-size="6" font-family="Helvetica">
+1600
+</text>
+<text x="199" y="60" fill="black" font-size="6" font-family="Helvetica">
+1800
+</text>
+<text x="199" y="49" fill="black" font-size="6" font-family="Helvetica">
+2000
+</text>
+<text x="199" y="38" fill="black" font-size="6" font-family="Helvetica">
+2200
+</text>
+<text x="199" y="26" fill="black" font-size="6" font-family="Helvetica">
+2400
+</text>
+<text x="245" y="12" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D2_ch_452
+</text>
+<rect x="333" y="14" width="36" height="28" fill="white"/>
+<path d="M333,42h 36" fill="none" stroke="black"/>
+<path d="M369,42v -28" fill="none" stroke="black"/>
+<path d="M369,14h -36" fill="none" stroke="black"/>
+<path d="M333,14v 28" fill="none" stroke="black"/>
+<text x="335" y="19" fill="black" font-size="3" font-family="Helvetica">
+TDC_file_D2_ch_452
+</text>
+<path d="M333,21h 36" fill="none" stroke="black"/>
+<text x="335" y="27" fill="black" font-size="5" font-family="Helvetica">
+Entries 
+</text>
+<text x="350" y="27" fill="black" font-size="5" font-family="Helvetica">
+ 700354
+</text>
+<text x="335" y="33" fill="black" font-size="5" font-family="Helvetica">
+Mean  
+</text>
+<text x="352" y="33" fill="black" font-size="5" font-family="Helvetica">
+   1704
+</text>
+<text x="335" y="40" fill="black" font-size="5" font-family="Helvetica">
+RMS   
+</text>
+<text x="352" y="40" fill="black" font-size="5" font-family="Helvetica">
+   9692
+</text>
+<text x="245" y="12" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D2_ch_452
+</text>
+<rect x="384" y="3" width="177" height="173" fill="white"/>
+<rect x="401" y="21" width="142" height="138" fill="white"/>
+<rect x="401" y="21" width="142" height="138" fill="none" stroke="black"/>
+<path d="M401,159h 12v -1v 1v -10v 3v -1v 2v -4v 2h 1v -3v 4v -1v 1v -5v 6v -4v 4v -7v 1h 1v 4v -3v 3v -5v 6v -6v 5v -3v 5h 1v -2v 3v -5v 3v -3v 3v -4v 4v -2h 1v 2v -4v 7v -8v 5v -5v 5v -4v 5h 1v -6v 6v -5v 5v -4v 3v -6v 6v -4h 1v 4v -3v 4v -7v 7v
+ -5v 3v -3v 4h 1v -4v 3v -2v 3v -4v 4v -3v 2v -3v 5h 1v -4v 4v -4v 3v -3v 4v -3v 3v -4h 1v 3v -4v 4v -5v 5v -7v 9v -7v 6h 1v -6v 5v -4v 4v -3v 5v -7v 6v -6h 1v 5v -2v 2v -4v 4v -5v 5v -6v 8h 1v -6v 4v -2v 2v -3v 4v -5v 4v -2h 1v -2v 3v -3v 4v -3v 3v
+ -3v 5v -5v 3h 1v -6v 5v -3v 6v -7v 5v -4v 5v -5h 1v 3v -3v 5v -4v 3v -5v 6v -6v 4h 1v 3v -5v 4v -6v 4v -2v 4v -3v 3v -3h 1v 3v -4v 4v -7v 6v -5v 6v -3v 2h 1v -1v 1v -3v 5v -5v 4v -3v 2v -2h 1v -1v 3v -4v 5v -4v 3v -6v 7v -5v 3h 1v 1v -7v 8v -5v 4v
+ -3v 2v -2v 4v -4h 1v -2v 5v -3v 3v -4v 6v -6v 4v -5v 5h 1v -7v 8v -3v 2v -5v 5v -6v 6v -3h 1v 4v -5v 4v -5v 6v -5v 5v -5v 4h 1v -4v 3v -3v 2v -2v 4v -3v 2v -7h 1v 8v -5v 5v -2v 1v -4v 5v -4v 6h 1v -5v 2v -5v 8v -6v 4v -3v 4v -4h 1v 2v -3v 6v -6v 4v
+ -6v 6v -3v 5h 1v -5v 3v -4v 4v -6v 7v -4v 2v -4h 1v 4v -3v 4v -7v 8v -5v 4v -4v 4h 1v -3v 4v -4v 3v -6v 4v -4v 6v -6h 1v 5v -5v 5v -5v 6v -4v 4v -4v 3h 1v -3v 5v -5v 3v -4v 5v -4v 3v -1h 1v 3v -6v 5v -5v 6v -6v 6h 1v -3v 3v -4v 3v -3v 3v -4v 4v -7h
+ 1v 7v -3v 3v -6v 7v -6v 6v -5v 4v -3h 1v 4v -5v 4v -3v 3v -5v 5v -5v 5h 1v -5v 5v -5v 4v -2v 3v -5h 1v 5v -4v 5v -5v 3v -3v 3v -5v 6h 1v -5v 5v -3v 5v -6v 5v -5v 4v -4h 1v 5v -5v 4v -3v 3v -6v 5v -5v 6h 1v -3v 3v -5v 4v -3v 5v -4v 2v -3h 1v 5v -5v
+ 3v -2v 2v -7v 8v -6v 6h 1v -6v 7v -4v 3v -4v 3v -3v 4v -2h 1v -2v 4v -8v 9v -8v 8v -5v 6v -6v 2h 1v 1v -4v 5v -6v 5v -3v 3v -2v 2v -1h 1v -6v 7v -5v 4v -5v 9v -6v 2v -2v 2h 1v 1v -4v 4v -4v 3v -3v 6v -5v 3h 1v -5v 7v -8v 6v -5v 6v -7v 6v -1v 1h 1v
+ -5v 4v -3v 4v -5v 5v -3v 3v -4h 1v 5v -9v 8v -6v 5v -8v 9v -3v 4h 1v -4v 3v -6v 4v -2v 4v -5v 5v -5h 1v 4v -4v 3v -6v 7v -2v 2v -4v 3h 1v -3v 5v -4v 3v -5v 6v -5v 5v -5h 1v 4v -7v 7v -3v 4v -7v 6v -4v 2h 1v -5v 6v -6v 6v -3v 3v -5v 5v -5h 1v 6v -7v
+ 4v -3v 5v -3v 4v -5v 4h 1v -4v 4v -4v 3v -2v 2v -1v 1v -5v 5v -5h 1v 4v -2v 3v -3v 4v -5v 5v -6v 6h 1v -6v 2v -4v 2v -9v 25v -132v 32h 1v 40v -6v 9v -4v 8v -6v 6v -5v 9h 1v -1v 2v -4v 4v -6v 7v -8v 4v -1v 7v -3v 6v -8h 1v 7v -7v 12v -7v 4v -4v 2v
+ -6v 7v -6v 9v -4h 1v 4v -4v 8v -4v 1v -6v 10v -7v 6h 1v 1v -6v 4v -4v 9v -9v 9v -2h 1v -9v 14v -6v 3v -4v 5v -3v 6v -4h 1v 1v -3v 9v -8v 5v -7v 8v -5v 5v -5h 1v 5v -3v 6v -6v 3v -5v 7v -6h 1v 9v -7v 4v -3v 6v -6v 5v -3v 2v -5h 1v 6v -5v 8v -7v 4v
+ -3v 2h 1v -2v 5v -4v 5v -4v 2v -3v 6v -5h 1v 5v -4v 4v -9v 8v -3v 4h 1v -8v 10v -4v 3v -5v 4v -2v 2v -4h 1v 5v -6v 7v -4v 5v -7v 7v -2v 1h 1v 2v -4v 4v -3v 3v -2v 2v -2h 1v -5v 7v -3v 4v -8v 10v -6v 5v -4v 1h 1v -3v 4v -2v 4v -5v 4v -2v 2v -4v 2h 1v
+ 2v -2v 1v -2v 4v -5v 5v -3v 6h 1v -9v 7v -6v 7v -8v 7v -7v 7v -4h 1v 4v -6v 6v -6v 6v -5v 6v -7v 6h 1v -2v 1v -3v 3v -4v 6v -4v 3v -5h 1v 5v -3v 4v -6v 7v -7v 7v -5v 2h 1v -2v 4v -4v 4v -4v 7v -8v 5v -2h 1v 2v -3v 4v -5v 5v -6v 7v -7v 6h 1v -4v 3v
+ -5v 6v -7v 8v -6v 5v -6h 1v 6v -6v 5v -4v 5v -5v 5v -4v 5h 1v -4v 2v -2v 5v -7v 7v -7v 4v -3h 1v 4v -3v 3v -6v 7v -6v 6v -6v 6h 1v -4v 3v -4v 4v -2v 2v -5v 6v -4v 4v -4h 1v 4v -3v 2v -3v 5v -3v 3v -5v 4v -1h 1v 1v -5v 6v -4v 3v -5v 5v -5v 5h 1v 1v
+ -4v 2v -3v 5v -4v 4v -5v 5v -7h 1v 7v -5v 6v -8v 7v -4v 3v -6v 4h 1v 3v -4v 3v -4v 4v -3v 5v -4v 2v -1h 1v -3v 5v -4v 3v -3v 2v -4v 6v -5v 4h 1v 1v -4v 4v -4v 4v -4v 3v -2v 2v -2h 1v -3v 7v -6v 4v -4v 4v -3v 3v -4h 1v 4v -4v 4v -2v 3v -5v 4v -4v 5h
+ 1v -5v 5v -5v 4v -4v 6v -8v 7v -6v 5h 1v 2v -5v 4v -4v 2v -3v 5v -3v 2v -1h 1v -1v 3v -6v 5v -5v 7v -5v 4v -4v 3h 1v 1v -7v 9v -8v 7v -5v 3v -5v 8v -6h 1v -2v 5v -4v 3v -1v 2v -3v 3v -2v 2h 1v -3v 5v -5v 5v -5v 4v -4v 4v -3h 1v 4v -6v 6v -8v 8v -5v
+ 4v -4v 4h 1v -1v 1v -4v 5v -6v 7v -5v 2v -4h 1v 5v -5v 7v -9v 10v -7v 5v -3h 1v -2v 4v -4v 6v -6v 5v -5v 3v -6h 1v 7v -4v 5v -5v 4v -5v 6v -3v 2h 1v -6v 6v -4v 3v -4v 7v -8v 6v -4h 1v 5v -7v 8v -7v 6v -6v 5v -4v 4h 1v -5v 5v -4v 6v -7v 5v -3v 4v -8h
+ 1v 6v -2v 4v -4v 3v -4v 4v -4v 6h 1v -6v 3v -1v 4v -5v 2v -4v 5v -5h 1v 4v -2v 4v -4v 3v -4v 5v -4v 3h 1v -3v 2v -2v 4v -5v 6v -7v 4v -4h 1v 4v -3v 6v -6v 4v -3v 4v -5v 3h 1v -5v 6v -7v 7v -6v 4v -2v 4v -5v 4h 1v 2v -4v 3v -6v 6v -6v 8v -7v 6v -2h
+ 1v -3v 5v -5v 4v -2v 1v -5v 5v -5v 6h 1v 1v -7v 6v -3v 4v -5v 4v -7v 8v -2h 1v -2v 5v -6v 7v -8v 4v -2v 4v -7v 3h 1v 3v -4v 6v -5v 3v -4v 4v -4v 3v -1h 1v -1v 5v -9v 7v -5v 5v -4v 3v -2v 3h 1v -4v 2v -2v 4v -2v 3v -4v 4v -2h 1v -3v 4v -2v 2v -4v 5v
+ -6v 6v -5v 4h 1v 1v -5v 6v -6v 4v -5v 4v -2v 3v -1h 1v -3v 5v -6v 4v -3v 4v -5v 6v -7v 4h 1v 2v -5v 5v -4v 4v -2v 2v -4v 5v -2h 1v -4v 6v -4v 4v -8v 5v -2v 5v -5v 2h 1v 3v -4v 2v -2v 3v -4v 4v -4v 4v -1" fill="none" stroke="#000099"/>
+<path d="M401,159h 142" fill="none" stroke="black"/>
+<text x="520" y="170" fill="black" font-size="6" font-family="Helvetica">
+Time (ns)
+</text>
+<path d="M401,154v 5" fill="none" stroke="black"/>
+<path d="M405,156v 3" fill="none" stroke="black"/>
+<path d="M408,156v 3" fill="none" stroke="black"/>
+<path d="M412,156v 3" fill="none" stroke="black"/>
+<path d="M416,156v 3" fill="none" stroke="black"/>
+<path d="M419,154v 5" fill="none" stroke="black"/>
+<path d="M423,156v 3" fill="none" stroke="black"/>
+<path d="M426,156v 3" fill="none" stroke="black"/>
+<path d="M430,156v 3" fill="none" stroke="black"/>
+<path d="M433,156v 3" fill="none" stroke="black"/>
+<path d="M437,154v 5" fill="none" stroke="black"/>
+<path d="M440,156v 3" fill="none" stroke="black"/>
+<path d="M444,156v 3" fill="none" stroke="black"/>
+<path d="M448,156v 3" fill="none" stroke="black"/>
+<path d="M451,156v 3" fill="none" stroke="black"/>
+<path d="M455,154v 5" fill="none" stroke="black"/>
+<path d="M458,156v 3" fill="none" stroke="black"/>
+<path d="M462,156v 3" fill="none" stroke="black"/>
+<path d="M465,156v 3" fill="none" stroke="black"/>
+<path d="M469,156v 3" fill="none" stroke="black"/>
+<path d="M472,154v 5" fill="none" stroke="black"/>
+<path d="M476,156v 3" fill="none" stroke="black"/>
+<path d="M480,156v 3" fill="none" stroke="black"/>
+<path d="M483,156v 3" fill="none" stroke="black"/>
+<path d="M487,156v 3" fill="none" stroke="black"/>
+<path d="M490,154v 5" fill="none" stroke="black"/>
+<path d="M494,156v 3" fill="none" stroke="black"/>
+<path d="M497,156v 3" fill="none" stroke="black"/>
+<path d="M501,156v 3" fill="none" stroke="black"/>
+<path d="M504,156v 3" fill="none" stroke="black"/>
+<path d="M508,154v 5" fill="none" stroke="black"/>
+<path d="M512,156v 3" fill="none" stroke="black"/>
+<path d="M515,156v 3" fill="none" stroke="black"/>
+<path d="M519,156v 3" fill="none" stroke="black"/>
+<path d="M522,156v 3" fill="none" stroke="black"/>
+<path d="M526,154v 5" fill="none" stroke="black"/>
+<path d="M529,156v 3" fill="none" stroke="black"/>
+<path d="M533,156v 3" fill="none" stroke="black"/>
+<path d="M536,156v 3" fill="none" stroke="black"/>
+<path d="M540,156v 3" fill="none" stroke="black"/>
+<path d="M543,154v 5" fill="none" stroke="black"/>
+<text x="392" y="164" fill="black" font-size="6" font-family="Helvetica">
+-20000
+</text>
+<text x="410" y="164" fill="black" font-size="6" font-family="Helvetica">
+-15000
+</text>
+<text x="428" y="164" fill="black" font-size="6" font-family="Helvetica">
+-10000
+</text>
+<text x="447" y="164" fill="black" font-size="6" font-family="Helvetica">
+-5000
+</text>
+<text x="470" y="164" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="484" y="164" fill="black" font-size="6" font-family="Helvetica">
+5000
+</text>
+<text x="500" y="164" fill="black" font-size="6" font-family="Helvetica">
+10000
+</text>
+<text x="518" y="164" fill="black" font-size="6" font-family="Helvetica">
+15000
+</text>
+<text x="535" y="164" fill="black" font-size="6" font-family="Helvetica">
+20000
+</text>
+<path d="M401,159v -138" fill="none" stroke="black"/>
+<g transform="rotate(-90,393,35)">
+<text x="393" y="35" fill="black" font-size="6" font-family="Helvetica">
+Count
+</text>
+</g>
+<path d="M406,159h -5" fill="none" stroke="black"/>
+<path d="M404,155h -3" fill="none" stroke="black"/>
+<path d="M404,152h -3" fill="none" stroke="black"/>
+<path d="M404,149h -3" fill="none" stroke="black"/>
+<path d="M404,146h -3" fill="none" stroke="black"/>
+<path d="M406,143h -5" fill="none" stroke="black"/>
+<path d="M404,140h -3" fill="none" stroke="black"/>
+<path d="M404,137h -3" fill="none" stroke="black"/>
+<path d="M404,134h -3" fill="none" stroke="black"/>
+<path d="M404,131h -3" fill="none" stroke="black"/>
+<path d="M406,128h -5" fill="none" stroke="black"/>
+<path d="M404,125h -3" fill="none" stroke="black"/>
+<path d="M404,122h -3" fill="none" stroke="black"/>
+<path d="M404,119h -3" fill="none" stroke="black"/>
+<path d="M404,116h -3" fill="none" stroke="black"/>
+<path d="M406,113h -5" fill="none" stroke="black"/>
+<path d="M404,110h -3" fill="none" stroke="black"/>
+<path d="M404,107h -3" fill="none" stroke="black"/>
+<path d="M404,104h -3" fill="none" stroke="black"/>
+<path d="M404,101h -3" fill="none" stroke="black"/>
+<path d="M406,98h -5" fill="none" stroke="black"/>
+<path d="M404,95h -3" fill="none" stroke="black"/>
+<path d="M404,92h -3" fill="none" stroke="black"/>
+<path d="M404,89h -3" fill="none" stroke="black"/>
+<path d="M404,86h -3" fill="none" stroke="black"/>
+<path d="M406,83h -5" fill="none" stroke="black"/>
+<path d="M404,80h -3" fill="none" stroke="black"/>
+<path d="M404,77h -3" fill="none" stroke="black"/>
+<path d="M404,74h -3" fill="none" stroke="black"/>
+<path d="M404,71h -3" fill="none" stroke="black"/>
+<path d="M406,68h -5" fill="none" stroke="black"/>
+<path d="M404,65h -3" fill="none" stroke="black"/>
+<path d="M404,62h -3" fill="none" stroke="black"/>
+<path d="M404,59h -3" fill="none" stroke="black"/>
+<path d="M404,56h -3" fill="none" stroke="black"/>
+<path d="M406,53h -5" fill="none" stroke="black"/>
+<path d="M404,50h -3" fill="none" stroke="black"/>
+<path d="M404,47h -3" fill="none" stroke="black"/>
+<path d="M404,44h -3" fill="none" stroke="black"/>
+<path d="M404,41h -3" fill="none" stroke="black"/>
+<path d="M406,38h -5" fill="none" stroke="black"/>
+<path d="M404,35h -3" fill="none" stroke="black"/>
+<path d="M404,32h -3" fill="none" stroke="black"/>
+<path d="M404,29h -3" fill="none" stroke="black"/>
+<path d="M404,26h -3" fill="none" stroke="black"/>
+<path d="M406,23h -5" fill="none" stroke="black"/>
+<path d="M406,23h -5" fill="none" stroke="black"/>
+<text x="397" y="161" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="391" y="146" fill="black" font-size="6" font-family="Helvetica">
+100
+</text>
+<text x="391" y="131" fill="black" font-size="6" font-family="Helvetica">
+200
+</text>
+<text x="391" y="115" fill="black" font-size="6" font-family="Helvetica">
+300
+</text>
+<text x="391" y="101" fill="black" font-size="6" font-family="Helvetica">
+400
+</text>
+<text x="391" y="85" fill="black" font-size="6" font-family="Helvetica">
+500
+</text>
+<text x="391" y="70" fill="black" font-size="6" font-family="Helvetica">
+600
+</text>
+<text x="391" y="56" fill="black" font-size="6" font-family="Helvetica">
+700
+</text>
+<text x="391" y="40" fill="black" font-size="6" font-family="Helvetica">
+800
+</text>
+<text x="391" y="25" fill="black" font-size="6" font-family="Helvetica">
+900
+</text>
+<text x="434" y="12" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D3_ch_452
+</text>
+<rect x="522" y="14" width="36" height="28" fill="white"/>
+<path d="M522,42h 36" fill="none" stroke="black"/>
+<path d="M558,42v -28" fill="none" stroke="black"/>
+<path d="M558,14h -36" fill="none" stroke="black"/>
+<path d="M522,14v 28" fill="none" stroke="black"/>
+<text x="524" y="19" fill="black" font-size="3" font-family="Helvetica">
+TDC_file_D3_ch_452
+</text>
+<path d="M522,21h 36" fill="none" stroke="black"/>
+<text x="524" y="27" fill="black" font-size="5" font-family="Helvetica">
+Entries 
+</text>
+<text x="538" y="27" fill="black" font-size="5" font-family="Helvetica">
+ 149618
+</text>
+<text x="524" y="33" fill="black" font-size="5" font-family="Helvetica">
+Mean  
+</text>
+<text x="541" y="33" fill="black" font-size="5" font-family="Helvetica">
+   1682
+</text>
+<text x="524" y="40" fill="black" font-size="5" font-family="Helvetica">
+RMS   
+</text>
+<text x="541" y="40" fill="black" font-size="5" font-family="Helvetica">
+   9004
+</text>
+<text x="434" y="12" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D3_ch_452
+</text>
+<rect x="6" y="183" width="177" height="172" fill="white"/>
+<rect x="23" y="200" width="143" height="138" fill="white"/>
+<rect x="23" y="200" width="143" height="138" fill="none" stroke="black"/>
+<path d="M23,338h 12v -5v 3v -2v 1v -1h 1v 2v -3v 2v -2v 3v -2v 2v -3v 2h 1v -1v 3v -3v 2v -2v 2v -3h 1v 3v -1v 1v -1v 1v -2v 2v -2v 1v -2v 3v -1h 1v 1v -3v 2v -2v 2v -3v 4v -2v 2h 1v 1v -4v 2v -2v 4v -4v 3v -1h 1v -1v 3v -4v 2v -2v 3v -3v 4v -2v 1h
+ 1v -1v 1v -3v 3v -5v 5v -1v 2v -2h 1v -2v 4v -4v 2h 1v -1v 1v -3v 4v -3v 4v -4v 4v -3h 1v 2v -2v 1v -1v 1v -3v 3v -1v 2h 1v -3v 2v -2v 3v -1v 1v -2v 2v -2h 1v 3v -3v 2v -3v 2v -2v 4v -3v 2h 1v -2v 3v -3v 3v -3v 2v -2v 1v -1h 1v 2v -1v 1v -3v 3v -1v
+ 1v -3h 1v 3v -3v 3v -3v 3h 1v -3v 3v -2v 1v -1v 4v -4v 2h 1v -1v 2v -3v 3v -2v 2v -3h 1v 2v -3v 3v -4v 4v -4v 5v -3v 2h 1v -2v 2v -3v 3v -1v 1v -1h 1v 1v -3v 4v -3v 1v -2v 4v -3v 3v -2h 1v -2v 3v -3v 3v -3v 3v -2v 1v -2h 1v 2v -1v 2v -1v 1v -4v 3v
+ -1v 1h 1v -2v 2v -1v 3v -3v 1v -1h 1v 2v -2v 2v -4v 4v -1v 1v -3v 2h 1v -2v 2v -1v 3v -3v 3v -3v 3h 1v -6v 5v -4v 5v -5v 5h 1v -4v 2v -1v 2v -1v 1v -1v 2v -4v 2v -2h 1v 2v -2v 3v -3v 2v -3v 4v -5v 6v -1h 1v -2v 2v -2v 2v -3v 3v -2v 2v -1h 1v 1v -2v
+ 2v -1v 1v -2v 3v -6v 6v -4h 1v 3v -4v 3v -1v 2v -2v 1v -1v 1v -1v 1h 1v 1v -2v 1v -1v 4v -4h 1v 1v -2v 3v -3v 3v -2v 2v -3v 2h 1v 1v -1v 2v -2v 1v -4v 3v -2v 2v -1v 2v -3h 1v 3v -3v 4v -3v 1v -2v 3v -1v 2h 1v -5v 3v -2v 3v -3v 2v -1h 1v 1v -2v 3v
+ -2v 1v -1v 1v -1v 3v -3v 1h 1v 1v -3v 3v -3v 1v -2v 4v -1v 1v -3h 1v -1v 2v -1v 4v -4v 3v -3v 2v -2h 1v 2v -2v 4v -6v 5v -6v 6v -2h 1v -1v 2v -2v 4v -7v 5v -4v 4h 1v -2v 2v -1v 2v -3v 2v -3v 2h 1v -3v 4v -3v 2v -1v 2v -2v 2h 1v -2v 3v -4v 4v -3v 1v
+ -1v 1v -1v 1h 1v 1v -2v 1v -4v 5v -3v 4v -3h 1v 1v -1v 1v -2v 1v -2v 3v -2v 2v -1v 2h 1v -3v 1v -3v 4v -1v 2v -3v 3v -2h 1v -1v 4v -4v 3v -3v 2v -4h 1v 4v -4v 5v -3v 2v -2v 2v -2v 1v -1h 1v 1v -1v 1v -2v 2v -1v 1v -4v 6v -3h 1v 2v -2v 3v -5v 4v -3v
+ 2v -1v 2v -4h 1v -1v 4v -1v 1v -1v 1v -4v 3v -5h 1v 5v -1v 2v -1v 1v -3v 4v -4v 2v -3v 3h 1v -2v 2v -3v 2v -2v 3v -5v 6v -2h 1v -3v 6v -5v 3v -3v 2v -1v 2v -2h 1v 1v -1v 1v -4v 4v -5v 3v -1v 4v -3h 1v -2v 5v -2v 1v -4v 2v -2v 1h 1v -3v 4v -2v 3v -3v
+ 1v -2v 2v -7v 6h 1v 1v -1v 2v -9v 9v -4v 13v -131v 69h 1v 31v -4v 6v -7v 9v -2v 2v -1h 1v -4v 8v -8v 6v -4v 7v -9v 12v -8v 3v -1h 1v 3v -3v 5v -7v 8v -5v 7v -7h 1v 4v -6v 10v -5v 1v -1v 2v -2h 1v 5v -8v 8v -3v 5v -7h 1v 6v -5v 4v -2v 4v -6v 9v -7v
+ 3h 1v 2v -7v 9v -2v 2v -5v 2h 1v 1v -1v 3v -5v 4v -1v 2v -4v 2v -4h 1v 4v -2v 5v -4v 5v -6v 6v -5v 2h 1v -1v 3v -4v 6v -5v 3v -5h 1v 6v -6v 8v -6v 4h 1v -1v 6v -5v 3v -5v 3v -2v 3v -2h 1v 5v -7v 1v -1v 5v -3v 2v -4v 5v -2h 1v -1v 2v -3v 4v -1v 1v
+ -4v 4v -2h 1v 2v -4v 4v -1v 3v -4v 1v -1v 4v -6v 2h 1v 3v -1v 1v -1v 3v -7v 6v -6v 8v -5h 1v 2v -1v 3v -4v 3v -8v 8v -6v 5h 1v -4v 4v -1v 2v -3v 2v -2v 4v -3v 3v -2h 1v -2v 3v -2v 2v -1v 1v -1v 1v -2v 2h 1v -3v 1v -2v 4v -4v 4v -2v 2v -2v 3h 1v -4v
+ 5v -5v 4v -2v 2v -2h 1v 3v -2v 2v -4v 1v -1v 3h 1v -1v 2v -3v 3v -5v 3v -2h 1v 3v -2v 3v -1v 2v -3v 1v -3v 3h 1v -1v 1v -2v 1v -2v 3v -3v 2v -1h 1v 2v -1v 2v -4v 5v -4v 2v -3v 4h 1v -2v 2v -2v 2v -2v 2v -1v 1h 1v -3v 3v -3v 3v -3h 1v 3v -3v 2v -1v
+ 2v -2v 4v -3h 1v 1v -2v 3v -3v 3v -3v 2v -2h 1v 5v -5v 2v -3v 3v -2v 3v -3v 3v -3h 1v 2v -1v 1v -1v 1v -1v 1v -1v 1v -2h 1v 2v -3v 1v -1v 4v -2v 1v -2v 1h 1v 1v -2v 1v -2v 5v -3v 2v -2h 1v 1v -4v 6v -5v 4v -2v 1v -2h 1v 2v -2v 2v -1v 2v -3v 1v -1v
+ 2h 1v -2v 3v -3v 2v -1v 1v -2v 2h 1v -2v 4v -4v 2v -2v 2v -2v 3v -4v 2h 1v 2v -2v 1v -2v 3v -3v 1v -1v 1v -1v 1h 1v 3v -6v 4v -1v 3h 1v -4v 3v -2v 2v -2v 2v -3h 1v 2v -2v 3v -5v 5v -2v 3v -1h 1v -3v 2v -1v 2v -2v 2v -3v 2v -1h 1v 3v -3v 1v -2v 2v
+ -2v 3v -1h 1v 1v -3v 3v -2v 1v -2v 2v -1h 1v 3v -4v 1v -1v 3v -2v 2h 1v -2v 2v -3v 3v -2v 1v -1v 2v -2v 3h 1v -3v 2v -2v 1h 1v -2v 3v -2v 2v -6v 6v -2h 1v 2v -1v 1v -3v 3v -2v 1v -2v 3v -1v 1h 1v -2v 4v -4v 3v -3h 1v 3v -4v 3v -2v 1v -1v 2v -1h 1v
+ -2v 3v -3v 3v -2v 3v -3v 1v -3v 3h 1v -1v 4v -4v 2v -2v 2v -4v 5v -4h 1v 3v -3v 3v -2v 3v -2h 1v 1v -1v 1v -3v 3v -3v 3v -3v 3h 1v -2v 1v -1v 1v -2v 3v -2v 2v -1v 1h 1v -2v 1v -2v 3v -1v 1v -3v 4v -5h 1v 4v -3v 2v -1v 2v -1v 1v -2v 1h 1v -2v 3v -2v
+ 1v -1v 2v -1v 1v -3h 1v 3v -3v 3v -3v 2v -2v 3v -1v 1h 1v -1v 1v -4v 5v -4v 3v -1h 1v -1v 3v -3v 3v -4v 3v -2h 1v 2v -2v 2v -2v 3v -3v 2v -3v 3v -2h 1v -1v 4v -4v 4v -3v 1v -1v 3v -2v 1h 1v -1v 1v -4v 4v -2v 2v -1v 1v -3h 1v 4v -3v 2v -1v 1v -1v 1v
+ -4v 4v -2h 1v -2v 4v -3v 3v -2v 2v -1v 1v -4h 1v 5v -3v 2v -2v 2v -4v 3v -2h 1v 3v -2v 3v -4v 3v -3v 4v -2v 2v -3h 1v 3v -3v 2v -2v 2v -2v 2h 1" fill="none" stroke="#000099"/>
+<path d="M23,338h 143" fill="none" stroke="black"/>
+<text x="142" y="350" fill="black" font-size="6" font-family="Helvetica">
+Time (ns)
+</text>
+<path d="M23,334v 4" fill="none" stroke="black"/>
+<path d="M27,336v 2" fill="none" stroke="black"/>
+<path d="M31,336v 2" fill="none" stroke="black"/>
+<path d="M34,336v 2" fill="none" stroke="black"/>
+<path d="M38,336v 2" fill="none" stroke="black"/>
+<path d="M41,334v 4" fill="none" stroke="black"/>
+<path d="M45,336v 2" fill="none" stroke="black"/>
+<path d="M48,336v 2" fill="none" stroke="black"/>
+<path d="M52,336v 2" fill="none" stroke="black"/>
+<path d="M55,336v 2" fill="none" stroke="black"/>
+<path d="M59,334v 4" fill="none" stroke="black"/>
+<path d="M63,336v 2" fill="none" stroke="black"/>
+<path d="M66,336v 2" fill="none" stroke="black"/>
+<path d="M70,336v 2" fill="none" stroke="black"/>
+<path d="M73,336v 2" fill="none" stroke="black"/>
+<path d="M77,334v 4" fill="none" stroke="black"/>
+<path d="M80,336v 2" fill="none" stroke="black"/>
+<path d="M84,336v 2" fill="none" stroke="black"/>
+<path d="M87,336v 2" fill="none" stroke="black"/>
+<path d="M91,336v 2" fill="none" stroke="black"/>
+<path d="M94,334v 4" fill="none" stroke="black"/>
+<path d="M98,336v 2" fill="none" stroke="black"/>
+<path d="M102,336v 2" fill="none" stroke="black"/>
+<path d="M105,336v 2" fill="none" stroke="black"/>
+<path d="M109,336v 2" fill="none" stroke="black"/>
+<path d="M112,334v 4" fill="none" stroke="black"/>
+<path d="M116,336v 2" fill="none" stroke="black"/>
+<path d="M119,336v 2" fill="none" stroke="black"/>
+<path d="M123,336v 2" fill="none" stroke="black"/>
+<path d="M126,336v 2" fill="none" stroke="black"/>
+<path d="M130,334v 4" fill="none" stroke="black"/>
+<path d="M134,336v 2" fill="none" stroke="black"/>
+<path d="M137,336v 2" fill="none" stroke="black"/>
+<path d="M141,336v 2" fill="none" stroke="black"/>
+<path d="M144,336v 2" fill="none" stroke="black"/>
+<path d="M148,334v 4" fill="none" stroke="black"/>
+<path d="M151,336v 2" fill="none" stroke="black"/>
+<path d="M155,336v 2" fill="none" stroke="black"/>
+<path d="M158,336v 2" fill="none" stroke="black"/>
+<path d="M162,336v 2" fill="none" stroke="black"/>
+<path d="M166,334v 4" fill="none" stroke="black"/>
+<text x="14" y="344" fill="black" font-size="6" font-family="Helvetica">
+-20000
+</text>
+<text x="32" y="344" fill="black" font-size="6" font-family="Helvetica">
+-15000
+</text>
+<text x="50" y="344" fill="black" font-size="6" font-family="Helvetica">
+-10000
+</text>
+<text x="69" y="344" fill="black" font-size="6" font-family="Helvetica">
+-5000
+</text>
+<text x="92" y="344" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="105" y="344" fill="black" font-size="6" font-family="Helvetica">
+5000
+</text>
+<text x="122" y="344" fill="black" font-size="6" font-family="Helvetica">
+10000
+</text>
+<text x="139" y="344" fill="black" font-size="6" font-family="Helvetica">
+15000
+</text>
+<text x="157" y="344" fill="black" font-size="6" font-family="Helvetica">
+20000
+</text>
+<path d="M23,338v -138" fill="none" stroke="black"/>
+<g transform="rotate(-90,16,215)">
+<text x="16" y="215" fill="black" font-size="6" font-family="Helvetica">
+Count
+</text>
+</g>
+<path d="M28,338h -5" fill="none" stroke="black"/>
+<path d="M26,335h -3" fill="none" stroke="black"/>
+<path d="M26,332h -3" fill="none" stroke="black"/>
+<path d="M26,329h -3" fill="none" stroke="black"/>
+<path d="M26,326h -3" fill="none" stroke="black"/>
+<path d="M28,322h -5" fill="none" stroke="black"/>
+<path d="M26,319h -3" fill="none" stroke="black"/>
+<path d="M26,316h -3" fill="none" stroke="black"/>
+<path d="M26,313h -3" fill="none" stroke="black"/>
+<path d="M26,310h -3" fill="none" stroke="black"/>
+<path d="M28,307h -5" fill="none" stroke="black"/>
+<path d="M26,304h -3" fill="none" stroke="black"/>
+<path d="M26,300h -3" fill="none" stroke="black"/>
+<path d="M26,297h -3" fill="none" stroke="black"/>
+<path d="M26,294h -3" fill="none" stroke="black"/>
+<path d="M28,291h -5" fill="none" stroke="black"/>
+<path d="M26,288h -3" fill="none" stroke="black"/>
+<path d="M26,285h -3" fill="none" stroke="black"/>
+<path d="M26,282h -3" fill="none" stroke="black"/>
+<path d="M26,278h -3" fill="none" stroke="black"/>
+<path d="M28,275h -5" fill="none" stroke="black"/>
+<path d="M26,272h -3" fill="none" stroke="black"/>
+<path d="M26,269h -3" fill="none" stroke="black"/>
+<path d="M26,266h -3" fill="none" stroke="black"/>
+<path d="M26,263h -3" fill="none" stroke="black"/>
+<path d="M28,260h -5" fill="none" stroke="black"/>
+<path d="M26,256h -3" fill="none" stroke="black"/>
+<path d="M26,253h -3" fill="none" stroke="black"/>
+<path d="M26,250h -3" fill="none" stroke="black"/>
+<path d="M26,247h -3" fill="none" stroke="black"/>
+<path d="M28,244h -5" fill="none" stroke="black"/>
+<path d="M26,241h -3" fill="none" stroke="black"/>
+<path d="M26,238h -3" fill="none" stroke="black"/>
+<path d="M26,234h -3" fill="none" stroke="black"/>
+<path d="M26,231h -3" fill="none" stroke="black"/>
+<path d="M28,228h -5" fill="none" stroke="black"/>
+<path d="M26,225h -3" fill="none" stroke="black"/>
+<path d="M26,222h -3" fill="none" stroke="black"/>
+<path d="M26,219h -3" fill="none" stroke="black"/>
+<path d="M26,216h -3" fill="none" stroke="black"/>
+<path d="M28,212h -5" fill="none" stroke="black"/>
+<path d="M28,212h -5" fill="none" stroke="black"/>
+<path d="M26,209h -3" fill="none" stroke="black"/>
+<path d="M26,206h -3" fill="none" stroke="black"/>
+<path d="M26,203h -3" fill="none" stroke="black"/>
+<text x="19" y="341" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="16" y="324" fill="black" font-size="6" font-family="Helvetica">
+50
+</text>
+<text x="13" y="309" fill="black" font-size="6" font-family="Helvetica">
+100
+</text>
+<text x="13" y="293" fill="black" font-size="6" font-family="Helvetica">
+150
+</text>
+<text x="13" y="277" fill="black" font-size="6" font-family="Helvetica">
+200
+</text>
+<text x="13" y="262" fill="black" font-size="6" font-family="Helvetica">
+250
+</text>
+<text x="13" y="246" fill="black" font-size="6" font-family="Helvetica">
+300
+</text>
+<text x="13" y="230" fill="black" font-size="6" font-family="Helvetica">
+350
+</text>
+<text x="13" y="214" fill="black" font-size="6" font-family="Helvetica">
+400
+</text>
+<text x="56" y="191" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D4_ch_452
+</text>
+<rect x="144" y="194" width="36" height="28" fill="white"/>
+<path d="M144,222h 36" fill="none" stroke="black"/>
+<path d="M180,222v -28" fill="none" stroke="black"/>
+<path d="M180,194h -36" fill="none" stroke="black"/>
+<path d="M144,194v 28" fill="none" stroke="black"/>
+<text x="146" y="199" fill="black" font-size="3" font-family="Helvetica">
+TDC_file_D4_ch_452
+</text>
+<path d="M144,201h 36" fill="none" stroke="black"/>
+<text x="146" y="206" fill="black" font-size="5" font-family="Helvetica">
+Entries 
+</text>
+<text x="163" y="206" fill="black" font-size="5" font-family="Helvetica">
+ 34598
+</text>
+<text x="146" y="213" fill="black" font-size="5" font-family="Helvetica">
+Mean  
+</text>
+<text x="163" y="213" fill="black" font-size="5" font-family="Helvetica">
+   1495
+</text>
+<text x="146" y="220" fill="black" font-size="5" font-family="Helvetica">
+RMS   
+</text>
+<text x="163" y="220" fill="black" font-size="5" font-family="Helvetica">
+   8236
+</text>
+<text x="56" y="191" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D4_ch_452
+</text>
+<rect x="195" y="183" width="177" height="172" fill="white"/>
+<rect x="212" y="200" width="143" height="138" fill="white"/>
+<rect x="212" y="200" width="143" height="138" fill="none" stroke="black"/>
+<path d="M212,338h 12v -6v 3v -4v 4v -3v 3h 1v -1v 2v -5v 3v -5v 5v -3v 1v -1v 2v -1h 1v 4v -4v 2v -1v 2v -4v 6h 1v -2v 2v -5v 3v -5v 5v -1v 1v -2h 1v -4v 7v -5v 3v -3v 5v -4v 1h 1v 3v -3v 2v -3v 3v -6v 6v -1v 1v -3v 4h 1v -2v 3v -6v 4v -3v 3v -2v 1v
+ -1v 2h 1v -6v 6v -4v 3v -5v 6v -3v 3v -3h 1v 3v -4v 4v -2v 1v -4v 3v -3v 2h 1v -3v 6v -2v 4v -7v 4v -4v 4v -3h 1v 2v -3v 4v -3v 4v -3v 3v -2v 1v -2h 1v 3v -2v 2v -3v 1v -1v 2v -1v 2v -2h 1v 1v -2v 2v -3v 5v -6v 6v -4v 4v -4h 1v -1v 4v -4v 4v -6v 8v
+ -4v 2h 1v -4v 3v -5v 5v -1v 1v -1h 1v -1v 1v -2v 2v -1v 2v -3v 3v -3v 4v -8v 7h 1v 1v -3v 5v -4v 3v -5v 5v -4v 3v -2h 1v -2v 3v -3v 4v -6v 5v -3v 4v -4h 1v 2v -2v 2v -5v 5v -2v 2h 1v 3v -2v 1v -4v 4v -4v 3v -3h 1v 4v -7v 6v -3v 5v -5v 4v -3h 1v -4v
+ 6v -4v 5v -4v 2v -1v 3v -4v 2h 1v -2v 4v -7v 7v -6v 5v -2v 3h 1v 1v -3v 3v -8v 6v -3v 3v -3h 1v 6v -3v 2v -8v 7v -2v 2v -1v 1h 1v -3v 3v -5v 4v -3v 2v -3v 5v -2v 1h 1v -2v 3v -2v 3v -5v 3v -1v 3v -5v 1h 1v 2v -3v 3v -1v 1v -5v 5v -2v 3h 1v -3v 5v
+ -8v 4v -2v 3v -3v 5v -3h 1v 2v -4v 3v -2v 5v -6v 3v -2v 3h 1v -4v 3v -3v 6v -3v 1v -4v 3h 1v -3v 2v -1v 2v -6v 7v -5v 5v -6v 5h 1v -5v 6v -4v 4v -4v 4v -3v 2v -6h 1v 9v -10v 8v -3v 1v -2v 4v -4v 5h 1v -5v 5v -9v 8v -3v 4v -7h 1v 6v -5v 5v -3v 2v -4v
+ 4v -3v 5v -5v 2h 1v 2v -1v 1v -4v 5v -5v 4v -4v 3v -4h 1v 4v -2v 2v -5v 6v -5v 4h 1v -5v 6v -5v 2v -1v 2v -2v 3v -2h 1v 2v -1v 1v -3v 3v -4v 5v -3v 5v -7v 5v -2h 1v -2v 4v -10v 9v -3v 3v -3v 4v -4h 1v 4v -2v 1v -4v 2v -5v 6v -4v 8h 1v -11v 9v -3v 3v
+ -3v 3v -5v 2v -1h 1v -1v 4v -5v 2v -1v 3v -4v 6v -3h 1v -5v 6v -4v 5v -3v 3v -7v 6v -1v 1h 1v -1v 2v -5v 5v -6v 4h 1v -4v 7v -6v 4v -4v 5v -6v 6h 1v -2v 1v -3v 3v -7v 7v -5v 6v -4h 1v -2v 6v -5v 2v -5v 6v -5v 7v -6h 1v 5v -3v 2v -2v 3v -5v 4v -5v 3v
+ -1h 1v 3v -1v 1v -3v 3v -2v 3v -4v 6v -5h 1v -4v 7v -6v 5v -2v 1v -4v 6v -3h 1v -3v 6v -5v 2v -4v 5v -4v 3v -3v 2h 1v -2v 5v -5v 4v -9v 6v -3v 6v -4h 1v 4v -4v 3v -4v 5v -6v 6v -3v 1v -2v 1h 1v 3v -6v 1v -2v 3v -6v 7v -6v 9v -4v 2h 1v 4v -15v 12v
+ -7v 4v -1v 1v -5h 1v 5v -4v 5v -4v 5v -9v 5v -3v 3v -6v 7v -3h 1v 3v -8v 5v -4v 3v -6v 1v -8v 4v -19h 1v -87v 131v -59v 9h 1v 12v -3v 16v -11v 8v -5v 5v -7h 1v 8v -5v 7v -1v 7v -11v 8v -8v 10v -5v 5h 1v -10v 10v -2v 6v -10v 10v -8v 6v -4v 6v -6h 1v
+ 6v -8v 5v -8v 11v -3v 2v -3v 1v -12h 1v 15v -3v 1v -2v 7v -7v 6v -9v 7h 1v -6v 9v -9v 5v -4v 6v -4v 4v -5v 5v -4h 1v 10v -10v 10v -7v 4v -4v 5v -7v 5h 1v -7v 8v -5v 9v -1v 2v -8v 4v -8v 7h 1v -7v 4v -2v 7v -3v 1v -3v 6v -7v 5h 1v -7v 10v -9v 4v -4v
+ 7v -5v 5v -3v 4h 1v 2v -9v 9v -5v 3v -3v 7v -7v 4v -1h 1v -2v 2v -3v 3v -4v 3v -2v 1h 1v 6v -8v 4v -7v 7v -3v 6v -11v 11v -4h 1v -3v 4v -5v 7v -5v 3v -1v 3v -5h 1v 3v -1v 1v -2v 2v -1v 5v -6v 4v -2v 3h 1v -7v 8v -4v 6v -5v 2v -3v 3h 1v -5v 2v -2v 2v
+ -3v 2v -2v 7v -4v 3v -5v 6v -6h 1v 5v -4v 6v -6v 5v -8v 8v -2h 1v 1v -1v 2v -7v 6v -3v 6v -11v 7h 1v -3v 6v -5v 5v -5v 6v -7v 4v -9h 1v 11v -6v 4v -2v 4v -8v 7v -2v 2v -2h 1v -3v 3v -2v 5v -2v 1v -5v 5v -3v 3h 1v -6v 5v -3v 3v -6v 6v -1v 1v -1v 1v
+ -3h 1v 4v -1v 1v -3v 2v -6v 7v -1v 2v -5v 6h 1v -5v 4v -1v 1v -6v 7v -5v 2v -1h 1v -2v 6v -5v 2v -5v 6v -1v 1h 1v -2v 3v -10v 9v -4v 6v -8v 7v -1h 1v -1v 1v -2v 2v -4v 3v -5v 6v -3v 4h 1v 1v -6v 5v -3v 4v -9v 8v -8v 9v -5h 1v 2v -3v 5v -4v 3v -2v 2v
+ -4v 5h 1v -2v 1v -4v 7v -4v 2v -3v 5v -3h 1v 1v -5v 6v -4v 1v -3v 4v -5v 4h 1v 1v -4v 5v -2v 5v -8v 6v -3h 1v 3v -2v 1v -4v 5v -3v 2v -5v 6v -2h 1v -4v 4v -1v 3v -4v 6v -5v 5v -4v 2h 1v -3v 3v -5v 4v -1v 2v -2v 1v -2v 1h 1v -2v 3v -1v 5v -10v 6v -5v
+ 5v -3v 4h 1v -5v 7v -5v 5v -6v 2v -6v 6h 1v 1v -1v 2v -3v 3v -1v 3v -8v 3h 1v 2v -2v 2v -4v 6v -6v 3v -2v 4v -3v 3v -3h 1v 3v -3v 3v -2v 3v -5v 4v -6v 5v -1v 1h 1v 3v -9v 7v -4v 3v -4v 2h 1v -3v 5v -6v 7v -3v 2v -3v 3v -5h 1v 7v -5v 2v -1v 1v -1v 3v
+ -4v 3v -2h 1v -2v 4v -2v 3v -6v 5v -2v 5v -7h 1v 6v -2v 1v -5v 6v -7v 6v -2h 1v -5v 7v -5v 3v -1v 2v -4h 1v 6v -13v 12v -3v 2v -3v 3v -6h 1v 7v -3v 4v -5v 4v -4v 4v -6v 4h 1v -2v 3v -2v 2v -5v 5v -5v 6v -4v 2h 1v -1v 5v -5v 3v -4v 6v -7v 5v -3v 1h
+ 1v 1v -9v 10v -3v 2v -2v 3v -6v 8v -8h 1v 8v -8v 2v -1v 5v -3v 2v -3v 4h 1v -6v 5v -7v 7v -3v 6v -7v 4v -1h 1v 2v -6v 5v -1v 1v -1v 4v -3v 3h 1v -9v 5v -7v 9v -2v 1v -3v 4v -2h 1v -1v 3v -4v 3v -5v 6v -3v 3v -3h 1v -1v 2v -2v 3v -7v 10v -6v 5v -9h
+ 1v 8v -3v 4v -2v 1v -3v 1v -1v 6v -4h 1v -2v 1v -1v 2v -1v 1v -5v 5v -1v 1h 1v -3v 4v -3v 3v -6v 4v -2v 4v -3v 2h 1v -4v 5v -4v 4v -3v 4v -4v 2v -2v 3v -4h 1v 1v -3v 7v -4v 1v -3v 6v -2v 1v -3h 1v 2v -1v 2v -6v 5v -2v 2v -2v 1v -2v 1h 1v 5v -5v 5v
+ -4v 2v -2v 2v -1v 1v -1h 1v -3v 4v -6v 5v -3v 2v -1v 4v -2h 1v -5v 6v -3v 3v -4v 4v -4v 4v -5v 3h 1v -4v 3v -1v 5v -7v 6v -7v 8v -5v 2h 1v -2v 5v -5v 6v -3v 1v -4v 4h 1v -3v 4v -6v 5v -3v 2v -1v 2v -1h 1v 1v -2v 4v -4v 4v -6v 5v -9v 10v -3h 1"
+ fill="none" stroke="#000099"/>
+<path d="M212,338h 143" fill="none" stroke="black"/>
+<text x="330" y="350" fill="black" font-size="6" font-family="Helvetica">
+Time (ns)
+</text>
+<path d="M212,334v 4" fill="none" stroke="black"/>
+<path d="M216,336v 2" fill="none" stroke="black"/>
+<path d="M220,336v 2" fill="none" stroke="black"/>
+<path d="M223,336v 2" fill="none" stroke="black"/>
+<path d="M227,336v 2" fill="none" stroke="black"/>
+<path d="M230,334v 4" fill="none" stroke="black"/>
+<path d="M234,336v 2" fill="none" stroke="black"/>
+<path d="M237,336v 2" fill="none" stroke="black"/>
+<path d="M241,336v 2" fill="none" stroke="black"/>
+<path d="M244,336v 2" fill="none" stroke="black"/>
+<path d="M248,334v 4" fill="none" stroke="black"/>
+<path d="M251,336v 2" fill="none" stroke="black"/>
+<path d="M255,336v 2" fill="none" stroke="black"/>
+<path d="M259,336v 2" fill="none" stroke="black"/>
+<path d="M262,336v 2" fill="none" stroke="black"/>
+<path d="M266,334v 4" fill="none" stroke="black"/>
+<path d="M269,336v 2" fill="none" stroke="black"/>
+<path d="M273,336v 2" fill="none" stroke="black"/>
+<path d="M276,336v 2" fill="none" stroke="black"/>
+<path d="M280,336v 2" fill="none" stroke="black"/>
+<path d="M283,334v 4" fill="none" stroke="black"/>
+<path d="M287,336v 2" fill="none" stroke="black"/>
+<path d="M291,336v 2" fill="none" stroke="black"/>
+<path d="M294,336v 2" fill="none" stroke="black"/>
+<path d="M298,336v 2" fill="none" stroke="black"/>
+<path d="M301,334v 4" fill="none" stroke="black"/>
+<path d="M305,336v 2" fill="none" stroke="black"/>
+<path d="M308,336v 2" fill="none" stroke="black"/>
+<path d="M312,336v 2" fill="none" stroke="black"/>
+<path d="M315,336v 2" fill="none" stroke="black"/>
+<path d="M319,334v 4" fill="none" stroke="black"/>
+<path d="M323,336v 2" fill="none" stroke="black"/>
+<path d="M326,336v 2" fill="none" stroke="black"/>
+<path d="M330,336v 2" fill="none" stroke="black"/>
+<path d="M333,336v 2" fill="none" stroke="black"/>
+<path d="M337,334v 4" fill="none" stroke="black"/>
+<path d="M340,336v 2" fill="none" stroke="black"/>
+<path d="M344,336v 2" fill="none" stroke="black"/>
+<path d="M347,336v 2" fill="none" stroke="black"/>
+<path d="M351,336v 2" fill="none" stroke="black"/>
+<path d="M355,334v 4" fill="none" stroke="black"/>
+<text x="203" y="344" fill="black" font-size="6" font-family="Helvetica">
+-20000
+</text>
+<text x="221" y="344" fill="black" font-size="6" font-family="Helvetica">
+-15000
+</text>
+<text x="239" y="344" fill="black" font-size="6" font-family="Helvetica">
+-10000
+</text>
+<text x="258" y="344" fill="black" font-size="6" font-family="Helvetica">
+-5000
+</text>
+<text x="282" y="344" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="294" y="344" fill="black" font-size="6" font-family="Helvetica">
+5000
+</text>
+<text x="310" y="344" fill="black" font-size="6" font-family="Helvetica">
+10000
+</text>
+<text x="328" y="344" fill="black" font-size="6" font-family="Helvetica">
+15000
+</text>
+<text x="346" y="344" fill="black" font-size="6" font-family="Helvetica">
+20000
+</text>
+<path d="M212,338v -138" fill="none" stroke="black"/>
+<g transform="rotate(-90,205,215)">
+<text x="205" y="215" fill="black" font-size="6" font-family="Helvetica">
+Count
+</text>
+</g>
+<path d="M217,338h -5" fill="none" stroke="black"/>
+<path d="M215,333h -3" fill="none" stroke="black"/>
+<path d="M215,327h -3" fill="none" stroke="black"/>
+<path d="M215,322h -3" fill="none" stroke="black"/>
+<path d="M215,316h -3" fill="none" stroke="black"/>
+<path d="M217,311h -5" fill="none" stroke="black"/>
+<path d="M215,306h -3" fill="none" stroke="black"/>
+<path d="M215,300h -3" fill="none" stroke="black"/>
+<path d="M215,295h -3" fill="none" stroke="black"/>
+<path d="M215,289h -3" fill="none" stroke="black"/>
+<path d="M217,284h -5" fill="none" stroke="black"/>
+<path d="M215,278h -3" fill="none" stroke="black"/>
+<path d="M215,273h -3" fill="none" stroke="black"/>
+<path d="M215,268h -3" fill="none" stroke="black"/>
+<path d="M215,262h -3" fill="none" stroke="black"/>
+<path d="M217,257h -5" fill="none" stroke="black"/>
+<path d="M215,251h -3" fill="none" stroke="black"/>
+<path d="M215,246h -3" fill="none" stroke="black"/>
+<path d="M215,240h -3" fill="none" stroke="black"/>
+<path d="M215,235h -3" fill="none" stroke="black"/>
+<path d="M217,230h -5" fill="none" stroke="black"/>
+<path d="M215,224h -3" fill="none" stroke="black"/>
+<path d="M215,219h -3" fill="none" stroke="black"/>
+<path d="M215,213h -3" fill="none" stroke="black"/>
+<path d="M215,208h -3" fill="none" stroke="black"/>
+<path d="M217,202h -5" fill="none" stroke="black"/>
+<path d="M217,202h -5" fill="none" stroke="black"/>
+<text x="208" y="341" fill="black" font-size="6" font-family="Helvetica">
+0
+</text>
+<text x="205" y="313" fill="black" font-size="6" font-family="Helvetica">
+50
+</text>
+<text x="202" y="286" fill="black" font-size="6" font-family="Helvetica">
+100
+</text>
+<text x="202" y="259" fill="black" font-size="6" font-family="Helvetica">
+150
+</text>
+<text x="202" y="231" fill="black" font-size="6" font-family="Helvetica">
+200
+</text>
+<text x="202" y="204" fill="black" font-size="6" font-family="Helvetica">
+250
+</text>
+<text x="245" y="191" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D5_ch_452
+</text>
+<rect x="333" y="194" width="36" height="28" fill="white"/>
+<path d="M333,222h 36" fill="none" stroke="black"/>
+<path d="M369,222v -28" fill="none" stroke="black"/>
+<path d="M369,194h -36" fill="none" stroke="black"/>
+<path d="M333,194v 28" fill="none" stroke="black"/>
+<text x="335" y="199" fill="black" font-size="3" font-family="Helvetica">
+TDC_file_D5_ch_452
+</text>
+<path d="M333,201h 36" fill="none" stroke="black"/>
+<text x="335" y="206" fill="black" font-size="5" font-family="Helvetica">
+Entries 
+</text>
+<text x="352" y="206" fill="black" font-size="5" font-family="Helvetica">
+ 26930
+</text>
+<text x="335" y="213" fill="black" font-size="5" font-family="Helvetica">
+Mean  
+</text>
+<text x="353" y="213" fill="black" font-size="5" font-family="Helvetica">
+   1441
+</text>
+<text x="335" y="220" fill="black" font-size="5" font-family="Helvetica">
+RMS   
+</text>
+<text x="352" y="220" fill="black" font-size="5" font-family="Helvetica">
+   8810
+</text>
+<text x="245" y="191" fill="black" font-size="8" font-family="Helvetica">
+TDC_file_D5_ch_452
+</text>
+<rect x="384" y="183" width="177" height="172" fill="white"/></svg>
