@@ -31,7 +31,8 @@ echo -e "File \t\t degarder \t target" >> $notes_file
 
 # convert run 448 which is odd
 echo root convert_odd_root.C
-/Applications/ROOT/root/bin/root -l convert_odd_root.C
+# run root without splash screen and exiting after the script
+/Applications/ROOT/root/bin/root -q -l convert_odd_root.C
 echo -e ${preffix}448 \t none \t 0.5 Copper >> $notes_file
 
 for (( i = 0; i < ${len}; i++ ));
@@ -45,4 +46,5 @@ do
 	echo >> $log_file
 	chmod u-w $outfile
 done;
+	
 chmod u-w $notes_file
