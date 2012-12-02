@@ -23,6 +23,7 @@ double adc_calibration(int const ch, int const val, int const para1) {
 }
 
 double tdc_calibration(int const ch, int const val, int const para1) {
-	double new_val = ((val - para1)/40)*1.025;
+	// double new_val = ((val - para1)/40)*1.025;
+	double new_val = (val - para1)*0.024414;
     return new_val;
 }
