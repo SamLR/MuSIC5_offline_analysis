@@ -20,7 +20,7 @@ def get_dead_time_from_file(file_data, file_root):
     
     
     dead_time    = exc_veto[0]/inc_veto[0]
-    sq_frac = lambda x: (x[1]/x[0])**0.5 # (dA/A) ^ 2
+    sq_frac = lambda x: (x[1]/x[0])**2 # (dA/A) ^ 2
     dead_time_er = dead_time * ((sq_frac(inc_veto) + sq_frac(exc_veto))**0.5)
     
     
@@ -43,7 +43,7 @@ def print_pretty_results(dead_time_dicts):
         u_nd_nveto    = int(dead_time_dicts[i]['u_not_d_not_veto'][0])
         u_nd_nveto_er = int(dead_time_dicts[i]['u_not_d_not_veto'][1])
         # print "%4i | %7.1f %% | %9i | %18i"%(int(i), dt, u_nd, u_nd_nveto)
-        print u"%4i | % 6.1f \xb1 %.1f | %9i \xb1 %i | %7i \xb1 %i"\
+        print u"%4i | % 6.2f \xb1 %.2f | %9i \xb1 %i | %7i \xb1 %i"\
                 %(int(i), dt, dt_er, u_nd, u_nd_er, u_nd_nveto, u_nd_nveto_er)
 
 
