@@ -12,7 +12,7 @@ from ROOT import TFile
 
 from root_utilities import get_branch, get_struct, make_hist
 
-from config_cu_data import files_info
+from config_Cu_data import files_info,tdc_data_file_name
 
 _branch_struct = "int adc, tdc0, nhits; int tdc[500];"
 _file_location_fmt = "../../../converted_data/run00%i_converted.root"
@@ -20,8 +20,7 @@ _file_location_fmt = "../../../converted_data/run00%i_converted.root"
 
 def _make_tdc_hist(name):
     """Wrapper that sets basic values"""
-    return make_hist(name, xmin=0, xmax=20000, xtitle="Time (ns)", ytitle="Count")
-    
+    return make_hist(name, mins=0, maxs=20000, titles=("Time (ns)", "Count"))
 
 
 def _get_file_name_from_id(id):
@@ -90,7 +89,7 @@ def create_tdc_hist_file(in_file_info, out_file_name):
         
         # load all the branches and create the histograms in the out file
         branches = {}
-        for ch in file_entry['ch_used']:
+        for ch in file_entry['run_conditions']['ch_used']:
             branches[ch] = get_branch(tree, ch, in_branch_struct)
             hist_name = "file_%i_ch_%s"%(id,ch)
             out_file.cd()
@@ -112,8 +111,7 @@ def main():
     # TODO move file info etc into a config file
     print "You probably don't want to do that"
     return
-    from config_Cu_data import files_info, tdc_hist_file_name, all_channels
-    create_tdc_hist_file(files_info, tdc_hist_file_name, all_channels)
+    create_tdc_hist_file(files_info, tdc_data_file_name)
 
 
 if __name__ == '__main__':

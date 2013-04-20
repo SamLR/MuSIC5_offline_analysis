@@ -21,6 +21,7 @@ def _calc_rate_and_er(a,b,c,d,a_er,b_er,c_er,d_er):
     # dz = z * sqrt( d_ab/a+b ** 2 + d_cd/c+d ** 2)
     # d_ab = sqrt(da**2 + db**2)
     # make sure everything's a float
+    print "I THINK THIS ERROR CALCULATION IS WRONG"
     a,b,c,d,a_er,b_er,c_er,d_er = [float(i) for i in (a,b,c,d,a_er,b_er,c_er,d_er)]
     
     ab, ab_er = val_and_er(a,b, a_er, b_er)

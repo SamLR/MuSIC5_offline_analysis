@@ -16,15 +16,25 @@ __bin_widths_fast      = (50,)
 
 __fitting_settings_fast = [(i,j,k) for i in __window_starts_fast 
                                    for j in __window_stops_fast 
-                                   for k in __bin_widths_fast]
+                                   for k in __bin_widths_fast]                            
 
 fitting_settings_fast = [dict(zip(__setting_names, i)) for i in __fitting_settings_fast]
 
-fitting_parameters =(("N_{B}",           lambda hist: float(hist.GetMaximum())/10),               
-                     ("N_{#mu_{Cu}}",    lambda hist: float(hist.GetMaximum())),
-                     ("#tau_{#mu_{Cu}}", lambda hist: 163.5, 1), # PDG value is  1 
-                     ("N_{#mu_{All}}",   lambda hist: float(hist.GetMaximum())/2),
-                     ("#tau_{#mu_{All}}",lambda hist: 2000))   
+__window_starts_med = (50,150)      
+__window_stops_med  = (20000,)    
+__bin_widths_med    = (50,200)
+
+__fitting_settings_med = [(i,j,k) for i in __window_starts_med 
+                                   for j in __window_stops_med 
+                                   for k in __bin_widths_med]
+
+fitting_settings_med = [dict(zip(__setting_names, i)) for i in __fitting_settings_med]
+
+fitting_parameters =(("N_{b}",   lambda hist: float(hist.GetMaximum())/10),               
+                     ("N_{c}",   lambda hist: float(hist.GetMaximum())),
+                     ("#tau_{c}",lambda hist: 163.5, 1), # PDG value is  1 
+                     ("N_{f}",   lambda hist: float(hist.GetMaximum())/2),
+                     ("#tau_{f}",lambda hist: 2000))   
 
 def settings_str(fit_lo, fit_hi, bin_width, **kargs):
     return "lo_%i_hi_%i_bins_%i"%(fit_lo, fit_hi, bin_width)

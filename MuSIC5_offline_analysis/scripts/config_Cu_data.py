@@ -2,6 +2,8 @@ u_channels = tuple(["U%i"%i for i in range(1,9)]) # range(x,y) returns x:(y-1)
 d_channels = tuple(["D%i"%i for i in range(1,6)])
 all_channels = u_channels + d_channels
 
+tdc_data_file_name = "music5_tdc_data.root"
+
 files_info = {448:{ 'run_conditions': 
                     {'deg_dz':0,  'time':9221, 'current':0.0153375  , 'acceptance':0.087, 'ch_used':d_channels},
                   },

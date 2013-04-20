@@ -58,31 +58,28 @@ def get_sim_file_and_dict(file_name,  recreate=False):
 #     return mu_yield, mu_yield_er
 
 
-# def main():
-#     # open file
-#     # for all settings? (skip this initially)
-#     #   for all hists:
-#     #       parse set up (deg thickness)
-#     #       fit it
-#     #       gather results
-#     #       draw fits 
-#     #   draw hists of fit results
-#     
-#     gStyle.SetOptFit()
-#     gStyle.SetOptStat(0)
-#     
-#     hist_dict, in_file = get_sim_file_dict(config.sim_data_file_name, True)
-#     if config.draw: canvases = {}
-#     printTraverse (hist_dict)
-#     for fit_lo, fit_hi, bin_width, in config.settings:
-#         setting_str = settings_str(fit_lo, fit_hi, bin_width)
-#         
-#         for key, data in hist_dict.items():
-#             print "*"*40, "\n", key, "\n"
-#             hist = data['hist']
-#             fit_results = fit_hist(hist, fit_lo, fit_hi, bin_width, initial_fit_params)
-#             
-#             hist_dict[key][setting_str]= {'fitting_results':fit_results}
+def main():
+    # open file
+    # for all settings? (skip this initially)
+    #   for all hists:
+    #       parse set up (deg thickness)
+    #       fit it
+    #       gather results
+    #       draw fits 
+    #   draw hists of fit results
+    
+    get_sim_file_and_dict(config.sim_data_file_name, True)
+    # if config.draw: canvases = {}
+    #     printTraverse (hist_dict)
+    #     for fit_lo, fit_hi, bin_width, in config.settings:
+    #         setting_str = settings_str(fit_lo, fit_hi, bin_width)
+    #         
+    #         for key, data in hist_dict.items():
+    #             print "*"*40, "\n", key, "\n"
+    #             hist = data['hist']
+    #             fit_results = fit_hist(hist, fit_lo, fit_hi, bin_width, initial_fit_params)
+    #             
+    #             hist_dict[key][setting_str]= {'fitting_results':fit_results}
 #         
 #     # tau_hists = {}    
 #     # for key in hist_dict:
