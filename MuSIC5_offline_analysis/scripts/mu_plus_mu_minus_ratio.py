@@ -21,7 +21,7 @@ Created on 2013-04-18 by Sam Cook
 
 """
 
-from ROOT import TFile, TF1
+from ROOT import TFile, TF1, gStyle
 from time import sleep
 from inspect import getsource
 
@@ -39,10 +39,11 @@ func_fmt = "[0] + [1]*exp(-x/[2]) + [3]*exp(-x/[4])"
 #                      Name        initial val                           lower              upper bounds
 fitting_parameters =(("N_{b}",    lambda x: float(x.GetMaximum()/50.0), lambda x: 0.0   , lambda x: x.GetMaximum()**2 ),
                      ("N_{c}",    lambda x: float(x.GetMaximum()),      lambda x: 0.0   , lambda x: x.GetMaximum()**2 ),
-                     # ("#tau_{c}", lambda x: 163.5,                      lambda x: 162.5 , lambda x: 164.2             ),
-                     ("#tau_{c}", lambda x: 163.5,                      lambda x: 50.0  , lambda x: 1000.0            ),
+                     ("#tau_{c}", lambda x: 163.5,                      lambda x: 162.5 , lambda x: 164.2             ),
+                     # ("#tau_{c}", lambda x: 163.5,                      lambda x: 50.0  , lambda x: 1000.0            ),
                      ("N_{f}",    lambda x: float(x.GetMaximum()/2.0),  lambda x: 0.0   , lambda x: x.GetMaximum()**2 ),
-                     ("#tau_{f}", lambda x: 2200.0,                     lambda x: 1000.0, lambda x: 20000.0           ))
+                     # ("#tau_{f}", lambda x: 2200.0,                     lambda x: 1000.0, lambda x: 20000.0           ))
+                     ("#tau_{f}", lambda x: 2200.0,                     lambda x: 0.0   , lambda x: 20000.0           ))
                      # ("#theta",   lambda x: 20.0,                       lambda x: 0.0   , lambda x: 20000.0           ),
                      # ("N_{sin}",  lambda x: float(x.GetMaximum()/100.0),lambda x: 0.0   , lambda x: 20000.0           ))
 
@@ -82,14 +83,17 @@ def process_g4bl_file(file_name):
 # = Process data file (top level) =
 # =================================
 @EntryLogger
-def process_data_file(file_id, channels):
+def process_data_file(file_id, channels, save_name=""):
   tree = get_tree_in_file(file_id)
   print "Tree has: {} entries".format(tree.GetEntries())
   hists = get_ch_dt_hists(tree, channels)
   can = fit_dbl_exp(hists, file_id)
+  if save_name: 
+    can.SaveAs(save_name+".svg")
+    can.SaveAs(save_name+".png")
   integrals = get_all_integrals(hists)
   print_results(hists, file_id, integrals)
-  return can, integrals
+  return integrals
 
 # =================
 # = Load the Tree =
@@ -115,7 +119,7 @@ def get_ch_dt_hists(tree, channels):
   assign_leaves(tree, channels)
   hists = make_ch_hists(tree, channels)
   for event_id, event in enumerate(tree):
-    # if (event_id>2000): # FAST
+    # if (event_id>200000): # FAST
     #   print "EARLY BREAK!"
     #   break
     if (event_id%1000000 == 0): 
@@ -226,10 +230,10 @@ def get_all_integrals(hists):
 def get_integral_and_er_for_muon_type(hist, mu_type):
   mu_type = mu_type.lower()
   
-  scale = hist.param["N_c"]   if (mu_type == "c") else hist.param["N_f"]
-  tau   = hist.param["tau_c"] if (mu_type == "c") else hist.param["tau_f"]
+  scale = hist.param["N_f"]   if (mu_type == "f") else hist.param["N_c"]
+  tau   = hist.param["tau_f"] if (mu_type == "f") else hist.param["tau_c"]
   # Root takes submatrix selections in an x1,x2,y1,y2 form (0,0)=N_b
-  sub_matrix = (1,2,1,2) if (mu_type == "c") else (3,4,3,4)
+  sub_matrix =  (3,4,3,4) if (mu_type == "f") else (1,2,1,2)
   covar_sub  = hist.covar_matrix.GetSub(*sub_matrix)
   
   func = get_tmp_func(scale, tau)
@@ -261,7 +265,6 @@ def print_results(hists, file_id, integrals):
 
 def get_table_header_and_fmt_string(data_list, header=u"", data_fmt=u"", div=u"| ", val_places="9.1", er_places="7.1"):
   header_width = int(val_places[0])+int(er_places[0])+3
-  print header, val_places, er_places
   for item in data_list:
     header   += div + u"{:^%is} "%header_width
     data_fmt += div + pretty_val_and_er(item, val_places, er_places)
@@ -283,19 +286,19 @@ def main():
               "MuSIC5/g4blout/from_hep_1Bn/"+\
               "g4bl_out_36_rotation_30435841_particles.root"
   sim_n_mu = process_g4bl_file(g4bl_file) # FAST
-
+  
+  
+  gStyle.SetOptStat(10)
+  gStyle.SetOptFit(111)
+  
   # channels = ("D1",)  # FAST
   channels = ("D1", "D2", "D3", "D4", "D5")
-  canvases  = {}
   integrals = {}
   for degZ, file_roots in data_files.items():
     for file_id in file_roots:
       print file_id
-      canvas, file_ints  = process_data_file(file_id, channels)
-      img_name = "images/fit_data_file_{}_bin_width_{}".format(file_id, bin_width)
-      canvas.SaveAs(img_name+".svg")
-      canvas.SaveAs(img_name+".png")
-      canvases[file_id]  = canvas
+      img_name = u"images/fit_data_file_{}_bin_width_{}_tau_Cu_tight".format(file_id, bin_width)
+      file_ints  = process_data_file(file_id, channels, img_name)
       integrals[file_id] = file_ints
       # return # FAST
       
@@ -308,9 +311,9 @@ def main():
   
   print "="*80
   print "G4BL predicts: "
-  for key in ("mu-", "mu+", "ratio"):
+  for key in  ("mu-", "mu+", "ratio"):
     print "\t{:^5s}: ".format(key),
-    print pretty_val_and_er("0").format(sim_n_mu[key])
+    print pretty_val_and_er(key, "8.2", "8.2").format(**sim_n_mu)
   
   print "Data says: "
   data_header, data_fmt = get_table_header_and_fmt_string( ("c", "f", "R"),\
