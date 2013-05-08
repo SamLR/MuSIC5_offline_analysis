@@ -1,0 +1,124 @@
+ FCN=1568.89 FROM MINOS     STATUS=PROBLEMS       57 CALLS         712 TOTAL
+                     EDM=4.40711e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        2.00694e-01   1.73905e-01  -2.72397e-08** at limit **
+   2  N_Cu         5.82059e+02   3.02720e+01  -2.60825e-08  -4.29599e-03
+   3  #tau_Cu      1.62500e+02   3.07400e-01  -5.61959e-05** at limit **
+   4  N_{f}        2.14011e+02   3.78191e+00   1.59646e-08  -5.94964e-01
+   5  #tau_{f}     2.19698e+03   3.01619e-03   3.01619e-03   1.42727e-05
+Info in <TCanvas::Print>: SVG file images/sim_data_mu+_5mm_Air.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu+_5mm_Air.png has been created
+ FCN=134.093 FROM MINOS     STATUS=PROBLEMS       56 CALLS         911 TOTAL
+                     EDM=9.91617e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        5.14743e-01   2.71844e-01   5.36515e-08   1.72596e-06
+   2  N_Cu         6.63375e+01   8.39773e+00   1.13673e-07  -6.85626e-06
+   3  #tau_Cu      1.62500e+02   1.67593e+00   2.01371e-04** at limit **
+   4  N_{f}        8.91290e+00   1.25132e+00  -1.44804e-08  -7.78607e-06
+   5  #tau_{f}     2.19698e+03   2.43656e-03   2.43656e-03** at limit **
+Info in <TCanvas::Print>: SVG file images/sim_data_mu-_5mm_Air.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu-_5mm_Air.png has been created
+ FCN=1460.5 FROM MINOS     STATUS=PROBLEMS       59 CALLS         782 TOTAL
+                     EDM=4.22488e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        1.16833e-01   1.91453e-01   7.46085e-08** at limit **
+   2  N_Cu         4.84902e+02   2.80969e+01   6.31967e-08  -4.94053e-03
+   3  #tau_Cu      1.62500e+02   3.50690e-01   4.41733e-05** at limit **
+   4  N_{f}        1.85595e+02   3.57473e+00  -3.58198e-08  -1.27613e+00
+   5  #tau_{f}     2.19698e+03   2.31407e-03   2.31407e-03  -9.92283e-06
+Info in <TCanvas::Print>: SVG file images/sim_data_mu+_0.5mm_Aluminium.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu+_0.5mm_Aluminium.png has been created
+ FCN=146.848 FROM MINOS     STATUS=PROBLEMS       56 CALLS         724 TOTAL
+                     EDM=3.86042e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        6.01404e-01   2.61591e-01   2.00391e-08   7.14235e-06
+   2  N_Cu         6.25483e+01   7.94427e+00   3.93419e-07  -2.22052e-05
+   3  #tau_Cu      1.62500e+02   1.69552e+00   9.80480e-05** at limit **
+   4  N_{f}        6.60362e+00   1.13084e+00   8.07392e-08  -5.05624e-05
+   5  #tau_{f}     2.19698e+03   2.38312e-03   2.38312e-03   1.89440e-06
+Info in <TCanvas::Print>: SVG file images/sim_data_mu-_0.5mm_Aluminium.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu-_0.5mm_Aluminium.png has been created
+ FCN=1533.16 FROM MINOS     STATUS=PROBLEMS       59 CALLS         691 TOTAL
+                     EDM=1.43285e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        6.96664e-01   2.08280e-01   1.11219e-08** at limit **
+   2  N_Cu         4.57406e+02   2.70961e+01   3.01406e-08   2.76667e-02
+   3  #tau_Cu      1.62500e+02   3.53200e-01  -2.62807e-06** at limit **
+   4  N_{f}        1.66378e+02   3.42138e+00  -1.19214e-08  -1.84060e-01
+   5  #tau_{f}     2.19698e+03   4.33591e-03   4.33591e-03** at limit **
+Info in <TCanvas::Print>: SVG file images/sim_data_mu+_1mm_Aluminium.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu+_1mm_Aluminium.png has been created
+Fit:0: RuntimeWarning: Abnormal termination of minimization.
+ FCN=158.03 FROM MIGRAD    STATUS=FAILED        406 CALLS         407 TOTAL
+                     EDM=0.000205512    STRATEGY= 1      ERR MATRIX APPROXIMATE
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        2.22739e-01   3.40706e-01   1.72094e-05   8.04402e-03
+   2  N_Cu         2.60517e+01   6.46221e+00   4.50326e-05  -1.11228e-03
+   3  #tau_Cu      1.62500e+02   1.20890e+00   2.99227e-02  -7.72902e-04
+   4  N_{f}        8.26101e+00   1.31937e+00   1.01922e-05  -6.17400e-03
+   5  #tau_{f}     2.19698e+03   2.28476e-03   1.72051e+00  -9.75585e-06
+Info in <TCanvas::Print>: SVG file images/sim_data_mu-_1mm_Aluminium.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu-_1mm_Aluminium.png has been created
+ FCN=1110.41 FROM MINOS     STATUS=PROBLEMS       56 CALLS        1068 TOTAL
+                     EDM=1.27218e-06    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        3.47954e-01   1.89654e-01   7.84592e-09** at limit **
+   2  N_Cu         3.00830e+02   2.19377e+01  -7.04660e-09   2.28038e-03
+   3  #tau_Cu      1.62500e+02   1.12213e+00   8.17403e-06** at limit **
+   4  N_{f}        1.10560e+02   2.83131e+00   4.08860e-09   2.05776e-01
+   5  #tau_{f}     2.19698e+03   3.43850e-03   3.43850e-03  -3.12115e-06
+Info in <TCanvas::Print>: SVG file images/sim_data_mu+_5mm_Aluminium.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu+_5mm_Aluminium.png has been created
+ FCN=103.441 FROM MINOS     STATUS=PROBLEMS       56 CALLS         702 TOTAL
+                     EDM=3.04286e-06    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_{b}        6.88204e-01   3.11055e-01  -6.20093e-07   8.61130e-06
+   2  N_Cu         1.63306e+01   5.25738e+00   3.99192e-06   6.87517e-05
+   3  #tau_Cu      1.62500e+02   1.31419e+00  -7.12949e-04** at limit **
+   4  N_{f}        3.56506e+00   1.06046e+00  -1.37362e-06   3.62988e-05
+   5  #tau_{f}     2.19698e+03   2.21864e-03   2.21864e-03   3.30704e-08
+Info in <TCanvas::Print>: SVG file images/sim_data_mu-_5mm_Aluminium.svg has been created
+Info in <TCanvas::Print>: png file images/sim_data_mu-_5mm_Aluminium.png has been created
+Degrader | charge |     count_target      |        count_f        |      int_target       |         int_f         |       int_ratio       |      count_ratio      
+1mm_Alum |  mu-   |   162.000 ± 12.7279   |   210.000 ± 14.4914   |    31.122 ± 7.7233    |   177.389 ± 28.3309   |     0.175 ± 0.0518    |     0.000 ± 0.0000    
+1mm_Alum |  mu+   |  3367.000 ± 58.0259   |  2611.000 ± 51.0979   |   546.420 ± 32.3909   |  3572.650 ± 73.4674   |     0.153 ± 0.0096    |     1.000 ± 0.0261    
+5mm_Alum |  mu-   |   104.000 ± 10.1980   |   126.000 ± 11.2250   |    19.509 ± 6.2825    |    76.553 ± 22.7712   |     0.255 ± 0.1117    |     0.000 ± 0.0000    
+5mm_Alum |  mu+   |  2188.000 ± 46.7761   |  1854.000 ± 43.0581   |   359.373 ± 26.3241   |  2374.065 ± 60.7967   |     0.151 ± 0.0117    |     1.000 ± 0.0316    
+0.5mm_Al |  mu-   |   186.000 ± 13.6382   |   228.000 ± 15.0997   |    74.721 ± 9.5222    |   141.800 ± 24.2825   |     0.527 ± 0.1125    |     0.000 ± 0.0000    
+0.5mm_Al |  mu+   |  3525.000 ± 59.3717   |  2779.000 ± 52.7162   |   579.267 ± 33.5880   |  3985.287 ± 76.7603   |     0.145 ± 0.0089    |     1.000 ± 0.0254    
+5mm_Air  |  mu-   |   186.000 ± 13.6382   |   266.000 ± 16.3095   |    79.247 ± 10.0652   |   191.387 ± 26.8696   |     0.414 ± 0.0784    |     0.000 ± 0.0000    
+5mm_Air  |  mu+   |  4054.000 ± 63.6710   |  3155.000 ± 56.1694   |   695.330 ± 36.1870   |  4595.476 ± 81.2092   |     0.151 ± 0.0083    |     1.000 ± 0.0237    
+Using counts
+Inclusive ratios
+    Degrader      |        Ratio       
+     5mm_Air      |    0.0249±0.00182  
+ 0.5mm_Aluminium  |    0.0285±0.00209  
+  1mm_Aluminium   |    0.0262±0.00206  
+  5mm_Aluminium   |    0.0250±0.00245  
+Rates
+    Degrader      |     Target rate     |      Free rate     
+     5mm_Air      |      1292±94.7      |     51910±0.0      
+ 0.5mm_Aluminium  |      1292±94.7      |     45361±0.0      
+  1mm_Aluminium   |      1125±88.4      |     42972±0.0      
+  5mm_Aluminium   |       722±70.8      |     28944±0.1      
+using integrals
+Inclusive ratios
+    Degrader      |        Ratio       
+     5mm_Air      |    0.0145±0.00184  
+ 0.5mm_Aluminium  |    0.0159±0.00202  
+  1mm_Aluminium   |    0.0072±0.00180  
+  5mm_Aluminium   |    0.0069±0.00224  
+Rates
+    Degrader      |     Target rate     |      Free rate     
+     5mm_Air      |       550±69.9      |     38071±0.2      
+ 0.5mm_Aluminium  |       519±66.1      |     32683±0.2      
+  1mm_Aluminium   |       216±53.6      |     29837±0.2      
+  5mm_Aluminium   |       135±43.6      |     19514±0.7      
