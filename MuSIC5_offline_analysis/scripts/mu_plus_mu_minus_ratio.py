@@ -36,11 +36,11 @@ bin_width = 100
 func_fmt = "[0] + [1]*exp(-x/[2]) + [3]*exp(-x/[4])"
 target_mat = "Cu"
 #                      Name        initial val                           lower              upper bounds
-fitting_parameters =(("N_{b}",            lambda x: float(x.GetMaximum()/50.0), lambda x: 0.0   , lambda x: x.GetMaximum()**2 ),
-                     ("N_"+target_mat,    lambda x: float(x.GetMaximum()),      lambda x: 0.0   , lambda x: x.GetMaximum()**2 ),
-                     ("#tau_"+target_mat, lambda x: 163.5,                      lambda x: 162.5 , lambda x: 164.2             ),
-                     ("N_{f}",            lambda x: float(x.GetMaximum()/2.0),  lambda x: 0.0   , lambda x: x.GetMaximum()**2 ),
-                     ("#tau_{f}",         lambda x: 2200.0,                     lambda x: 0.0   , lambda x: 20000.0           ))
+fitting_parameters =(("N_{b}",            lambda x: float(x.GetMaximum()/50.0), lambda x: 0.0      , lambda x: x.GetMaximum()**2 ),
+                     ("N_"+target_mat,    lambda x: float(x.GetMaximum()),      lambda x: 0.0      , lambda x: x.GetMaximum()**2 ),
+                     ("#tau_"+target_mat, lambda x: 163.5,                      lambda x: 162.5    , lambda x: 164.2             ),
+                     ("N_{f}",            lambda x: float(x.GetMaximum()/2.0),  lambda x: 0.0      , lambda x: x.GetMaximum()**2 ),
+                     ("#tau_{f}",         lambda x: 2196.9811,                  lambda x: 2196.9789, lambda x: 2196.9833         ))
 # file_fmt = 
 file_fmt = "../../../converted_data/run00{}_converted.root" if target_mat=="Cu" else "../../../converted_Mg_data/run00{}_converted.root"
 # ================
@@ -211,9 +211,9 @@ def get_all_integrals(hists):
   for hist in hists.values():
     for mu_type in total_ints:
       # count_and_er = get_integral_of_sub_fit(hist, mu_type)
-      scale = [val/bin_width for val in hist.param["N_"+mu_type]]
-      tau   = hist.param["tau_"+mu_type]
-      integral, int_er  = get_integral_and_error_on_exp(scale, tau)
+      scale = [float(val) for val in hist.param["N_"+mu_type]]
+      tau   = [float(val) for val in hist.param["tau_"+mu_type]]
+      integral, int_er = get_integral_and_error_on_exp(scale, tau)
       hist.param[mu_type] = integral, int_er
       total_ints[mu_type][0] += integral
       if integral == 0: 
@@ -239,11 +239,20 @@ def get_ratio(numerator_and_er, denom_and_er):
 
 
 def get_integral_and_error_on_exp(scale_and_er, tau_and_er, start=50, stop=20000):
-  func = get_tmp_func(scale_and_er, tau_and_er, start, stop)
-  integral = func.Integral(start, stop)
+  from math import exp
+  def exp_integral(scale, tau, start, stop):
+    return scale*tau*(exp(-float(start)/tau) - exp(-float(stop)/tau))
+  integral = exp_integral(scale_and_er[0], tau_and_er[0], start, stop)
+
   d_scale = (scale_and_er[1]/scale_and_er[0]) ** 2
   d_tau   = (tau_and_er[1]/tau_and_er[0]) ** 2
-  return integral, integral*(d_scale + d_tau)**0.5
+  return integral/bin_width, (integral*(d_scale + d_tau)**0.5)/bin_width
+  
+  # func = get_tmp_func(scale_and_er, tau_and_er, start, stop)
+  # integral = func.Integral(start, stop)
+  # d_scale = (scale_and_er[1]/scale_and_er[0]) ** 2
+  # d_tau   = (tau_and_er[1]/tau_and_er[0]) ** 2
+  # return integral, integral*(d_scale + d_tau)**0.5
 
 def get_tmp_func(scale, tau, start, stop):
   res = TF1("tmp_func", "[0]*exp(-x/[1])", start, stop)
@@ -316,7 +325,7 @@ def main():
   for degZ, file_roots in data_files.items():
     for file_id in file_roots:
       print file_id
-      img_name = u"images/fit_data_file_{}_bin_width_{}_{}_loose".format(file_id, bin_width, target_mat) if not FAST else ""
+      img_name = u"images/fit_data_file_{}_bin_width_{}_{}".format(file_id, bin_width, target_mat) if not FAST else ""
       file_ints  = process_data_file(file_id, channels, img_name)
       integrals[file_id] = file_ints
     if FAST: break
@@ -344,7 +353,7 @@ def main():
   for file_id, int_and_er in integrals.items():
     print data_fmt.format(file_id=file_id, **int_and_er)
   
-  print "\nAs normalised rates: (integral)/(time (s)*current (ns)*acceptance)"
+  print "\nAs normalised rates: (integral)/(time (s)*current (nA)*acceptance)"
   print "Mg data for 15mm is missing proton current (assumed as 0.3nA), acceptances need to be calculated"
   
   data_header, data_fmt = get_table_header_and_fmt_string( ("rate_target", "rate_f"), header=u"Run ", data_fmt=u"{file_id} ")

@@ -11,8 +11,7 @@ Created by Sam Cook on 2013-04-20.
 from ROOT import TFile, gStyle
 from root_utilities import make_hist, make_canvas
 
-# from mu_plus_mu_minus_ratio import get_func, clean_par_name, get_parameters, func_fmt,\
-from mu_plus_mu_minus_ratio import get_func, clean_par_name, get_parameters,\
+from mu_plus_mu_minus_ratio import get_func, clean_par_name, get_parameters, func_fmt,\
                                    fitting_parameters, bin_width, get_tmp_func, \
                                    get_integral_and_error_on_exp, set_param_and_error, \
                                    get_table_header_and_fmt_string, get_ratio
@@ -20,13 +19,11 @@ from mu_plus_mu_minus_ratio import get_func, clean_par_name, get_parameters,\
 from time import sleep
 
 
-# func_fmt = "[1]*exp(-x/[2])"
-# #                      Name        initial val                           lower              upper bounds
-# fitting_parameters =(("N_{f}",    lambda x: float(x.GetMaximum()/2.0),  lambda x: 0.0   , lambda x: x.GetMaximum()**2 ),
-#                      ("#tau_{f}", lambda x: 2200.0,                     lambda x: 1900.0 , lambda x: 25000.0           ))
-
 data_dir = "../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/mu+_mu_ratio/"
 target_mat = "Cu"
+
+n_p = 9e8         # number of protons simulated
+e_in_nC = 1.6e-10 # elementary charge in nC
 # ===============
 # = Load things =
 # ===============
@@ -172,7 +169,7 @@ def get_integrals(hist):
     res[mu_type] = count_and_er
   return res
 
-def calculate_ratio_for_degrader(degrader_vals, count_type="count"):
+def get_target_and_free_components(degrader_vals, count_type="count"):
   target_component = degrader_vals["mu-"][count_type][target_mat]
   
   free_component = [0.0, 0.0]
@@ -183,12 +180,20 @@ def calculate_ratio_for_degrader(degrader_vals, count_type="count"):
       free_component[0] += val
       free_component[1] += (er/val)**2
   
-  return get_ratio(target_component, free_component)
+  return target_component, free_component
+
+def calculate_ratio_for_degrader(degrader_vals, count_type="count"):
+  t, f = get_target_and_free_components(degrader_vals, count_type)
+  return get_ratio(t, f)
       
+def calculate_target_and_free_rates_for_degrader(degrader_vals, count_type="count"):
+  t, f = get_target_and_free_components(degrader_vals, count_type)
+  t, f = [(float(i[0])/(n_p*e_in_nC), float(i[1])/(n_p*e_in_nC)) for i in (t,f)]
+  return {"t":t, "f":f}
+  
   
 
 def main():
-  
   degraders = ("5mm_Air", "0.5mm_Aluminium", "1mm_Aluminium", "5mm_Aluminium")
   # degraders = ("5mm_Air",) # FAST
   mu_types   = (("mu+", 86710), ("mu-", 9009))
@@ -209,7 +214,7 @@ def main():
   ratios = {i:{target_mat:[0.0, 0.0], "free":[0.0, 0.0]} for i in degraders}
   data_list = ("count_target", "count_f", "int_target", "int_f", "int_ratio", "count_ratio")
   table_header, table_fmt = get_table_header_and_fmt_string(data_list, \
-            header=u"Degrader | charge ", data_fmt=u"{deg: ^8} | {charge: ^6} ", val_places="9.1", er_places="9.2")
+            header=u"Degrader | charge ", data_fmt=u"{deg: ^8} | {charge: ^6} ", val_places="9.3", er_places="9.4")
 
   
   print table_header
@@ -223,11 +228,29 @@ def main():
                              int_ratio    = get_ratio(ints[target_mat], ints["f"]),
                              count_ratio  = get_ratio(counts[target_mat], counts["f"]) )
   
+  print "Using counts"
   print "Inclusive ratios"
-  print "{: ^17s} | {: ^20s}".format("Degrader", "Ratio")
-  for deg in process_res:
+  print "{: ^17s} | {: ^19s}".format("Degrader", "Ratio")
+  for deg in degraders:
     # print u"\t\t Ratio {: >6.3f}".format(float(ratios[deg][0])/ratios[deg][1])
     print u"{: ^17s} | {: >9.4f}\xb1{: <9.5f}".format(deg, *calculate_ratio_for_degrader(process_res[deg]))
+    
+  print "Rates"
+  print "{: ^17s} | {: ^19s} | {: ^19s}".format("Degrader","Target rate", "Free rate")
+  for deg in degraders:
+    print u"{: ^17s} | {t[0]: >9.0f}\xb1{t[1]: <9.1f} | {f[0]: >9.0f}\xb1{f[1]: <9.1f}".format(deg, **calculate_target_and_free_rates_for_degrader(process_res[deg]))
+  
+  print "using integrals"
+  print "Inclusive ratios"
+  print "{: ^17s} | {: ^19s}".format("Degrader", "Ratio")
+  for deg in degraders:
+    # print u"\t\t Ratio {: >6.3f}".format(float(ratios[deg][0])/ratios[deg][1])
+    print u"{: ^17s} | {: >9.4f}\xb1{: <9.5f}".format(deg, *calculate_ratio_for_degrader(process_res[deg], "int"))
+    
+  print "Rates"
+  print "{: ^17s} | {: ^19s} | {: ^19s}".format("Degrader","Target rate", "Free rate")
+  for deg in degraders:
+    print u"{: ^17s} | {t[0]: >9.0f}\xb1{t[1]: <9.1f} | {f[0]: >9.0f}\xb1{f[1]: <9.1f}".format(deg, **calculate_target_and_free_rates_for_degrader(process_res[deg], "int"))
 
 if __name__=="__main__":
   main()
