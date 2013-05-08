@@ -5,7 +5,7 @@ images/sim_data_mu-_1mm_Aluminium.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/05
-CreationDate: Thu Apr 25 16:21:27 2013</desc>
+CreationDate: Tue May  7 15:25:07 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -15,9 +15,9 @@ CreationDate: Thu Apr 25 16:21:27 2013</desc>
 <rect x="57" y="33" width="453" height="262" fill="none" stroke="black"/>
 <path d="M57,295h 226v -250h 2v 239h 1v -17h 1v 15h 1v -2h 1v -1h 1v -4h 1v 9h 3v -9h 1v 9h 1v -7h 1v 7h 1v -4h 1v 7h 1v 2h 2v -5h 1v 5h 1v -2h 4v 5h 2v 2h 1v -5h 1v 1h 1v 4h 2v -4h 2v -5h 2v 9h 2v 1h 2v -3h 1v 2h 1v -2h 2v 3h 1v -1h 1v -2h 3v 2h 1v
  -2h 1v 3h 2v -3h 1v -2h 1v 4h 1v 1h 2v -1h 1v -2h 2v 3h 1v -3h 1v 3h 1v -1h 1v 1h 6v -1h 2v 1h 5v -1h 1v 1h 1v -1h 1v 1h 146" fill="none" stroke="#000099"/>
-<path d="M285,266l 2, 10l 3, 5l 2, 2l 2, 2l 2, 1l 3, 1l 2, 1l 2, 1l 3, 1h 2l 2, 1h 5l 2, 1h 7l 2, 1h 22l 3, 1h 45" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M396,294h 111" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M507,294h 2" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M285,265l 2, 13l 3, 5l 2, 2l 2, 1l 2, 1h 3l 2, 1l 2, 1h 3l 2, 1h 2l 2, 1h 5l 2, 1h 7l 2, 1h 11l 3, 1h 34l 2, 1h 18" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M396,295h 111" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M507,295h 2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="351" y="21" width="205" height="105" fill="white"/>
 <path d="M351,126h 205" fill="none" stroke="black"/>
 <path d="M556,126v -105" fill="none" stroke="black"/>
@@ -38,8 +38,8 @@ Entries
 <text x="361" y="49" fill="black" font-size="13" font-family="Times">
 &#0967;
 </text>
-<text x="482" y="47" fill="black" font-size="13" font-family="Helvetica">
- 154.9 / 48
+<text x="485" y="47" fill="black" font-size="13" font-family="Helvetica">
+   158 / 48
 </text>
 <text x="376" y="59" fill="black" font-size="13" font-family="Helvetica">
     
@@ -51,25 +51,25 @@ b
 N
 </text>
 <text x="500" y="64" fill="black" font-size="13" font-family="Helvetica">
- 0.3742
+ 0.3407
 </text>
 <text x="490" y="64" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="441" y="64" fill="black" font-size="13" font-family="Helvetica">
- 0.8902 
+ 0.2227 
 </text>
 <text x="361" y="77" fill="black" font-size="13" font-family="Helvetica">
 N_Cu     
 </text>
 <text x="515" y="79" fill="black" font-size="13" font-family="Helvetica">
- 8.44
+ 6.46
 </text>
 <text x="505" y="79" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="464" y="79" fill="black" font-size="13" font-family="Helvetica">
- 17.75 
+ 26.05 
 </text>
 <text x="366" y="94" fill="black" font-size="13" font-family="Helvetica">
 _Cu  
@@ -78,7 +78,7 @@ _Cu
 &#0964;
 </text>
 <text x="523" y="94" fill="black" font-size="13" font-family="Helvetica">
- 1.0
+ 1.2
 </text>
 <text x="512" y="94" fill="black" font-size="13" font-family="Times">
 &#0177;
@@ -95,14 +95,14 @@ f
 <text x="361" y="104" fill="black" font-size="13" font-family="Helvetica">
 N
 </text>
-<text x="515" y="109" fill="black" font-size="13" font-family="Helvetica">
- 2.45
+<text x="508" y="109" fill="black" font-size="13" font-family="Helvetica">
+ 1.319
 </text>
-<text x="505" y="109" fill="black" font-size="13" font-family="Times">
+<text x="497" y="109" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="465" y="109" fill="black" font-size="13" font-family="Helvetica">
- 11.03 
+<text x="456" y="109" fill="black" font-size="13" font-family="Helvetica">
+ 8.261 
 </text>
 <text x="369" y="121" fill="black" font-size="13" font-family="Helvetica">
  
@@ -113,14 +113,14 @@ f
 <text x="361" y="121" fill="black" font-size="13" font-family="Times">
 &#0964;
 </text>
-<text x="508" y="124" fill="black" font-size="13" font-family="Helvetica">
- 310.4
+<text x="523" y="124" fill="black" font-size="13" font-family="Helvetica">
+ 0.0
 </text>
-<text x="497" y="124" fill="black" font-size="13" font-family="Times">
+<text x="512" y="124" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="456" y="124" fill="black" font-size="13" font-family="Helvetica">
-  1332 
+<text x="472" y="124" fill="black" font-size="13" font-family="Helvetica">
+  2197 
 </text>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="424" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -277,8 +277,8 @@ Entries
 <text x="361" y="49" fill="black" font-size="13" font-family="Times">
 &#0967;
 </text>
-<text x="482" y="47" fill="black" font-size="13" font-family="Helvetica">
- 154.9 / 48
+<text x="485" y="47" fill="black" font-size="13" font-family="Helvetica">
+   158 / 48
 </text>
 <text x="376" y="59" fill="black" font-size="13" font-family="Helvetica">
     
@@ -290,25 +290,25 @@ b
 N
 </text>
 <text x="500" y="64" fill="black" font-size="13" font-family="Helvetica">
- 0.3742
+ 0.3407
 </text>
 <text x="490" y="64" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="441" y="64" fill="black" font-size="13" font-family="Helvetica">
- 0.8902 
+ 0.2227 
 </text>
 <text x="361" y="77" fill="black" font-size="13" font-family="Helvetica">
 N_Cu     
 </text>
 <text x="515" y="79" fill="black" font-size="13" font-family="Helvetica">
- 8.44
+ 6.46
 </text>
 <text x="505" y="79" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="464" y="79" fill="black" font-size="13" font-family="Helvetica">
- 17.75 
+ 26.05 
 </text>
 <text x="366" y="94" fill="black" font-size="13" font-family="Helvetica">
 _Cu  
@@ -317,7 +317,7 @@ _Cu
 &#0964;
 </text>
 <text x="523" y="94" fill="black" font-size="13" font-family="Helvetica">
- 1.0
+ 1.2
 </text>
 <text x="512" y="94" fill="black" font-size="13" font-family="Times">
 &#0177;
@@ -334,14 +334,14 @@ f
 <text x="361" y="104" fill="black" font-size="13" font-family="Helvetica">
 N
 </text>
-<text x="515" y="109" fill="black" font-size="13" font-family="Helvetica">
- 2.45
+<text x="508" y="109" fill="black" font-size="13" font-family="Helvetica">
+ 1.319
 </text>
-<text x="505" y="109" fill="black" font-size="13" font-family="Times">
+<text x="497" y="109" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="465" y="109" fill="black" font-size="13" font-family="Helvetica">
- 11.03 
+<text x="456" y="109" fill="black" font-size="13" font-family="Helvetica">
+ 8.261 
 </text>
 <text x="369" y="121" fill="black" font-size="13" font-family="Helvetica">
  
@@ -352,14 +352,14 @@ f
 <text x="361" y="121" fill="black" font-size="13" font-family="Times">
 &#0964;
 </text>
-<text x="508" y="124" fill="black" font-size="13" font-family="Helvetica">
- 310.4
+<text x="523" y="124" fill="black" font-size="13" font-family="Helvetica">
+ 0.0
 </text>
-<text x="497" y="124" fill="black" font-size="13" font-family="Times">
+<text x="512" y="124" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="456" y="124" fill="black" font-size="13" font-family="Helvetica">
-  1332 
+<text x="472" y="124" fill="black" font-size="13" font-family="Helvetica">
+  2197 
 </text>
 <text x="152" y="17" fill="black" font-size="17" font-family="Helvetica">
 9009 mu-s at a 1mm_Aluminium
