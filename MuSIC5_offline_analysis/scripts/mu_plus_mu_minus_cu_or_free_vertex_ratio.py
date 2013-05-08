@@ -19,7 +19,8 @@ from mu_plus_mu_minus_ratio import get_func, clean_par_name, get_parameters, fun
 from time import sleep
 
 
-data_dir = "../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/mu+_mu_ratio/"
+# data_dir = "../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/mu+_mu_ratio/"
+data_dir = "../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/100k_mu/"
 target_mat = "Cu"
 
 n_p = 9e8         # number of protons simulated
@@ -126,6 +127,7 @@ def fill_hist(hist, entry):
       continue
     
     else:
+      # FIXME Possible source of problems - double count on electron times
       dt = time-u_muon_times[parent_id]
       hist.Fill(dt)
       # if dt < 10:
@@ -196,7 +198,8 @@ def calculate_target_and_free_rates_for_degrader(degrader_vals, count_type="coun
 def main():
   degraders = ("5mm_Air", "0.5mm_Aluminium", "1mm_Aluminium", "5mm_Aluminium")
   # degraders = ("5mm_Air",) # FAST
-  mu_types   = (("mu+", 86710), ("mu-", 9009))
+  # mu_types   = (("mu+", 86710), ("mu-", 9009))
+  mu_types   = (("mu+", 100000), ("mu-", 100000))
   # mu_types   = (("mu+", 86710),) # FAST
   
   gStyle.SetOptStat(10)
@@ -206,7 +209,7 @@ def main():
   for deg in degraders:
     for mu_charge, g4bl_count in mu_types:
       tree = get_tree(deg, mu_charge, g4bl_count)
-      save_name = "images/sim_data_{}_{}".format(mu_charge, deg)
+      save_name = "images/sim_data_{}_{}_{}".format(mu_charge, deg, g4bl_count)
       # save_name = ""
       process_tree(tree, save_name)
       process_res[deg][mu_charge] = {"count":tree.muon_counts, "int":tree.integrals}
@@ -252,5 +255,6 @@ def main():
   for deg in degraders:
     print u"{: ^17s} | {t[0]: >9.0f}\xb1{t[1]: <9.1f} | {f[0]: >9.0f}\xb1{f[1]: <9.1f}".format(deg, **calculate_target_and_free_rates_for_degrader(process_res[deg], "int"))
 
+  print "The double count of times from some electrons is a possible source of problems"
 if __name__=="__main__":
   main()

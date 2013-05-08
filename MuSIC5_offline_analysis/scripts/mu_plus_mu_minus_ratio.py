@@ -188,10 +188,9 @@ def get_func(hist, name):
     
   return func
 
-def clean_par_name(name):
-  name = name.replace("}", "")
-  name = name.replace("{", "")
-  name = name.replace("#", "")
+def clean_par_name(string, char_to_del="{}#"):
+  for char in char_to_del:
+    name = name.replace(char, "")
   return name
 
 def get_parameters(func):
