@@ -22,6 +22,7 @@ class ValueWithError(object):
     self.value = float(value)
     self.error = float(error)
     self.print_fmt = print_fmt
+    # TODO Auto generate print_fmt 
   
   def __repr__(self):
     return "ValueWithError(value={:f},error={:f})".format(self.value, self.error)
