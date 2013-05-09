@@ -24,6 +24,12 @@ class ValueWithError(object):
     self.print_fmt = print_fmt
     # TODO Auto generate print_fmt 
   
+  def __float__(self):
+    """
+    Overload the 'float' function so we get just the value
+    """
+    return self.value
+  
   def __repr__(self):
     return "ValueWithError(value={:f},error={:f})".format(self.value, self.error)
     
@@ -197,6 +203,11 @@ def test_division():
   
   
 
+@TestLogger
+def test_float():
+  a = ValueWithError(10, 2)
+  print float(a)
+  assert type(float(a))==float
 def main():
   test_str()
   test_repr()
@@ -204,6 +215,7 @@ def main():
   test_subtraction()
   test_multiplication()
   test_division()
+  test_float()
 
 if __name__=="__main__":
   main()
