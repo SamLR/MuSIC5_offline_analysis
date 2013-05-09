@@ -2,31 +2,6 @@
 from ROOT import TFile, TCanvas, TF1
 from ValueWithError import ValueWithError
 
-def first_upstream_step_of_a_mu_plus(entry, hit):
-  return check_pdgid_location_and_first_step(entry, hit, pdgid=-13, counter=1)
-
-def first_downstream_step_of_an_e_plus(entry, hit):
-  return check_pdgid_location_and_first_step(entry, hit, pdgid=-11, counter=3)
-
-def check_pdgid_location_and_first_step(entry, hit, pdgid, counter):
-  pdgid = (entry.pdgid[hit] == pdgid)
-  counter = (entry.counter[hit] == counter)
-  first_step = (entry.first_step[hit])
-  return pdgid and counter and first_step
-  
-def get_hits_with(entry, filter_func):
-  """
-  Iterates over the hits in the entry and returns a list
-  containing the results of calling the filter function, 
-  which is expected to take the entry and a hit index as 
-  arguments.
-  """
-  res = []
-  for hit in range(entry.nhit):
-    val = filter_func(entry, hit)
-    if val: res.append(val)
-  return res
-  
 def get_func_with_named_initialised_param(name, hist, func_fmt, initial_settings):
   func = TF1(name, func_fmt, 50, 20000)
                        
@@ -48,3 +23,30 @@ def get_fit_parameters(func):
     par_name = clean_par_name( func.GetParName(par_id) )
     res[par_name] = ValueWithError( func.GetParameter(par_id), func.GetParError(par_id) )
   return res
+    
+def get_file_root(filename):
+  filename = filename.split("/")[-1]
+  return filename.split(".")[0]
+
+def get_hits_with(entry, filter_funcs, record_param):
+  """
+  Iterates over the hits in the entry and returns a list
+  containing the results of calling the filter function, 
+  which is expected to take the entry and a hit index as 
+  arguments.
+  """
+  res = []
+  for hit in range(entry.nhit):
+    pass_filter = [func(entry, hit) for func in filter_funcs]
+    if all(pass_filter):
+      val = [getattr(entry, param)[hit] for param in record_param]
+      res.append(val)
+  return res
+
+def get_pid_counter_filter(pid, counter):
+  p_t_pairs = (("pdgid", pid), ("counter", counter), ("first_step", True))
+  return [get_filter_function(p,t) for p,t in p_t_pairs]
+
+def get_filter_function(param, test=None):
+  return lambda entry, hit: ((getattr(entry, param)[hit])==test)
+  

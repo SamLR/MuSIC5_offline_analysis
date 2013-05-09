@@ -6,36 +6,64 @@
  Copyright 2013 Sam Cook. All rights reserved.
 """
 
-from analysis_core import first_upstream_step_of_a_mu_plus, \
-                          first_downstream_step_of_an_e_plus
+from analysis_core import get_hits_with, get_pid_counter_filter
 from root_utilities import get_tree_from_file
+from ValueWithError import ValueWithError
 
-def get_mu_decay_count_from_tree(tree):
-  count = 0
+def get_mu_decay_count_from_tree(tree, mu_type):
+  res = {"f":0, } if mu_type=="mu+" else {"f":0, "cu":0}
   for entry in tree:
-    u_mu_ids = []
-    d_e_ids_and_vertex = []
-    for hit in range(entry.nhit):
-      if first_upstream_step_of_a_mu_plus(entry, hit):
-        u_mu_ids.append(entry.trkid[hit])
-      elif first_downstream_step_of_an_e_plus(entry,hit):
-        origin = (entry.parentid[hit], entry.vertex_vol[hit])
-        d_e_ids_and_vertex.append(origin)
-    
-    for parent, vertex in d_e_ids_and_vertex:
-      if parent in u_mu_ids:
-        # currently ignoring vertex info
-        count += 1
-        u_mu_ids.remove(parent)
-  return count
+    counts = find_n_decay_pairs_in_entry(entry, mu_type)
+    for key in counts:
+      res[key] += counts[key]
+  return res
   
-def main():
-  treename="truth"
-  filename="/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/100k_mu/mu+_5mm_Air_100000.root"
-  tree = get_tree_from_file(treename, filename)
-  n_decays = get_mu_decay_count_from_tree(tree)
-  print n_decays, n_decays**0.5
-  print "ADD 50ns exclusion"
+def get_decay_type(mu_type, decay_vertex):
+  if mu_type=="mu-" and decay_vertex==2:
+    return "cu"
+  else:
+    return "f"
+    
+def find_n_decay_pairs_in_entry(entry, mu_type):
+  """
+  Finds the number of muon/electron decay pairs with a 
+  time difference of greater than 50 ns
+  """
+  # Get all the upstream muons and downstream electrons
+  
+  if mu_type=="mu-":
+    res = {"f":0, "cu":0}
+    mu_pid, e_pid = (13, 11) 
+  elif mu_type=="mu+":
+    res = {"f":0, }
+    mu_pid, e_pid = (-13, -11)
+    
+  muons     = get_hits_with(entry, get_pid_counter_filter(mu_pid, 1),\
+                            ("trkid", "tof"))
+  electrons = get_hits_with(entry, get_pid_counter_filter(e_pid,  3),\
+                            ("parentid", "vertex_vol", "tof"))
 
+  for e_parent, e_mu_vertex, e_time in electrons:
+    parent_muon = filter(lambda mu: mu[0]==e_parent, muons)
+    if parent_muon and (e_time - parent_muon[0][1] > 50):  
+      key = get_decay_type(mu_type, e_mu_vertex)
+      res[key] += 1
+      muons.remove(parent_muon[0])
+  return res
+  
+def run_count_analysis(filename, mu_type):
+  tree = get_tree_from_file("truth", filename)
+  counts  = get_mu_decay_count_from_tree(tree, mu_type)
+  res = {}
+  for key, n_decays in counts.items():
+    res[key] = ValueWithError(n_decays, n_decays**0.5, print_fmt="{: >6.0f} +/- {: <5.0f}")
+  return res
+
+def main():
+  mu_type="mu-"
+  # mu_type="mu+"
+  filename="/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/100k_mu/%s_5mm_Air_100000.root"%mu_type
+  for key, val in run_count_analysis(filename, mu_type).items():
+    print key, val
 if __name__=="__main__":
   main()
