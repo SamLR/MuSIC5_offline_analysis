@@ -116,15 +116,14 @@ def get_ch_dt_hists(tree, channels):
   assign_leaves(tree, channels)
   hists = make_ch_hists(tree, channels)
   for event_id, event in enumerate(tree):
-    if (event_id>200000 and FAST): # FAST
+    if (event_id>200000 and FAST): 
       print "EARLY BREAK!"
       break
     if (event_id%1000000 == 0): 
       print event_id
-    else:
-      for ch in channels:
-        for hit in range(int(tree.nHIT[ch]() )):
-          hists[ch].Fill( tree.TDC[ch](hit) )
+    for ch in channels:
+      for hit in range(int(tree.nHIT[ch]() )):
+        hists[ch].Fill( tree.TDC[ch](hit) )
   return hists
 
 def assign_leaves(tree, channels):

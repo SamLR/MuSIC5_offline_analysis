@@ -6,7 +6,7 @@
  Copyright 2013 Sam Cook. All rights reserved.
 """
 
-from analysis_core import get_hits_with, get_pid_counter_filter
+from analysis_core import get_hits_with, get_pid_counter_filter, get_decay_type
 from root_utilities import get_tree_from_file
 from ValueWithError import ValueWithError
 
@@ -18,12 +18,6 @@ def get_mu_decay_count_from_tree(tree, mu_type):
       res[key] += counts[key]
   return res
   
-def get_decay_type(mu_type, decay_vertex):
-  if mu_type=="mu-" and decay_vertex==2:
-    return "cu"
-  else:
-    return "f"
-    
 def find_n_decay_pairs_in_entry(entry, mu_type):
   """
   Finds the number of muon/electron decay pairs with a 
@@ -62,7 +56,8 @@ def run_count_analysis(filename, mu_type):
 def main():
   mu_type="mu-"
   # mu_type="mu+"
-  filename="/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/100k_mu/%s_5mm_Air_100000.root"%mu_type
+  # filename="/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/100k_mu/%s_5mm_Air_100000.root"%mu_type
+  filename="/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/1M_mu/%s_5mm_Air_1000000.root"%mu_type
   for key, val in run_count_analysis(filename, mu_type).items():
     print key, val
 if __name__=="__main__":
