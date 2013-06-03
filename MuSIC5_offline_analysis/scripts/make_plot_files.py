@@ -110,13 +110,17 @@ def fill_sim_hists (tree, hist, charge):
     if is_break_time(entry_id, tenth): break
     fill_hist_with_mu_e_times(hist, entry, charge)
 
+def generate_histograms(run_ids, degraders):
+  
+  for r in run_ids:
+    generate_data_histograms(r)
+  
+  for d in degraders:
+    generate_sim_histograms(d)
+
 def main():
+  generate_histograms(run_ids=data_run_ids, degraders=simulated_degraders)
   
-  for run_id in data_run_ids:
-    generate_data_histograms(run_id)
-  
-  for degrader in simulated_degraders:
-    generate_sim_histograms(degrader)
 
 if __name__=="__main__":
   main()
