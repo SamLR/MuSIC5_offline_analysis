@@ -46,6 +46,7 @@ def find_n_decay_pairs_in_entry(entry, mu_type):
   return res
   
 def run_count_analysis(filename, mu_type):
+  print "Counting"
   tree = get_tree_from_file("truth", filename)
   counts  = get_mu_decay_count_from_tree(tree, mu_type)
   res = {}

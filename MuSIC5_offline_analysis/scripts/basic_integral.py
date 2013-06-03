@@ -16,12 +16,14 @@ from ROOT import gStyle
 from time import sleep
 from math import exp
 
-def create_histogram_from_tree(name, tree, bin_width, mu_type):
+def create_histogram_from_tree(name, tree, bin_width, mu_type, fast=False):
   lb, ub = -20000, 20000
   nbins = (ub - lb)/bin_width
   hist = make_hist(name, mins=lb,maxs=ub, titles=["Time (ns)", "Count"], bins=nbins)
   hist.bin_width = bin_width
-  for entry in tree:
+  for entry_id, entry in enumerate(tree):
+    if fast and entry_id> 2000:
+      break
     time = get_mu_e_dt_for_entry(entry, mu_type)
     for t in time:
       hist.Fill(t)
@@ -53,20 +55,21 @@ def get_mu_e_dt_for_entry(entry, mu_type):
       muons.remove(parent_muon[0])
   return res
 
-def fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options="MER"):
+def fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options="MER",img_name=""):
   func = get_func_with_named_initialised_param(func_name, hist, func_fmt, initial_settings)
-  hist.Fit(func, fit_options)
+  
+  if img_name:
+    canvas = make_canvas(img_name, resize=True)
+    hist.Draw()
+    hist.Fit(func, fit_options)
+    canvas.Update()
+    canvas.SaveAs(img_name+".png")
+    canvas.SaveAs(img_name+".svg")
+  else:
+    hist.Fit(func, fit_options+"N")
+
   hist.func = func
   hist.fit_param = get_fit_parameters(func)
-
-def save_hist_with_fit(hist, name, save_image):
-  canvas = make_canvas(name)
-  hist.Draw()
-  hist.func.Draw("SAMES")
-  canvas.Update()
-  canvas.SaveAs(save_image+".png")
-  canvas.SaveAs(save_image+".svg")
-  sleep(10)
 
 def get_integrals_from_histogram_for_keys(hist, keys, l_bound=50, u_bound=20000):
   res = {}
@@ -115,7 +118,7 @@ def get_fit_func_and_settings_for_muon_type(mu_type, fit_type):
     tau_cu  = ("#tau_{cu}", lambda x: cu_vals[0]    , lambda x: cu_vals[1], lambda x: cu_vals[2])
     return "[0]*exp(-x/[1]) + [2]*exp(-x/[3])", (n_cu, tau_cu, n_f, tau_f)
 
-def run_basic_sim_analysis(filename, mu_type, fit_type="tight", save_image="", bin_width=10):
+def run_basic_sim_analysis(filename, mu_type, fit_type, bin_width, save_image="", fast=False):
   """
   Gets the tree from file, opens it, creates a histogram of dts
   then fits it and if required, draws it. Returns the integrals
@@ -125,28 +128,15 @@ def run_basic_sim_analysis(filename, mu_type, fit_type="tight", save_image="", b
   func_fmt, initial_settings = get_fit_func_and_settings_for_muon_type(mu_type,fit_type)
   
   tree = get_tree_from_file("truth", filename)
-  hist = create_histogram_from_tree(hist_name, tree, bin_width, mu_type)
+  hist = create_histogram_from_tree(hist_name, tree, bin_width, mu_type, fast)
   
-  if save_image:
-    canvas = make_canvas(hist_name)
-    hist.Draw()
-    canvas.Update()
-    fit_options = "MER"
-  else:
-    fit_options = "MERN"
-  # fit_options = "MER" if save_image else "MERN"
-  fit_histogram(hist, func_fmt, initial_settings, fit_options, hist_name)
+  fit_options = "LIMER"
+  fit_histogram(hist, func_fmt, initial_settings, func_name=hist_name, fit_options=fit_options, img_name=save_image)
   
-  # if save_image: save_hist_with_fit(hist, hist_name, save_image)
-  if save_image: 
-    hist.func.Draw("SAMES")
-    canvas.Update()
-    canvas.SaveAs(save_image+".png")
-    canvas.SaveAs(save_image+".svg")
-    sleep(10)
+  sleep(10)
   
   keys = ("f",) if mu_type == "mu+" else ("f", "cu") 
-  return get_integrals_from_histogram_for_keys(hist, keys=keys)
+  return get_integrals_from_histogram_for_keys(hist, keys=keys), hist.fit_param
   
 def main():
   treename="truth"

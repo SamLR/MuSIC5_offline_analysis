@@ -28,6 +28,8 @@ def get_fit_parameters(func):
   for par_id in range(func.GetNpar()):
     par_name = clean_par_name( func.GetParName(par_id) )
     res[par_name] = ValueWithError( func.GetParameter(par_id), func.GetParError(par_id) )
+  res['chi2'] = func.GetChisquare()
+  res['ndf'] = func.GetNDF()
   return res
     
 def get_file_root(filename):
@@ -61,3 +63,28 @@ def get_decay_type(mu_type, decay_vertex):
     return "cu"
   else:
     return "f"
+    
+def fill_hist_with_mu_e_times(hist,entry, mu_type):
+  """
+  Returns the first hits by muon and an electron 
+  in the up and downstream counters respectively
+  """
+  # Get all the upstream muons and downstream electrons
+  
+  if "-" in mu_type:
+    assert "+" not in mu_type
+    mu_pid, e_pid = (13, 11) 
+  elif "+" in mu_type:    
+    assert "-" not in mu_type
+    mu_pid, e_pid = (-13, -11)
+    
+  muons     = get_hits_with(entry, get_pid_counter_filter(mu_pid, 1),\
+                            ("trkid", "tof"))
+  electrons = get_hits_with(entry, get_pid_counter_filter(e_pid,  3),\
+                            ("parentid", "tof"))
+  res = []
+  for e_parent, e_time in electrons:
+    parent_muon = filter(lambda mu: mu[0]==e_parent, muons)
+    if parent_muon and (e_time - parent_muon[0][1] > 50):  
+      hist.Fill(e_time - parent_muon[0][1])
+      muons.remove(parent_muon[0])

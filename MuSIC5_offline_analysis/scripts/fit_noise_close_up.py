@@ -16,14 +16,13 @@ from analysis_core import get_func_with_named_initialised_param, get_fit_paramet
 
 
 # Global values
-fast=False
-debug=False
-# debug=True
+# debug=False
+debug=True
 # fast=True
+fast=False
 EntryLogger.enabled=True
 data_dir = "../../../converted_Cu_data"
 file_fmt = "{dir}/run00{file_id}_converted.root"
-out_file_name = "noise_fit_info.txt"
 #            filename  target info (mm)
 run_info = ({"file_id":"448", "target_dz":5,   "target_mat":"Air"},
             {"file_id":"451", "target_dz":0.5, "target_mat":"Aluminium"},
@@ -37,13 +36,14 @@ run_info = ({"file_id":"448", "target_dz":5,   "target_mat":"Air"},
             
 channels=("D5", "D4", "D3", "D2", "D1") if not debug else ("D1",)
 l_bound=8000
-u_bound=20000
-# func_fmt = "[0] + [1] * sin((2*pi/[2])*x) * sin((2*pi/[3])*x)"
-func_fmt = "[0] + [1] * sin((2*pi/[2])*(x-[3])) * sin((2*pi/[4])*(x-[5]))"
+u_bound=9000
+func_fmt = "[0] + [1] * sin((2*pi/[2])*x)"
+# func_fmt = "[0] + [1] * sin((2*pi/[2])*(x-[3]))"
+# func_fmt = "[0] + [1] * sin((2*pi/[2])*(x-[3])) * sin((2*pi/[4])*(x-[5]))"
 
 @EntryLogger
 # 440000 TDC level number of bins
-def init_tree_and_hists(run_info, bins=400):
+def init_tree(run_info, bins=300):
   filename = file_fmt.format(dir=data_dir, file_id=run_info["file_id"])
   
   tree = get_tree_from_file("Trigger", filename)
@@ -67,73 +67,70 @@ def fill_hists(tree):
 
 def get_initial_settings(hist):
   h_max = float(hist.GetMaximum())
-  print "h max",h_max
   #       par name        initial val          minimum value      maximum value
   res = (("N_{b}",    lambda x: h_max/10.0, lambda x:    1.0, lambda x:   h_max), # Scale factor
-         ("N_{sin}",  lambda x: h_max/20.0, lambda x:    1.0, lambda x: h_max/3), # Scale factor
-         ("T_{f}",    lambda x:       59.3, lambda x:   55.0, lambda x:    65.0), # fast period
-         # ("T_{f}",    lambda x:       78.4, lambda x:    0.0, lambda x:   100.0), # fast period
-         ("#phi_{f}", lambda x:       30.0, lambda x:    0.0, lambda x:    65.0), # fast phase
-         ("T_{s}",    lambda x:     5130.0, lambda x: 5120.0, lambda x:  5140.0), # slow period
-         ("#phi_{s}", lambda x:     1700.0, lambda x:    0.0, lambda x:  5200.0)) # slow phase
+         ("N_{sin}",  lambda x: h_max/20.0, lambda x:    1.0, lambda x:   h_max), # Scale factor
+         ("T_{f}",    lambda x:       52.5, lambda x:    0.0, lambda x:  2000.0)) # period
+         # ("#phi_{f}", lambda x:        0.0, lambda x:   -0.6, lambda x:     0.6)) # phase  
+         # ("T_{f}",    lambda x:     2200.0, lambda x:    0.0, lambda x: 20000.0), # period
+         # ("#phi_{f}", lambda x:        0.0, lambda x:   -0.6, lambda x:     0.6)) # phase
   return res       
 
-def fit_hist(hist, fit_options="LIMER"):
+
+# def fit_hist(hist, fit_options="ILEMR"):
+def fit_hist(hist, fit_options="LR"):
+  # I: fit using integral of func (not value @ centre, better for rapid function)
+  # L: Loglikelihood (better @ low stats)
+  # V: verbose mode
+  # E: better errors
+  # M: More, improve fit results (looks for alt local minima)
+  # R: fit to function range
   def get_fit_goodness(func):
     return  (func.GetChisquare()/func.GetNDF())
   initial_settings = get_initial_settings(hist)
   fit_func = get_func_with_named_initialised_param("f_"+hist.GetTitle(), hist, 
                                                    func_fmt, initial_settings,
                                                    l_bound, u_bound)
-  fit_func.SetNpx(100000)
+  fit_func.SetNpx(10000) # number of points for drawing the function 
   hist.Fit(fit_func, fit_options)
+  # best_t = t = initial_settings[2][1](hist)
+  # d=0.05
+  # min_goodness = goodness = get_fit_goodness(fit_func)
+  # while (goodness)>3.0:
+  #   t+=d
+  #   fit_func.SetParameter(2,t)
+  #   hist.Fit(fit_func, fit_options)
+  #   goodness = get_fit_goodness(fit_func)
+  #   if goodness < min_goodness: 
+  #     min_goodness=goodness
+  #     best_t = t
+  #   if t > (initial_settings[2][1](hist)+ d*100):
+  #     print "breaking fit loop, best fit {} for t={}".format(min_goodness, best_t)
+  #     break 
+      
   hist.fit_func = fit_func
   hist.fit_param = get_fit_parameters(fit_func)
-
-def save_fit_info(hist):
-  table_fmt = "{run} | {ch} | "+\
-             "{N_b.value:>5.0f}\xb1{N_b.error:<3.1f} | "     +\
-             "{N_sin.value:>4.0f}\xb1{N_sin.error:<3.1f} | " +\
-             "{T_f.value:>4.1f}\xb1{T_f.error:<3.1f} | "     +\
-             "{phi_f.value:>4.1f}\xb1{phi_f.error:<3.1f} | " +\
-             "{T_s.value:>4.0f}\xb1{T_s.error:<3.1f} | "     +\
-             "{phi_s.value:>4.0f}\xb1{phi_s.error:<3.1f} | " +\
-             "{chi2:>5.0f} / {ndf:<4d}\n"
-  with open(out_file_name, "a") as out_file:
-    res = table_fmt.format(run=hist.file_id, ch=hist.ch, **hist.fit_param)
-    out_file.write(res)
-
-def save_header():
-  header = ("run",    "ch",    "N_b",  "N_sin",  "T_f",  "phi_f",   "T_s", "phi_s", "Chi^2", "NDF")   
-  table_fmt = "{:3s} | {:2s} | {:^9s} | {:^8s} | {:^8s} | {:^9s} | {:^9s} | {:^10s} | {:^5s} / {:^4s}\n"
-  with open(out_file_name, "w") as out_file:
-    res = table_fmt.format(*header)
-    out_file.write(res)
 
 def main():
   gStyle.SetOptStat(10)
   gStyle.SetOptFit(111)
   
-  save_header()
   for run in run_info:
-    tree = init_tree_and_hists(run)
+    tree = init_tree(run)
     
     fill_hists(tree)
     
-    for ch in channels:
-      hist = tree.hists[ch]
+    for hist in tree.hists.values():
       print hist.GetTitle(), hist.GetEntries()
       can = make_canvas(hist.GetTitle(),resize=True)
-      hist.Draw("E")
+      hist.Draw()
       fit_hist(hist)
-      # print "\nChi^2/NDF {:.1f} / {}\n\n".format(hist.fit_func.GetChisquare(), hist.fit_func.GetNDF()) 
+      print "\nChi^2/NDF {:.1f} / {}".format(hist.fit_func.GetChisquare(), hist.fit_func.GetNDF()) 
       can.Update()
-      img_name = "images/noise_fits/{}_{}_noise_fit".format(hist.file_id, hist.ch)
-      can.SaveAs(img_name+".png")
-      can.SaveAs(img_name+".svg")
+      can.SaveAs("images/noise_fit_zoom.png")
       if debug:
-        sleep(2)
-      save_fit_info(hist)
+        sleep(5)
+    
 
 if __name__=="__main__":
   main()
