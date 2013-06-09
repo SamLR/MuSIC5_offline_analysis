@@ -4,17 +4,21 @@ from ValueWithError import ValueWithError
 
 def fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options="MER"):
   func = get_func_with_named_initialised_param(func_name, hist, func_fmt, initial_settings)
+  func.SetNpx(10000)
   hist.Fit(func, fit_options)
   hist.func = func
   hist.fit_param = get_fit_parameters(func)
 
 def get_func_with_named_initialised_param(name, hist, func_fmt, initial_settings,l_bound=50,u_bound=20000):
   func = TF1(name, func_fmt, l_bound, u_bound)
-                       
   for parN, (name, initial, lower_limit, upper_limit) in enumerate(initial_settings):
     func.SetParName(parN, name)
-    func.SetParameter(parN, float(initial(hist)))
-    func.SetParLimits(parN, float(lower_limit(hist)), float(upper_limit(hist)))
+    if hasattr(initial,"__call__"):
+      func.SetParameter(parN, initial(hist))
+      func.SetParLimits(parN, lower_limit(hist), upper_limit(hist))
+    else:
+      func.SetParameter(parN, initial)
+      func.SetParLimits(parN, lower_limit, upper_limit)
     
   return func
 

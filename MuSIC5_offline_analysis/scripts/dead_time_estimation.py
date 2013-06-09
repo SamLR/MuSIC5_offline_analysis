@@ -58,7 +58,7 @@ def get_pretty_results(dead_time_dicts):
   return res
 
 def get_dead_times_for_run_ids(run_ids):
-  return {r:get_dead_time_from_file(r) for r in run_ids}
+  return {r:get_dead_time_from_file(int(r)) for r in run_ids}
 
 def main():
   res = get_dead_times_for_run_ids(run_ids)

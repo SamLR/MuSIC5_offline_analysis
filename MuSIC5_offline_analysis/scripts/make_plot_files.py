@@ -27,11 +27,14 @@ l_bound, u_bound = -20000.0, 20000.0
 neg_pos_ratio = 9009.0/86710.0
 
 in_data_file_fmt="../../../converted_Cu_data/run00{run_id}_converted.root"
-in_sim_file_fmt="../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/500k_mu/"+\
-                "mu{charge}_{degrader}_500000.root"
+# in_sim_file_fmt="../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/500k_mu/"+\
+#                 "mu{charge}_{degrader}_500000.root"
+in_sim_file_fmt="../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/final/"+\
+                "final_st_Copper_0.5mm_deg_{degrader}.root"
                 
 out_data_file_fmt="hist_files/run{run_id}_hists.root"
-out_sim_file_fmt="hist_files/degrader_{degrader}_hists.root"
+# out_sim_file_fmt="hist_files/degrader_{degrader}_hists.root"
+out_sim_file_fmt="hist_files/degrader_{degrader}_g4bl_hists.root"
 
 channels = ("D1", "D2", "D3", "D4", "D5") if not fast else ("D5",)
 
@@ -40,6 +43,10 @@ simulated_degraders = ("0.5mm_Aluminium",
                        "1mm_Aluminium",
                        "5mm_Air",
                        "5mm_Aluminium",) if not fast else ("5mm_Air",)
+# simulated_degraders = ("Aluminium_0.5mm",
+#                        "Aluminium_1mm",
+#                        "Air_5mm",
+#                        "Aluminium_5mm",) if not fast else ("Air_5mm",)
 
 hist_settings = {'mins':l_bound, 'maxs':u_bound, 'titles':("TDC-TDC0 (ns)", "Count")}
 hist_settings['bins'] = int((u_bound - l_bound)/bin_width)
@@ -85,7 +92,7 @@ def fill_data_hists (tree, hists):
         tdc = tree.TDC[ch](hit)
         hists[ch].Fill(tdc)
   
-def generate_sim_histograms(degrader):
+def generate_sim_histograms(degrader, g4bl):
   print "Starting simulation of", degrader
   
   charges = {"+":"pos_"+degrader,"-":"neg_"+degrader}
@@ -96,12 +103,15 @@ def generate_sim_histograms(degrader):
   hists = {c:make_hist(charges[c], **hist_settings) for c in charges}
   hists['combined'] = make_hist("combined_"+degrader,**hist_settings)
   for c in charges:
-    in_file_name = in_sim_file_fmt.format(charge=c, degrader=degrader)
+    in_file_name = in_sim_file_fmt.format(degrader=degrader)
     tree = get_tree_from_file("truth",in_file_name)
     fill_sim_hists (tree, hists[c], c)
     
-  # combined = 1.0*h_mu_pos + 9009/86710*h_mu_neg
-  hists['combined'].Add(hists['+'], hists['-'], 1.0, neg_pos_ratio)
+  if g4bl:
+    hists['combined'].Add(hists['+'], hists['-'])
+  else:
+    hists['combined'].Add(hists['+'], hists['-'], 1.0, neg_pos_ratio)
+    
   save_file(out_file)
 
 def fill_sim_hists (tree, hist, charge):
@@ -110,16 +120,17 @@ def fill_sim_hists (tree, hist, charge):
     if is_break_time(entry_id, tenth): break
     fill_hist_with_mu_e_times(hist, entry, charge)
 
-def generate_histograms(run_ids, degraders):
+def generate_histograms(run_ids, degraders, g4bl):
   
   for r in run_ids:
     generate_data_histograms(r)
   
   for d in degraders:
-    generate_sim_histograms(d)
+    generate_sim_histograms(d, g4bl)
 
 def main():
-  generate_histograms(run_ids=data_run_ids, degraders=simulated_degraders)
+  for d in simulated_degraders:
+    generate_sim_histograms(d,g4bl=True)
   
 
 if __name__=="__main__":
