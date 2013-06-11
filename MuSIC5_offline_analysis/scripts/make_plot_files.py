@@ -21,33 +21,25 @@ from time import sleep
 # fast = True
 fast = False
 break_entry=20000
-
-bin_width = 1 # use 1ns bins. Hists can be rebinned as required
-l_bound, u_bound = -20000.0, 20000.0
 neg_pos_ratio = 9009.0/86710.0
 
 in_data_file_fmt="../../../converted_Cu_data/run00{run_id}_converted.root"
-# in_sim_file_fmt="../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/500k_mu/"+\
-#                 "mu{charge}_{degrader}_500000.root"
-in_sim_file_fmt="../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/final/"+\
-                "final_st_Copper_0.5mm_deg_{degrader}.root"
-                
+in_sim_dir="../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/"   
+in_sim_g4bl_file_fmt=in_sim_dir+"final/final_st_Copper_0.5mm_deg_{degrader}.root"
+in_sim_file_fmt=in_sim_dir+"500k_mu/mu{charge}_{degrader}_500000.root"
+             
 out_data_file_fmt="hist_files/run{run_id}_hists.root"
-# out_sim_file_fmt="hist_files/degrader_{degrader}_hists.root"
-out_sim_file_fmt="hist_files/degrader_{degrader}_g4bl_hists.root"
+out_sim_file_fmt="hist_files/degrader_{degrader}_hists.root"
+out_sim_g4bl_file_fmt="hist_files/degrader_{degrader}_g4bl_hists.root"
 
 channels = ("D1", "D2", "D3", "D4", "D5") if not fast else ("D5",)
 
 data_run_ids = ("448", "451", "452","455", "458", "459") if not fast else ("451",)
-simulated_degraders = ("0.5mm_Aluminium",
-                       "1mm_Aluminium",
-                       "5mm_Air",
-                       "5mm_Aluminium",) if not fast else ("5mm_Air",)
-# simulated_degraders = ("Aluminium_0.5mm",
-#                        "Aluminium_1mm",
-#                        "Air_5mm",
-#                        "Aluminium_5mm",) if not fast else ("Air_5mm",)
+degraders = ("0.5mm_Aluminium", "1mm_Aluminium", "5mm_Air", "5mm_Aluminium",) if not fast else ("5mm_Air",)
+                       
 
+l_bound, u_bound = -20000.0, 20000.0
+bin_width = 1 # use 1ns bins. Hists can be rebinned as required
 hist_settings = {'mins':l_bound, 'maxs':u_bound, 'titles':("TDC-TDC0 (ns)", "Count")}
 hist_settings['bins'] = int((u_bound - l_bound)/bin_width)
 
@@ -93,19 +85,27 @@ def fill_data_hists (tree, hists):
         hists[ch].Fill(tdc)
   
 def generate_sim_histograms(degrader, g4bl):
-  print "Starting simulation of", degrader
-  
-  charges = {"+":"pos_"+degrader,"-":"neg_"+degrader}
-  
-  out_file_name = out_sim_file_fmt.format(degrader=degrader)
+  print "Starting simulation of", degrader, "g4bl:", g4bl
+  if g4bl:
+    out_file_name = out_sim_g4bl_file_fmt.format(degrader=degrader)
+  else:
+    out_file_name = out_sim_file_fmt.format(degrader=degrader)
+    
   out_file = TFile(out_file_name, "RECREATE")
   
+  charges = {"+":"pos_"+degrader,"-":"neg_"+degrader}
   hists = {c:make_hist(charges[c], **hist_settings) for c in charges}
   hists['combined'] = make_hist("combined_"+degrader,**hist_settings)
-  for c in charges:
-    in_file_name = in_sim_file_fmt.format(degrader=degrader)
+  
+  if g4bl:
+    in_file_name = in_sim_g4bl_file_fmt.format(degrader=degrader)
     tree = get_tree_from_file("truth",in_file_name)
-    fill_sim_hists (tree, hists[c], c)
+    fill_g4bl_hists (tree, hists["+"], hists["-"])
+  else:
+    for c in charges:
+      in_file_name = in_sim_file_fmt.format(charge=c, degrader=degrader)
+      tree = get_tree_from_file("truth",in_file_name)
+      fill_sim_hist (tree, hists[c], c)
     
   if g4bl:
     hists['combined'].Add(hists['+'], hists['-'])
@@ -114,23 +114,28 @@ def generate_sim_histograms(degrader, g4bl):
     
   save_file(out_file)
 
-def fill_sim_hists (tree, hist, charge):
+def fill_g4bl_hists (tree, pos_hist, neg_hist):
+  tenth = int(tree.GetEntries()/10)
+  for entry_id, entry in enumerate(tree):
+    if is_break_time(entry_id, tenth): break
+    fill_hist_with_mu_e_times(pos_hist, entry, "+")
+    fill_hist_with_mu_e_times(neg_hist, entry, "-")
+  
+
+def fill_sim_hist (tree, hist, charge):
   tenth = int(tree.GetEntries()/10)
   for entry_id, entry in enumerate(tree):
     if is_break_time(entry_id, tenth): break
     fill_hist_with_mu_e_times(hist, entry, charge)
 
-def generate_histograms(run_ids, degraders, g4bl):
-  
-  for r in run_ids:
+
+def main():
+  for r in data_run_ids:
     generate_data_histograms(r)
   
   for d in degraders:
-    generate_sim_histograms(d, g4bl)
-
-def main():
-  for d in simulated_degraders:
-    generate_sim_histograms(d,g4bl=True)
+    generate_sim_histograms(d, True)
+    generate_sim_histograms(d, False)
   
 
 if __name__=="__main__":
