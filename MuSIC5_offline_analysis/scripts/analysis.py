@@ -193,7 +193,7 @@ def process_files(run_ids, data_type, bin_width, fit_type, inc_phase, g4bl, img_
 
 def save_hist_around_zero_region(data_file, img_dir, l_bound=-200, u_bound=200):
   for hist_key, hist in data_file.hists.items():
-    img_name = img_dir+"{}_{}_zoom".format(data_file.short_name, hist.GetName())
+    img_name = img_dir+"zoom/{}_{}".format(data_file.short_name, hist.GetName())
     can = make_canvas(img_name)
     hist.GetXaxis().SetRangeUser(l_bound, u_bound)
     hist.Draw()
@@ -216,7 +216,7 @@ def fit_data(data_file, fit_type, data_type, inc_phase, img_dir="", fit_options=
       hist.Draw()
       fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options)
       can.Update()
-      img_name = img_dir+func_name
+      img_name = img_dir+"fits/"+func_name
       can.SaveAs(img_name+".png")
       can.SaveAs(img_name+".svg")
     else:
@@ -244,10 +244,8 @@ def get_fit_func_and_settings(data_type, hist, fit_type, inc_phase):
   
   h_max = hist.GetMaximum()
   #              par name    initial     minimum     maximum
-  # n_f     = ("N_{f}"    ,    h_max/2,        1.0,    2*h_max) # Scale of free component
-  # n_cu    = ("N_{cu}"   ,      h_max,        1.0,    2*h_max) # Scale of copper component
-  n_f     = ("N_{f}"    ,    h_max/2,   h_max/20,    2*h_max) # Scale of free component
-  n_cu    = ("N_{cu}"   ,      h_max,   h_max/20,    2*h_max) # Scale of copper component
+  n_f     = ("N_{f}"    ,    h_max/2,        0.0,    2*h_max) # Scale of free component
+  n_cu    = ("N_{cu}"   ,      h_max,        0.0,    2*h_max) # Scale of copper component
   tau_f   = ("#tau_{f}" ,  f_vals[0],  f_vals[1],  f_vals[2]) # lifetime of free muon
   tau_cu  = ("#tau_{cu}", cu_vals[0], cu_vals[1], cu_vals[2]) # lifetime of muon in copper
   
@@ -256,8 +254,8 @@ def get_fit_func_and_settings(data_type, hist, fit_type, inc_phase):
     return simulation_func_fmt, (n_cu, tau_cu, n_f, tau_f)
   elif data_type=="run":
     #       par name      initial  minimum  maximum
-    n_b    = ("N_{b}"  , h_max/10,  1.0,   h_max) # Flat background
-    n_sin  = ("N_{sin}", h_max/20,  1.0, h_max/3) # scale the noise
+    n_b    = ("N_{b}"  , h_max/10,  0.0,   h_max) # Flat background
+    n_sin  = ("N_{sin}", h_max/20,  0.0, h_max/3) # scale the noise
     phase  = ("#phi"   ,     30.0,  0.0,    65.0) # phase
     period = ("T"      ,     59.3, 55.0,    65.0) # period
     if inc_phase:
@@ -376,7 +374,7 @@ def make_and_save_rate_hist(target, data, data_type, img_dir):
   hist = make_rate_hist(name, target, data)
   canvas = make_canvas(name, resize=True)
   hist.Draw()
-  img_name = img_dir+data_type+"_muon_rate_in_"+target
+  img_name = img_dir+"rates/"+data_type+"_muon_rate_in_"+target
   canvas.SaveAs(img_name+".svg")
   canvas.SaveAs(img_name+".png")
     
@@ -390,21 +388,25 @@ def main():
   # fast = True
 
   # The data files we actually have
-  run_dict = {448:{'deg_dz':0,   'run_time':9221, 'proton_current':0.0153375e-9  },  #'acceptance':0.087,
-             } if fast else \
-             {448:{'deg_dz':0,   'run_time':9221, 'proton_current':0.0153375e-9  },  #'acceptance':0.087,
+  run_dict = {
+              448:{'deg_dz':0,   'run_time':9221, 'proton_current':0.0153375e-9  },  #'acceptance':0.087,
+             } if fast else {
+              448:{'deg_dz':0,   'run_time':9221, 'proton_current':0.0153375e-9  },  #'acceptance':0.087,
               451:{'deg_dz':0.5, 'run_time':1001, 'proton_current':0.0154625e-9  },  #'acceptance':0.077,
               452:{'deg_dz':0.5, 'run_time':4944, 'proton_current':0.013132143e-9},  #'acceptance':0.077,
               455:{'deg_dz':1,   'run_time':6307, 'proton_current':0.013321429e-9},  #'acceptance':0.069,
               458:{'deg_dz':5,   'run_time':5144, 'proton_current':0.013625e-9   },  #'acceptance':0.045,
-              459:{'deg_dz':5,   'run_time':2452, 'proton_current':0.012383929e-9}}  #'acceptance':0.045,
+              459:{'deg_dz':5,   'run_time':2452, 'proton_current':0.012383929e-9},  #'acceptance':0.045,
+             }
             
-  sim_dict = {"5mm_Air":{'deg_dz':0},
-             } if fast else \
-             {"5mm_Air":{'deg_dz':0},
+  sim_dict = {
+              "5mm_Air"        :{'deg_dz':0},
+             } if fast else {
+              "5mm_Air"        :{'deg_dz':0},
               "0.5mm_Aluminium":{'deg_dz':0.5},
-              "1mm_Aluminium":{'deg_dz':1},
-              "5mm_Aluminium":{'deg_dz':5},}
+              "1mm_Aluminium"  :{'deg_dz':1},
+              "5mm_Aluminium"  :{'deg_dz':5},
+             }
 
   bin_width=16
   g4bl, inc_phase, fit_type = True, True, "tight"
