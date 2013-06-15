@@ -21,7 +21,7 @@ from time import sleep
 # fast = True
 fast = False
 break_entry=2000
-neg_pos_ratio = 9009.0/86710.0
+# neg_pos_ratio = 9009.0/86710.02
 
 in_data_file_fmt="../../../converted_Cu_data/run00{run_id}_converted.root"
 in_sim_dir="../../../../simulation/MuSIC_5_detector_sim/MuSIC5/output/"   
@@ -30,7 +30,7 @@ in_sim_file_fmt=in_sim_dir+"500k_mu/mu{charge}_{degrader}_500000.root"
              
 out_data_file_fmt="hist_files_offset/run{run_id}_hists.root"
 out_sim_file_fmt="hist_files_offset/degrader_{degrader}_hists.root"
-out_sim_g4bl_file_fmt="hist_files/degrader_{degrader}_g4bl_hists.root"
+out_sim_g4bl_file_fmt="hist_files_offset/degrader_{degrader}_g4bl_hists.root"
 
 channels = (("D1", 74), ("D2", 86), ("D3", 87), ("D4", 117), ("D5", 127)) if not fast else (("D5", 127),)
 
@@ -66,7 +66,7 @@ def save_file(file_to_save):
   file_to_save.Close()
 
 def is_break_time(entry_id, log_xth):
-  if entry_id>break_entry and fast:
+  if fast and entry_id>break_entry:
     print "Quick exit"
     return True
   elif int(entry_id%int(log_xth)) == 0:
@@ -101,21 +101,20 @@ def generate_sim_histograms(degrader, g4bl):
     in_file_name = in_sim_g4bl_file_fmt.format(degrader=degrader)
     tree = get_tree_from_file("truth",in_file_name)
     fill_g4bl_hists (tree, hists["+"], hists["-"])
+    hists['combined'].Add(hists['+'], hists['-'])
   else:
+    neg_pos_ratio = get_g4bl_decay_ratio(degrader)
     for c in charges:
       in_file_name = in_sim_file_fmt.format(charge=c, degrader=degrader)
       tree = get_tree_from_file("truth",in_file_name)
       fill_sim_hist (tree, hists[c], c)
-    
-  if g4bl:
-    hists['combined'].Add(hists['+'], hists['-'])
-  else:
     hists['combined'].Add(hists['+'], hists['-'], 1.0, neg_pos_ratio)
+    # hists['combined'].Add(hists['+'], hists['-'], 1.0, neg_pos_ratio)
     
   save_file(out_file)
 
 def fill_g4bl_hists (tree, pos_hist, neg_hist):
-  tenth = int(tree.GetEntries()/10)
+  tenth  = int(tree.GetEntries()/10)
   for entry_id, entry in enumerate(tree):
     if is_break_time(entry_id, tenth): break
     fill_hist_with_mu_e_times(pos_hist, entry, "+")
@@ -128,14 +127,30 @@ def fill_sim_hist (tree, hist, charge):
     if is_break_time(entry_id, tenth): break
     fill_hist_with_mu_e_times(hist, entry, charge)
 
+def get_g4bl_decay_ratio(degrader):
+  """
+  Returns the ratio of negative to positive decayse in the 
+  equivalent g4bl simulation.
+  """
+  file_name = out_sim_g4bl_file_fmt.format(degrader=degrader)
+  file = TFile(file_name, "READ")
+  if not file.IsOpen():
+    msg = "File {} not found, it may need recreating".format(file_name)
+    raise Exception(msg)
+  pos_hist = file.Get("pos_"+degrader)
+  neg_hist = file.Get("neg_"+degrader)
+  n_pos = pos_hist.GetEntries()
+  n_neg = neg_hist.GetEntries()
+  file.Close()
+  return float(n_neg)/n_pos
 
 def main():
-  for r in data_run_ids:
-    generate_data_histograms(r)
+  # for r in data_run_ids:
+  #   generate_data_histograms(r)
   
-  # for d in degraders:
-  #   generate_sim_histograms(d, True)
-  #   generate_sim_histograms(d, False)
+  for d in degraders:
+    generate_sim_histograms(d, True)
+    generate_sim_histograms(d, False)
   
 
 if __name__=="__main__":

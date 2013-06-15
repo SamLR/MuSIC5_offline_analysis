@@ -127,7 +127,7 @@ def init_data_dicts(run_dict, sim_dict, g4bl, fast):
   run_hist_names = ("D5","D4","D3","D2","D1") if not fast else ("D2",)
   sim_hist_name_fmt = "combined_{degrader}"
   # Formats of the file names
-  hist_d = "hist_files/"
+  hist_d = "hist_files_offset/"
   in_data_file_fmt  = hist_d+"run{run_id}_hists.root"
   if g4bl:
     in_sim_file_fmt = hist_d+"degrader_{degrader}_g4bl_hists.root" 
@@ -185,10 +185,24 @@ def process_files(run_ids, data_type, bin_width, fit_type, inc_phase, g4bl, img_
       continue
     # filename etc should all be in the meta data
     data_file = DataFile(bin_width=bin_width, **meta_data)
+    if img_dir: save_hist_around_zero_region(data_file, img_dir)
     fit_data(data_file, fit_type, data_type, inc_phase, img_dir)
     res[file_id] = data_file
     get_muon_rate(res[file_id], data_type, g4bl)
   return res
+
+def save_hist_around_zero_region(data_file, img_dir, l_bound=-200, u_bound=200):
+  for hist_key, hist in data_file.hists.items():
+    img_name = img_dir+"{}_{}_zoom".format(data_file.short_name, hist.GetName())
+    can = make_canvas(img_name)
+    hist.GetXaxis().SetRangeUser(l_bound, u_bound)
+    hist.Draw()
+    can.Update()
+    can.SaveAs(img_name+".png")
+    can.SaveAs(img_name+".svg")
+    hist.GetXaxis().UnZoom() # reset the ranges to full
+    
+  
 
 def fit_data(data_file, fit_type, data_type, inc_phase, img_dir="", fit_options="ILMER"):
   data_file.sum_integrals = {'f':0.0, 'cu':0.0}
@@ -198,7 +212,7 @@ def fit_data(data_file, fit_type, data_type, inc_phase, img_dir="", fit_options=
     func_fmt, initial_settings = get_fit_func_and_settings(data_type, hist, fit_type, inc_phase)
     func_name = "{}_{}".format(short_name, hist.GetName())
     if img_dir:
-      can = make_canvas(func_name)
+      can = make_canvas(func_name, resize=True)
       hist.Draw()
       fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options)
       can.Update()
@@ -207,7 +221,8 @@ def fit_data(data_file, fit_type, data_type, inc_phase, img_dir="", fit_options=
       can.SaveAs(img_name+".svg")
     else:
       fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options+"N")
-    calculate_exp_integrals(hist, l_bound=50, u_bound=20000)
+    calculate_exp_integrals(hist, l_bound=00, u_bound=20000)
+    # calculate_exp_integrals(hist, l_bound=50, u_bound=20000)
     for k in data_file.sum_integrals:
       data_file.sum_integrals[k] += hist.integrals[k]
 
@@ -224,13 +239,15 @@ def get_fit_func_and_settings(data_type, hist, fit_type, inc_phase):
   tau_cu = 163.5     +/- 1ns
   tau_f  = 2196.9811 +/- 0.0022ns
   """
-  f_vals  = (2196.9811, 2196.9789, 2196.9833) if "f" in fit_type else  (2196.9811, 1000.0, 20000.0)
-  cu_vals = ( 163.5   ,  162.5   ,  164.5   ) if "cu" in fit_type else ( 163.5   ,    0.0, 20000.0)
+  f_vals  = (2196.9811, 1000.0, 20000.0) if "f"  in fit_type else (2196.9811, 2196.9789, 2196.9833)
+  cu_vals = ( 163.5   ,    0.0, 20000.0) if "cu" in fit_type else ( 163.5   ,  162.5   ,  164.5   )
   
   h_max = hist.GetMaximum()
   #              par name    initial     minimum     maximum
-  n_f     = ("N_{f}"    ,    h_max/2,        1.0,    2*h_max) # Scale of free component
-  n_cu    = ("N_{cu}"   ,      h_max,        1.0,    2*h_max) # Scale of copper component
+  # n_f     = ("N_{f}"    ,    h_max/2,        1.0,    2*h_max) # Scale of free component
+  # n_cu    = ("N_{cu}"   ,      h_max,        1.0,    2*h_max) # Scale of copper component
+  n_f     = ("N_{f}"    ,    h_max/2,   h_max/20,    2*h_max) # Scale of free component
+  n_cu    = ("N_{cu}"   ,      h_max,   h_max/20,    2*h_max) # Scale of copper component
   tau_f   = ("#tau_{f}" ,  f_vals[0],  f_vals[1],  f_vals[2]) # lifetime of free muon
   tau_cu  = ("#tau_{cu}", cu_vals[0], cu_vals[1], cu_vals[2]) # lifetime of muon in copper
   
@@ -271,7 +288,7 @@ def calculate_exp_integrals(hist, l_bound=50, u_bound=20000):
   hist.integrals = res
 
 
-def get_n_protons(g4bl, n_mu_sim=5e5):
+def get_n_protons(g4bl, n_mu_sim):
   if g4bl:
     # In g4bl we set the number of protons to be 9e6
     return 9e6 
@@ -285,7 +302,7 @@ def get_muon_rate(data, data_type, g4bl):
   Calculate the rate of muons per proton
   """
   if data_type == "sim":
-    denom = get_n_protons(g4bl)
+    denom = get_n_protons(g4bl, n_mu_sim=5e5) 
   else:
     denom = data.dead_time*data.run_time*data.proton_current*coloumb_in_e
   assert denom != 0.0
@@ -374,6 +391,8 @@ def main():
 
   # The data files we actually have
   run_dict = {448:{'deg_dz':0,   'run_time':9221, 'proton_current':0.0153375e-9  },  #'acceptance':0.087,
+             } if fast else \
+             {448:{'deg_dz':0,   'run_time':9221, 'proton_current':0.0153375e-9  },  #'acceptance':0.087,
               451:{'deg_dz':0.5, 'run_time':1001, 'proton_current':0.0154625e-9  },  #'acceptance':0.077,
               452:{'deg_dz':0.5, 'run_time':4944, 'proton_current':0.013132143e-9},  #'acceptance':0.077,
               455:{'deg_dz':1,   'run_time':6307, 'proton_current':0.013321429e-9},  #'acceptance':0.069,
@@ -381,6 +400,8 @@ def main():
               459:{'deg_dz':5,   'run_time':2452, 'proton_current':0.012383929e-9}}  #'acceptance':0.045,
             
   sim_dict = {"5mm_Air":{'deg_dz':0},
+             } if fast else \
+             {"5mm_Air":{'deg_dz':0},
               "0.5mm_Aluminium":{'deg_dz':0.5},
               "1mm_Aluminium":{'deg_dz':1},
               "5mm_Aluminium":{'deg_dz':5},}
@@ -391,7 +412,7 @@ def main():
   
   g4bl, inc_phase, fit_type = False, True, "tight"
   run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
-  
+  return
   g4bl, inc_phase, fit_type = True, False, "tight"
   run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
   
