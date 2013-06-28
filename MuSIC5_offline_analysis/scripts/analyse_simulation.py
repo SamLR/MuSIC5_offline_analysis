@@ -17,24 +17,31 @@ from basic_integral import run_basic_sim_analysis
 fast=False
 # fast=True
 # bin_width=10
-bin_width=100
+bin_width=16
+g4bl = True
 degraders = ("5mm_Air", "0.5mm_Aluminium", "1mm_Aluminium", "5mm_Aluminium")
 mu_types  = {"mu+":("f", ), "mu-":("f", "cu")}
 ratio_neg_to_pos_mu = 9009.0/86710.0
 
-# fit_type = "tight"
-fit_type = "loose_f"
+fit_type = "tight"
+# fit_type = "loose_f"
 # fit_type = "loose_cu"
 # fit_type = "loose_cu_f"
-img_file_fmt = "images/sim_{mu_type}_{degrader}_{fit_type}_{bin_width}ns_bins_500k"
-filename_fmt = "/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/500k_mu/{mu_type}_{degrader}_500000.root"
-out_file_fmt = "simulation_counts_and_integrals_{fit_type}_{bin_width}ns_bins.txt"
+if g4bl:
+  img_file_fmt = "images/g4bl_sim_{mu_type}_{degrader}_{fit_type}_{bin_width}ns_bins"
+  out_file_fmt = "output_txt/g4bl_simulation_counts_and_integrals_{fit_type}_{bin_width}ns_bins.txt"
+  filename_fmt = "/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/final/final_st_Copper_0.5mm_deg_{degrader}.root"
+else:
+  img_file_fmt = "images/sim_{mu_type}_{degrader}_{fit_type}_{bin_width}ns_bins_500k"
+  out_file_fmt = "output_txt/simulation_counts_and_integrals_{fit_type}_{bin_width}ns_bins.txt"
+  filename_fmt = "/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/500k_mu/{mu_type}_{degrader}_500000.root"
+
 
 def save_count_integral(filename, material, dz, count, integral, chi2, ndf, *args, **kwargs):
   table_fmt = "{mat:3s} | {dz:>3s} | "+\
               "{count[0]} | {count[1]} | {integral[0]} | {integral[1]} | " +\
               "{chi2:>6.0f}/{ndf:<5.0f}\n"
-  val_fmt = "{:>6.0f}\xb1{:<5.0f}"
+  val_fmt = "{:>6.0f}+/-{:<5.0f}"
   na = "{:12s}".format("na")
   if "cu" in count:
     count    = [count['cu'], count['f']]
@@ -53,8 +60,8 @@ def save_count_integral(filename, material, dz, count, integral, chi2, ndf, *arg
     out_file.write(res)
 
 def save_header(filename):
-  table_1 = "{:^3s} | {:^3s} | {:^27s} | {:^27s} | {:>6s}/{:<5s}\n"
-  table_2 = "    |     | {:^12s} | {:^12s} | {:^12s} | {:^12s} | {:12s}\n"
+  table_1 = "{:^3s} | {:^3s} | {:^31s} | {:^31s} | {:>6s}/{:<5s}\n"
+  table_2 = "    |     | {:^14s} | {:^15s} | {:^14s} | {:^14s} | {:12s}\n"
   entries_1 = ("mat", "dz", "count", "integral", "Chi^2", "NDF")
   entries_2 = ("cu", "f", "cu", "f", "")
   with open(filename, "w") as out_file:
@@ -66,7 +73,11 @@ def get_mat_and_dz(degrader):
   return dz[:-2], mat[:2]
 
 def get_file_and_image_name(degrader, mu_type):
-  file_name   = filename_fmt.format(degrader=degrader, mu_type=mu_type)
+  if g4bl:
+    file_name  = filename_fmt.format(degrader=degrader)
+  else:
+    file_name  = filename_fmt.format(degrader=degrader, mu_type=mu_type)
+  
   image_name = img_file_fmt.format(mu_type=mu_type, degrader=degrader, fit_type=fit_type, bin_width=bin_width)
   return file_name, image_name
   
@@ -82,12 +93,13 @@ def main():
       file_name, image_name  = get_file_and_image_name(deg, mu_charge)
       print "Started:", file_name.split("/")[-1]
       count = run_count_analysis(file_name, mu_charge)
-      integral, fit_param = run_basic_sim_analysis(file_name, mu_charge, \
-                                                          fit_type=fit_type, bin_width=bin_width, \
-                                                          save_image=image_name, fast=fast)
+      # integral, fit_param = run_basic_sim_analysis(file_name, mu_charge, \
+      #                                                     fit_type=fit_type, bin_width=bin_width, \
+      #                                                     save_image=image_name, fast=fast)
       dz, mat = get_mat_and_dz(deg)
-      save_count_integral(out_file_name, mat, dz, count, integral, **fit_param)
-      
+      save_count_integral(out_file_name, mat, dz, count, (0,0), 0, 0)
+      # save_count_integral(out_file_name, mat, dz, count, integral, **fit_param)
+  print "WARNING! this has had integrals switched off! it only counts currently"
       
 if __name__=="__main__":
   main()

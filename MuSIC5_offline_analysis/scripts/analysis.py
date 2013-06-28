@@ -96,8 +96,10 @@ def run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type):
     out_file.write(get_detailed_table(all_data))
   
   for target in ("cu", "f"):
-    make_and_save_rate_hist(target, run_data, "run", img_dir)
-    make_and_save_rate_hist(target, sim_data, "sim", img_dir)
+      make_and_save_rate_hist(target, run_data, "run", img_dir)
+      make_and_save_rate_hist(target, sim_data, "sim", img_dir)
+      make_and_save_count_hist(target, run_data, "run", img_dir)
+      make_and_save_count_hist(target, sim_data, "sim", img_dir)
 
 
 def get_img_and_txt_dirs(g4bl, inc_phase, fit_type):
@@ -114,13 +116,16 @@ def get_img_and_txt_dirs(g4bl, inc_phase, fit_type):
     out_dir_root = "analysis_"
   out_dir_root += fit_type
   
-  res = ("images/"+out_dir_root+"/", "output_txt/"+out_dir_root+"/")
+  img_dir, txt_dir = "images/"+out_dir_root+"/", "output_txt/"+out_dir_root+"/"
   
-  for path in res:
-    if not path_exists(path):
-      makedirs(path)
+  # Make all of the image directories
+  for sub_dir in filter(lambda x: not path_exists(img_dir+x), ("fits", "rates", "counts", "zoom")):
+      makedirs(img_dir+sub_dir) # works recurisvely
   
-  return res
+  if not path_exists(txt_dir):
+    makedirs(txt_dir)
+  
+  return img_dir, txt_dir
 
 def init_data_dicts(run_dict, sim_dict, g4bl, fast):
   # Histogram names
@@ -188,7 +193,7 @@ def process_files(run_ids, data_type, bin_width, fit_type, inc_phase, g4bl, img_
     if img_dir: save_hist_around_zero_region(data_file, img_dir)
     fit_data(data_file, fit_type, data_type, inc_phase, img_dir)
     res[file_id] = data_file
-    get_muon_rate(res[file_id], data_type, g4bl)
+    get_muons_per_proton(res[file_id], data_type, g4bl)
   return res
 
 def save_hist_around_zero_region(data_file, img_dir, l_bound=-200, u_bound=200):
@@ -291,30 +296,30 @@ def get_n_protons(g4bl, n_mu_sim):
     # In g4bl we set the number of protons to be 9e6
     return 9e6 
   else:
-    # Add an error to this as there's an error on the number of muons in g4bl
-    g4bl_mu_per_p = ValueWithError(86710)/9e8
+    # Only use the number of mu+ in g4bl as n_mu_sim is the number of mu+ simulated (mu- are scaled to this)
+    g4bl_mu_per_p = 86710/9e8
     return n_mu_sim/g4bl_mu_per_p
 
-def get_muon_rate(data, data_type, g4bl):
+def get_muons_per_proton(data, data_type, g4bl):
   """
   Calculate the rate of muons per proton
   """
   if data_type == "sim":
-    denom = get_n_protons(g4bl, n_mu_sim=5e5) 
+    n_proton = get_n_protons(g4bl, n_mu_sim=5e5) 
   else:
-    denom = data.dead_time*data.run_time*data.proton_current*coloumb_in_e
-  assert denom != 0.0
+    n_proton = data.dead_time*data.run_time*data.proton_current*coloumb_in_e
+  assert n_proton != 0.0
   
   data.muon_rates = {}
   for k in data.sum_integrals:
-    data.muon_rates[k] = data.sum_integrals[k]/denom if data.sum_integrals[k] else data.sum_integrals[k]
+    data.muon_rates[k] = data.sum_integrals[k]/n_proton if data.sum_integrals[k] else data.sum_integrals[k]
   data.per_ch_rates = {}
   for ch in data.hist_names:
     data[ch].rate = {}
     for k in data[ch].integrals:
       # Because the integral is a ValueWithError if it's 0 then it will
       # cause divBy0 in carrying out the error propogation
-      data[ch].rate[k] = data[ch].integrals[k]/denom if data[ch].integrals[k] else data[ch].integrals[k]
+      data[ch].rate[k] = data[ch].integrals[k]/n_proton if data[ch].integrals[k] else data[ch].integrals[k]
     
 def get_integrals_table(data_dict):
   res = "{:^3s} | {:^3s} | {:^2s} | {:^21s} | {:^21s} | {:^13s}\n".format("id","dz","ch","cu","f","Chi^2/NDF") 
@@ -358,7 +363,7 @@ def get_detailed_table(data_dict):
 
 def make_rate_hist(name, target, data_dict):
   titles=("Degrader", "Muons per proton")
-  res = make_hist(name, mins=0, maxs=len(data_dict),bins=len(data_dict), titles=titles)
+  res = make_hist(name, mins=0, maxs=len(data_dict), bins=len(data_dict), titles=titles)
   
   dz_ordered_keys = [(k,v.deg_dz) for k,v in data_dict.items()]
   # sort by degrader thickness
@@ -377,15 +382,36 @@ def make_and_save_rate_hist(target, data, data_type, img_dir):
   img_name = img_dir+"rates/"+data_type+"_muon_rate_in_"+target
   canvas.SaveAs(img_name+".svg")
   canvas.SaveAs(img_name+".png")
-    
+
+def make_count_hist(name, target, data_dict):
+  titles=("Degrader", "Muon count")
+  res = make_hist(name, mins=0, maxs=len(data_dict), bins=len(data_dict), titles=titles)
+  
+  dz_ordered_keys = [(k,v.deg_dz) for k,v in data_dict.items()]
+  # sort by degrader thickness
+  dz_ordered_keys.sort(key=lambda x:x[1])
+  for bin_id, (file_id, degrader) in enumerate(dz_ordered_keys, 1):
+    count = data_dict[file_id].sum_integrals[target]
+    set_hist_bin_contents_and_er(res, bin_id, count, name=str(degrader))
+  return res
+
+def make_and_save_count_hist(target, data, data_type, img_dir):
+  name = "Count " if data_type == "run" else "Simulated count "
+  name += "of muons decaying in "+target
+  hist = make_count_hist(name, target, data)
+  canvas = make_canvas(name, resize=True)
+  hist.Draw()
+  img_name = img_dir+"counts/"+data_type+"_muon_rate_in_"+target
+  canvas.SaveAs(img_name+".svg")
+  canvas.SaveAs(img_name+".png")    
 
 def main():
   
   gStyle.SetOptStat(10)
   gStyle.SetOptFit(111)  
   
-  fast = False
-  # fast = True
+  # fast = False
+  fast = True
 
   # The data files we actually have
   run_dict = {
