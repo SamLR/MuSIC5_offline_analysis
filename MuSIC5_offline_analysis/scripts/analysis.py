@@ -72,19 +72,22 @@ class DataFile(object):
 
 
 
-def run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type):
-
+def run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5):
+  if inc_phase and not inc_sin:
+    print 'Cannot have phase & no sin!'
+    return
   # Output file info
-  img_dir, txt_dir = get_img_and_txt_dirs(g4bl, inc_phase, fit_type)
+  img_dir, txt_dir = get_img_and_txt_dirs(g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5)
   integral_data_file = txt_dir+"rates_and_integrals.txt"
   detailed_data_file = txt_dir+"all_info.txt"
-  
+  tau_file = txt_dir+"tau_values.txt"
+    
   # Get the file & histogram names and add them to the dicts
-  init_data_dicts(run_dict, sim_dict, g4bl, fast)
-  recreate_old_hist_files(run_dict, sim_dict, g4bl)
-  
-  run_data = process_files(run_dict, "run", bin_width, fit_type, inc_phase, g4bl, img_dir)
-  sim_data = process_files(sim_dict, "sim", bin_width, fit_type, inc_phase, g4bl, img_dir)
+  init_data_dicts(run_dict, sim_dict, g4bl, fast, exec_d4_d5)
+  recreate_old_hist_files(run_dict, sim_dict, g4bl, exec_d4_d5)
+  out_root_file = TFile(img_dir+"/out.root", "RECREATE")
+  run_data = process_files(out_root_file, run_dict, "run", bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir)
+  sim_data = process_files(out_root_file, sim_dict, "sim", bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir)
   
   all_data = dict(run_data, **sim_data)
   with open(integral_data_file, "w") as out_file:
@@ -95,25 +98,28 @@ def run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type):
   with open(detailed_data_file, "w") as out_file:
     out_file.write(get_detailed_table(all_data))
   
+  with open(tau_file, "w") as out_file:
+    out_file.write(get_tau_table(all_data))
+  
   for target in ("cu", "f"):
       make_and_save_rate_hist(target, run_data, "run", img_dir)
       make_and_save_rate_hist(target, sim_data, "sim", img_dir)
       make_and_save_count_hist(target, run_data, "run", img_dir)
       make_and_save_count_hist(target, sim_data, "sim", img_dir)
+  out_root_file.Write()
+  out_root_file.Close()
 
-
-def get_img_and_txt_dirs(g4bl, inc_phase, fit_type):
+def get_img_and_txt_dirs(g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5):
   """
   Generate the appropriate directory name and if neccessary make it.
   """
-  if g4bl and inc_phase:
-    out_dir_root = "analysis_g4bl_phase_"
-  elif g4bl:
-    out_dir_root = "analysis_g4bl_"
-  elif inc_phase:
-    out_dir_root = "analysis_phase_"
-  else:
-    out_dir_root = "analysis_"
+  out_dir_root = "analysis_"
+  
+  if g4bl:       out_dir_root += "g4bl_"
+  if inc_sin:    out_dir_root += "sin_"
+  if inc_phase:  out_dir_root += "phase_"
+  if exec_d4_d5: out_dir_root += "exec_d4_d5_"
+    
   out_dir_root += fit_type
   
   img_dir, txt_dir = "images/"+out_dir_root+"/", "output_txt/"+out_dir_root+"/"
@@ -127,12 +133,21 @@ def get_img_and_txt_dirs(g4bl, inc_phase, fit_type):
   
   return img_dir, txt_dir
 
-def init_data_dicts(run_dict, sim_dict, g4bl, fast):
+def init_data_dicts(run_dict, sim_dict, g4bl, fast, exec_d4_d5):
   # Histogram names
-  run_hist_names = ("D5","D4","D3","D2","D1") if not fast else ("D2",)
+  # run_hist_names = ("D5","D4","D3","D2","D1") if not fast else ("D2",)
+  if exec_d4_d5:
+      hist_d = "hist_files_offset_exec_d4_d5/"
+      run_hist_names = ("D3","D2","D1") 
+  elif fast:
+    hist_d = "hist_files_offset/"
+    run_hist_names = ("D2")
+  else:
+    hist_d = "hist_files_offset/"
+    run_hist_names = ("D5","D4","D3","D2","D1") 
+
   sim_hist_name_fmt = "combined_{degrader}"
   # Formats of the file names
-  hist_d = "hist_files_offset/"
   in_data_file_fmt  = hist_d+"run{run_id}_hists.root"
   if g4bl:
     in_sim_file_fmt = hist_d+"degrader_{degrader}_g4bl_hists.root" 
@@ -156,7 +171,7 @@ def init_data_dicts(run_dict, sim_dict, g4bl, fast):
     if fast: # only set up one file
       break
 
-def recreate_old_hist_files(run_dict, sim_dict, g4bl, script_name="make_plot_files.py", force=False):
+def recreate_old_hist_files(run_dict, sim_dict, g4bl, exec_d4_d5, script_name="make_plot_files.py", force=False):
   """
   Check if any of the files are older than their generating script, or
   don't exist. If this is true for any re-run the script.
@@ -176,22 +191,29 @@ def recreate_old_hist_files(run_dict, sim_dict, g4bl, script_name="make_plot_fil
   
   for run_id, path in run_files_to_regen:
     print "Regenerating run file:", run_id, "path", path
-    generate_data_histograms(run_id)
+    # generate_data_histograms(run_id)
     
   for sim_id, path in sim_files_to_regen:
     print "Regenerating sim file:", sim_id, "path", path
-    generate_sim_histograms(sim_id, g4bl)
+    # generate_sim_histograms(sim_id, g4bl, exec_d4_d5)
  
 
-def process_files(run_ids, data_type, bin_width, fit_type, inc_phase, g4bl, img_dir):
+def process_files(out_root_file, run_ids, data_type, bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir):
   res = {}
   for file_id, meta_data in run_ids.items():
     if 'file_name' not in meta_data:  # if we're running fast
       continue
     # filename etc should all be in the meta data
     data_file = DataFile(bin_width=bin_width, **meta_data)
+    out_root_file.cd()
+    for h in data_file.hists.values():
+      name = str(file_id) + "_" + h.GetTitle() 
+      print name
+      h.SetTitle(name)
+      h.SetName(name)
+      out_root_file.Add(h)
     if img_dir: save_hist_around_zero_region(data_file, img_dir)
-    fit_data(data_file, fit_type, data_type, inc_phase, img_dir)
+    fit_data(data_file, fit_type, data_type, inc_phase, inc_sin, img_dir)
     res[file_id] = data_file
     get_muons_per_proton(res[file_id], data_type, g4bl)
   return res
@@ -203,18 +225,18 @@ def save_hist_around_zero_region(data_file, img_dir, l_bound=-200, u_bound=200):
     hist.GetXaxis().SetRangeUser(l_bound, u_bound)
     hist.Draw()
     can.Update()
-    can.SaveAs(img_name+".png")
+    can.SaveAs(img_name+".eps")
     can.SaveAs(img_name+".svg")
     hist.GetXaxis().UnZoom() # reset the ranges to full
     
   
 
-def fit_data(data_file, fit_type, data_type, inc_phase, img_dir="", fit_options="ILMER"):
+def fit_data(data_file, fit_type, data_type, inc_phase, inc_sin, img_dir="", fit_options="ILMER"):
   data_file.sum_integrals = {'f':0.0, 'cu':0.0}
   short_name = data_file.short_name
   bin_width = data_file.bin_width
   for hist_key, hist in data_file.hists.items():
-    func_fmt, initial_settings = get_fit_func_and_settings(data_type, hist, fit_type, inc_phase)
+    func_fmt, initial_settings = get_fit_func_and_settings(data_type, hist, fit_type, inc_phase, inc_sin)
     func_name = "{}_{}".format(short_name, hist.GetName())
     if img_dir:
       can = make_canvas(func_name, resize=True)
@@ -222,7 +244,7 @@ def fit_data(data_file, fit_type, data_type, inc_phase, img_dir="", fit_options=
       fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options)
       can.Update()
       img_name = img_dir+"fits/"+func_name
-      can.SaveAs(img_name+".png")
+      can.SaveAs(img_name+".eps")
       can.SaveAs(img_name+".svg")
     else:
       fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options+"N")
@@ -232,7 +254,7 @@ def fit_data(data_file, fit_type, data_type, inc_phase, img_dir="", fit_options=
       data_file.sum_integrals[k] += hist.integrals[k]
 
 
-def get_fit_func_and_settings(data_type, hist, fit_type, inc_phase):
+def get_fit_func_and_settings(data_type, hist, fit_type, inc_phase, inc_sin):
   """
   Returns the correct fit settings for simulation depending on 
   whether mu+ or mu-. Fit type specifies how tightly the tau
@@ -266,6 +288,9 @@ def get_fit_func_and_settings(data_type, hist, fit_type, inc_phase):
     if inc_phase:
       bkgnd             = [n_sin, phase, period, n_b] 
       run_data_func_fmt = "[0]*exp(-x/[1]) + [2]*exp(-x/[3]) + [4]*sin(2*pi*(x-[5])/[6]) + [7]"
+    elif not inc_sin:
+      bkgnd             = [n_b]
+      run_data_func_fmt = "[0]*exp(-x/[1]) + [2]*exp(-x/[3]) + [4]"
     else:
       bkgnd             = [n_sin, period, n_b]
       run_data_func_fmt = "[0]*exp(-x/[1]) + [2]*exp(-x/[3]) + [4]*sin(2*pi*x/[5]) + [6]"
@@ -359,7 +384,30 @@ def get_detailed_table(data_dict):
       res += ch_fmt.format(ch=ch[:2],**hist.fit_param)
     res += "*"*80 + "\n\n"
   return res
+
+def get_tau_table(data_dict):
+  res = ["{} | {:^3s}  |  {:^19s} | {:^19s} ".format("file","ch", "tau_f", "tau_cu")]
+  fmt = "{f_k} | {ch:^3s} | {f.value:7.2f} +/- {f.error:7.2f} |  {cu.value:7.2f} +/- {cu.error:7.2f} "
+  for file_key, file in data_dict.items():
+    f_val_str = ["float f_{}    [{}] = {{".format(str(file_key)[:3], len(file.hists))]
+    f_err_str = ["float f_er_{} [{}] = {{".format(str(file_key)[:3], len(file.hists))]
+    c_val_str = ["float c_{}    [{}] = {{".format(str(file_key)[:3], len(file.hists))]
+    c_err_str = ["float c_er_{} [{}] = {{".format(str(file_key)[:3], len(file.hists))]
     
+    for ch, hist in file.hists.items():
+      v = fmt.format(f_k=file_key, ch=ch[:3], f=hist.fit_param['tau_f'], cu=hist.fit_param['tau_cu'])
+      f_val_str.append("{:7.2f}, ".format(hist.fit_param['tau_f'].value))
+      f_err_str.append("{:7.2f}, ".format(hist.fit_param['tau_f'].error))
+      c_val_str.append("{:7.2f}, ".format(hist.fit_param['tau_cu'].value))
+      c_err_str.append("{:7.2f}, ".format(hist.fit_param['tau_cu'].error))
+      res.append(v)
+    f_val_str = "".join(f_val_str)
+    f_err_str = "".join(f_err_str)
+    c_val_str = "".join(c_val_str)
+    c_err_str = "".join(c_err_str)
+    res += [f_val_str, f_err_str, c_val_str, c_err_str]
+  return "\n".join(res) 
+  
 
 def make_rate_hist(name, target, data_dict):
   titles=("Degrader", "Muons per proton")
@@ -381,7 +429,7 @@ def make_and_save_rate_hist(target, data, data_type, img_dir):
   hist.Draw()
   img_name = img_dir+"rates/"+data_type+"_muon_rate_in_"+target
   canvas.SaveAs(img_name+".svg")
-  canvas.SaveAs(img_name+".png")
+  canvas.SaveAs(img_name+".eps")
 
 def make_count_hist(name, target, data_dict):
   titles=("Degrader", "Muon count")
@@ -403,16 +451,17 @@ def make_and_save_count_hist(target, data, data_type, img_dir):
   hist.Draw()
   img_name = img_dir+"counts/"+data_type+"_muon_rate_in_"+target
   canvas.SaveAs(img_name+".svg")
-  canvas.SaveAs(img_name+".png")    
+  canvas.SaveAs(img_name+".eps")    
 
 def main():
   
   gStyle.SetOptStat(10)
   gStyle.SetOptFit(111)  
   
-  # fast = False
-  fast = True
-
+  fast = False
+  # fast = True
+  exec_d4_d5 = True
+  
   # The data files we actually have
   run_dict = {
               448:{'deg_dz':0,   'run_time':9221, 'proton_current':0.0153375e-9  },  #'acceptance':0.087,
@@ -435,29 +484,49 @@ def main():
              }
 
   bin_width=16
-  g4bl, inc_phase, fit_type = True, True, "tight"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
   
-  g4bl, inc_phase, fit_type = False, True, "tight"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
+  # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", True
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
+  return 
+  
+  # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "loose_f", False
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
+  
+  # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "loose_cu", False
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
+  
   return
-  g4bl, inc_phase, fit_type = True, False, "tight"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
+  # ########
+  # tight fit no sin
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, False, False, "tight", True
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
   
-  g4bl, inc_phase, fit_type = False, False, "tight"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
   
-  g4bl, inc_phase, fit_type = True, True, "loose_f"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
+  # loose fit no sin
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, False, False, "loose_f_cu", True
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
   
-  g4bl, inc_phase, fit_type = False, True, "loose_f"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
+  return
+  # loose fit sin
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, False, True, "loose_f_cu", True
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
   
-  g4bl, inc_phase, fit_type = True, False, "loose_f"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
+  # tight fit sin
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, False, True, "tight", True
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
   
-  g4bl, inc_phase, fit_type = False, False, "loose_f"
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, bin_width, fit_type)
-
+  # loose fit sin + phase
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "loose_f_cu", True
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
+  
+  # tight fit sin + phase
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", True
+  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
+  
+  
+  return
 if __name__=="__main__":
   main()

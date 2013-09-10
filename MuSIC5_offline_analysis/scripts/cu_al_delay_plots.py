@@ -108,8 +108,8 @@ def main():
                         ("#tau", lambda x: 100, lambda x: 0.0 , lambda x: 5000))
     fit_histogram(hist, "[0]*exp(-x/[1])", initial_settings, mat,)
     can.Update()
-    can.SaveAs("images/"+mat+"_g4_generated.png")
-    can.SaveAs("images/"+mat+"_g4_generated.svg")
+    # can.SaveAs("images/"+mat+"_g4_generated.png")
+    # can.SaveAs("images/"+mat+"_g4_generated.svg")
   
 
 if __name__=="__main__":

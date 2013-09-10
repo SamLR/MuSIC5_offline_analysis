@@ -68,7 +68,7 @@ def get_decay_type(mu_type, decay_vertex):
   else:
     return "f"
     
-def fill_hist_with_mu_e_times(hist,entry, mu_type):
+def fill_hist_with_mu_e_times(hist, entry, mu_type, exec_d4_d5=False):
   """
   Returns the first hits by muon and an electron 
   in the up and downstream counters respectively
@@ -85,10 +85,12 @@ def fill_hist_with_mu_e_times(hist,entry, mu_type):
   muons     = get_hits_with(entry, get_pid_counter_filter(mu_pid, 1),\
                             ("trkid", "tof"))
   electrons = get_hits_with(entry, get_pid_counter_filter(e_pid,  3),\
-                            ("parentid", "tof"))
+                            ("parentid", "tof", "y"))
   res = []
-  for e_parent, e_time in electrons:
+  for e_parent, e_time, e_pos in electrons:
     parent_muon = filter(lambda mu: mu[0]==e_parent, muons)
     if parent_muon and (e_time - parent_muon[0][1] > 50):  
+      if exec_d4_d5 and e_pos < -25:
+        continue
       hist.Fill(e_time - parent_muon[0][1])
       muons.remove(parent_muon[0])

@@ -1,6 +1,6 @@
 """
  count_decays.py
- Counts the number of decays in a simulated data file
+ Counts the number of decays in a simulated data file including 50ns gate
  
  Created by Sam Cook on 2013-05-08.
  Copyright 2013 Sam Cook. All rights reserved.

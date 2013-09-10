@@ -1,0 +1,146 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="567" height="328" viewBox="0 0 567 328" xmlns="http://www.w3.org/2000/svg">
+<title>
+images/analysis_g4bl_sin_phase_loose_cu/rates/sim_muon_rate_in_f.svg
+</title>
+<desc>
+Creator: ROOT Version 5.34/09
+CreationDate: Mon Sep  9 14:52:32 2013</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="567" height="328" fill="white"/>
+<rect x="57" y="33" width="453" height="262" fill="white"/>
+<rect x="57" y="33" width="453" height="262" fill="none" stroke="black"/>
+<path d="M113,93v -24" fill="none" stroke="#000099"/>
+<path d="M113,69v -24" fill="none" stroke="#000099"/>
+<path d="M57,69h 56" fill="none" stroke="#000099"/>
+<path d="M113,69h 57" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="112" y1="69" x2="113" y2="69"/>
+</g>
+<path d="M227,151v -23" fill="none" stroke="#000099"/>
+<path d="M227,128v -23" fill="none" stroke="#000099"/>
+<path d="M170,128h 57" fill="none" stroke="#000099"/>
+<path d="M227,128h 56" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="226" y1="128" x2="227" y2="128"/>
+</g>
+<path d="M340,155v -6" fill="none" stroke="#000099"/>
+<path d="M340,149v -6" fill="none" stroke="#000099"/>
+<path d="M283,149h 57" fill="none" stroke="#000099"/>
+<path d="M340,149h 57" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="339" y1="149" x2="340" y2="149"/>
+</g>
+<path d="M454,283v -3" fill="none" stroke="#000099"/>
+<path d="M454,280v -3" fill="none" stroke="#000099"/>
+<path d="M397,280h 57" fill="none" stroke="#000099"/>
+<path d="M454,280h 56" fill="none" stroke="#000099"/>
+<g stroke="black" stroke-width="1" fill="none">
+<line x1="453" y1="280" x2="454" y2="280"/>
+</g>
+<path d="M57,295h 453" fill="none" stroke="black"/>
+<text x="466" y="317" fill="black" font-size="11" font-family="Helvetica">
+Degrader
+</text>
+<text x="111" y="304" fill="black" font-size="7" font-family="Helvetica">
+0
+</text>
+<text x="221" y="304" fill="black" font-size="7" font-family="Helvetica">
+0.5
+</text>
+<text x="338" y="304" fill="black" font-size="7" font-family="Helvetica">
+1
+</text>
+<text x="451" y="304" fill="black" font-size="7" font-family="Helvetica">
+5
+</text>
+<path d="M57,287v 8" fill="none" stroke="black"/>
+<path d="M170,287v 8" fill="none" stroke="black"/>
+<path d="M283,287v 8" fill="none" stroke="black"/>
+<path d="M397,287v 8" fill="none" stroke="black"/>
+<path d="M510,287v 8" fill="none" stroke="black"/>
+<path d="M57,295v -262" fill="none" stroke="black"/>
+<g transform="rotate(-90,28,116)">
+<text x="28" y="116" fill="black" font-size="11" font-family="Helvetica">
+Muons per proton
+</text>
+</g>
+<path d="M70,276h -13" fill="none" stroke="black"/>
+<path d="M63,268h -6" fill="none" stroke="black"/>
+<path d="M63,260h -6" fill="none" stroke="black"/>
+<path d="M63,252h -6" fill="none" stroke="black"/>
+<path d="M63,243h -6" fill="none" stroke="black"/>
+<path d="M70,235h -13" fill="none" stroke="black"/>
+<path d="M63,227h -6" fill="none" stroke="black"/>
+<path d="M63,219h -6" fill="none" stroke="black"/>
+<path d="M63,211h -6" fill="none" stroke="black"/>
+<path d="M63,202h -6" fill="none" stroke="black"/>
+<path d="M70,194h -13" fill="none" stroke="black"/>
+<path d="M63,186h -6" fill="none" stroke="black"/>
+<path d="M63,178h -6" fill="none" stroke="black"/>
+<path d="M63,170h -6" fill="none" stroke="black"/>
+<path d="M63,162h -6" fill="none" stroke="black"/>
+<path d="M70,153h -13" fill="none" stroke="black"/>
+<path d="M63,145h -6" fill="none" stroke="black"/>
+<path d="M63,137h -6" fill="none" stroke="black"/>
+<path d="M63,129h -6" fill="none" stroke="black"/>
+<path d="M63,121h -6" fill="none" stroke="black"/>
+<path d="M70,112h -13" fill="none" stroke="black"/>
+<path d="M63,104h -6" fill="none" stroke="black"/>
+<path d="M63,96h -6" fill="none" stroke="black"/>
+<path d="M63,88h -6" fill="none" stroke="black"/>
+<path d="M63,80h -6" fill="none" stroke="black"/>
+<path d="M70,72h -13" fill="none" stroke="black"/>
+<path d="M70,276h -13" fill="none" stroke="black"/>
+<path d="M63,284h -6" fill="none" stroke="black"/>
+<path d="M63,292h -6" fill="none" stroke="black"/>
+<path d="M70,72h -13" fill="none" stroke="black"/>
+<path d="M63,63h -6" fill="none" stroke="black"/>
+<path d="M63,55h -6" fill="none" stroke="black"/>
+<path d="M63,47h -6" fill="none" stroke="black"/>
+<path d="M63,39h -6" fill="none" stroke="black"/>
+<text x="33" y="280" fill="black" font-size="11" font-family="Helvetica">
+0.35
+</text>
+<text x="39" y="239" fill="black" font-size="11" font-family="Helvetica">
+0.4
+</text>
+<text x="33" y="198" fill="black" font-size="11" font-family="Helvetica">
+0.45
+</text>
+<text x="39" y="157" fill="black" font-size="11" font-family="Helvetica">
+0.5
+</text>
+<text x="33" y="116" fill="black" font-size="11" font-family="Helvetica">
+0.55
+</text>
+<text x="39" y="75" fill="black" font-size="11" font-family="Helvetica">
+0.6
+</text>
+<text x="74" y="26" fill="black" font-size="7" font-family="Helvetica">
+-3
+</text>
+<text x="63" y="31" fill="black" font-size="11" font-family="Helvetica">
+10
+</text>
+<text x="57" y="31" fill="black" font-size="11" font-family="Times">
+&#0215;
+</text>
+<text x="151" y="16" fill="black" font-size="16" font-family="Helvetica">
+Simulated rate of muons decaying in f
+</text>
+<rect x="442" y="22" width="114" height="39" fill="white"/>
+<path d="M442,61h 114" fill="none" stroke="black"/>
+<path d="M556,61v -39" fill="none" stroke="black"/>
+<path d="M556,22h -114" fill="none" stroke="black"/>
+<path d="M442,22v 39" fill="none" stroke="black"/>
+<text x="448" y="47" fill="black" font-size="16" font-family="Helvetica">
+Entries 
+</text>
+<text x="536" y="47" fill="black" font-size="16" font-family="Helvetica">
+ 4
+</text>
+<text x="151" y="16" fill="black" font-size="16" font-family="Helvetica">
+Simulated rate of muons decaying in f
+</text></svg>

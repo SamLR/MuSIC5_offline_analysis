@@ -93,13 +93,13 @@ def main():
       file_name, image_name  = get_file_and_image_name(deg, mu_charge)
       print "Started:", file_name.split("/")[-1]
       count = run_count_analysis(file_name, mu_charge)
-      # integral, fit_param = run_basic_sim_analysis(file_name, mu_charge, \
-      #                                                     fit_type=fit_type, bin_width=bin_width, \
-      #                                                     save_image=image_name, fast=fast)
+      integral, fit_param = run_basic_sim_analysis(file_name, mu_charge, \
+                                                          fit_type=fit_type, bin_width=bin_width, \
+                                                          save_image=image_name, fast=fast)
       dz, mat = get_mat_and_dz(deg)
-      save_count_integral(out_file_name, mat, dz, count, (0,0), 0, 0)
-      # save_count_integral(out_file_name, mat, dz, count, integral, **fit_param)
-  print "WARNING! this has had integrals switched off! it only counts currently"
+      # save_count_integral(out_file_name, mat, dz, count, (0,0), 0, 0)
+      save_count_integral(out_file_name, mat, dz, count, integral, **fit_param)
+  # print "WARNING! this has had integrals switched off! it only counts currently"
       
 if __name__=="__main__":
   main()
