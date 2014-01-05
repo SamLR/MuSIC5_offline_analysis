@@ -5,7 +5,7 @@ images/noise_fits/455_D3_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:46:57 2013</desc>
+CreationDate: Sat Sep 14 16:52:41 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -427,7 +427,7 @@ CreationDate: Tue Sep 10 04:46:57 2013</desc>
 <path d="M215,201v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M215,202v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M215,203v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M216,204v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M216,204v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M216,206v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M217,207v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M217,208v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1066,7 +1066,7 @@ CreationDate: Tue Sep 10 04:46:57 2013</desc>
 <path d="M468,205v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M468,204v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M468,203v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M469,202" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M469,202v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M469,201v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M470,199v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M470,199" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1184,8 +1184,8 @@ CreationDate: Tue Sep 10 04:46:57 2013</desc>
  1l 1, 1l 1, 1h 1v 1l 1, -1h 1v -1h 1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -3h 1v -2l 1, -1v -2l 1, -1v -1l 1, -2v -2l 1, -2v -1l 1, -1v -3l 1, -1v -1l 1, -1v -3h 1v -2h 1v -2l 1, -1v -1l 1, -1v -1l 1, -1l 1, -1h 4v 1h 1v 1l 1, 1v 1l 1, 1v 1l 1,
  2l 1, 2v 1l 1, 2v 1l 1, 1v 2l 1, 2v 1l 1, 1v 3l 1, 1v 1l 1, 1v 3l 1, 1v 1l 1, 1v 3l 1, 1v 1l 1, 1v 1l 1, 1v 1h 1v 2h 1l 1, 1h 1v 1v -1h 2v -1h 1v -1h 1v -2h 1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -2l 1, -1v -3l 1, -1v -1l 1, -1v -3l 1, -1v
  -1l 1, -2v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1h 5v 1l 1, 1l 1, 1v 2l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 3l 1, 1v 1l 1, 1v 3l 1, 1v 1l 1, 2v 2l 1, 2v 1l 1, 1v 2l 1, 1v 2l 1, 2l 1, 1v 2l 1, 1l 1, 1v 1h 1v 1h 1l 1, 1l 1, -1l
- 1, -1h 1v -1l 1, -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -1l 1, -1v -3l 1, -1v -3l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1l 1, -1v -1h 5v 1l 1, 1v 1l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 2l
- 1, 2v 1l 1, 1v 3l 1, 1v 2l 1, 1v 2l 1, 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1h 1v 1h 1v 1h 1l 1, 1v -1h 2v -1l 1, -1l 1, -1v -1l 1, -1v -2h 1v -2l 1, -1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -1l 1, -2" fill="none" stroke="#ff0000"
+ 1, -1h 1v -1l 1, -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -1l 1, -1v -3l 1, -1v -3l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1l 1, -1v -1h 4l 1, 1l 1, 1v 1l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v
+ 2l 1, 2v 1l 1, 1v 3l 1, 1v 2l 1, 1v 2l 1, 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1h 1v 1h 1v 1h 1l 1, 1v -1h 2v -1l 1, -1l 1, -1v -1l 1, -1v -2h 1v -2l 1, -1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -1l 1, -2" fill="none" stroke="#ff0000"
  stroke-width="2"/>
 <rect x="351" y="22" width="205" height="91" fill="white"/>
 <path d="M351,113h 205" fill="none" stroke="black"/>
@@ -1255,13 +1255,13 @@ f
 <text x="361" y="93" fill="black" font-size="13" font-family="Helvetica">
 T
 </text>
-<text x="524" y="95" fill="black" font-size="13" font-family="Helvetica">
- 0.2
+<text x="526" y="95" fill="black" font-size="13" font-family="Helvetica">
+ 0.1
 </text>
-<text x="517" y="95" fill="black" font-size="13" font-family="Times">
+<text x="519" y="95" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="480" y="95" fill="black" font-size="13" font-family="Helvetica">
+<text x="482" y="95" fill="black" font-size="13" font-family="Helvetica">
   59.3 
 </text>
 <text x="371" y="107" fill="black" font-size="13" font-family="Helvetica">
@@ -1274,13 +1274,13 @@ f
 &#0966;
 </text>
 <text x="494" y="110" fill="black" font-size="13" font-family="Helvetica">
- 60.9486
+ 63.4108
 </text>
 <text x="487" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="440" y="110" fill="black" font-size="13" font-family="Helvetica">
- 0.6494 
+ 0.6374 
 </text>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="430" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -1476,13 +1476,13 @@ f
 <text x="361" y="93" fill="black" font-size="13" font-family="Helvetica">
 T
 </text>
-<text x="524" y="95" fill="black" font-size="13" font-family="Helvetica">
- 0.2
+<text x="526" y="95" fill="black" font-size="13" font-family="Helvetica">
+ 0.1
 </text>
-<text x="517" y="95" fill="black" font-size="13" font-family="Times">
+<text x="519" y="95" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="480" y="95" fill="black" font-size="13" font-family="Helvetica">
+<text x="482" y="95" fill="black" font-size="13" font-family="Helvetica">
   59.3 
 </text>
 <text x="371" y="107" fill="black" font-size="13" font-family="Helvetica">
@@ -1495,13 +1495,13 @@ f
 &#0966;
 </text>
 <text x="494" y="110" fill="black" font-size="13" font-family="Helvetica">
- 60.9486
+ 63.4108
 </text>
 <text x="487" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="440" y="110" fill="black" font-size="13" font-family="Helvetica">
- 0.6494 
+ 0.6374 
 </text>
 <text x="224" y="16" fill="black" font-size="15" font-family="Helvetica">
 dt_file:455_ch:D3

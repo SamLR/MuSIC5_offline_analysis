@@ -8,10 +8,12 @@ the text files.
 
 from ValueWithError import ValueWithError
 
-txt_dir="output_txt/"
-arbitary_count_file=txt_dir+"/simulation_counts_and_integrals_loose_cu_10ns_bins.txt"
+txt_dir="output_txt/Archive/"
+arbitary_count_file=txt_dir+"simulation_counts_and_integrals_tight_10ns_bins.txt"
+# arbitary_count_file=txt_dir+"simulation_counts_and_integrals_loose_cu_10ns_bins.txt"
 # file = "output_txt/analysis_tight/rates_and_integrals.txt"
-file = "output_txt/analysis_loose_f/rates_and_integrals.txt"
+# file = "output_txt/analysis_loose_f/rates_and_integrals.txt"
+file = "output_txt/analysis_g4bl_sin_exec_d4_d5_tight/rates_and_integrals.txt"
 
 def increment_or_create(dictionary, key, value):
   if key in dictionary:
@@ -62,7 +64,7 @@ def get_integral(file_name):
         add_to_results(res[key], "f_int",  f_int)
   return res
 
-def get_table(counts, ints, ratios):
+def get_table(counts, ints):
   fmt = "{:3} | {:2} | {:^21} | {:^21} | {:^21}"
   res = [fmt.format("dz","t", "int", "count", "ratio (int/count)"),]
   for dz in ints: 

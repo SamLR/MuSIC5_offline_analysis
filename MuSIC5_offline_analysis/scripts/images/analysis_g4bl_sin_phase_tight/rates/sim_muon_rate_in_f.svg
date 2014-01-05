@@ -5,7 +5,7 @@ images/analysis_g4bl_sin_phase_tight/rates/sim_muon_rate_in_f.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 00:11:37 2013</desc>
+CreationDate: Thu Sep 12 21:30:28 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -61,64 +61,93 @@ Degrader
 <path d="M397,287v 8" fill="none" stroke="black"/>
 <path d="M510,287v 8" fill="none" stroke="black"/>
 <path d="M57,295v -262" fill="none" stroke="black"/>
-<g transform="rotate(-90,28,116)">
-<text x="28" y="116" fill="black" font-size="11" font-family="Helvetica">
-Muons per proton
+<g transform="rotate(-90,29,35)">
+<text x="29" y="35" fill="black" font-size="11" font-family="Helvetica">
+)
 </text>
 </g>
-<path d="M70,274h -13" fill="none" stroke="black"/>
-<path d="M63,266h -6" fill="none" stroke="black"/>
-<path d="M63,257h -6" fill="none" stroke="black"/>
-<path d="M63,249h -6" fill="none" stroke="black"/>
-<path d="M63,240h -6" fill="none" stroke="black"/>
-<path d="M70,232h -13" fill="none" stroke="black"/>
+<g transform="rotate(-90,24,41)">
+<text x="24" y="41" fill="black" font-size="7" font-family="Helvetica">
+-1
+</text>
+</g>
+<g transform="rotate(-90,29,108)">
+<text x="29" y="108" fill="black" font-size="11" font-family="Helvetica">
+Muon rate (nA
+</text>
+</g>
+<path d="M70,293h -13" fill="none" stroke="black"/>
+<path d="M63,286h -6" fill="none" stroke="black"/>
+<path d="M63,279h -6" fill="none" stroke="black"/>
+<path d="M63,272h -6" fill="none" stroke="black"/>
+<path d="M70,265h -13" fill="none" stroke="black"/>
+<path d="M63,258h -6" fill="none" stroke="black"/>
+<path d="M63,251h -6" fill="none" stroke="black"/>
+<path d="M63,244h -6" fill="none" stroke="black"/>
+<path d="M70,237h -13" fill="none" stroke="black"/>
+<path d="M63,230h -6" fill="none" stroke="black"/>
 <path d="M63,223h -6" fill="none" stroke="black"/>
-<path d="M63,214h -6" fill="none" stroke="black"/>
-<path d="M63,206h -6" fill="none" stroke="black"/>
-<path d="M63,197h -6" fill="none" stroke="black"/>
-<path d="M70,189h -13" fill="none" stroke="black"/>
-<path d="M63,180h -6" fill="none" stroke="black"/>
-<path d="M63,172h -6" fill="none" stroke="black"/>
-<path d="M63,163h -6" fill="none" stroke="black"/>
-<path d="M63,155h -6" fill="none" stroke="black"/>
-<path d="M70,146h -13" fill="none" stroke="black"/>
-<path d="M63,137h -6" fill="none" stroke="black"/>
-<path d="M63,129h -6" fill="none" stroke="black"/>
-<path d="M63,120h -6" fill="none" stroke="black"/>
-<path d="M63,112h -6" fill="none" stroke="black"/>
-<path d="M70,103h -13" fill="none" stroke="black"/>
-<path d="M63,95h -6" fill="none" stroke="black"/>
-<path d="M63,86h -6" fill="none" stroke="black"/>
-<path d="M63,78h -6" fill="none" stroke="black"/>
-<path d="M63,69h -6" fill="none" stroke="black"/>
-<path d="M70,61h -13" fill="none" stroke="black"/>
-<path d="M70,274h -13" fill="none" stroke="black"/>
-<path d="M63,283h -6" fill="none" stroke="black"/>
-<path d="M63,291h -6" fill="none" stroke="black"/>
-<path d="M70,61h -13" fill="none" stroke="black"/>
-<path d="M63,52h -6" fill="none" stroke="black"/>
-<path d="M63,43h -6" fill="none" stroke="black"/>
-<path d="M63,35h -6" fill="none" stroke="black"/>
-<text x="33" y="278" fill="black" font-size="11" font-family="Helvetica">
-0.35
+<path d="M63,216h -6" fill="none" stroke="black"/>
+<path d="M70,209h -13" fill="none" stroke="black"/>
+<path d="M63,202h -6" fill="none" stroke="black"/>
+<path d="M63,195h -6" fill="none" stroke="black"/>
+<path d="M63,188h -6" fill="none" stroke="black"/>
+<path d="M70,181h -13" fill="none" stroke="black"/>
+<path d="M63,174h -6" fill="none" stroke="black"/>
+<path d="M63,167h -6" fill="none" stroke="black"/>
+<path d="M63,160h -6" fill="none" stroke="black"/>
+<path d="M70,153h -13" fill="none" stroke="black"/>
+<path d="M63,146h -6" fill="none" stroke="black"/>
+<path d="M63,139h -6" fill="none" stroke="black"/>
+<path d="M63,132h -6" fill="none" stroke="black"/>
+<path d="M70,125h -13" fill="none" stroke="black"/>
+<path d="M63,118h -6" fill="none" stroke="black"/>
+<path d="M63,111h -6" fill="none" stroke="black"/>
+<path d="M63,104h -6" fill="none" stroke="black"/>
+<path d="M70,97h -13" fill="none" stroke="black"/>
+<path d="M63,90h -6" fill="none" stroke="black"/>
+<path d="M63,83h -6" fill="none" stroke="black"/>
+<path d="M63,76h -6" fill="none" stroke="black"/>
+<path d="M70,69h -13" fill="none" stroke="black"/>
+<path d="M63,62h -6" fill="none" stroke="black"/>
+<path d="M63,55h -6" fill="none" stroke="black"/>
+<path d="M63,48h -6" fill="none" stroke="black"/>
+<path d="M70,41h -13" fill="none" stroke="black"/>
+<path d="M70,293h -13" fill="none" stroke="black"/>
+<path d="M70,41h -13" fill="none" stroke="black"/>
+<path d="M63,34h -6" fill="none" stroke="black"/>
+<text x="30" y="297" fill="black" font-size="11" font-family="Helvetica">
+2000
 </text>
-<text x="39" y="235" fill="black" font-size="11" font-family="Helvetica">
-0.4
+<text x="30" y="269" fill="black" font-size="11" font-family="Helvetica">
+2200
 </text>
-<text x="33" y="193" fill="black" font-size="11" font-family="Helvetica">
-0.45
+<text x="30" y="241" fill="black" font-size="11" font-family="Helvetica">
+2400
 </text>
-<text x="39" y="150" fill="black" font-size="11" font-family="Helvetica">
-0.5
+<text x="30" y="213" fill="black" font-size="11" font-family="Helvetica">
+2600
 </text>
-<text x="33" y="107" fill="black" font-size="11" font-family="Helvetica">
-0.55
+<text x="30" y="185" fill="black" font-size="11" font-family="Helvetica">
+2800
 </text>
-<text x="39" y="64" fill="black" font-size="11" font-family="Helvetica">
-0.6
+<text x="30" y="157" fill="black" font-size="11" font-family="Helvetica">
+3000
+</text>
+<text x="30" y="129" fill="black" font-size="11" font-family="Helvetica">
+3200
+</text>
+<text x="30" y="101" fill="black" font-size="11" font-family="Helvetica">
+3400
+</text>
+<text x="30" y="73" fill="black" font-size="11" font-family="Helvetica">
+3600
+</text>
+<text x="30" y="45" fill="black" font-size="11" font-family="Helvetica">
+3800
 </text>
 <text x="74" y="26" fill="black" font-size="7" font-family="Helvetica">
--3
+3
 </text>
 <text x="63" y="31" fill="black" font-size="11" font-family="Helvetica">
 10

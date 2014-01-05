@@ -5,7 +5,7 @@ images/noise_fits/448_D1_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:43:53 2013</desc>
+CreationDate: Sat Sep 14 16:49:27 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -194,7 +194,7 @@ CreationDate: Tue Sep 10 04:43:53 2013</desc>
 <path d="M122,224v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M122,225v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M123,226v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M123,227" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M123,227v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M124,228v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M124,229" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M124,229v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1175,7 +1175,7 @@ CreationDate: Tue Sep 10 04:43:53 2013</desc>
 <path d="M57,201l 1, -1v -1l 1, -1v -1h 1v -1h 4v 1h 1v 1h 1v 1h 1v 2h 1v 1l 1, 1v 2l 1, 1l 1, 2v 2h 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1l 1, 1l 1, 1h 1v 1h 1v -1h 1l 1, -1h 1v -1l 1, -1l 1, -1v -1l 1,
  -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -1h 1v -1h 4v 1h 1l 1, 1v 1l 1, 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 2l 1, 1v 2h 1v 3l 1,
  1v 1h 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1h 1v 1l 1, 1h 1v 1h 1v 1h 1v -1h 2v -1h 1v -1l 1, -1l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -2v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1l 1, -1v
- -1h 1l 1, -1h 3v 1h 1l 1, 1v 1l 1, 1v 1h 1v 2l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 2l 1, 2v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 1h 1v 1l 1, 1l 1, 1h 1v 1h 1l 1, -1l 1, -1l 1, -1l 1, -1v -1l 1, -1l 1, -1v -2l 1, -1l 1, -2v -1l 1,
+ -1h 1l 1, -1h 3v 1h 1l 1, 1v 1l 1, 1v 1h 1v 2l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 2v 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 1h 1v 1l 1, 1l 1, 1h 1v 1h 1l 1, -1l 1, -1l 1, -1l 1, -1v -1l 1, -1l 1, -1v -2l 1, -1l 1, -2v -1l 1,
  -1v -1l 1, -2v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -2h 1v -1h 1v -1h 4v 1h 1v 1h 1v 1h 1v 2l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 2l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v
  1l 1, 1l 1, 1l 1, 1h 1v 1h 1v -1h 1l 1, -1h 1v -1l 1, -1l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -2v -2h 1v -2l 1, -1v -1l 1, -1v -2h 1v -1l 1, -1v -1h 1v -1h 1v -1h 4v 1h 1l 1, 1v 1l 1, 1v 1h 1v
  1l 1, 2l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 3h 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 2l 1, 1v 1l 1, 1v 1h 1v 2h 1l 1, 1h 1v 1h 1v -1h 2v -1h 1v -1l 1, -1v -1h 1v -1l 1, -1v -1l 1, -2v -1l 1, -1v -1l 1, -1v -2l 1, -1v -2h 1v -3l 1, -1v -1l 1, -1v -2l 1,
@@ -1273,14 +1273,14 @@ f
 <text x="361" y="107" fill="black" font-size="13" font-family="Times">
 &#0966;
 </text>
-<text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
- 22.5
+<text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 22.52
 </text>
-<text x="510" y="110" fill="black" font-size="13" font-family="Times">
+<text x="502" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="473" y="110" fill="black" font-size="13" font-family="Helvetica">
-  18.7 
+<text x="462" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 18.68 
 </text>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="430" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -1481,14 +1481,14 @@ f
 <text x="361" y="107" fill="black" font-size="13" font-family="Times">
 &#0966;
 </text>
-<text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
- 22.5
+<text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 22.52
 </text>
-<text x="510" y="110" fill="black" font-size="13" font-family="Times">
+<text x="502" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="473" y="110" fill="black" font-size="13" font-family="Helvetica">
-  18.7 
+<text x="462" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 18.68 
 </text>
 <text x="225" y="16" fill="black" font-size="15" font-family="Helvetica">
 dt_file:448_ch:D1

@@ -75,7 +75,8 @@ def get_initial_settings(hist):
   #       par name        initial val          minimum value      maximum value
   res = (("N_{b}",    lambda x: h_max/10.0, lambda x:    1.0, lambda x:   h_max), # Scale factor
          ("N_{sin}",  lambda x: h_max/20.0, lambda x:    1.0, lambda x: h_max/3), # Scale factor
-         ("T_{f}",    lambda x:       59.3, lambda x:   55.0, lambda x:    65.0), # fast period
+         # ("T_{f}",    lambda x:       59.3, lambda x:   55.0, lambda x:    65.0), # fast period
+         ("T_{f}",    lambda x:       59.3, lambda x:    0.0, lambda x:   200.0), # fast period
          # ("T_{f}",    lambda x:       78.4, lambda x:    0.0, lambda x:   100.0), # fast period
          ("#phi_{f}", lambda x:       30.0, lambda x:    0.0, lambda x:    65.0)) # fast phase
          # ("T_{s}",    lambda x:     5130.0, lambda x: 5120.0, lambda x:  5140.0), # slow period

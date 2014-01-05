@@ -5,7 +5,7 @@ images/noise_fits/455_D2_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:46:58 2013</desc>
+CreationDate: Sat Sep 14 16:52:42 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -263,7 +263,7 @@ CreationDate: Tue Sep 10 04:46:58 2013</desc>
 <path d="M149,185v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M150,184v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M150,183v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M151,181v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M151,181v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M151,180v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M151,179v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M152,178v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1178,15 +1178,15 @@ CreationDate: Tue Sep 10 04:46:58 2013</desc>
  -1v -3l 1, -2v -1l 1, -2v -3l 1, -2v -1l 1, -2v -3l 1, -1v -2l 1, -1v -3l 1, -1v -1l 1, -1v -2l 1, -1v -1h 1v -2h 1l 1, -1h 1v 1h 2v 2h 1v 1l 1, 1v 2l 1, 1v 1l 1, 2v 2l 1, 1v 2l 1, 1v 3l 1, 2v 2l 1, 1v 3l 1, 2v 2l 1, 1v 3l 1, 2v 1l 1, 2v 3l 1, 1v 2l
  1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1h 1v 1h 3l 1, -1l 1, -1v -1l 1, -1v -1h 1v -3l 1, -1v -1l 1, -1v -3l 1, -1v -2l 1, -2v -2l 1, -2v -2l 1, -1v -4l 1, -1v -2l 1, -1v -4l 1, -1v -1l 1, -2v -3l 1, -1v -3l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1l
  1, -1h 1v 1h 1l 1, 1v 1h 1v 2l 1, 1v 1l 1, 1v 2l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 3l 1, 2v 2l 1, 2v 3l 1, 1v 3l 1, 2v 1l 1, 2v 3l 1, 1v 1l 1, 2v 2l 1, 1v 1l 1, 1v 2h 1v 1h 1v 1h 4v -2h 1v -1l 1, -1v -1l 1, -1v -1l 1, -2v -2l 1, -1v -2l 1, -1v -3l 1,
- -1v -4l 1, -1v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -1h 2v 1h 1l 1, 1v 1l 1, 1v 1h 1v 2l 1, 2v 2l 1, 1v 1l 1, 2v 3l 1, 1v 2l 1, 1v 4l 1, 1v 2l 1, 1v 3l 1, 2v 2l 1, 1v 3l
- 1, 2v 1l 1, 1v 3l 1, 1v 2l 1, 1v 2h 1v 1l 1, 1v 1h 1v 1h 3l 1, -1v -1h 1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -2l 1, -1v -3l 1, -2v -1l 1, -2v -3l 1, -1v -2l 1, -2v -3l 1, -1v -2l 1, -2v -2l 1, -2v -1l 1, -2v -2l 1, -1v -1l 1, -1v -2l 1, -1l
- 1, -1v -1h 1l 1, -1h 1v 1h 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 2l 1, 1v 2l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 2h 1v 1l 1, 1h 3v -1h 1v -1h 1v -2l 1, -1l 1, -2v -2l 1, -1v -1l 1,
- -2v -2l 1, -2v -2l 1, -1v -3l 1, -2v -1l 1, -2v -3l 1, -2v -1l 1, -2v -3l 1, -1v -2l 1, -2v -2l 1, -1v -3l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -1h 1v -1h 1l 1, 1h 1v 1l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 2v 1l 1, 1v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1,
- 2v 3l 1, 2v 3l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1l 1, 1h 3l 1, -1v -1l 1, -1v -1h 1v -2l 1, -1v -2l 1, -1v -2l 1, -2v -1l 1, -2v -2l 1, -2v -3l 1, -2v -1l 1, -2v -3l 1, -2v -1l 1, -2v -3l 1, -2v -1l 1, -1v -3l 1, -1v -1l 1,
- -2v -1l 1, -1v -1l 1, -1v -1l 1, -1h 1v -1h 2v 1h 1v 1h 1v 2l 1, 1l 1, 1v 3h 1v 3l 1, 1v 2l 1, 1v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 1v 1l 1, 2v 2l 1, 2l 1, 2v 1l 1, 1v 1h 1v 1l 1, 1h 3v -1h 1v -1h 1v -2l 1, -1v -2l 1, -1v
- -1l 1, -2v -2l 1, -2v -1l 1, -1v -4l 1, -1v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1v -2h 1v -1l 1, -1h 1v -1h 1l 1, 1h 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 2v 1l 1, 1v 3l 1, 1v 2l 1, 1v 3l 1,
- 2v 2l 1, 1v 4l 1, 1v 2l 1, 1v 3l 1, 2v 1l 1, 2v 2l 1, 2v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1h 4v -1l 1, -1l 1, -1v -2h 1v -2l 1, -1v -2l 1, -1v -2l 1, -1v -3l 1, -2v -1l 1, -1v -4l 1, -1v -2l 1, -1v -4l 1, -1v -2l 1, -2v -2l 1, -2v -2l 1, -1v -2l
- 1, -2v -2l 1, -1v -1h 1v -2l 1, -1l 1, -1l 1, -1h 1v 1h 2v 2h 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 3l 1, 1v 1l 1, 2v 3l 1, 1v 2l 1, 1v 4l 1, 1v 2l 1, 2v 3l 1, 1v 3l 1, 2v 1l 1, 2v 2l 1, 2v 1l 1, 1v 2l 1, 1v 1h 1v 1l 1, 1v 1h 4v -1l 1, -1v -1l 1, -1l 1, -1v
+ -1v -4l 1, -1v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -1v -1l 1, -1v -2l 1, -2l 1, -1v -1l 1, -1v -1h 1v -1h 2v 1h 1l 1, 1v 1l 1, 1v 1h 1v 2l 1, 2v 2l 1, 1v 1l 1, 2v 3l 1, 1v 2l 1, 1v 4l 1, 1v 2l 1, 1v 3l 1, 2v 2l 1, 1v 3l 1,
+ 2v 1l 1, 1v 3l 1, 1v 2l 1, 1v 2h 1v 1l 1, 1v 1h 1v 1h 3l 1, -1v -1h 1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -2l 1, -1v -3l 1, -2v -1l 1, -2v -3l 1, -1v -2l 1, -2v -3l 1, -1v -2l 1, -2v -2l 1, -2v -1l 1, -2v -2l 1, -1v -1l 1, -1v -2l 1, -1l 1,
+ -1v -1h 1l 1, -1h 1v 1h 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 2l 1, 1v 2l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 2h 1v 1l 1, 1h 3v -1h 1v -1h 1v -2l 1, -1l 1, -2v -2l 1, -1v -1l 1, -2v
+ -2l 1, -2v -2l 1, -1v -3l 1, -2v -1l 1, -2v -3l 1, -2v -1l 1, -2v -3l 1, -1v -2l 1, -2v -2l 1, -1v -3l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -1h 1v -1h 1l 1, 1h 1v 1l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 2v 1l 1, 1v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v
+ 3l 1, 2v 3l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1l 1, 1h 3l 1, -1v -1l 1, -1v -1h 1v -2l 1, -1v -2l 1, -1v -2l 1, -2v -1l 1, -2v -2l 1, -2v -3l 1, -2v -1l 1, -2v -3l 1, -2v -1l 1, -2v -3l 1, -2v -1l 1, -1v -3l 1, -1v -1l 1, -2v
+ -1l 1, -1v -1l 1, -1v -1l 1, -1h 1v -1h 2v 1h 1v 1h 1v 2l 1, 1l 1, 1v 3h 1v 3l 1, 1v 2l 1, 1v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 2v 1l 1, 2v 3l 1, 1v 1l 1, 2v 2l 1, 2l 1, 2v 1l 1, 1v 1h 1v 1l 1, 1h 3v -1h 1v -1h 1v -2l 1, -1v -2l 1, -1v -1l
+ 1, -2v -2l 1, -2v -1l 1, -1v -4l 1, -1v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -2v -2l 1, -1v -3l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1v -2h 1v -1l 1, -1h 1v -1h 1l 1, 1h 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 3l 1, 2v
+ 2l 1, 1v 4l 1, 1v 2l 1, 1v 3l 1, 2v 1l 1, 2v 2l 1, 2v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1h 4v -1l 1, -1l 1, -1v -2h 1v -2l 1, -1v -2l 1, -1v -2l 1, -1v -3l 1, -2v -1l 1, -1v -4l 1, -1v -2l 1, -1v -4l 1, -1v -2l 1, -2v -2l 1, -2v -2l 1, -1v -2l 1,
+ -2v -2l 1, -1v -1h 1v -2l 1, -1l 1, -1l 1, -1h 1v 1h 2v 2h 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 3l 1, 1v 1l 1, 2v 3l 1, 1v 2l 1, 1v 4l 1, 1v 2l 1, 2v 3l 1, 1v 3l 1, 2v 1l 1, 2v 2l 1, 2v 1l 1, 1v 2l 1, 1v 1h 1v 1l 1, 1v 1h 4v -1l 1, -1v -1l 1, -1l 1, -1v
  -2l 1, -2v -1l 1, -1v -2l 1, -2v -2l 1, -1v -3l 1, -2v -3l 1, -1v -2l 1, -1v -4l 1, -1v -2l 1, -1v -4l 1, -1v -1l 1, -1v -2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="351" y="22" width="205" height="91" fill="white"/>
 <path d="M351,113h 205" fill="none" stroke="black"/>
@@ -1239,13 +1239,13 @@ sin
 N
 </text>
 <text x="509" y="80" fill="black" font-size="13" font-family="Helvetica">
- 0.375
+ 0.374
 </text>
 <text x="502" y="80" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="462" y="80" fill="black" font-size="13" font-family="Helvetica">
- 7.107 
+ 7.108 
 </text>
 <text x="372" y="93" fill="black" font-size="13" font-family="Helvetica">
     
@@ -1274,14 +1274,14 @@ f
 <text x="361" y="107" fill="black" font-size="13" font-family="Times">
 &#0966;
 </text>
-<text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
- 21.63
+<text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 21.0
 </text>
-<text x="502" y="110" fill="black" font-size="13" font-family="Times">
+<text x="510" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="464" y="110" fill="black" font-size="13" font-family="Helvetica">
- 45.21 
+<text x="473" y="110" fill="black" font-size="13" font-family="Helvetica">
+  45.2 
 </text>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="430" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -1451,13 +1451,13 @@ sin
 N
 </text>
 <text x="509" y="80" fill="black" font-size="13" font-family="Helvetica">
- 0.375
+ 0.374
 </text>
 <text x="502" y="80" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="462" y="80" fill="black" font-size="13" font-family="Helvetica">
- 7.107 
+ 7.108 
 </text>
 <text x="372" y="93" fill="black" font-size="13" font-family="Helvetica">
     
@@ -1486,14 +1486,14 @@ f
 <text x="361" y="107" fill="black" font-size="13" font-family="Times">
 &#0966;
 </text>
-<text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
- 21.63
+<text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 21.0
 </text>
-<text x="502" y="110" fill="black" font-size="13" font-family="Times">
+<text x="510" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="464" y="110" fill="black" font-size="13" font-family="Helvetica">
- 45.21 
+<text x="473" y="110" fill="black" font-size="13" font-family="Helvetica">
+  45.2 
 </text>
 <text x="224" y="16" fill="black" font-size="15" font-family="Helvetica">
 dt_file:455_ch:D2

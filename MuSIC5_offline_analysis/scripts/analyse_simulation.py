@@ -18,21 +18,22 @@ fast=False
 # fast=True
 # bin_width=10
 bin_width=16
-g4bl = True
+# g4bl = True
+g4bl = False
 degraders = ("5mm_Air", "0.5mm_Aluminium", "1mm_Aluminium", "5mm_Aluminium")
 mu_types  = {"mu+":("f", ), "mu-":("f", "cu")}
 ratio_neg_to_pos_mu = 9009.0/86710.0
 
-fit_type = "tight"
+# fit_type = "tight"
 # fit_type = "loose_f"
 # fit_type = "loose_cu"
-# fit_type = "loose_cu_f"
+fit_type = "loose_cu_f"
 if g4bl:
-  img_file_fmt = "images/g4bl_sim_{mu_type}_{degrader}_{fit_type}_{bin_width}ns_bins"
+  img_file_fmt = "images/sim_vs_count/g4bl_sim_{mu_type}_{degrader}_{fit_type}_{bin_width}ns_bins"
   out_file_fmt = "output_txt/g4bl_simulation_counts_and_integrals_{fit_type}_{bin_width}ns_bins.txt"
   filename_fmt = "/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/final/final_st_Copper_0.5mm_deg_{degrader}.root"
 else:
-  img_file_fmt = "images/sim_{mu_type}_{degrader}_{fit_type}_{bin_width}ns_bins_500k"
+  img_file_fmt = "images/sim_vs_count/sim_{mu_type}_{degrader}_{fit_type}_{bin_width}ns_bins_500k"
   out_file_fmt = "output_txt/simulation_counts_and_integrals_{fit_type}_{bin_width}ns_bins.txt"
   filename_fmt = "/Users/scook/code/MuSIC/simulation/MuSIC_5_detector_sim/MuSIC5/output/500k_mu/{mu_type}_{degrader}_500000.root"
 

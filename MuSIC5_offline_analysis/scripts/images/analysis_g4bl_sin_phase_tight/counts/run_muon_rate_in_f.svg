@@ -5,7 +5,7 @@ images/analysis_g4bl_sin_phase_tight/counts/run_muon_rate_in_f.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 00:11:37 2013</desc>
+CreationDate: Thu Sep 12 21:30:28 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -88,54 +88,50 @@ Degrader
 Muon count
 </text>
 </g>
-<path d="M70,261h -13" fill="none" stroke="black"/>
-<path d="M63,252h -6" fill="none" stroke="black"/>
-<path d="M63,243h -6" fill="none" stroke="black"/>
-<path d="M63,234h -6" fill="none" stroke="black"/>
-<path d="M63,225h -6" fill="none" stroke="black"/>
-<path d="M70,216h -13" fill="none" stroke="black"/>
-<path d="M63,207h -6" fill="none" stroke="black"/>
-<path d="M63,198h -6" fill="none" stroke="black"/>
-<path d="M63,189h -6" fill="none" stroke="black"/>
-<path d="M63,180h -6" fill="none" stroke="black"/>
-<path d="M70,171h -13" fill="none" stroke="black"/>
-<path d="M63,162h -6" fill="none" stroke="black"/>
-<path d="M63,153h -6" fill="none" stroke="black"/>
-<path d="M63,144h -6" fill="none" stroke="black"/>
-<path d="M63,135h -6" fill="none" stroke="black"/>
-<path d="M70,126h -13" fill="none" stroke="black"/>
-<path d="M63,117h -6" fill="none" stroke="black"/>
-<path d="M63,107h -6" fill="none" stroke="black"/>
-<path d="M63,98h -6" fill="none" stroke="black"/>
-<path d="M63,89h -6" fill="none" stroke="black"/>
-<path d="M70,80h -13" fill="none" stroke="black"/>
-<path d="M63,71h -6" fill="none" stroke="black"/>
-<path d="M63,62h -6" fill="none" stroke="black"/>
-<path d="M63,53h -6" fill="none" stroke="black"/>
-<path d="M63,44h -6" fill="none" stroke="black"/>
-<path d="M70,35h -13" fill="none" stroke="black"/>
-<path d="M70,261h -13" fill="none" stroke="black"/>
-<path d="M63,270h -6" fill="none" stroke="black"/>
-<path d="M63,279h -6" fill="none" stroke="black"/>
-<path d="M63,288h -6" fill="none" stroke="black"/>
-<path d="M70,35h -13" fill="none" stroke="black"/>
-<text x="36" y="264" fill="black" font-size="11" font-family="Helvetica">
+<path d="M70,260h -13" fill="none" stroke="black"/>
+<path d="M63,250h -6" fill="none" stroke="black"/>
+<path d="M63,241h -6" fill="none" stroke="black"/>
+<path d="M63,232h -6" fill="none" stroke="black"/>
+<path d="M63,223h -6" fill="none" stroke="black"/>
+<path d="M70,213h -13" fill="none" stroke="black"/>
+<path d="M63,204h -6" fill="none" stroke="black"/>
+<path d="M63,195h -6" fill="none" stroke="black"/>
+<path d="M63,186h -6" fill="none" stroke="black"/>
+<path d="M63,177h -6" fill="none" stroke="black"/>
+<path d="M70,167h -13" fill="none" stroke="black"/>
+<path d="M63,158h -6" fill="none" stroke="black"/>
+<path d="M63,149h -6" fill="none" stroke="black"/>
+<path d="M63,140h -6" fill="none" stroke="black"/>
+<path d="M63,131h -6" fill="none" stroke="black"/>
+<path d="M70,121h -13" fill="none" stroke="black"/>
+<path d="M63,112h -6" fill="none" stroke="black"/>
+<path d="M63,103h -6" fill="none" stroke="black"/>
+<path d="M63,94h -6" fill="none" stroke="black"/>
+<path d="M63,85h -6" fill="none" stroke="black"/>
+<path d="M70,75h -13" fill="none" stroke="black"/>
+<path d="M70,260h -13" fill="none" stroke="black"/>
+<path d="M63,269h -6" fill="none" stroke="black"/>
+<path d="M63,278h -6" fill="none" stroke="black"/>
+<path d="M63,287h -6" fill="none" stroke="black"/>
+<path d="M70,75h -13" fill="none" stroke="black"/>
+<path d="M63,66h -6" fill="none" stroke="black"/>
+<path d="M63,57h -6" fill="none" stroke="black"/>
+<path d="M63,48h -6" fill="none" stroke="black"/>
+<path d="M63,38h -6" fill="none" stroke="black"/>
+<text x="36" y="263" fill="black" font-size="11" font-family="Helvetica">
 100
 </text>
-<text x="36" y="219" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="217" fill="black" font-size="11" font-family="Helvetica">
 200
 </text>
-<text x="36" y="174" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="171" fill="black" font-size="11" font-family="Helvetica">
 300
 </text>
-<text x="36" y="129" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="125" fill="black" font-size="11" font-family="Helvetica">
 400
 </text>
-<text x="36" y="84" fill="black" font-size="11" font-family="Helvetica">
+<text x="36" y="79" fill="black" font-size="11" font-family="Helvetica">
 500
-</text>
-<text x="36" y="39" fill="black" font-size="11" font-family="Helvetica">
-600
 </text>
 <text x="74" y="26" fill="black" font-size="7" font-family="Helvetica">
 3

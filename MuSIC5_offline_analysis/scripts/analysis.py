@@ -18,8 +18,7 @@ from dead_time_estimation import get_dead_times_for_run_ids
 from analysis_core import fit_histogram
 from root_utilities import make_canvas, make_hist
 from ValueWithError import ValueWithError, set_hist_bin_contents_and_er
-
-# TODO Create some sort of analysis configuration object that holds g4bl etc
+from sys import exit
 
 coloumb_in_e = 1.0/(1.602176565e-19)
 
@@ -72,22 +71,23 @@ class DataFile(object):
 
 
 
-def run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5):
+def run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5, l_bound=50, u_bound=20000):
   if inc_phase and not inc_sin:
     print 'Cannot have phase & no sin!'
     return
   # Output file info
-  img_dir, txt_dir = get_img_and_txt_dirs(g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5)
+  img_dir, txt_dir = get_img_and_txt_dirs(g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5, l_bound, bin_width)
   integral_data_file = txt_dir+"rates_and_integrals.txt"
   detailed_data_file = txt_dir+"all_info.txt"
   tau_file = txt_dir+"tau_values.txt"
+  latex_file = txt_dir+"latex_table.txt"
     
   # Get the file & histogram names and add them to the dicts
   init_data_dicts(run_dict, sim_dict, g4bl, fast, exec_d4_d5)
   recreate_old_hist_files(run_dict, sim_dict, g4bl, exec_d4_d5)
   out_root_file = TFile(img_dir+"/out.root", "RECREATE")
-  run_data = process_files(out_root_file, run_dict, "run", bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir)
-  sim_data = process_files(out_root_file, sim_dict, "sim", bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir)
+  run_data = process_files(out_root_file, run_dict, "run", bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir, l_bound, u_bound)
+  sim_data = process_files(out_root_file, sim_dict, "sim", bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir, l_bound, u_bound)
   
   all_data = dict(run_data, **sim_data)
   with open(integral_data_file, "w") as out_file:
@@ -101,15 +101,20 @@ def run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type,
   with open(tau_file, "w") as out_file:
     out_file.write(get_tau_table(all_data))
   
+  with open(latex_file, "w") as out_file:
+    out_file.write(get_latex_table(all_data))
+  
   for target in ("cu", "f"):
-      make_and_save_rate_hist(target, run_data, "run", img_dir)
-      make_and_save_rate_hist(target, sim_data, "sim", img_dir)
-      make_and_save_count_hist(target, run_data, "run", img_dir)
-      make_and_save_count_hist(target, sim_data, "sim", img_dir)
+      out_root_file.cd()
+      out_root_file.Add(make_and_save_rate_hist(target, run_data, "run", img_dir, out_root_file))
+      out_root_file.Add(make_and_save_rate_hist(target, sim_data, "sim", img_dir, out_root_file))
+      out_root_file.Add(make_and_save_count_hist(target, run_data, "run", img_dir, out_root_file))
+      out_root_file.Add(make_and_save_count_hist(target, sim_data, "sim", img_dir, out_root_file))
   out_root_file.Write()
-  out_root_file.Close()
+  # out_root_file.Close()
+  return out_root_file
 
-def get_img_and_txt_dirs(g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5):
+def get_img_and_txt_dirs(g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5, l_bound, bin_width):
   """
   Generate the appropriate directory name and if neccessary make it.
   """
@@ -119,6 +124,9 @@ def get_img_and_txt_dirs(g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5):
   if inc_sin:    out_dir_root += "sin_"
   if inc_phase:  out_dir_root += "phase_"
   if exec_d4_d5: out_dir_root += "exec_d4_d5_"
+  
+  out_dir_root += "l_bound"+str(l_bound)
+  out_dir_root += "bin_"+str(bin_width)
     
   out_dir_root += fit_type
   
@@ -198,7 +206,7 @@ def recreate_old_hist_files(run_dict, sim_dict, g4bl, exec_d4_d5, script_name="m
     # generate_sim_histograms(sim_id, g4bl, exec_d4_d5)
  
 
-def process_files(out_root_file, run_ids, data_type, bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir):
+def process_files(out_root_file, run_ids, data_type, bin_width, fit_type, inc_phase, inc_sin, g4bl, img_dir, l_bound, u_bound):
   res = {}
   for file_id, meta_data in run_ids.items():
     if 'file_name' not in meta_data:  # if we're running fast
@@ -213,9 +221,9 @@ def process_files(out_root_file, run_ids, data_type, bin_width, fit_type, inc_ph
       h.SetName(name)
       out_root_file.Add(h)
     if img_dir: save_hist_around_zero_region(data_file, img_dir)
-    fit_data(data_file, fit_type, data_type, inc_phase, inc_sin, img_dir)
+    fit_data(data_file, fit_type, data_type, inc_phase, inc_sin, l_bound, u_bound, img_dir=img_dir)
     res[file_id] = data_file
-    get_muons_per_proton(res[file_id], data_type, g4bl)
+    get_muons_per_namp(res[file_id], data_type, g4bl)
   return res
 
 def save_hist_around_zero_region(data_file, img_dir, l_bound=-200, u_bound=200):
@@ -231,7 +239,7 @@ def save_hist_around_zero_region(data_file, img_dir, l_bound=-200, u_bound=200):
     
   
 
-def fit_data(data_file, fit_type, data_type, inc_phase, inc_sin, img_dir="", fit_options="ILMER"):
+def fit_data(data_file, fit_type, data_type, inc_phase, inc_sin, l_bound, u_bound, img_dir="", fit_options="ILMER"):
   data_file.sum_integrals = {'f':0.0, 'cu':0.0}
   short_name = data_file.short_name
   bin_width = data_file.bin_width
@@ -241,15 +249,14 @@ def fit_data(data_file, fit_type, data_type, inc_phase, inc_sin, img_dir="", fit
     if img_dir:
       can = make_canvas(func_name, resize=True)
       hist.Draw()
-      fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options)
+      fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options, l_bound, u_bound)
       can.Update()
       img_name = img_dir+"fits/"+func_name
       can.SaveAs(img_name+".eps")
       can.SaveAs(img_name+".svg")
     else:
       fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options+"N")
-    calculate_exp_integrals(hist, l_bound=00, u_bound=20000)
-    # calculate_exp_integrals(hist, l_bound=50, u_bound=20000)
+    calculate_exp_integrals(hist, l_bound, u_bound)
     for k in data_file.sum_integrals:
       data_file.sum_integrals[k] += hist.integrals[k]
 
@@ -318,42 +325,45 @@ def calculate_exp_integrals(hist, l_bound=50, u_bound=20000):
 
 def get_n_protons(g4bl, n_mu_sim):
   if g4bl:
-    # In g4bl we set the number of protons to be 9e6
-    return 9e6 
+    # In g4bl we set the number of protons to be 9e8
+    return 9e8
   else:
     # Only use the number of mu+ in g4bl as n_mu_sim is the number of mu+ simulated (mu- are scaled to this)
     g4bl_mu_per_p = 86710/9e8
     return n_mu_sim/g4bl_mu_per_p
 
-def get_muons_per_proton(data, data_type, g4bl):
+def get_muons_per_namp(data, data_type, g4bl):
   """
   Calculate the rate of muons per proton
   """
   if data_type == "sim":
-    n_proton = get_n_protons(g4bl, n_mu_sim=5e5) 
+    n_proton = get_n_protons(g4bl, n_mu_sim=5e5)
+    norm = n_proton/(1e-9*coloumb_in_e) # Want it in nA
   else:
-    n_proton = data.dead_time*data.run_time*data.proton_current*coloumb_in_e
-  assert n_proton != 0.0
+    # norm = data.dead_time*data.run_time*data.proton_current*coloumb_in_e
+    #  Make sure it's in nA
+    norm = data.dead_time*data.run_time*data.proton_current/(1e-9)
+  assert norm != 0.0
   
   data.muon_rates = {}
   for k in data.sum_integrals:
-    data.muon_rates[k] = data.sum_integrals[k]/n_proton if data.sum_integrals[k] else data.sum_integrals[k]
+    data.muon_rates[k] = data.sum_integrals[k]/norm if data.sum_integrals[k] else data.sum_integrals[k]
   data.per_ch_rates = {}
   for ch in data.hist_names:
     data[ch].rate = {}
     for k in data[ch].integrals:
       # Because the integral is a ValueWithError if it's 0 then it will
       # cause divBy0 in carrying out the error propogation
-      data[ch].rate[k] = data[ch].integrals[k]/n_proton if data[ch].integrals[k] else data[ch].integrals[k]
-    
+      data[ch].rate[k] = data[ch].integrals[k]/norm if data[ch].integrals[k] else data[ch].integrals[k]
+
 def get_integrals_table(data_dict):
   res = "{:^3s} | {:^3s} | {:^2s} | {:^21s} | {:^21s} | {:^13s}\n".format("id","dz","ch","cu","f","Chi^2/NDF") 
-  fmt = "{:^3s} | {:^3s} | {:^2s} | {} | {} | {:>5.0f} / {:<5.0f}\n"
+  fmt = "{:^3s} | {:^3s} | {:^2s} | {i_c.value:7.2f}+/-{i_c.error:7.2f} |  {i_f.value:7.2f}+/-{i_f.error:7.2f}  | {:>5.0f} / {:<5.0f}\n"
   for file_key, file in data_dict.items():
-    res += fmt.format(str(file_key)[:3], str(file.deg_dz), "--", file.sum_integrals["cu"], file.sum_integrals["f"], -1, -1 )
+    res += fmt.format(str(file_key)[:3], str(file.deg_dz), "--", -1, -1, i_f=file.sum_integrals["cu"], i_c=file.sum_integrals["f"])
     for ch in file.hist_names:
-      res += fmt.format("--", "--", ch[:2], file[ch].integrals["cu"], file[ch].integrals["f"], 
-                        file[ch].fit_param["chi2"], file[ch].fit_param["ndf"])
+      res += fmt.format("--", "--", ch[:2], file[ch].fit_param["chi2"], file[ch].fit_param["ndf"],
+              i_c=file[ch].integrals["cu"], i_f=file[ch].integrals["f"])
   return res
 
 def get_rates_table(data_dict):
@@ -406,11 +416,40 @@ def get_tau_table(data_dict):
     c_val_str = "".join(c_val_str)
     c_err_str = "".join(c_err_str)
     res += [f_val_str, f_err_str, c_val_str, c_err_str]
-  return "\n".join(res) 
-  
+  return "\n".join(res)
 
+def get_latex_table(data_dict):
+  res = "{:4s} & {:2s}&{:^19s}&{:^19s}&{:^18s}&{:^17s}&{:^17s}&{:^16s}&{:^18s}&{:^20s}&{:^20s}&{:^12s}&{:^9s} \\\\"
+  res = [res.format("file", "ch", "N_b", "N_sin", "phi", "N_cu", "N_f", "i_c", "i_f", "r_c(/nA)", "r_f(/nA)", "chi2", "ndf")]
+  fmt = "  &  {ch:^2s}  &  {N_b.value:7.3f} & {N_b.error:5.3f}  &  "+\
+        "{N_sin.value:7.3f} & {N_sin.error:5.3f}  &  {phi.value:6.3f} & {phi.error:5.3f}  &  "+\
+        "{N_cu.value:6.1f} & {N_cu.error:4.1f}  &  {N_f.value:7.2f} & {N_f.error:4.2f}  &  "+\
+        "{i_c.value:5.0f} & {i_c.error:3.0f}  &  {i_f.value:6.0f} & {i_f.error:3.0f}  &  "+\
+        "{r_c.value:7.2f} & {r_c.error:6.2f}  &  {r_f.value:7.2f} & {r_f.error:6.2f}  &  "+\
+        "{chi2:>6.0f} & {ndf:<5.0f} \\\\"
+  
+  for file_key in ("448", "451", "452", "455", "458", "459"):
+    file = data_dict[int(file_key)]
+    res.append("\hline\n\multirow{5}{*}{%s}"%file_key)
+    # Only produce this for D1-5 in order, as we don't always use D4 & D5 filter for it
+    for ch in filter(lambda x: x in file.hists.keys(), ("D1", "D2", "D3", "D4", "D5")):
+      hist =  file.hists[ch]
+      N_b   = ValueWithError(-1, -1) if 'N_b'   not in hist.fit_param else hist.fit_param['N_b']
+      N_sin = ValueWithError(-1, -1) if 'N_sin' not in hist.fit_param else hist.fit_param['N_sin']
+      phi   = ValueWithError(-1, -1) if 'phi'   not in hist.fit_param else hist.fit_param['phi']
+        
+      v = fmt.format(ch=str(ch)[:3], N_b=N_b, N_sin=N_sin, phi=phi,
+                    N_cu=hist.fit_param['N_cu'],   N_f=hist.fit_param['N_f'],
+                    i_c=file[ch].integrals['cu'],  i_f=file[ch].integrals['f'],
+                    r_c=file[ch].rate['cu'],       r_f=file[ch].rate['f'],
+                    chi2=hist.fit_param['chi2'],   ndf=hist.fit_param['ndf'])
+      res.append(v)
+  return '\n'.join(res)
+    
+  
+  
 def make_rate_hist(name, target, data_dict):
-  titles=("Degrader", "Muons per proton")
+  titles=("Degrader", "Muon rate (nA^{-1})")
   res = make_hist(name, mins=0, maxs=len(data_dict), bins=len(data_dict), titles=titles)
   
   dz_ordered_keys = [(k,v.deg_dz) for k,v in data_dict.items()]
@@ -421,15 +460,17 @@ def make_rate_hist(name, target, data_dict):
     set_hist_bin_contents_and_er(res, bin_id, rate, name=str(degrader))
   return res
 
-def make_and_save_rate_hist(target, data, data_type, img_dir):
+def make_and_save_rate_hist(target, data, data_type, img_dir, out_root_file):
   name = "Rate " if data_type == "run" else "Simulated rate "
   name += "of muons decaying in "+target
   hist = make_rate_hist(name, target, data)
+  # out_root_file.Add(hist)
   canvas = make_canvas(name, resize=True)
   hist.Draw()
   img_name = img_dir+"rates/"+data_type+"_muon_rate_in_"+target
   canvas.SaveAs(img_name+".svg")
   canvas.SaveAs(img_name+".eps")
+  return hist
 
 def make_count_hist(name, target, data_dict):
   titles=("Degrader", "Muon count")
@@ -443,15 +484,16 @@ def make_count_hist(name, target, data_dict):
     set_hist_bin_contents_and_er(res, bin_id, count, name=str(degrader))
   return res
 
-def make_and_save_count_hist(target, data, data_type, img_dir):
+def make_and_save_count_hist(target, data, data_type, img_dir, out_root_file):
   name = "Count " if data_type == "run" else "Simulated count "
   name += "of muons decaying in "+target
   hist = make_count_hist(name, target, data)
   canvas = make_canvas(name, resize=True)
   hist.Draw()
-  img_name = img_dir+"counts/"+data_type+"_muon_rate_in_"+target
+  img_name = img_dir+"counts/"+data_type+"_muon_count_in_"+target
   canvas.SaveAs(img_name+".svg")
-  canvas.SaveAs(img_name+".eps")    
+  canvas.SaveAs(img_name+".eps") 
+  return hist   
 
 def main():
   
@@ -484,10 +526,38 @@ def main():
              }
 
   bin_width=16
+  files_to_kill = []
+
+  # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)
+  # Want this for big tables o' data
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", False
+  files_to_kill.append(run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5))
+  print "*"*80,"\nTable run complete!\n","*"*80
   
   # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)
+  # Want this one for the final plots of rates etc.
   g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", True
-  run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5)
+  files_to_kill.append(run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5))
+  print "*"*80,"\nAnalysis run complete!\n","*"*80
+  
+  # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)
+  # Want one with a higher start fit point for systematics
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", True
+  files_to_kill.append(run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5, l_bound=75))
+  print "*"*80,"\nl_bound systematic run complete!\n","*"*80
+  
+  # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)
+  # Now we want to test affect of bin size for systematics 
+  bin_width = 8
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", True
+  files_to_kill.append(run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5))
+  print "*"*80,"\nBin width = 8 run complete!\n","*"*80
+  
+  bin_width = 32
+  g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", True
+  files_to_kill.append(run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5))
+  print "*"*80,"\nBin width = 32 run complete!\n","*"*80
+  for f in files: f.Close()
   return 
   
   # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)

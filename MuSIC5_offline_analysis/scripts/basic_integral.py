@@ -63,7 +63,7 @@ def fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options="MER"
     hist.Draw()
     hist.Fit(func, fit_options)
     canvas.Update()
-    canvas.SaveAs(img_name+".png")
+    canvas.SaveAs(img_name+".eps")
     canvas.SaveAs(img_name+".svg")
   else:
     hist.Fit(func, fit_options+"N")

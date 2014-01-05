@@ -5,7 +5,7 @@ images/noise_fits/448_D3_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:43:50 2013</desc>
+CreationDate: Sat Sep 14 16:47:11 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -1073,7 +1073,7 @@ CreationDate: Tue Sep 10 04:43:50 2013</desc>
 <path d="M470,197z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M470,197" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M471,197z" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M471,198z" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M471,197v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M472,198" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M472,198v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M472,199" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1083,7 +1083,7 @@ CreationDate: Tue Sep 10 04:43:50 2013</desc>
 <path d="M474,201" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M474,201v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M475,202v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M475,203v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M475,203" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M476,204" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M476,204v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M476,205v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1172,7 +1172,7 @@ CreationDate: Tue Sep 10 04:43:50 2013</desc>
 <path d="M509,199" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M510,199" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M510,198v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M57,205v -1h 1v -2h 1v -1h 1v -2h 1v -1l 1, -1h 5v 1h 1l 1, 1v 1l 1, 1l 1, 1v 1l 1, 1l 1, 2v 1l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 1h 1v 2l 1, 1v 1l 1, 1l 1, 1v 1l 1, 1l 1, 1l 1, 1h 1v 1h 2v -1h 1l 1, -1l 1, -1l 1, -1v -1l 1, -1l 1,
+<path d="M57,205v -1h 1v -2h 1v -1h 1v -2h 1v -1l 1, -1h 5v 1h 1l 1, 1v 1l 1, 1l 1, 1v 1l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 1h 1v 2l 1, 1v 1l 1, 1l 1, 1v 1l 1, 1l 1, 1l 1, 1h 1v 1h 2v -1h 1l 1, -1l 1, -1l 1, -1v -1l 1, -1l 1,
  -1v -1l 1, -1l 1, -1v -2l 1, -1v -1l 1, -1v -2h 1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1l 1, -1v -1h 1v -1h 1v -1h 5l 1, 1v 1h 1v 1h 1v 2h 1v 1l 1, 1v 1l 1, 1v 2h 1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2h 1v 1l 1, 1v 1l 1,
  1h 1v 2h 2v 1h 1v 1h 2v -1h 1v -1h 1l 1, -1v -1h 1v -1l 1, -1l 1, -1v -2h 1v -1l 1, -1v -2h 1v -2h 1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -1h 1v -1l 1, -1h 5v 1h 1v 1h 1v 1l 1, 1v 1h 1v 1l 1, 1v 2h 1v 1l 1, 1v 2l
  1, 1v 1h 1v 2l 1, 1v 1l 1, 1v 2l 1, 1l 1, 1v 1l 1, 1v 1h 1v 1l 1, 1l 1, 1l 1, 1h 1v 1h 1l 1, -1h 1v -1h 1l 1, -1v -1h 1v -1l 1, -1v -1h 1v -1l 1, -1v -2h 1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1l 1, -1v -1l 1, -1l 1, -1v
@@ -1183,7 +1183,7 @@ CreationDate: Tue Sep 10 04:43:50 2013</desc>
  1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 2h 1v 1l 1, 1v 2h 1v 1l 1, 1v 1h 1v 1l 1, 1h 1v 1h 1l 1, 1h 1v -1h 1l 1, -1h 1v -1l 1, -1l 1, -1v -1l 1, -1l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1v -1h 1v
  -2l 1, -1v -1h 1v -1l 1, -1v -1h 1v -1h 1v -1h 5l 1, 1l 1, 1v 1h 1v 1h 1v 2l 1, 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 1h 1v 2l 1, 1v 1h 1v 2l 1, 1l 1, 1v 1h 1v 1l 1, 1h 1v 1h 1v 1h 2v -1h 1l 1, -1l 1, -1l 1, -1l 1, -1v -1h 1v -2l 1, -1v -1l
  1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1v -1h 1v -2l 1, -1v -1h 1v -2l 1, -1l 1, -1v -1h 1v -1h 1v -1h 5l 1, 1v 1h 1v 1l 1, 1l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2h 1v 2h 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1h 1v 2h 1v 1h 1v 1l 1, 1h 1v 1h
- 1l 1, 1h 1v -1h 1l 1, -1l 1, -1l 1, -1v -1l 1, -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1v -1h 1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -1l 1, -1v -1h 1v -1l 1, -1h 5v 1h 1v 1h 1v 1l 1, 1v 1h 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2h
+ 1l 1, 1h 1v -1h 1l 1, -1l 1, -1l 1, -1v -1l 1, -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -2l 1, -1v -1h 1v -2l 1, -1v -1l 1, -1v -1l 1, -1v -1h 1v -1l 1, -1v -1h 1v -1l 1, -1h 5l 1, 1v 1h 1v 1l 1, 1v 1h 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2h
  1v 1l 1, 1v 2l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1l 1, 1v 1h 1l 1, 1h 1v 1h 1l 1, -1h 1v -1h 1l 1, -1v -1h 1v -1h 1v -2h 1v -1l 1, -1v -1l 1, -1v -1l 1, -1v -2h 1v -2h 1v -2l 1, -1v -2l 1, -1l 1, -1v -2l 1, -1l 1, -1v -1l 1, -1h 1v -1"
  fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="351" y="22" width="205" height="91" fill="white"/>
@@ -1272,14 +1272,14 @@ f
 <text x="361" y="107" fill="black" font-size="13" font-family="Times">
 &#0966;
 </text>
-<text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
- 50.63
+<text x="516" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 50.7
 </text>
-<text x="502" y="110" fill="black" font-size="13" font-family="Times">
+<text x="509" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="464" y="110" fill="black" font-size="13" font-family="Helvetica">
- 41.21 
+<text x="472" y="110" fill="black" font-size="13" font-family="Helvetica">
+  41.2 
 </text>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="430" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -1475,14 +1475,14 @@ f
 <text x="361" y="107" fill="black" font-size="13" font-family="Times">
 &#0966;
 </text>
-<text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
- 50.63
+<text x="516" y="110" fill="black" font-size="13" font-family="Helvetica">
+ 50.7
 </text>
-<text x="502" y="110" fill="black" font-size="13" font-family="Times">
+<text x="509" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="464" y="110" fill="black" font-size="13" font-family="Helvetica">
- 41.21 
+<text x="472" y="110" fill="black" font-size="13" font-family="Helvetica">
+  41.2 
 </text>
 <text x="224" y="16" fill="black" font-size="15" font-family="Helvetica">
 dt_file:448_ch:D3

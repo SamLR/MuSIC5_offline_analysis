@@ -5,7 +5,7 @@ images/noise_fits/458_D1_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:47:49 2013</desc>
+CreationDate: Sat Sep 14 16:56:05 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -337,7 +337,7 @@ CreationDate: Tue Sep 10 04:47:49 2013</desc>
 <path d="M179,232z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M179,231v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M179,231z" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M180,231" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M180,231z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M180,230v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M181,230" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M181,229v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -950,7 +950,7 @@ CreationDate: Tue Sep 10 04:47:49 2013</desc>
 <path d="M421,180" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M422,179v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M422,178v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M423,178" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M423,178z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M423,178z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M423,178" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M424,178z" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1186,8 +1186,8 @@ CreationDate: Tue Sep 10 04:47:49 2013</desc>
  1, 1v 3l 1, 1v 2l 1, 1v 3l 1, 2v 1l 1, 2v 3l 1, 1v 1l 1, 2v 2l 1, 2v 1l 1, 1v 2l 1, 1v 1l 1, 1v 2h 1v 1l 1, 1h 1v 1h 1l 1, -1h 1v -1l 1, -1l 1, -1v -1l 1, -2l 1, -2v -2l 1, -1v -2l 1, -2v -1l 1, -2v -3l 1, -1v -1l 1, -2v -3l 1, -2v -1l 1, -1v -4l 1,
  -1v -1l 1, -2v -2l 1, -2v -1l 1, -1v -2h 1v -1l 1, -1v -1l 1, -1v -1h 4l 1, 1v 1l 1, 1v 1l 1, 1v 1l 1, 1v 2l 1, 2v 1l 1, 1v 3l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 2v 3l 1, 1v 2l 1, 1v 3l 1, 1v 1l 1, 2v 2l 1, 1v 1l 1, 1v 2l 1, 1v 1h 1v 2h 2v 1h 1v -1h 2v
  -2h 1v -1l 1, -1v -2h 1v -2l 1, -1v -2l 1, -1v -1l 1, -2v -3l 1, -1v -2l 1, -1v -3l 1, -2v -1l 1, -2v -2l 1, -2v -1l 1, -2v -3l 1, -1v -1l 1, -2v -2l 1, -1v -1h 1v -2l 1, -1v -1l 1, -1h 4v 1l 1, 1v 1l 1, 1l 1, 1v 2l 1, 1v 1l 1, 2v 2l 1, 2v 1l 1, 1v
- 3l 1, 2v 1l 1, 1v 4l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1l 1, 1v 1h 1l 1, 1h 1v -1h 1l 1, -1v -1h 1v -2h 1v -1l 1, -1v -3l 1, -1v -1l 1, -1v -3l 1, -1v -1l 1, -2v -3l 1, -1v -2l 1, -2v -2l 1, -2v -3l 1, -1v -2l 1, -1v
- -3l 1, -1v -1l 1, -1v -3l 1, -1l 1, -1v -1" fill="none" stroke="#ff0000" stroke-width="2"/>
+ 3l 1, 2v 1l 1, 1v 4l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 3l 1, 1v 2l 1, 1v 1l 1, 1v 2l 1, 1l 1, 1v 1h 1l 1, 1h 1v -1h 1l 1, -1v -1h 1v -2h 1v -2h 1v -3l 1, -1v -1l 1, -1v -3l 1, -1v -1l 1, -2v -3l 1, -1v -2l 1, -2v -2l 1, -2v -3l 1, -1v -2l 1, -1v -3l
+ 1, -1v -1l 1, -1v -3l 1, -1l 1, -1v -1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="351" y="22" width="205" height="91" fill="white"/>
 <path d="M351,113h 205" fill="none" stroke="black"/>
 <path d="M556,113v -91" fill="none" stroke="black"/>
@@ -1238,14 +1238,14 @@ sin
 <text x="361" y="78" fill="black" font-size="13" font-family="Helvetica">
 N
 </text>
-<text x="512" y="80" fill="black" font-size="13" font-family="Helvetica">
- 0.201
+<text x="509" y="80" fill="black" font-size="13" font-family="Helvetica">
+ 0.202
 </text>
-<text x="504" y="80" fill="black" font-size="13" font-family="Times">
+<text x="502" y="80" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="464" y="80" fill="black" font-size="13" font-family="Helvetica">
- 2.283 
+<text x="462" y="80" fill="black" font-size="13" font-family="Helvetica">
+ 2.282 
 </text>
 <text x="372" y="93" fill="black" font-size="13" font-family="Helvetica">
     
@@ -1275,7 +1275,7 @@ f
 &#0966;
 </text>
 <text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
- 13.0
+ 14.5
 </text>
 <text x="510" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
@@ -1477,14 +1477,14 @@ sin
 <text x="361" y="78" fill="black" font-size="13" font-family="Helvetica">
 N
 </text>
-<text x="512" y="80" fill="black" font-size="13" font-family="Helvetica">
- 0.201
+<text x="509" y="80" fill="black" font-size="13" font-family="Helvetica">
+ 0.202
 </text>
-<text x="504" y="80" fill="black" font-size="13" font-family="Times">
+<text x="502" y="80" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
-<text x="464" y="80" fill="black" font-size="13" font-family="Helvetica">
- 2.283 
+<text x="462" y="80" fill="black" font-size="13" font-family="Helvetica">
+ 2.282 
 </text>
 <text x="372" y="93" fill="black" font-size="13" font-family="Helvetica">
     
@@ -1514,7 +1514,7 @@ f
 &#0966;
 </text>
 <text x="517" y="110" fill="black" font-size="13" font-family="Helvetica">
- 13.0
+ 14.5
 </text>
 <text x="510" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;

@@ -5,7 +5,7 @@ images/noise_fits/455_D4_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:46:54 2013</desc>
+CreationDate: Sat Sep 14 16:52:38 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -400,7 +400,7 @@ CreationDate: Tue Sep 10 04:46:54 2013</desc>
 <path d="M205,212v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M205,210v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M206,209v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M206,207v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M206,207v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M206,205v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M207,204v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M207,202v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -585,7 +585,7 @@ CreationDate: Tue Sep 10 04:46:54 2013</desc>
 <path d="M278,275" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M278,275z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M279,275v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M279,276z" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M279,275v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M280,275z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M280,275" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M280,275" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1177,15 +1177,15 @@ CreationDate: Tue Sep 10 04:46:54 2013</desc>
  1, -1l 1, -1l 1, -1v -2l 1, -1v -1l 1, -2v -2l 1, -2v -3l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -3v -4l 1, -2v -3l 1, -2v -4l 1, -3v -2l 1, -2v -4l 1, -3v -2l 1, -1v -4l 1, -2v -2l 1, -1v -2l 1, -2v -1l 1, -1v -1l 1, -1h 1v -1h 1v 1h 1v 1l 1, 1v 2h 1v
  2l 1, 1v 3l 1, 1v 2l 1, 2v 4l 1, 2v 2l 1, 2v 4l 1, 3v 2l 1, 2v 5l 1, 2v 3l 1, 2v 4l 1, 3v 2l 1, 2v 4l 1, 2v 2l 1, 1v 4l 1, 1v 2l 1, 1v 2l 1, 1v 1l 1, 1v 1h 1v 1l 1, -1h 1v -1l 1, -1l 1, -2v -2l 1, -1v -1l 1, -2v -3l 1, -2v -2l 1, -2v -4l 1, -2v -2l
  1, -2v -5l 1, -2v -2l 1, -2v -5l 1, -3v -2l 1, -2v -5l 1, -2v -2l 1, -2v -4l 1, -1v -2l 1, -2v -2l 1, -2v -2l 1, -1v -1l 1, -1v -1h 1v -1h 1v 1h 1l 1, 1v 1l 1, 1v 1l 1, 1v 3l 1, 1v 2l 1, 2v 3l 1, 2v 2l 1, 2v 4l 1, 3v 2l 1, 2v 5l 1, 2v 2l 1, 3v 4l 1,
- 2v 2l 1, 3v 4l 1, 2v 4l 1, 2v 2l 1, 1v 3l 1, 1v 2l 1, 1v 2h 1v 1l 1, 1h 1v 1l 1, -1l 1, -1l 1, -1v -2l 1, -1v -1l 1, -2v -3l 1, -1v -2l 1, -2v -4l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -3v -4l 1, -2v -5l 1, -2v -2l 1, -2v -3l 1,
- -2v -2l 1, -1v -3l 1, -1v -1l 1, -1v -1l 1, -1h 1v -1h 1v 1h 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 2l 1, 1v 3l 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 3v 4l 1, 2v 5l 1, 3v 2l 1, 2v 5l 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 2v 3l 1, 2v 1l 1, 1v 2l 1, 2l 1, 1v 1h 1l 1, 1v -1h
- 1l 1, -1v -1l 1, -2v -1l 1, -1v -2l 1, -2v -2l 1, -1v -4l 1, -2v -4l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -3v -5l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -2v -4l 1, -2v -1l 1, -2v -3l 1, -1v -1l 1, -1v -2l 1, -1v -1h 1v -1h 1l 1, 1l 1, 1v 1h 1v 2l 1, 1v
- 3l 1, 1v 2l 1, 2v 3l 1, 2v 2l 1, 2v 5l 1, 2v 2l 1, 2v 5l 1, 2v 2l 1, 3v 4l 1, 3v 2l 1, 2v 4l 1, 2v 2l 1, 2v 4l 1, 1v 2l 1, 1v 3l 1, 1v 1l 1, 1v 1l 1, 1h 1v 1v -1h 1l 1, -1v -1h 1v -2l 1, -2v -1l 1, -1v -3l 1, -2v -1l 1, -2v -4l 1, -2v -2l 1, -2v -5l
- 1, -2v -2l 1, -3v -4l 1, -2v -3l 1, -2v -4l 1, -3v -2l 1, -2v -4l 1, -2v -2l 1, -1v -4l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1h 1v -1h 1v 1h 1v 1l 1, 1v 1l 1, 1v 2l 1, 2v 1l 1, 1v 4l 1, 1v 2l 1, 2v 4l 1, 3v 2l 1, 2v 4l 1, 3v 2l 1, 3v 4l 1, 2v 3l 1,
- 2v 4l 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 1v 3l 1, 1v 2l 1, 2l 1, 1v 1h 1l 1, 1v -1h 1v -1h 1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -2l 1, -2v -3l 1, -2v -2l 1, -2v -4l 1, -3v -2l 1, -2v -5l 1, -2v -3l 1, -2v -4l 1, -3v -2l 1, -2v -4l 1, -2v -4l 1, -2v -2l 1,
- -1v -3l 1, -1v -2h 1v -2l 1, -1v -1h 1v -1h 1l 1, 1l 1, 1v 1h 1v 2l 1, 2v 1l 1, 1v 3l 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 2v 4l 1, 3v 2l 1, 2v 5l 1, 2v 5l 1, 2v 2l 1, 2v 5l 1, 2v 2l 1, 2v 3l 1, 2v 1l 1, 1v 3l 1, 1v 1l 1, 1v 1l 1, 1h 1v 1v -1h 2v -2h 1v
- -1l 1, -1v -3l 1, -1v -2l 1, -1v -4l 1, -1v -2l 1, -2v -5l 1, -2v -4l 1, -2v -3l 1, -2v -4l 1, -3v -2l 1, -3v -4l 1, -2v -2l 1, -3v -4l 1, -1v -2l 1, -2v -3l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1h 1v -1h 1v 1h 1l 1, 1v 2l 1, 1v 1l 1, 1v 3l 1, 2v 3l
- 1, 2v 1l 1, 2v 5l 1, 2v 2l 1, 2v 5l 1, 2v 3l 1, 2v 4l 1, 3v 2l 1, 2v 4l 1, 3v 2l 1, 2v 3l 1, 2v 2l 1, 1v 3l 1, 1v 2l 1, 1v 1l 1, 1v 1h 1l 1, 1v -1h 1v -1h 1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -2l 1, -2v -3l 1, -2v -2l 1, -2v -2" fill="none"
+ 2v 2l 1, 3v 4l 1, 2v 4l 1, 2v 2l 1, 1v 3l 1, 1v 2l 1, 1v 2h 1v 1l 1, 1h 2l 1, -1l 1, -1v -2l 1, -1v -1l 1, -2v -3l 1, -1v -2l 1, -2v -4l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -3v -4l 1, -2v -5l 1, -2v -2l 1, -2v -3l 1, -2v -2l 1,
+ -1v -3l 1, -1v -1l 1, -1v -1l 1, -1h 1v -1h 1v 1h 1v 1l 1, 1v 1l 1, 1v 2l 1, 1v 2l 1, 1v 3l 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 3v 4l 1, 2v 5l 1, 3v 2l 1, 2v 5l 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 2v 3l 1, 2v 1l 1, 1v 2l 1, 2l 1, 1v 1h 1l 1, 1v -1h 1l 1, -1v
+ -1l 1, -2v -1l 1, -1v -2l 1, -2v -2l 1, -1v -4l 1, -2v -4l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -3v -5l 1, -2v -2l 1, -2v -5l 1, -2v -2l 1, -2v -4l 1, -2v -1l 1, -2v -3l 1, -1v -1l 1, -1v -2l 1, -1v -1h 1v -1h 1l 1, 1l 1, 1v 1h 1v 2l 1, 1v 3l 1, 1v
+ 2l 1, 2v 3l 1, 2v 2l 1, 2v 5l 1, 2v 2l 1, 2v 5l 1, 2v 2l 1, 3v 4l 1, 3v 2l 1, 2v 4l 1, 2v 2l 1, 2v 4l 1, 1v 2l 1, 1v 3l 1, 1v 1l 1, 1v 1l 1, 1h 1v 1v -1h 1l 1, -1v -1h 1v -2l 1, -2v -1l 1, -1v -3l 1, -2v -1l 1, -2v -4l 1, -2v -2l 1, -2v -5l 1, -2v
+ -2l 1, -3v -4l 1, -2v -3l 1, -2v -4l 1, -3v -2l 1, -2v -4l 1, -2v -2l 1, -1v -4l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1h 1v -1h 1v 1h 1v 1l 1, 1v 1l 1, 1v 2l 1, 2v 1l 1, 1v 4l 1, 1v 2l 1, 2v 4l 1, 3v 2l 1, 2v 4l 1, 3v 2l 1, 3v 4l 1, 2v 3l 1, 2v 4l
+ 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 1v 3l 1, 1v 2l 1, 2l 1, 1v 1h 1l 1, 1v -1h 1v -1h 1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -2l 1, -2v -3l 1, -2v -2l 1, -2v -4l 1, -3v -2l 1, -2v -5l 1, -2v -3l 1, -2v -4l 1, -3v -2l 1, -2v -4l 1, -2v -4l 1, -2v -2l 1, -1v
+ -3l 1, -1v -2h 1v -2l 1, -1v -1h 1v -1h 1l 1, 1l 1, 1v 1h 1v 2l 1, 2v 1l 1, 1v 3l 1, 2v 2l 1, 2v 4l 1, 2v 2l 1, 2v 4l 1, 3v 2l 1, 2v 5l 1, 2v 5l 1, 2v 2l 1, 2v 5l 1, 2v 2l 1, 2v 3l 1, 2v 1l 1, 1v 3l 1, 1v 1l 1, 1v 1l 1, 1h 1v 1v -1h 2v -2h 1v -1l 1,
+ -1v -3l 1, -1v -2l 1, -1v -4l 1, -1v -2l 1, -2v -5l 1, -2v -4l 1, -2v -3l 1, -2v -4l 1, -3v -2l 1, -3v -4l 1, -2v -2l 1, -3v -4l 1, -1v -2l 1, -2v -3l 1, -1v -2l 1, -1v -2l 1, -1v -1l 1, -1h 1v -1h 1v 1h 1l 1, 1v 2l 1, 1v 1l 1, 1v 3l 1, 2v 3l 1, 2v
+ 1l 1, 2v 5l 1, 2v 2l 1, 2v 5l 1, 2v 3l 1, 2v 4l 1, 3v 2l 1, 2v 4l 1, 3v 2l 1, 2v 3l 1, 2v 2l 1, 1v 3l 1, 1v 2l 1, 1v 1l 1, 1v 1h 1l 1, 1v -1h 1v -1h 1v -2l 1, -1v -1l 1, -1v -3l 1, -1v -2l 1, -2v -3l 1, -2v -2l 1, -2v -2" fill="none"
  stroke="#ff0000" stroke-width="2"/>
 <rect x="351" y="22" width="205" height="91" fill="white"/>
 <path d="M351,113h 205" fill="none" stroke="black"/>

@@ -5,7 +5,7 @@ images/noise_fits/448_D5_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:43:47 2013</desc>
+CreationDate: Sat Sep 14 16:47:08 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -94,7 +94,7 @@ f
 T
 </text>
 <text x="538" y="53" fill="black" font-size="6" font-family="Helvetica">
- 0.44
+ 0.46
 </text>
 <text x="534" y="53" fill="black" font-size="6" font-family="Times">
 &#0177;
@@ -112,13 +112,13 @@ f
 &#0966;
 </text>
 <text x="534" y="59" fill="black" font-size="6" font-family="Helvetica">
- 56.93
+ 56.76
 </text>
 <text x="531" y="59" fill="black" font-size="6" font-family="Times">
 &#0177;
 </text>
 <text x="514" y="59" fill="black" font-size="6" font-family="Helvetica">
- 48.95 
+ 48.93 
 </text>
 <path d="M57,224v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M57,223v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1130,7 +1130,7 @@ f
 <path d="M455,243z" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M456,242v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M456,242z" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M457,242z" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M457,242" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M457,241v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M457,241" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M458,241" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1493,7 +1493,7 @@ f
 T
 </text>
 <text x="538" y="53" fill="black" font-size="6" font-family="Helvetica">
- 0.44
+ 0.46
 </text>
 <text x="534" y="53" fill="black" font-size="6" font-family="Times">
 &#0177;
@@ -1511,13 +1511,13 @@ f
 &#0966;
 </text>
 <text x="534" y="59" fill="black" font-size="6" font-family="Helvetica">
- 56.93
+ 56.76
 </text>
 <text x="531" y="59" fill="black" font-size="6" font-family="Times">
 &#0177;
 </text>
 <text x="514" y="59" fill="black" font-size="6" font-family="Helvetica">
- 48.95 
+ 48.93 
 </text>
 <text x="224" y="16" fill="black" font-size="15" font-family="Helvetica">
 dt_file:448_ch:D5

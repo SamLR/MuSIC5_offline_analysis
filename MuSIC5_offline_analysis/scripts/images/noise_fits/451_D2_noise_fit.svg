@@ -5,7 +5,7 @@ images/noise_fits/451_D2_noise_fit.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 10 04:44:13 2013</desc>
+CreationDate: Sat Sep 14 16:49:50 2013</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -1000,7 +1000,7 @@ CreationDate: Tue Sep 10 04:44:13 2013</desc>
 <path d="M442,231v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M442,232v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M442,233v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M443,234v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M443,235" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M443,235v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M444,236v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M444,237v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1031,7 +1031,7 @@ CreationDate: Tue Sep 10 04:44:13 2013</desc>
 <path d="M454,239v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M454,238v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M455,237v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M455,237" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M455,236v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M455,235v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M456,235" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M456,233v 2" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -1254,10 +1254,10 @@ f
 <text x="361" y="93" fill="black" font-size="13" font-family="Helvetica">
 T
 </text>
-<text x="517" y="95" fill="black" font-size="13" font-family="Helvetica">
- 0.28
+<text x="516" y="95" fill="black" font-size="13" font-family="Helvetica">
+ 0.27
 </text>
-<text x="510" y="95" fill="black" font-size="13" font-family="Times">
+<text x="509" y="95" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="469" y="95" fill="black" font-size="13" font-family="Helvetica">
@@ -1273,13 +1273,13 @@ f
 &#0966;
 </text>
 <text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
- 57.79
+ 57.57
 </text>
 <text x="502" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="462" y="110" fill="black" font-size="13" font-family="Helvetica">
- 56.84 
+ 56.86 
 </text>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="430" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -1493,10 +1493,10 @@ f
 <text x="361" y="93" fill="black" font-size="13" font-family="Helvetica">
 T
 </text>
-<text x="517" y="95" fill="black" font-size="13" font-family="Helvetica">
- 0.28
+<text x="516" y="95" fill="black" font-size="13" font-family="Helvetica">
+ 0.27
 </text>
-<text x="510" y="95" fill="black" font-size="13" font-family="Times">
+<text x="509" y="95" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="469" y="95" fill="black" font-size="13" font-family="Helvetica">
@@ -1512,13 +1512,13 @@ f
 &#0966;
 </text>
 <text x="509" y="110" fill="black" font-size="13" font-family="Helvetica">
- 57.79
+ 57.57
 </text>
 <text x="502" y="110" fill="black" font-size="13" font-family="Times">
 &#0177;
 </text>
 <text x="462" y="110" fill="black" font-size="13" font-family="Helvetica">
- 56.84 
+ 56.86 
 </text>
 <text x="224" y="16" fill="black" font-size="15" font-family="Helvetica">
 dt_file:451_ch:D2

@@ -2,15 +2,15 @@
 from ROOT import TFile, TCanvas, TF1
 from ValueWithError import ValueWithError
 
-def fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options="MER"):
-  func = get_func_with_named_initialised_param(func_name, hist, func_fmt, initial_settings)
+def fit_histogram(hist, func_fmt, initial_settings, func_name, fit_options="MER", l_bound=50, u_bound=20000):
+  func = get_func_with_named_initialised_param(func_name, hist, func_fmt, initial_settings, l_bound, u_bound)
   func.SetNpx(10000)
   hist.Fit(func, fit_options)
   hist.func = func
   hist.fit_param = get_fit_parameters(func)
 
 def get_func_with_named_initialised_param(name, hist, func_fmt, initial_settings,l_bound=50,u_bound=20000):
-  func = TF1(name, func_fmt, l_bound, u_bound)
+  func = TF1(name, func_fmt, float(l_bound), float(u_bound))
   for parN, (name, initial, lower_limit, upper_limit) in enumerate(initial_settings):
     func.SetParName(parN, name)
     if hasattr(initial,"__call__"):
