@@ -5,7 +5,7 @@ images/gain_stability.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Sun Jan  5 23:02:02 2014</desc>
+CreationDate: Sun Jan  5 23:07:48 2014</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -172,19 +172,19 @@ Trigger Rate (x10
 &#0967;
 </text>
 <text x="129" y="27" fill="black" font-size="4" font-family="Helvetica">
- 5.939e+04 / 79
+ 7.145e+04 / 89
 </text>
 <text x="106" y="38" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="139" y="39" fill="black" font-size="4" font-family="Helvetica">
- 0.0004768
+ 0.0004507
 </text>
 <text x="136" y="39" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="121" y="39" fill="black" font-size="4" font-family="Helvetica">
- 1.678 
+ 1.687 
 </text>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="149" y1="57" x2="150" y2="57"/>
@@ -288,9 +288,9 @@ p0
 <line x1="70" y1="52" x2="71" y2="52"/>
 <line x1="43" y1="41" x2="44" y2="41"/>
 </g>
-<path d="M37,53h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M87,53h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M137,53h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M30,53h 57" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M87,53h 56" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M143,53h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="103" y="19" width="63" height="24" fill="white"/>
 <path d="M103,43h 63" fill="none" stroke="black"/>
 <path d="M166,43v -24" fill="none" stroke="black"/>
@@ -306,19 +306,19 @@ p0
 &#0967;
 </text>
 <text x="129" y="27" fill="black" font-size="4" font-family="Helvetica">
- 5.939e+04 / 79
+ 7.145e+04 / 89
 </text>
 <text x="106" y="38" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="139" y="39" fill="black" font-size="4" font-family="Helvetica">
- 0.0004768
+ 0.0004507
 </text>
 <text x="136" y="39" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="121" y="39" fill="black" font-size="4" font-family="Helvetica">
- 1.678 
+ 1.687 
 </text>
 <path d="M150,57v -1" fill="none" stroke="black"/>
 <path d="M149,56h 2" fill="none" stroke="black"/>
@@ -888,19 +888,19 @@ Trigger Rate (x10
 &#0967;
 </text>
 <text x="329" y="27" fill="black" font-size="5" font-family="Helvetica">
- 348.4 / 79
+ 551.9 / 89
 </text>
 <text x="295" y="38" fill="black" font-size="5" font-family="Helvetica">
 p0       
 </text>
 <text x="330" y="39" fill="black" font-size="5" font-family="Helvetica">
- 0.001155
+ 0.001088
 </text>
 <text x="327" y="39" fill="black" font-size="5" font-family="Times">
 &#0177;
 </text>
-<text x="314" y="39" fill="black" font-size="5" font-family="Helvetica">
- 1.071 
+<text x="313" y="39" fill="black" font-size="5" font-family="Helvetica">
+ 1.068 
 </text>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="214" y1="87" x2="215" y2="87"/>
@@ -1004,9 +1004,9 @@ p0
 <line x1="324" y1="88" x2="325" y2="88"/>
 <line x1="312" y1="89" x2="313" y2="89"/>
 </g>
-<path d="M226,86h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M276,86h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M326,86h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M219,87h 57" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M276,87h 56" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M332,87h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="292" y="19" width="63" height="24" fill="white"/>
 <path d="M292,43h 63" fill="none" stroke="black"/>
 <path d="M355,43v -24" fill="none" stroke="black"/>
@@ -1022,19 +1022,19 @@ p0
 &#0967;
 </text>
 <text x="329" y="27" fill="black" font-size="5" font-family="Helvetica">
- 348.4 / 79
+ 551.9 / 89
 </text>
 <text x="295" y="38" fill="black" font-size="5" font-family="Helvetica">
 p0       
 </text>
 <text x="330" y="39" fill="black" font-size="5" font-family="Helvetica">
- 0.001155
+ 0.001088
 </text>
 <text x="327" y="39" fill="black" font-size="5" font-family="Times">
 &#0177;
 </text>
-<text x="314" y="39" fill="black" font-size="5" font-family="Helvetica">
- 1.071 
+<text x="313" y="39" fill="black" font-size="5" font-family="Helvetica">
+ 1.068 
 </text>
 <path d="M215,87v -1" fill="none" stroke="black"/>
 <path d="M214,86h 2" fill="none" stroke="black"/>
@@ -1599,29 +1599,29 @@ Trigger Rate (x10
 <path d="M543,43v -24" fill="none" stroke="black"/>
 <path d="M543,19h -62" fill="none" stroke="black"/>
 <path d="M481,19v 24" fill="none" stroke="black"/>
-<text x="488" y="26" fill="black" font-size="4" font-family="Helvetica">
+<text x="489" y="26" fill="black" font-size="5" font-family="Helvetica">
  / ndf 
 </text>
 <text x="487" y="25" fill="black" font-size="3" font-family="Helvetica">
 2
 </text>
-<text x="484" y="26" fill="black" font-size="4" font-family="Times">
+<text x="484" y="26" fill="black" font-size="5" font-family="Times">
 &#0967;
 </text>
-<text x="519" y="27" fill="black" font-size="4" font-family="Helvetica">
-  7813 / 79
+<text x="517" y="27" fill="black" font-size="5" font-family="Helvetica">
+  9433 / 89
 </text>
-<text x="484" y="38" fill="black" font-size="4" font-family="Helvetica">
+<text x="484" y="38" fill="black" font-size="5" font-family="Helvetica">
 p0       
 </text>
-<text x="518" y="39" fill="black" font-size="4" font-family="Helvetica">
- 0.0004864
+<text x="521" y="39" fill="black" font-size="5" font-family="Helvetica">
+ 0.00046
 </text>
-<text x="516" y="39" fill="black" font-size="4" font-family="Times">
+<text x="519" y="39" fill="black" font-size="5" font-family="Times">
 &#0177;
 </text>
-<text x="500" y="39" fill="black" font-size="4" font-family="Helvetica">
- 0.9308 
+<text x="501" y="39" fill="black" font-size="5" font-family="Helvetica">
+ 0.9367 
 </text>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="417" y1="91" x2="418" y2="91"/>
@@ -1725,37 +1725,37 @@ p0
 <line x1="487" y1="93" x2="488" y2="93"/>
 <line x1="462" y1="98" x2="463" y2="98"/>
 </g>
-<path d="M415,94h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M465,94h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M515,94h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M408,94h 57" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M465,94h 56" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M521,94h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="481" y="19" width="62" height="24" fill="white"/>
 <path d="M481,43h 62" fill="none" stroke="black"/>
 <path d="M543,43v -24" fill="none" stroke="black"/>
 <path d="M543,19h -62" fill="none" stroke="black"/>
 <path d="M481,19v 24" fill="none" stroke="black"/>
-<text x="488" y="26" fill="black" font-size="4" font-family="Helvetica">
+<text x="489" y="26" fill="black" font-size="5" font-family="Helvetica">
  / ndf 
 </text>
 <text x="487" y="25" fill="black" font-size="3" font-family="Helvetica">
 2
 </text>
-<text x="484" y="26" fill="black" font-size="4" font-family="Times">
+<text x="484" y="26" fill="black" font-size="5" font-family="Times">
 &#0967;
 </text>
-<text x="519" y="27" fill="black" font-size="4" font-family="Helvetica">
-  7813 / 79
+<text x="517" y="27" fill="black" font-size="5" font-family="Helvetica">
+  9433 / 89
 </text>
-<text x="484" y="38" fill="black" font-size="4" font-family="Helvetica">
+<text x="484" y="38" fill="black" font-size="5" font-family="Helvetica">
 p0       
 </text>
-<text x="518" y="39" fill="black" font-size="4" font-family="Helvetica">
- 0.0004864
+<text x="521" y="39" fill="black" font-size="5" font-family="Helvetica">
+ 0.00046
 </text>
-<text x="516" y="39" fill="black" font-size="4" font-family="Times">
+<text x="519" y="39" fill="black" font-size="5" font-family="Times">
 &#0177;
 </text>
-<text x="500" y="39" fill="black" font-size="4" font-family="Helvetica">
- 0.9308 
+<text x="501" y="39" fill="black" font-size="5" font-family="Helvetica">
+ 0.9367 
 </text>
 <path d="M418,91" fill="none" stroke="black"/>
 <path d="M417,91h 2" fill="none" stroke="black"/>
@@ -2340,19 +2340,19 @@ Trigger Rate (x10
 &#0967;
 </text>
 <text x="132" y="191" fill="black" font-size="4" font-family="Helvetica">
- 3.597e+04 / 79
+ 4.422e+04 / 89
 </text>
 <text x="106" y="202" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="141" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.0004076
+ 0.0003849
 </text>
 <text x="138" y="202" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="122" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.8409 
+ 0.8435 
 </text>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="82" y1="262" x2="83" y2="262"/>
@@ -2456,9 +2456,9 @@ p0
 <line x1="25" y1="256" x2="26" y2="256"/>
 <line x1="123" y1="267" x2="124" y2="267"/>
 </g>
-<path d="M37,263h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M87,263h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M137,263h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M30,263h 57" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M87,263h 56" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M143,263h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="103" y="183" width="63" height="24" fill="white"/>
 <path d="M103,207h 63" fill="none" stroke="black"/>
 <path d="M166,207v -24" fill="none" stroke="black"/>
@@ -2474,19 +2474,19 @@ p0
 &#0967;
 </text>
 <text x="132" y="191" fill="black" font-size="4" font-family="Helvetica">
- 3.597e+04 / 79
+ 4.422e+04 / 89
 </text>
 <text x="106" y="202" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="141" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.0004076
+ 0.0003849
 </text>
 <text x="138" y="202" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="122" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.8409 
+ 0.8435 
 </text>
 <path d="M83,262" fill="none" stroke="black"/>
 <path d="M82,262h 2" fill="none" stroke="black"/>
@@ -3062,19 +3062,19 @@ Trigger Rate (x10
 &#0967;
 </text>
 <text x="331" y="191" fill="black" font-size="4" font-family="Helvetica">
-  6707 / 79
+  9510 / 89
 </text>
 <text x="295" y="202" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="329" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.0003413
+ 0.0003219
 </text>
 <text x="327" y="202" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="311" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.4784 
+ 0.4787 
 </text>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="259" y1="282" x2="260" y2="282"/>
@@ -3178,9 +3178,9 @@ p0
 <line x1="328" y1="285" x2="329" y2="285"/>
 <line x1="324" y1="284" x2="325" y2="284"/>
 </g>
-<path d="M226,283h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M276,283h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M326,283h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M219,283h 57" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M276,283h 56" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M332,283h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="292" y="183" width="63" height="24" fill="white"/>
 <path d="M292,207h 63" fill="none" stroke="black"/>
 <path d="M355,207v -24" fill="none" stroke="black"/>
@@ -3196,19 +3196,19 @@ p0
 &#0967;
 </text>
 <text x="331" y="191" fill="black" font-size="4" font-family="Helvetica">
-  6707 / 79
+  9510 / 89
 </text>
 <text x="295" y="202" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="329" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.0003413
+ 0.0003219
 </text>
 <text x="327" y="202" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="311" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.4784 
+ 0.4787 
 </text>
 <path d="M260,282" fill="none" stroke="black"/>
 <path d="M259,282h 2" fill="none" stroke="black"/>
@@ -3783,19 +3783,19 @@ Trigger Rate (x10
 &#0967;
 </text>
 <text x="519" y="191" fill="black" font-size="4" font-family="Helvetica">
-  2804 / 79
+  2895 / 89
 </text>
 <text x="484" y="202" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="518" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.0004763
+ 0.0004484
 </text>
 <text x="516" y="202" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="500" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.4385 
+ 0.4372 
 </text>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="432" y1="285" x2="433" y2="285"/>
@@ -3901,9 +3901,9 @@ p0
 <line x1="483" y1="285" x2="484" y2="285"/>
 <line x1="513" y1="286" x2="514" y2="286"/>
 </g>
-<path d="M415,285h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M465,285h 50" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M515,285h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M408,285h 57" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M465,285h 56" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M521,285h 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <rect x="481" y="183" width="62" height="24" fill="white"/>
 <path d="M481,207h 62" fill="none" stroke="black"/>
 <path d="M543,207v -24" fill="none" stroke="black"/>
@@ -3919,19 +3919,19 @@ p0
 &#0967;
 </text>
 <text x="519" y="191" fill="black" font-size="4" font-family="Helvetica">
-  2804 / 79
+  2895 / 89
 </text>
 <text x="484" y="202" fill="black" font-size="4" font-family="Helvetica">
 p0       
 </text>
 <text x="518" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.0004763
+ 0.0004484
 </text>
 <text x="516" y="202" fill="black" font-size="4" font-family="Times">
 &#0177;
 </text>
 <text x="500" y="202" fill="black" font-size="4" font-family="Helvetica">
- 0.4385 
+ 0.4372 
 </text>
 <path d="M433,285v -1" fill="none" stroke="black"/>
 <path d="M432,284h 2" fill="none" stroke="black"/>

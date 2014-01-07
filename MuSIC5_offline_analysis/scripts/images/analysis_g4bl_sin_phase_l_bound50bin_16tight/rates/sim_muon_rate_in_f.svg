@@ -5,7 +5,7 @@ images/analysis_g4bl_sin_phase_l_bound50bin_16tight/rates/sim_muon_rate_in_f.svg
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 17 01:34:42 2013</desc>
+CreationDate: Tue Jan  7 17:15:47 2014</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -32,12 +32,12 @@ CreationDate: Tue Sep 17 01:34:42 2013</desc>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="339" y1="142" x2="340" y2="142"/>
 </g>
-<path d="M454,283v -4" fill="none" stroke="#000099"/>
-<path d="M454,279v -5" fill="none" stroke="#000099"/>
-<path d="M397,279h 57" fill="none" stroke="#000099"/>
-<path d="M454,279h 56" fill="none" stroke="#000099"/>
+<path d="M454,283v -5" fill="none" stroke="#000099"/>
+<path d="M454,278v -5" fill="none" stroke="#000099"/>
+<path d="M397,278h 57" fill="none" stroke="#000099"/>
+<path d="M454,278h 56" fill="none" stroke="#000099"/>
 <g stroke="black" stroke-width="1" fill="none">
-<line x1="453" y1="279" x2="454" y2="279"/>
+<line x1="453" y1="278" x2="454" y2="278"/>
 </g>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="466" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -116,7 +116,7 @@ Muon rate (nA
 <path d="M70,293h -13" fill="none" stroke="black"/>
 <path d="M70,41h -13" fill="none" stroke="black"/>
 <path d="M63,34h -6" fill="none" stroke="black"/>
-<text x="25" y="297" fill="black" font-size="11" font-family="Helvetica">
+<text x="25" y="296" fill="black" font-size="11" font-family="Helvetica">
 20000
 </text>
 <text x="25" y="269" fill="black" font-size="11" font-family="Helvetica">

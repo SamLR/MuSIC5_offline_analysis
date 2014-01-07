@@ -5,7 +5,7 @@ images/analysis_g4bl_sin_phase_exec_d4_d5_l_bound50bin_8tight/zoom/5mm_Aluminium
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 17 01:51:52 2013</desc>
+CreationDate: Tue Jan  7 17:32:08 2014</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="384" fill="white"/>
@@ -85,7 +85,7 @@ TDC-TDC0 (ns)
 <text x="280" y="358" fill="black" font-size="12" font-family="Helvetica">
 0
 </text>
-<text x="333" y="358" fill="black" font-size="12" font-family="Helvetica">
+<text x="332" y="358" fill="black" font-size="12" font-family="Helvetica">
 50
 </text>
 <text x="386" y="358" fill="black" font-size="12" font-family="Helvetica">
@@ -151,7 +151,7 @@ Count
 <text x="47" y="194" fill="black" font-size="12" font-family="Helvetica">
 8
 </text>
-<text x="41" y="155" fill="black" font-size="12" font-family="Helvetica">
+<text x="40" y="155" fill="black" font-size="12" font-family="Helvetica">
 10
 </text>
 <text x="40" y="116" fill="black" font-size="12" font-family="Helvetica">
@@ -171,6 +171,6 @@ Entries
 <text x="512" y="53" fill="black" font-size="15" font-family="Helvetica">
  3039
 </text>
-<text x="102" y="18" fill="black" font-size="18" font-family="Helvetica">
+<text x="101" y="18" fill="black" font-size="18" font-family="Helvetica">
 5mm_Aluminium_combined_5mm_Aluminium
 </text></svg>

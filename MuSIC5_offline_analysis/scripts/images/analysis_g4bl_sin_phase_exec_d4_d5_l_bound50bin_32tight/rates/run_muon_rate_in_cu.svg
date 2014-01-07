@@ -5,13 +5,13 @@ images/analysis_g4bl_sin_phase_exec_d4_d5_l_bound50bin_32tight/rates/run_muon_ra
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 17 01:53:57 2013</desc>
+CreationDate: Tue Jan  7 17:34:26 2014</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
 <rect x="57" y="33" width="453" height="262" fill="white"/>
 <rect x="57" y="33" width="453" height="262" fill="none" stroke="black"/>
-<path d="M94,74v -14" fill="none" stroke="#000099"/>
+<path d="M94,75v -15" fill="none" stroke="#000099"/>
 <path d="M94,60v -15" fill="none" stroke="#000099"/>
 <path d="M57,60h 37" fill="none" stroke="#000099"/>
 <path d="M94,60h 38" fill="none" stroke="#000099"/>
@@ -32,12 +32,12 @@ CreationDate: Tue Sep 17 01:53:57 2013</desc>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="245" y1="163" x2="246" y2="163"/>
 </g>
-<path d="M321,195v -13" fill="none" stroke="#000099"/>
-<path d="M321,182v -13" fill="none" stroke="#000099"/>
-<path d="M283,182h 38" fill="none" stroke="#000099"/>
-<path d="M321,182h 38" fill="none" stroke="#000099"/>
+<path d="M321,199v -13" fill="none" stroke="#000099"/>
+<path d="M321,186v -13" fill="none" stroke="#000099"/>
+<path d="M283,186h 38" fill="none" stroke="#000099"/>
+<path d="M321,186h 38" fill="none" stroke="#000099"/>
 <g stroke="black" stroke-width="1" fill="none">
-<line x1="320" y1="182" x2="321" y2="182"/>
+<line x1="320" y1="186" x2="321" y2="186"/>
 </g>
 <path d="M397,283v -10" fill="none" stroke="#000099"/>
 <path d="M397,273v -11" fill="none" stroke="#000099"/>
@@ -117,7 +117,7 @@ Muon rate (nA
 <path d="M63,182h -6" fill="none" stroke="black"/>
 <path d="M63,176h -6" fill="none" stroke="black"/>
 <path d="M63,170h -6" fill="none" stroke="black"/>
-<path d="M63,164h -6" fill="none" stroke="black"/>
+<path d="M63,165h -6" fill="none" stroke="black"/>
 <path d="M70,159h -13" fill="none" stroke="black"/>
 <path d="M63,153h -6" fill="none" stroke="black"/>
 <path d="M63,147h -6" fill="none" stroke="black"/>
@@ -130,11 +130,11 @@ Muon rate (nA
 <path d="M63,107h -6" fill="none" stroke="black"/>
 <path d="M70,101h -13" fill="none" stroke="black"/>
 <path d="M63,95h -6" fill="none" stroke="black"/>
-<path d="M63,89h -6" fill="none" stroke="black"/>
+<path d="M63,90h -6" fill="none" stroke="black"/>
 <path d="M63,84h -6" fill="none" stroke="black"/>
 <path d="M63,78h -6" fill="none" stroke="black"/>
 <path d="M70,72h -13" fill="none" stroke="black"/>
-<path d="M63,66h -6" fill="none" stroke="black"/>
+<path d="M63,67h -6" fill="none" stroke="black"/>
 <path d="M63,61h -6" fill="none" stroke="black"/>
 <path d="M63,55h -6" fill="none" stroke="black"/>
 <path d="M63,49h -6" fill="none" stroke="black"/>
@@ -144,7 +144,7 @@ Muon rate (nA
 <path d="M63,286h -6" fill="none" stroke="black"/>
 <path d="M63,291h -6" fill="none" stroke="black"/>
 <path d="M70,43h -13" fill="none" stroke="black"/>
-<path d="M63,37h -6" fill="none" stroke="black"/>
+<path d="M63,38h -6" fill="none" stroke="black"/>
 <text x="36" y="278" fill="black" font-size="11" font-family="Helvetica">
 110
 </text>

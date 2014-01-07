@@ -49,7 +49,9 @@ def load_branch(tree, file_id):
   tree.leaf = tree.branch.GetLeaf(leaf_name)
   # Force evaluation at call, convert time to seconds
   tree.time = lambda : (tree.leaf.GetValue(7)/1000)
-  tree.triggers = lambda : tree.leaf.GetValue(2)
+  # want the number of potential triggers
+  tree.triggers = lambda : tree.leaf.GetValue(2) 
+  # tree.triggers = lambda : tree.leaf.GetValue(1)
 
 def get_gain_stability_dict(tree):
     # open file
@@ -211,8 +213,8 @@ def main():
         
         full_range = max(data.keys())[0] - min(data.keys())[0]
         # Fit the central 80%
-        fit_min = full_range * 0.1 
-        fit_max = full_range * 0.9 
+        fit_min = full_range * 0.05
+        fit_max = full_range * 0.95
         print fit_min, fit_max
         
         # gain_hist.Fit("pol0") # attempt to fit the gain with a flat function

@@ -5,7 +5,7 @@ images/analysis_g4bl_sin_phase_exec_d4_d5_l_bound50bin_8tight/fits/451_451_D1.sv
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 17 01:46:45 2013</desc>
+CreationDate: Tue Jan  7 17:27:02 2014</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -102,7 +102,7 @@ N
 <text x="529" y="33" fill="black" font-size="3" font-family="Helvetica">
  14.25 
 </text>
-<text x="452" y="35" fill="black" font-size="3" font-family="Helvetica">
+<text x="453" y="35" fill="black" font-size="3" font-family="Helvetica">
  
 </text>
 <text x="449" y="37" fill="black" font-size="2" font-family="Helvetica">
@@ -138,7 +138,7 @@ N
 <text x="529" y="41" fill="black" font-size="3" font-family="Helvetica">
  50.66 
 </text>
-<text x="450" y="43" fill="black" font-size="3" font-family="Helvetica">
+<text x="451" y="43" fill="black" font-size="3" font-family="Helvetica">
  
 </text>
 <text x="449" y="45" fill="black" font-size="2" font-family="Helvetica">
@@ -166,13 +166,13 @@ sin
 N
 </text>
 <text x="540" y="48" fill="black" font-size="3" font-family="Helvetica">
- 0.153
+ 0.136
 </text>
 <text x="538" y="48" fill="black" font-size="3" font-family="Times">
 &#0177;
 </text>
 <text x="527" y="48" fill="black" font-size="3" font-family="Helvetica">
- 5.374 
+ 5.375 
 </text>
 <text x="450" y="52" fill="black" font-size="3" font-family="Helvetica">
      
@@ -180,14 +180,14 @@ N
 <text x="448" y="52" fill="black" font-size="3" font-family="Times">
 &#0966;
 </text>
-<text x="540" y="52" fill="black" font-size="3" font-family="Helvetica">
- 0.646
+<text x="542" y="52" fill="black" font-size="3" font-family="Helvetica">
+ 0.56
 </text>
-<text x="538" y="52" fill="black" font-size="3" font-family="Times">
+<text x="540" y="52" fill="black" font-size="3" font-family="Times">
 &#0177;
 </text>
-<text x="527" y="52" fill="black" font-size="3" font-family="Helvetica">
- 3.071 
+<text x="529" y="52" fill="black" font-size="3" font-family="Helvetica">
+ 62.44 
 </text>
 <text x="448" y="56" fill="black" font-size="3" font-family="Helvetica">
 T        
@@ -360,7 +360,7 @@ N
 <path d="M339,266v 10" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M339,266v 10" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M339,266v 8" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M340,270v 6" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M340,270v 7" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M340,266v 9" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M341,266v 11" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M341,266v 11" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -398,7 +398,7 @@ N
 <path d="M354,268v 9" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M354,269v 10" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M354,268v 11" fill="none" stroke="#ff0000" stroke-width="2"/>
-<path d="M355,269v 9" fill="none" stroke="#ff0000" stroke-width="2"/>
+<path d="M355,268v 10" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M355,271v 8" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M356,269v 7" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M356,270v 9" fill="none" stroke="#ff0000" stroke-width="2"/>
@@ -793,13 +793,13 @@ N
 <path d="M510,273v 8" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M284,221v 1l 1, 2v 2l 1, 1v 4v -1l 1, 2v 1h 1v 3v -2l 1, 3l 1, 1v 1v -1l 1, 3h 1v 1v -1l 1, 4v -2v 1h 1l 1, 3v -2v 2h 1l 1, 1v -2v 4l 1, -1v 1h 1v -1v 3l 1, -2v 2h 1v 2l 1, -2v 2h 1v 1l 1, -2v 3h 2v 3l 1, -2v 1h 1v 2l 1, -3v 2h 1v 2l 1, -3v
  3v -1l 1, 1v -1l 1, 3v -2l 1, 1l 1, 2v -3l 1, 2l 1, 1v -3l 1, 4v -1l 1, 1v -1l 1, 3v -2h 1l 1, 2v -2v 2l 1, -1l 1, 1v -2v 3l 1, -1h 1v -1v 3l 1, -2v 1h 1v 2l 1, -3v 2h 1l 1, -2v 3v -1h 2v 3v -3l 1, 1l 1, -1v 2v -2l 1, 2h 1v -2l 1, 3v -1h 1v -1l 1,
- 3v -2h 1l 1, 2v -3l 1, 2h 1v -2l 1, 3v -1h 1v -1l 1, 4v -3v 1h 1v -1l 1, 2v -3v 2h 1v 1l 1, -3v 3l 1, -1l 1, -1v 3l 1, -3v 1h 1v 2l 1, -3v 2h 1l 1, -2v 3v -2l 1, 1l 1, -1v 3v -3l 1, 1h 1v 1v -3l 1, 3v -1h 1v 1v -2l 1, 3v -2l 1, 1v -2l 1, 4v -4l 1,
- 2v -1l 1, 2v -3v 2h 2v -2v 3l 1, -1h 1v -1v 3l 1, -3v 1h 1v 1l 1, -3v 2h 1l 1, -1v 3l 1, -2l 1, -1v 3l 1, -3v 1h 1v 2l 1, -3v 2v -1h 1v 1l 1, -2v 3v -2h 2v 2v -2l 1, 1v -1l 1, 2v -3l 1, 2v -1l 1, 1v -2l 1, 3v -2v 1h 1v -1l 1, 2v -2v 1h 1v -1l 1, 2v
- -3v 3l 1, -1h 1v -2v 3l 1, -2v 1h 1v -1v 3l 1, -3v 1h 1v -1v 2l 1, -3v 2h 1l 1, -2v 3l 1, -2v 1l 1, -1v 3l 1, -3v 1h 1v 1v -3l 1, 2h 1v 1v -2l 1, 2v -1h 1v -1l 1, 3v -3l 1, 1l 1, 1v -3l 1, 3v -1l 1, 1v -3l 1, 3v -1h 1v -1l 1, 3v -3v 1h 1l 1, 1v -3v
- 3l 1, -1l 1, 1v -2v 2l 1, -1h 1v -1v 3l 1, -3v 1h 1v 1l 1, -3v 3v -1h 1v 1l 1, -2v 2v -1h 1l 1, -1v 3v -3l 1, 1h 1v 1v -3l 1, 3v -1h 1v 1v -2l 1, 3v -2h 1v -1l 1, 3v -3l 1, 1l 1, 1v -3l 1, 3v -1l 1, 1v -2l 1, 2v -2v 1h 1v -1v 3l 1, -3v 2l 1, -1v 1l
- 1, -3v 3l 1, -1v 1l 1, -2v 3l 1, -2l 1, -1v 3l 1, -3v 1h 1v 1l 1, -3v 3v -1h 1v 1l 1, -2v 2v -2l 1, 1l 1, -1v 3v -3l 1, 2v -1h 1v 1v -3l 1, 3v -1h 1v 1v -2l 1, 3v -2h 1v -1l 1, 3v -3v 1h 1l 1, 1v -3v 3l 1, -1l 1, 1v -2v 3l 1, -3v 1h 1v 2l 1, -3v 2l
- 1, -1v 1l 1, -3v 3l 1, -1v 1l 1, -2v 3l 1, -2l 1, -1v 3l 1, -3v 2v -1h 1v 1l 1, -3v 3v -1h 1v -1l 1, 3v -3l 1, 1l 1, 2v -3l 1, 2v -1l 1, 1v -3l 1, 3v -1l 1, 1v -2l 1, 3v -3v 1h 1v -1l 1, 3v -3v 2l 1, -1l 1, 1v -3v 3l 1, -1h 1v -1v 3l 1, -3v 1h 1v 2l
- 1, -3v 2l 1, -1v 1l 1, -3v 3v -1h 1v 1l 1, -2v 3v -3l 1, 1h 1v 1v -2l 1, 2v -1h 1v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
+ 3v -2h 1l 1, 2v -3l 1, 2h 1v -2l 1, 3v -1h 1v -1l 1, 4v -3v 1h 1v -1l 1, 2v -3v 2h 1l 1, -2v 3l 1, -1l 1, -1v 3l 1, -3v 1h 1v 2l 1, -3v 2h 1l 1, -2v 3v -2l 1, 1l 1, -1v 3v -3l 1, 1h 1v 1v -3l 1, 3v -1h 1v 1v -2l 1, 3v -2l 1, 1v -2l 1, 4v -4l 1, 2v
+ -1l 1, 2v -3v 2h 2v -2v 3l 1, -1h 1v -1v 3l 1, -3v 1h 1v 1l 1, -3v 2h 1l 1, -1v 3l 1, -2l 1, -1v 3l 1, -3v 1h 1v 2l 1, -3v 2v -1h 1v 1l 1, -2v 3v -2h 2v 2v -2l 1, 1v -1l 1, 2v -3l 1, 2v -1l 1, 1v -2l 1, 3v -2v 1h 1v -1l 1, 2v -2v 1h 1v -1l 1, 2v -3v
+ 3l 1, -1h 1v -2v 3l 1, -2v 1h 1v -1v 3l 1, -3v 1h 1v -1v 2l 1, -3v 2h 1l 1, -2v 3l 1, -2v 1l 1, -1v 3l 1, -3v 1h 1v 1v -3l 1, 2h 1v 1v -2l 1, 2v -1h 1v -1l 1, 3v -3l 1, 1l 1, 1v -3l 1, 3v -1l 1, 1v -3l 1, 3v -1h 1v -1l 1, 3v -3v 1h 1l 1, 1v -3v 3l
+ 1, -1l 1, 1v -2v 2l 1, -1h 1v -1v 3l 1, -3v 1h 1v 1l 1, -3v 3v -1h 1v 1l 1, -2v 2v -1h 1l 1, -1v 3v -3l 1, 1h 1v 1v -3l 1, 3v -1h 1v 1v -2l 1, 3v -2h 1v -1l 1, 3v -3l 1, 1l 1, 1v -3l 1, 3v -1l 1, 1v -2l 1, 2v -2v 1h 1v -1v 3l 1, -3v 2l 1, -1v 1l 1,
+ -3v 3l 1, -1v 1l 1, -2v 3l 1, -2l 1, -1v 3l 1, -3v 1h 1v 1l 1, -3v 3v -1h 1v 1l 1, -2v 2v -2l 1, 1l 1, -1v 3v -3l 1, 2v -1h 1v 1v -3l 1, 3v -1h 1v 1v -2l 1, 3v -2h 1v -1l 1, 3v -3v 1h 1l 1, 1v -3v 3l 1, -1l 1, 1v -2v 3l 1, -3v 1h 1v 2l 1, -3v 2l 1,
+ -1v 1l 1, -3v 3l 1, -1v 1l 1, -2v 3l 1, -2l 1, -1v 3l 1, -3v 2v -1h 1v 1l 1, -3v 3v -1h 1v -1l 1, 3v -3l 1, 1l 1, 2v -3l 1, 2v -1l 1, 1v -3l 1, 3v -1l 1, 1v -2l 1, 3v -2h 1v -1l 1, 3v -3v 2l 1, -1l 1, 1v -3v 3l 1, -1h 1v -1v 3l 1, -3v 1h 1v 2l 1,
+ -3v 2l 1, -1v 1l 1, -3v 3v -1h 1v 1l 1, -2v 3v -3l 1, 1h 1v 1v -2l 1, 2v -1h 1v 1" fill="none" stroke="#ff0000" stroke-width="2"/>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="436" y="317" fill="black" font-size="11" font-family="Helvetica">
 TDC-TDC0 (ns)
@@ -966,7 +966,7 @@ N
 <text x="529" y="33" fill="black" font-size="3" font-family="Helvetica">
  14.25 
 </text>
-<text x="452" y="35" fill="black" font-size="3" font-family="Helvetica">
+<text x="453" y="35" fill="black" font-size="3" font-family="Helvetica">
  
 </text>
 <text x="449" y="37" fill="black" font-size="2" font-family="Helvetica">
@@ -1002,7 +1002,7 @@ N
 <text x="529" y="41" fill="black" font-size="3" font-family="Helvetica">
  50.66 
 </text>
-<text x="450" y="43" fill="black" font-size="3" font-family="Helvetica">
+<text x="451" y="43" fill="black" font-size="3" font-family="Helvetica">
  
 </text>
 <text x="449" y="45" fill="black" font-size="2" font-family="Helvetica">
@@ -1030,13 +1030,13 @@ sin
 N
 </text>
 <text x="540" y="48" fill="black" font-size="3" font-family="Helvetica">
- 0.153
+ 0.136
 </text>
 <text x="538" y="48" fill="black" font-size="3" font-family="Times">
 &#0177;
 </text>
 <text x="527" y="48" fill="black" font-size="3" font-family="Helvetica">
- 5.374 
+ 5.375 
 </text>
 <text x="450" y="52" fill="black" font-size="3" font-family="Helvetica">
      
@@ -1044,14 +1044,14 @@ N
 <text x="448" y="52" fill="black" font-size="3" font-family="Times">
 &#0966;
 </text>
-<text x="540" y="52" fill="black" font-size="3" font-family="Helvetica">
- 0.646
+<text x="542" y="52" fill="black" font-size="3" font-family="Helvetica">
+ 0.56
 </text>
-<text x="538" y="52" fill="black" font-size="3" font-family="Times">
+<text x="540" y="52" fill="black" font-size="3" font-family="Times">
 &#0177;
 </text>
-<text x="527" y="52" fill="black" font-size="3" font-family="Helvetica">
- 3.071 
+<text x="529" y="52" fill="black" font-size="3" font-family="Helvetica">
+ 62.44 
 </text>
 <text x="448" y="56" fill="black" font-size="3" font-family="Helvetica">
 T        

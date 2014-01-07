@@ -5,7 +5,7 @@ images/analysis_g4bl_sin_phase_exec_d4_d5_l_bound50bin_16tight/counts/sim_muon_c
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 17 01:38:57 2013</desc>
+CreationDate: Tue Jan  7 17:19:57 2014</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -32,12 +32,12 @@ CreationDate: Tue Sep 17 01:38:57 2013</desc>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="339" y1="142" x2="340" y2="142"/>
 </g>
-<path d="M454,283v -4" fill="none" stroke="#000099"/>
-<path d="M454,279v -5" fill="none" stroke="#000099"/>
-<path d="M397,279h 57" fill="none" stroke="#000099"/>
-<path d="M454,279h 56" fill="none" stroke="#000099"/>
+<path d="M454,283v -5" fill="none" stroke="#000099"/>
+<path d="M454,278v -5" fill="none" stroke="#000099"/>
+<path d="M397,278h 57" fill="none" stroke="#000099"/>
+<path d="M454,278h 56" fill="none" stroke="#000099"/>
 <g stroke="black" stroke-width="1" fill="none">
-<line x1="453" y1="279" x2="454" y2="279"/>
+<line x1="453" y1="278" x2="454" y2="278"/>
 </g>
 <path d="M57,295h 453" fill="none" stroke="black"/>
 <text x="466" y="317" fill="black" font-size="11" font-family="Helvetica">
@@ -66,42 +66,42 @@ Degrader
 Muon count
 </text>
 </g>
-<path d="M70,282h -13" fill="none" stroke="black"/>
+<path d="M70,281h -13" fill="none" stroke="black"/>
 <path d="M63,272h -6" fill="none" stroke="black"/>
-<path d="M63,263h -6" fill="none" stroke="black"/>
-<path d="M63,253h -6" fill="none" stroke="black"/>
+<path d="M63,262h -6" fill="none" stroke="black"/>
+<path d="M63,252h -6" fill="none" stroke="black"/>
 <path d="M63,243h -6" fill="none" stroke="black"/>
 <path d="M70,233h -13" fill="none" stroke="black"/>
-<path d="M63,224h -6" fill="none" stroke="black"/>
+<path d="M63,223h -6" fill="none" stroke="black"/>
 <path d="M63,214h -6" fill="none" stroke="black"/>
 <path d="M63,204h -6" fill="none" stroke="black"/>
-<path d="M63,195h -6" fill="none" stroke="black"/>
-<path d="M70,185h -13" fill="none" stroke="black"/>
+<path d="M63,194h -6" fill="none" stroke="black"/>
+<path d="M70,184h -13" fill="none" stroke="black"/>
 <path d="M63,175h -6" fill="none" stroke="black"/>
 <path d="M63,165h -6" fill="none" stroke="black"/>
-<path d="M63,156h -6" fill="none" stroke="black"/>
+<path d="M63,155h -6" fill="none" stroke="black"/>
 <path d="M63,146h -6" fill="none" stroke="black"/>
 <path d="M70,136h -13" fill="none" stroke="black"/>
 <path d="M63,126h -6" fill="none" stroke="black"/>
 <path d="M63,117h -6" fill="none" stroke="black"/>
 <path d="M63,107h -6" fill="none" stroke="black"/>
 <path d="M63,97h -6" fill="none" stroke="black"/>
-<path d="M70,88h -13" fill="none" stroke="black"/>
+<path d="M70,87h -13" fill="none" stroke="black"/>
 <path d="M63,78h -6" fill="none" stroke="black"/>
 <path d="M63,68h -6" fill="none" stroke="black"/>
 <path d="M63,58h -6" fill="none" stroke="black"/>
 <path d="M63,49h -6" fill="none" stroke="black"/>
 <path d="M70,39h -13" fill="none" stroke="black"/>
-<path d="M70,282h -13" fill="none" stroke="black"/>
-<path d="M63,292h -6" fill="none" stroke="black"/>
+<path d="M70,281h -13" fill="none" stroke="black"/>
+<path d="M63,291h -6" fill="none" stroke="black"/>
 <path d="M70,39h -13" fill="none" stroke="black"/>
-<text x="30" y="286" fill="black" font-size="11" font-family="Helvetica">
+<text x="30" y="285" fill="black" font-size="11" font-family="Helvetica">
 3000
 </text>
 <text x="30" y="237" fill="black" font-size="11" font-family="Helvetica">
 3500
 </text>
-<text x="30" y="189" fill="black" font-size="11" font-family="Helvetica">
+<text x="30" y="188" fill="black" font-size="11" font-family="Helvetica">
 4000
 </text>
 <text x="30" y="140" fill="black" font-size="11" font-family="Helvetica">

@@ -358,11 +358,11 @@ def get_muons_per_namp(data, data_type, g4bl):
 
 def get_integrals_table(data_dict):
   res = "{:^3s} | {:^3s} | {:^2s} | {:^21s} | {:^21s} | {:^13s}\n".format("id","dz","ch","cu","f","Chi^2/NDF") 
-  fmt = "{:^3s} | {:^3s} | {:^2s} | {i_c.value:7.2f}+/-{i_c.error:7.2f} |  {i_f.value:7.2f}+/-{i_f.error:7.2f}  | {:>5.0f} / {:<5.0f}\n"
+  fmt = "{f_id:^3s} | {dz:^3s} | {ch:^2s} | {i_c.value:7.2f}+/-{i_c.error:7.2f} |  {i_f.value:7.2f}+/-{i_f.error:7.2f}  | {chi:>5.0f} / {ndf:<5.0f}\n"
   for file_key, file in data_dict.items():
-    res += fmt.format(str(file_key)[:3], str(file.deg_dz), "--", -1, -1, i_f=file.sum_integrals["cu"], i_c=file.sum_integrals["f"])
+    res += fmt.format(f_id=str(file_key)[:3], dz=str(file.deg_dz), ch="--", i_c=file.sum_integrals["cu"], i_f=file.sum_integrals["f"], chi=-1, ndf=-1, )
     for ch in file.hist_names:
-      res += fmt.format("--", "--", ch[:2], file[ch].fit_param["chi2"], file[ch].fit_param["ndf"],
+      res += fmt.format(f_id="--", dz="--", ch=ch[:2], chi=file[ch].fit_param["chi2"], ndf=file[ch].fit_param["ndf"],
               i_c=file[ch].integrals["cu"], i_f=file[ch].integrals["f"])
   return res
 
@@ -557,7 +557,7 @@ def main():
   g4bl, inc_phase, inc_sin, fit_type, exec_d4_d5 = True, True, True, "tight", True
   files_to_kill.append(run(run_dict, sim_dict, g4bl, fast, inc_phase, inc_sin, bin_width, fit_type, exec_d4_d5))
   print "*"*80,"\nBin width = 32 run complete!\n","*"*80
-  for f in files: f.Close()
+  for f in files_to_kill: f.Close()
   return 
   
   # g4bl, sin inc phase inc D4 & 5 (i.e. best fit for all show how bad D4 & D5 are)

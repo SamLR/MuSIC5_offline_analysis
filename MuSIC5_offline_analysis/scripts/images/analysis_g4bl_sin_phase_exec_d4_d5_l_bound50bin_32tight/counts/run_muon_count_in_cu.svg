@@ -5,7 +5,7 @@ images/analysis_g4bl_sin_phase_exec_d4_d5_l_bound50bin_32tight/counts/run_muon_c
 </title>
 <desc>
 Creator: ROOT Version 5.34/09
-CreationDate: Tue Sep 17 01:53:57 2013</desc>
+CreationDate: Tue Jan  7 17:34:27 2014</desc>
 <defs>
 </defs>
 <rect x="0" y="0" width="567" height="328" fill="white"/>
@@ -32,12 +32,12 @@ CreationDate: Tue Sep 17 01:53:57 2013</desc>
 <g stroke="black" stroke-width="1" fill="none">
 <line x1="245" y1="193" x2="246" y2="193"/>
 </g>
-<path d="M321,167v -4" fill="none" stroke="#000099"/>
-<path d="M321,163v -5" fill="none" stroke="#000099"/>
-<path d="M283,163h 38" fill="none" stroke="#000099"/>
-<path d="M321,163h 38" fill="none" stroke="#000099"/>
+<path d="M321,168v -4" fill="none" stroke="#000099"/>
+<path d="M321,164v -5" fill="none" stroke="#000099"/>
+<path d="M283,164h 38" fill="none" stroke="#000099"/>
+<path d="M321,164h 38" fill="none" stroke="#000099"/>
 <g stroke="black" stroke-width="1" fill="none">
-<line x1="320" y1="163" x2="321" y2="163"/>
+<line x1="320" y1="164" x2="321" y2="164"/>
 </g>
 <path d="M397,207v -3" fill="none" stroke="#000099"/>
 <path d="M397,204v -4" fill="none" stroke="#000099"/>
@@ -90,7 +90,7 @@ Muon count
 </g>
 <path d="M70,274h -13" fill="none" stroke="black"/>
 <path d="M63,266h -6" fill="none" stroke="black"/>
-<path d="M63,258h -6" fill="none" stroke="black"/>
+<path d="M63,259h -6" fill="none" stroke="black"/>
 <path d="M63,251h -6" fill="none" stroke="black"/>
 <path d="M70,243h -13" fill="none" stroke="black"/>
 <path d="M63,235h -6" fill="none" stroke="black"/>
@@ -100,7 +100,7 @@ Muon count
 <path d="M63,203h -6" fill="none" stroke="black"/>
 <path d="M63,195h -6" fill="none" stroke="black"/>
 <path d="M63,187h -6" fill="none" stroke="black"/>
-<path d="M70,179h -13" fill="none" stroke="black"/>
+<path d="M70,180h -13" fill="none" stroke="black"/>
 <path d="M63,172h -6" fill="none" stroke="black"/>
 <path d="M63,164h -6" fill="none" stroke="black"/>
 <path d="M63,156h -6" fill="none" stroke="black"/>
@@ -135,7 +135,7 @@ Muon count
 <text x="30" y="183" fill="black" font-size="11" font-family="Helvetica">
 8000
 </text>
-<text x="25" y="151" fill="black" font-size="11" font-family="Helvetica">
+<text x="25" y="152" fill="black" font-size="11" font-family="Helvetica">
 10000
 </text>
 <text x="25" y="120" fill="black" font-size="11" font-family="Helvetica">
