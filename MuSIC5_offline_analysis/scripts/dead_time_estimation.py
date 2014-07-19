@@ -47,14 +47,16 @@ def get_dead_time_from_file(run_id):
 
 
 def get_pretty_results(dead_time_dicts):
-  res = u"{:^3s} | {:^15s} | {:^18s} | {:^17s}\n".format("Run", "dead time (%)", "(U && !D)", "(U && !D && !Veto)")
+  res = u"{:^3s} | {:^15s}  | {:^15s} | {:^18s} | {:^17s}\n".format("Run", "live time (%)", "dead time (%)", "(U && !D)", "(U && !D && !Veto)")
   ord_keys = [int(run_id) for run_id in dead_time_dicts.keys()]
   ord_keys.sort()
-  entry_fmt=u"{run_id} | {dead_time_per} | {u_not_d} | {u_not_d_not_veto}\n"
+  entry_fmt=u"{run_id} | {live_time_per}  | {dead_time_per} | {u_not_d} | {u_not_d_not_veto}\n"
   for i in ord_keys:
     dead_time_per   = 100*dead_time_dicts[i]['dead_time'] # make it a percent
     dead_time_per.print_fmt = dead_time_dicts[i]['dead_time'].print_fmt
-    res += entry_fmt.format(run_id=run_id, dead_time_per=dead_time_per, **dead_time_dicts[i])
+    live_time_per = (100 - dead_time_per)
+    live_time_per.print_fmt = u"{: >9.2f} +/- {: <4.3f}"
+    res += entry_fmt.format(run_id=run_id, live_time_per=live_time_per, dead_time_per=dead_time_per, **dead_time_dicts[i])
   return res
 
 def get_dead_times_for_run_ids(run_ids):

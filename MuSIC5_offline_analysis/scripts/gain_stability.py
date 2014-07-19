@@ -16,6 +16,7 @@ val_and_er = lambda x,y,x_er, y_er: (x-y, (x-y)*(x_er**2 + y_er**2)**0.5)
 file_prefix = "../../../MuSIC_data_0.5Cu/run"
 file_suffix = ".root"
 file_ids    = ("448", "00451", "00452", "00455", "00458", "00459") 
+bg_sec      = {448:0.0153375, 451:0.0154625, 452:0.013132143, 455:0.013321429, 458:0.013625, 459:0.012383929}
 
 def _calc_rate_and_er(a,b,c,d,a_er,b_er,c_er,d_er):
     """
@@ -50,9 +51,12 @@ def load_branch(tree, file_id):
   # Force evaluation at call, convert time to seconds
   tree.time = lambda : (tree.leaf.GetValue(7)/1000)
   # want the number of potential triggers
-  tree.triggers = lambda : tree.leaf.GetValue(2) 
-  # tree.triggers = lambda : tree.leaf.GetValue(1)
-
+  tree.triggers_potential = lambda : tree.leaf.GetValue(2) 
+  tree.triggers_good = lambda : tree.leaf.GetValue(1)
+  # SEC values
+  tree.sec = lambda : tree.leaf.GetValue(0)
+  
+  
 def get_gain_stability_dict(tree):
     # open file
     # step through entries
@@ -68,11 +72,12 @@ def get_gain_stability_dict(tree):
     # for entry in range(1, n_entries, 20):
     # print "here we go"
     # for entry in range(0, 4):
-    for entry in range(n_entries/100, n_entries, n_entries/100):
+    # for entry in range(n_entries/25, n_entries, n_entries/25):
+    for entry in range(n_entries/100, n_entries, n_entries/100): #<- used
         tree.GetEntry(entry)
         # print tree.triggers(), tree.time()
         # continue
-        n_triggers, time = tree.triggers(), tree.time()
+        n_triggers, time = tree.triggers_potential(), tree.time()
         n_triggers_er = n_triggers**0.5
         rate, rate_er = _calc_rate_and_er(n_triggers, prev_triggers, 
                                           time, prev_time,
@@ -80,13 +85,34 @@ def get_gain_stability_dict(tree):
                                           time_er, time_er)
         
         n, n_er = val_and_er(n_triggers, prev_triggers, n_triggers_er, prev_triggers_er)
-        res[(time,0)] = (rate, rate_er, n_triggers)
+        res[(time,0)] = (rate, rate_er, n_triggers, tree.triggers_good())
         # tree.GetEntry(entry+1)
         # prev_triggers, prev_time = tree.triggers(), tree.time()
         prev_triggers, prev_time = n_triggers, time
         prev_triggers_er = prev_triggers**0.5
     return res
 
+def get_sec_dict(tree):
+    n_entries = tree.GetEntries()
+    prev_sec, prev_time, prev_rate = 0, 0, 0
+    res = {} # get a dict of time:gain pairs
+    
+    for entry in range(n_entries/100, n_entries, n_entries/100): # <- used
+    # for entry in range(n_entries/25, n_entries, n_entries/25):
+    # for entry in range(n_entries):
+        tree.GetEntry(entry)
+        sec, time = tree.sec(), tree.time()
+        
+        # res[time] = 1000*(sec - prev_sec)/(time-prev_time) # time is in ms?
+        res[time] = sec - prev_sec
+        # res[time] = sec - prev_sec # time is in ms?
+        # res[time] = sec
+        
+        # prev_sec, prev_time, prev_rate = sec, time, rate
+        prev_sec, prev_time = sec, time
+        
+    return res
+  
 
 def get_gain_stability_hist_for_file(data, file_id):
     name = "Trigger rate, run: %i"%int(file_id)
@@ -108,6 +134,43 @@ def get_gain_stability_hist_for_file(data, file_id):
 
 def get_trigger_count_hist_for_file(data, file_id):
     name = "Trigger count, run: %i"%int(file_id)
+    # set the minimum x value as half the min time to try and get the bins aligned nicely
+    xmin = float(min(data.keys(),key=lambda x:x[0])[0])/2
+    # max will return the time,er pair with largest time; which is what we want
+    xmax = max(data.keys(),key=lambda x:x[0])[0]
+    # whilst the time divisions are not constant the errors are very small
+    xbins = len(data)
+    titles = ("Time (ns)", "Trigger Count")
+    # res = make_hist(name, xmin, xmax, titles, xbins)
+    res = make_hist(name, 0, xmax, titles, xbins)
+    times = data.keys()
+    times.sort(key=lambda x:x[0])
+    for bin, time in enumerate(times):
+        val = data[time][2]
+        res.Fill(time[0],val)
+    return res
+    
+
+def get_sec_count_hist_for_file(data, file_id):
+    name = "SEC count, run: %i"%int(file_id)
+    # set the minimum x value as half the min time to try and get the bins aligned nicely
+    xmin = float(min(data.keys()))/2.0
+    # max will return the time,er pair with largest time; which is what we want
+    xmax = max(data.keys())
+    # whilst the time divisions are not constant the errors are very small
+    xbins = len(data)
+    titles = ("Time (ns)", "SEC count")
+    res = make_hist(name, 0, xmax, titles, xbins)
+    times = data.keys()
+    times.sort()
+    for bin, time in enumerate(times):
+        val = data[time]
+        res.Fill(time,val)
+    return res
+    
+
+def get_potential_trigger_count_hist_for_file(data, file_id):
+    name = "Potential trigger count, run: %i"%int(file_id)
     # set the minimum x value as half the min time to try and get the bins aligned nicely
     xmin = float(min(data.keys(),key=lambda x:x[0])[0])/2
     # max will return the time,er pair with largest time; which is what we want
@@ -167,30 +230,38 @@ def draw_gain_and_count_hist(gain_hist, count_hist, canvas, pad_id, color=4,font
     gain_hist.SetMaximum(2.3)
     set_axis_offset_size_color(gain_hist.GetXaxis(),title_offset,font_size, 1)
     set_axis_offset_size_color(gain_hist.GetYaxis(),title_offset,font_size, 1)
+    
     gain_hist.Draw("AP")
     pad.Update()
     move_stats_box(gain_hist,(0.55,0.75),(0.9,0.9))
     
-    # rightmax = count_hist.GetMaximum() * 1.3
-    # rightmin = count_hist.GetMinimum()
-    # scale    = pad.GetUymax()/rightmax
-    # count_hist.SetLineColor(color)
-    # count_hist.Scale(scale)
-    # count_hist.Draw("SAME")
-    # tgaxis_args = (pad.GetUxmax(), pad.GetUymin(), 
-    #                pad.GetUxmax(), pad.GetUymax(), 
-    #                rightmin, rightmax, 110,"+L")
-    # hist_axis = make_pretty_axis(tgaxis_args,color,font_size,title_offset)
-    # hist_axis.Draw()
-    # # need to keep hist_axis in scope so 
-    # # attach it as an attribute to the canvas
-    # setattr(canvas,'axis_'+str(pad_id),hist_axis)
+    
+    rightmax = count_hist.GetMaximum() * 1.3
+    rightmin = count_hist.GetMinimum()
+    scale    = pad.GetUymax()/rightmax
+    count_hist.Scale(scale)
+    
+    
+    count_hist.SetFillStyle(0)
+    count_hist.SetMarkerStyle(2)
+    count_hist.SetMarkerColor(color)
+    count_hist.SetLineColor(color)
+    count_hist.Draw("SAME")
+    hist_axis = TGaxis(pad.GetUxmax(), pad.GetUymin(), pad.GetUxmax(), pad.GetUymax(), rightmin, rightmax, 510, "+L")
+    hist_axis.SetLineColor(color)
+    hist_axis.SetLabelColor(color)
+    hist_axis.SetTitle("SEC count")
+    hist_axis.SetTitleColor(color)
+    hist_axis.Draw()
+    # need to keep hist_axis in scope so 
+    # attach it as an attribute to the canvas
+    setattr(canvas,'axis_'+str(pad_id),hist_axis)
     canvas.Update()
 
 
 def main():
     gStyle.SetOptFit()
-    res = {'data':{}}
+    res = {'data':{}, 'sec':{}}
     for f_id in file_ids:
         print "Processing", f_id
         filename = file_prefix + f_id + file_suffix
@@ -202,6 +273,7 @@ def main():
         # tfile, tree, branch = get_tfile_tree_and_branch(name, **file_data)
         key = int(f_id)
         res['data'][key] = get_gain_stability_dict(tree)
+        res['sec'][key] = get_sec_dict(tree)
         # tfile.Close()
     
     canvas = make_canvas("Gain Stability", 3,2, True)
@@ -209,7 +281,15 @@ def main():
     res.update({'gain_hist':{}, 'count_hist':{}})
     for pad_id, (file_id, data) in enumerate(res['data'].items(), 1):
         gain_hist  = get_gain_stability_hist_for_file(data, file_id)
-        count_hist = get_trigger_count_hist_for_file(data, file_id)
+        # count_hist = get_trigger_count_hist_for_file(data, file_id)
+        # potential_hist = get_potential_trigger_count_hist_for_file(data, file_id)
+        
+        sec_hist = get_sec_count_hist_for_file(res['sec'][int(file_id)], file_id)
+        # c1 = make_canvas('foobar', 1, 1, True)
+        # c1.cd()
+        # sec_hist.Draw()
+        # c1.SaveAs("foobar%i.png"%file_id)
+        # continue
         
         full_range = max(data.keys())[0] - min(data.keys())[0]
         # Fit the central 80%
@@ -220,18 +300,20 @@ def main():
         # gain_hist.Fit("pol0") # attempt to fit the gain with a flat function
         gain_hist.Fit("pol0", "", "", fit_min, fit_max) # attempt to fit the gain with a flat function
         
-        draw_gain_and_count_hist(gain_hist, count_hist, canvas, pad_id)
+        # draw_gain_and_count_hist(gain_hist, count_hist, canvas, pad_id)
+        # draw_gain_and_count_hist(gain_hist, potential_hist, canvas, pad_id)
+        draw_gain_and_count_hist(gain_hist, sec_hist, canvas, pad_id)
         
         res['gain_hist'][file_id] = gain_hist
-        res['count_hist'][file_id] = count_hist
+        res['count_hist'][file_id] = sec_hist
     
     canvas.SaveAs("images/gain_stability.svg")
     canvas.SaveAs("images/gain_stability.eps")
-    
-    print "sleep now!"
-    
-    from time import sleep
-    sleep (20)
+
+    # print "sleep now!"
+    # #
+    # from time import sleep
+    # sleep (20)
     
 
 if __name__=="__main__":
